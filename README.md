@@ -74,22 +74,21 @@ Puedes copiar fotos del celular a mano en esas carpetas, o usar la Brio con `scr
 
 ## 4. Instalación (mismas versiones en PC y laptop)
 
-1. Actualiza el driver NVIDIA. No necesitas el CUDA Toolkit: PyTorch trae su runtime.
+1. Actualiza el driver NVIDIA: debe soportar **CUDA 13.0 o más** (verifícalo con `nvidia-smi`, campo "CUDA Version"). No necesitas el CUDA Toolkit: PyTorch trae su runtime.
 2. Usa la **misma versión de Python** en los dos equipos (recomendado 3.13).
-3. En el PRIMER equipo donde instales (PC o laptop):
+3. En el PRIMER equipo donde instales (PC o laptop) — ya hecho en la laptop, con torch 2.14.1+cu130:
    ```bash
-   python -m venv .venv
+   py -3.13 -m venv .venv
    .venv\Scripts\activate
-   # comando de https://pytorch.org/get-started/locally/ (Stable · Windows · Pip · CUDA 12.x), p. ej.:
-   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu12X
+   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu130
    pip install -r requirements.txt
    pip freeze > requirements-lock.txt
    python scripts/verificar_entorno.py --guardar entorno_referencia.json
    git add requirements-lock.txt entorno_referencia.json && git commit -m "Fijar versiones" && git push
    ```
-4. En el OTRO equipo: `git pull`, crea el venv y
+4. En el OTRO equipo: `git pull`, crea el venv con `py -3.13 -m venv .venv`, actívalo y
    ```bash
-   pip install -r requirements-lock.txt --extra-index-url https://download.pytorch.org/whl/cu12X
+   pip install -r requirements-lock.txt --extra-index-url https://download.pytorch.org/whl/cu130
    python scripts/verificar_entorno.py --comparar entorno_referencia.json
    ```
 
