@@ -1,0 +1,13 @@
+fuente,clase_origen,clase_destino,aprobado,nota
+garbage12,paper,papel_carton,NO,
+garbage12,cardboard,papel_carton,NO,
+garbage12,metal,metales,NO,revisar: latas OK; papel aluminio sucio iría a generales
+garbage12,plastic,plasticos,NO,REVISAR A MANO: si hay bolsas de snacks multicapa moverlas fuera (van a generales)
+garbage12,green-glass,vidrio,NO,
+garbage12,brown-glass,vidrio,NO,
+garbage12,white-glass,vidrio,NO,
+garbage12,biological,organico,NO,
+garbage12,battery,peligrosos,NO,
+garbage12,trash,generales,NO,revisar: mezcla variada
+garbage12,clothes,EXCLUIR,NO,no es una de las 7 clases
+garbage12,shoes,EXCLUIR,NO,no es una de las 7 clases

@@ -1,0 +1,24 @@
+# Fotos y datos: NO se suben (se conserva la estructura de carpetas con .gitkeep)
+dataset/**
+!dataset/**/
+!dataset/**/.gitkeep
+
+# Salidas de entrenamiento (los modelos finales de modelos/ SÍ se suben, ~10-15 MB c/u)
+*.pt
+!modelos/*.pt
+*.onnx
+*.engine
+runs/
+capturas_revisar/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

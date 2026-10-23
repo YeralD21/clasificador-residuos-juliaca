@@ -1,0 +1,14 @@
+{
+  "python": "3.13.0",
+  "so": "Windows-11-10.0.26200-SP0",
+  "torch": "2.14.1+cu130",
+  "cuda_torch": "13.0",
+  "cuda_disponible": true,
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "vram_gb": 4.3,
+  "torchvision": "0.29.1+cu130",
+  "ultralytics": "8.4.184",
+  "cv2": "5.0.0",
+  "numpy": "2.5.2",
+  "PIL": "12.3.0"
+}
