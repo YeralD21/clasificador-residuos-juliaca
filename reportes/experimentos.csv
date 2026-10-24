@@ -1,0 +1,5 @@
+experimento,etapa,val_datos,val_f1_macro,val_top1,modelo_base,imgsz,optimizer,lr0,freeze,dropout,replay,epocas,mejor_epoca,minutos,modelo
+e1_base,1,publico/val,0.9129,0.9116,yolo26s-cls.pt,224,AdamW,0.000833,,0.0,,60,56,9.5,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_base_20261024_1453.pt
+e1_drop02,1,publico/val,0.9086,0.9073,yolo26s-cls.pt,224,AdamW,0.000833,,0.2,,60,54,9.6,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_drop02_20261024_1503.pt
+e1_m224,1,publico/val,0.9139,0.9126,yolo26m-cls.pt,224,AdamW,0.000833,,0.0,,60,58,16.9,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_m224_20261024_1536.pt
+e1_s320,1,publico/val,0.9113,0.911,yolo26s-cls.pt,320,AdamW,0.000833,,0.0,,60,47,15.8,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_s320_20261024_1519.pt

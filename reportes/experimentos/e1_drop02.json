@@ -1,0 +1,39 @@
+{
+  "experimento": "e1_drop02",
+  "etapa": 1,
+  "modelo": "D:\\Proyecto-Residuos-ML\\clasificador-residuos-juliaca\\modelos\\experimentos\\etapa1_e1_drop02_20261024_1503.pt",
+  "parametros": {
+    "model": "yolo26s-cls.pt",
+    "data": "D:\\Proyecto-Residuos-ML\\clasificador-residuos-juliaca\\dataset\\publico",
+    "epochs": 60,
+    "patience": 15,
+    "imgsz": 224,
+    "batch": 64,
+    "optimizer": "AdamW",
+    "lr0": 0.000833,
+    "lrf": 0.01,
+    "warmup_epochs": 3.0,
+    "freeze": null,
+    "dropout": 0.2,
+    "cos_lr": true,
+    "seed": 42,
+    "hsv_h": 0.03,
+    "hsv_s": 0.5,
+    "hsv_v": 0.4,
+    "fliplr": 0.5,
+    "flipud": 0.2,
+    "erasing": 0.3,
+    "auto_augment": "randaugment"
+  },
+  "historial": {
+    "epocas_corridas": 60,
+    "mejor_epoca": 54,
+    "mejor_top1_val": 0.90782
+  },
+  "val": {
+    "datos": "publico/val",
+    "accuracy_top1": 0.9073,
+    "f1_macro": 0.9086
+  },
+  "minutos": 9.6
+}
