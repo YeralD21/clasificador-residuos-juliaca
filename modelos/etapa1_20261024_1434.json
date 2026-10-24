@@ -1,0 +1,22 @@
+{
+  "entorno": {
+    "python": "3.13.15",
+    "torch": "2.14.1+cu130",
+    "cuda_torch": "13.0",
+    "ultralytics": "8.4.184",
+    "gpu": "NVIDIA GeForce RTX 3060"
+  },
+  "args": {
+    "etapa": 1,
+    "pesos": "yolo26s-cls.pt",
+    "equipo": "pc",
+    "epochs": null,
+    "imgsz": 224,
+    "batch": null,
+    "lr": 0.0001,
+    "freeze": 6,
+    "replay": 1.0,
+    "seed": 42,
+    "device": "0"
+  }
+}
