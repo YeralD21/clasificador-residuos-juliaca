@@ -11,10 +11,10 @@ garbage12,battery,peligrosos,NO,
 garbage12,trash,generales,NO,revisar: mezcla variada
 garbage12,clothes,EXCLUIR,NO,no es una de las 7 clases
 garbage12,shoes,EXCLUIR,NO,no es una de las 7 clases
-companero,Amarillo,,NO,NUEVA: asignar destino y aprobar a mano
-companero,Azul,,NO,NUEVA: asignar destino y aprobar a mano
-companero,Blanco,,NO,NUEVA: asignar destino y aprobar a mano
-companero,Gris,,NO,NUEVA: asignar destino y aprobar a mano
-companero,Marron,,NO,NUEVA: asignar destino y aprobar a mano
-companero,Negro,,NO,NUEVA: asignar destino y aprobar a mano
-companero,Rojo,,NO,NUEVA: asignar destino y aprobar a mano
+companero,Amarillo,metales,SI,
+companero,Azul,papel_carton,SI,ver excluir_imagenes.txt
+companero,Blanco,plasticos,SI,ver excluir_imagenes.txt
+companero,Gris,vidrio,SI,
+companero,Marron,organico,SI,
+companero,Negro,generales,SI,ver excluir_imagenes.txt
+companero,Rojo,peligrosos,SI,ver excluir_imagenes.txt

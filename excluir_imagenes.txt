@@ -4,3 +4,863 @@
 #
 # Ejemplo:
 # companero/train/Azul/dl_azul_01128.jpg    # jarrón de cerámica, no es papel
+
+# --- Marcadas en la inspección visual (muestra de 12 por clase en train). Revisar y descomentar a mano ---
+companero/train/Azul/dl_azul_01128.jpg    # jarrón de cerámica con forma de caja, no es papel
+companero/train/Azul/dl_azul_00143.jpg    # ilustración vectorial, no es foto de residuo
+companero/train/Azul/dl_azul_00439.jpg    # foto de stock de una persona con archivadores, no es residuo
+companero/train/Azul/dl_azul_00076.jpg    # caja de leche multicapa (tetra), no es papel/cartón simple
+companero/train/Blanco/dl_blanco_00101.jpg    # bolsas de basura negras en la calle (mezcla, iría a generales)
+companero/train/Blanco/dl_blanco_00126.jpg    # bolsa con basura mixta sobre hojas (mezcla, iría a generales)
+companero/train/Negro/dl_negro_00421.jpg    # zapato (sandalia)
+# companero/train/Negro/dl_negro_01016.jpg    # zapatos
+# companero/train/Negro/dl_negro_01393.jpg    # zapato de tacón
+companero/train/Negro/dl_negro_00875.jpg    # ropa (jean)
+# companero/train/Negro/dl_negro_00643.jpg    # ropa (polo)
+companero/train/Negro/dl_negro_00613.jpg    # ropa (polo)
+companero/train/Negro/dl_negro_00508.jpg    # ropa (camiseta de fútbol)
+
+# --- Candidatas ropa/calzado en companero/*/Negro: yolo26s-cls ImageNet, clase de ropa/calzado en el top-5. Ver revision/negro_ropa/ ---
+companero/test/Negro/dl_negro_00000.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00003.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00007.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00009.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00013.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00019.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00020.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00021.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00022.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00025.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00027.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00030.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00033.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00034.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00036.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00039.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00043.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00048.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00052.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00055.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00056.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00057.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00058.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00061.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00062.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00063.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00064.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00066.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00067.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00068.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00075.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00080.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00085.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00086.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00088.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00091.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00095.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00097.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00099.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00100.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00101.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00106.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00108.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00109.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00110.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00113.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00114.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00115.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00118.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00120.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00121.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00122.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00124.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00126.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00128.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00130.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00131.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00132.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00134.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00137.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00138.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00139.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00141.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00142.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00143.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00145.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00147.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00152.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00156.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00162.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00164.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00165.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00166.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00168.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00173.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00176.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00178.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00179.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00182.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00183.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00184.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00186.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00187.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00188.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00191.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00192.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00193.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00195.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00197.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00199.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00201.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00210.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00215.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00216.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00218.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00220.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00223.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00225.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00226.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00227.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00228.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00232.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00237.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00239.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00241.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00249.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00253.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00254.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00256.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00257.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00258.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00262.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00264.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00268.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00269.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00270.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00275.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00277.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00278.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00280.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00282.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00284.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00285.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00289.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00290.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00292.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00293.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00294.jpg    # candidata ropa/calzado
+# companero/test/Negro/dl_negro_00296.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00298.jpg    # candidata ropa/calzado
+companero/test/Negro/dl_negro_00299.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00002.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00005.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00007.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00009.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00011.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00012.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00015.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00018.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00019.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00020.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00024.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00027.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00028.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00029.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00030.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00038.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00039.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00041.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00042.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00044.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00046.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00047.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00048.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00051.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00052.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00056.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00057.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00060.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00064.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00065.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00069.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00071.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00072.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00073.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00074.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00075.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00076.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00080.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00081.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00082.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00084.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00086.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00087.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00090.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00091.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00092.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00093.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00095.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00100.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00101.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00103.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00104.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00106.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00108.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00111.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00114.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00115.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00117.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00119.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00126.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00128.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00132.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00140.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00141.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00142.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00143.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00144.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00146.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00152.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00153.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00155.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00160.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00161.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00162.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00163.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00168.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00170.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00171.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00172.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00173.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00175.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00180.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00185.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00188.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00189.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00190.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00191.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00193.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00197.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00199.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00200.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00205.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00208.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00209.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00220.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00223.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00224.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00225.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00226.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00227.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00228.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00229.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00230.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00231.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00232.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00234.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00235.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00236.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00237.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00240.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00241.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00247.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00252.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00255.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00256.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00258.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00259.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00260.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00262.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00263.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00269.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00272.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00276.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00277.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00279.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00280.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00281.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00287.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00288.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00289.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00290.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00294.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00296.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00298.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00299.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00301.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00303.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00304.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00305.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00306.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00308.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00309.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00310.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00318.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00320.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00323.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00324.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00325.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00328.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00329.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00331.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00333.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00334.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00336.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00338.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00340.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00342.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00346.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00347.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00349.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00352.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00356.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00360.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00361.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00365.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00367.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00369.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00373.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00385.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00386.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00387.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00390.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00396.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00398.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00400.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00401.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00406.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00408.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00410.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00415.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00417.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00418.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00419.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00420.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00422.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00423.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00424.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00425.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00430.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00431.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00439.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00440.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00441.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00442.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00444.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00448.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00452.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00453.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00454.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00455.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00456.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00462.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00463.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00464.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00465.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00467.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00472.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00473.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00474.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00482.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00483.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00485.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00486.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00487.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00488.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00489.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00494.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00495.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00498.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00500.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00502.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00505.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00509.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00510.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00511.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00512.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00513.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00516.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00517.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00518.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00519.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00520.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00522.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00524.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00530.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00531.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00534.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00536.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00537.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00538.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00539.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00541.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00542.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00545.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00548.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00550.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00557.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00558.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00563.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00567.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00568.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00569.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00570.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00571.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00572.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00574.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00577.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00578.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00581.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00582.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00585.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00588.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00589.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00590.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00593.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00594.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00595.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00597.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00600.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00601.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00603.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00604.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00610.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00611.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00612.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00619.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00625.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00627.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00628.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00633.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00635.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00636.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00640.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00642.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00644.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00645.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00650.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00652.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00655.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00656.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00659.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00661.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00664.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00666.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00667.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00669.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00671.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00674.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00675.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00676.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00677.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00678.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00682.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00690.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00696.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00697.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00698.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00700.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00706.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00708.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00713.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00715.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00717.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00718.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00721.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00723.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00725.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00726.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00727.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00728.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00737.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00738.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00739.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00743.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00747.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00749.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00751.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00752.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00755.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00758.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00761.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00764.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00766.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00768.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00770.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00771.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00774.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00775.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00777.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00779.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00780.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00788.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00790.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00794.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00795.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00796.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00797.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00801.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00805.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00806.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00808.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00811.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00814.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00816.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00819.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00820.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00821.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00823.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00826.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00827.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00828.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00829.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00830.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00832.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00833.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00834.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00836.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00839.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00840.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00841.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00842.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00844.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00845.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00847.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00848.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00849.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00854.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00864.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00869.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00870.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00872.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00874.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00877.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00879.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00881.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00886.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00888.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00889.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00892.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00895.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00896.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00897.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00901.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00902.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00903.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00904.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00908.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00912.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00915.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00916.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00917.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00918.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00921.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00922.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00924.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00926.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00930.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00936.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00937.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00945.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00950.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00951.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00952.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00958.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00959.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00962.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00963.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00967.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00973.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00981.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00983.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00984.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00988.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00991.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00993.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_00997.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_00998.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01000.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01001.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01002.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01003.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01005.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01010.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01017.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01018.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01019.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01023.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01031.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01033.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01035.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01038.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01045.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01048.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01051.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01053.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01054.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01056.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01059.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01067.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01070.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01071.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01072.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01075.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01077.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01078.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01081.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01082.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01083.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01084.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01087.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01090.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01092.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01094.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01095.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01097.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01098.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01102.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01104.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01105.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01107.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01108.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01111.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01122.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01127.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01129.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01130.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01132.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01136.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01138.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01142.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01143.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01146.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01148.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01150.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01151.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01154.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01156.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01161.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01164.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01165.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01167.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01170.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01175.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01185.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01188.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01191.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01195.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01196.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01197.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01198.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01202.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01203.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01204.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01206.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01207.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01208.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01210.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01214.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01218.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01221.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01227.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01228.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01230.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01231.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01233.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01234.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01239.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01240.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01241.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01244.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01247.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01248.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01249.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01256.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01261.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01263.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01269.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01271.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01272.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01273.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01278.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01280.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01283.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01287.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01289.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01292.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01293.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01294.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01295.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01297.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01300.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01302.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01305.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01310.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01311.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01313.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01314.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01318.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01323.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01325.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01326.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01327.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01328.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01329.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01330.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01332.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01334.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01336.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01338.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01339.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01340.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01342.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01345.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01350.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01351.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01352.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01354.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01355.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01357.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01360.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01363.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01371.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01372.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01373.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01375.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01376.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01377.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01380.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01381.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01385.jpg    # candidata ropa/calzado
+# companero/train/Negro/dl_negro_01386.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01388.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01392.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01395.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01397.jpg    # candidata ropa/calzado
+companero/train/Negro/dl_negro_01399.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00001.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00009.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00010.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00011.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00013.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00014.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00020.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00024.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00026.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00027.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00028.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00031.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00032.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00034.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00036.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00041.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00042.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00043.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00045.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00046.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00056.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00063.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00064.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00065.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00068.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00070.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00071.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00072.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00077.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00078.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00082.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00087.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00088.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00090.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00093.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00094.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00097.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00098.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00099.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00106.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00109.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00114.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00115.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00121.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00122.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00125.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00127.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00129.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00130.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00131.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00132.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00135.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00139.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00144.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00145.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00149.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00150.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00151.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00153.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00154.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00155.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00156.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00157.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00158.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00160.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00161.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00162.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00163.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00169.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00170.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00171.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00174.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00175.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00176.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00179.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00180.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00184.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00189.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00190.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00191.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00193.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00195.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00196.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00197.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00198.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00202.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00204.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00213.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00214.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00216.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00219.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00221.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00223.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00225.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00228.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00229.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00237.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00239.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00241.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00242.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00249.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00250.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00254.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00255.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00256.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00258.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00259.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00261.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00266.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00269.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00270.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00273.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00276.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00277.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00279.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00282.jpg    # candidata ropa/calzado
+# companero/val/Negro/dl_negro_00284.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00289.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00290.jpg    # candidata ropa/calzado
+companero/val/Negro/dl_negro_00294.jpg    # candidata ropa/calzado
+
+# --- Decisiones del usuario (2026-10-24) ---
+companero/test/Negro/dl_negro_00024.jpg    # pintura, no foto real
+companero/train/Negro/dl_negro_00554.jpg    # foto de una persona, el residuo es secundario
+companero/train/Rojo/dl_rojo_00614.jpg    # mascarilla: va a generales en hogares
+companero/train/Rojo/dl_rojo_01176.jpg    # mascarilla: va a generales en hogares
