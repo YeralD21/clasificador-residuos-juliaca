@@ -32,7 +32,7 @@ import torch
 import ultralytics
 from ultralytics import YOLO
 
-from comun import CLASES, ETAPA2, JULIACA, PUBLICO, RAIZ, SPLITS, imagenes
+from comun import CLASES, ETAPA2, JULIACA, PUBLICO, RAIZ, imagenes
 from evaluar import evaluar
 
 PERFIL = {"pc": {"batch": 64, "workers": 6}, "laptop": {"batch": 32, "workers": 4}}
@@ -76,11 +76,12 @@ def contar(base, split):
 
 
 def armar_etapa2(replay, seed):
-    """Copia juliaca (sin tocar el original) + replay de publico en dataset/_etapa2."""
+    """Copia juliaca train y val (sin tocar el original) + replay de publico en dataset/_etapa2.
+    juliaca/test NO se copia: así Ultralytics nunca puede usarlo, ni siquiera como respaldo de val."""
     rng = random.Random(seed)
     if ETAPA2.exists():
         shutil.rmtree(ETAPA2)
-    for s in SPLITS:
+    for s in ("train", "val"):
         for c in CLASES:
             (ETAPA2 / s / c).mkdir(parents=True, exist_ok=True)
             origen = JULIACA / s / c

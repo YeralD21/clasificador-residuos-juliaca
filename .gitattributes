@@ -1,0 +1,2 @@
+# Evidencias: se guardan byte a byte (sin conversión de fin de línea) para que SHA256SUMS.txt siga siendo válido
+reportes/evidencias/** -text

@@ -31,8 +31,10 @@ yolo26s-cls.pt (preentrenado en ImageNet)
 modelos/etapa1_*.pt
       │  ETAPA 2: se ajusta a Juliaca con tus fotos (+ un poco de datos públicos para no olvidar)
       ▼
-modelos/etapa2_*.pt  ──► se evalúan AMBOS en dataset/juliaca/test → cuánto mejoró con datos locales
+modelos/etapa2_*.pt
 ```
+
+Los entrenamientos y experimentos se evalúan **solo en validación** (etapa 1: `publico/val`, etapa 2: `juliaca/val`); ahí se elige el modelo de cada etapa (ver `EXPERIMENTOS.md`). `dataset/juliaca/test` **no** se evalúa automáticamente: se usa **una sola vez**, al final, con los dos modelos elegidos (`scripts/evaluar.py --split test`), para medir cuánto mejoró con datos locales.
 
 - **Etapa 1:** learning rate automático, hasta 60 épocas.
 - **Etapa 2:** learning rate bajo (1e-4), primeras 6 capas congeladas, hasta 30 épocas, y *replay* de 1 foto pública por cada foto tuya.
@@ -103,7 +105,9 @@ python scripts/auditar.py                                  # debe terminar "Sin 
 python scripts/entrenar.py --etapa 1
 python scripts/entrenar.py --etapa 2 --pesos modelos/etapa1_AAAAMMDD_HHMM.pt
 python scripts/entrenar.py --etapa 2 --pesos yolo26s-cls.pt --replay 0   # opcional: solo Juliaca, para comparar
-python scripts/evaluar.py --pesos modelos/etapa1_*.pt modelos/etapa2_*.pt
+python scripts/evaluar.py --pesos <modelo_etapa1_elegido>.pt <modelo_etapa2_elegido>.pt   # validación (juliaca/val)
+# Evaluación FINAL, UNA sola vez, con los modelos ya elegidos por val (queda en reportes/registro_test.csv):
+python scripts/evaluar.py --pesos <modelo_etapa1_elegido>.pt <modelo_etapa2_elegido>.pt --split test
 ```
 
 Cada época imprime una línea:
