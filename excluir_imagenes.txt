@@ -1,0 +1,6 @@
+# Imágenes de dataset/crudo que NO deben entrar al entrenamiento (las decides TÚ).
+# Una ruta por línea, relativa a dataset/crudo. Se aceptan / o \. '#' = comentario.
+# No se borra nada de crudo/: preparar_publico.py simplemente no las copia.
+#
+# Ejemplo:
+# companero/train/Azul/dl_azul_01128.jpg    # jarrón de cerámica, no es papel
