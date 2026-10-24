@@ -10,6 +10,7 @@ dataset/**
 *.engine
 runs/
 capturas_revisar/
+revision/
 
 # Python
 .venv/
