@@ -12,9 +12,15 @@ En la etapa 2:
   - val   = dataset/juliaca/val      (tu partición manual, tal cual)
   - test  = dataset/juliaca/test     (tu partición manual, tal cual; solo se usa al final)
   - learning rate bajo + primeras capas congeladas.
-Se imprime una línea por época y al final se evalúa en dataset/juliaca/test.
+Se imprime una línea por época. Al final se evalúa SOLO en VALIDACIÓN
+(etapa 1: publico/val, etapa 2: juliaca/val). El test se usa una sola vez, al final, con
+`--evaluar-test` o con `scripts/evaluar.py --split test`.
+
+Con --experimento NOMBRE el modelo va a modelos/experimentos/ (no se sube a git) y el
+resumen a reportes/experimentos/NOMBRE.json (lo usa scripts/experimentar.py).
 """
 import argparse
+import csv
 import json
 import platform
 import random
@@ -110,17 +116,22 @@ def main():
     ap.add_argument("--freeze", type=int, default=6, help="solo etapa 2: capas congeladas (0-9 = backbone)")
     ap.add_argument("--replay", type=float, default=1.0, help="solo etapa 2: fotos públicas por cada foto tuya")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--dropout", type=float, default=0.0, help="dropout de la cabeza de clasificación")
+    ap.add_argument("--experimento", default=None, help="nombre del experimento (ver experimentar.py)")
+    ap.add_argument("--evaluar-test", action="store_true",
+                    help="evalúa también en juliaca/test (SOLO para el modelo final elegido por val)")
     ap.add_argument("--device", default="0", help="0 = primera GPU")
     args = ap.parse_args()
 
     if args.device != "cpu" and not torch.cuda.is_available():
         raise SystemExit("PyTorch no ve la GPU. Ejecuta: python scripts/verificar_entorno.py")
+    _t["t0"] = time.time()
     perfil = PERFIL[args.equipo]
     batch = args.batch or perfil["batch"]
     print("Entorno:", entorno())
 
     comunes = dict(imgsz=args.imgsz, batch=batch, workers=perfil["workers"], device=args.device, amp=True,
-                   seed=args.seed, deterministic=True, cos_lr=True, plots=True,
+                   seed=args.seed, deterministic=True, cos_lr=True, plots=True, dropout=args.dropout,
                    hsv_h=0.03, hsv_s=0.5, hsv_v=0.4,       # variar tono: que no aprenda "blanco = plástico"
                    fliplr=0.5, flipud=0.2, erasing=0.3, auto_augment="randaugment",
                    project=str(RAIZ / "runs"))
@@ -139,19 +150,59 @@ def main():
         params = dict(data=str(datos), epochs=args.epochs or 30, patience=10, optimizer="AdamW",
                       lr0=args.lr, lrf=0.1, warmup_epochs=1, freeze=args.freeze, **comunes)
 
-    nombre = f"etapa{args.etapa}_{Path(args.pesos).stem}"
+    nombre = f"etapa{args.etapa}_{args.experimento or Path(args.pesos).stem}"
     model = YOLO(args.pesos)
     model.add_callback("on_train_epoch_start", ini_epoca)
     model.add_callback("on_fit_epoch_end", fin_epoca)
     model.train(name=nombre, **params)
 
-    best = model.trainer.save_dir / "weights" / "best.pt"
-    destino = RAIZ / "modelos" / f"etapa{args.etapa}_{time.strftime('%Y%m%d_%H%M')}.pt"
+    save_dir = Path(model.trainer.save_dir)
+    best = save_dir / "weights" / "best.pt"
+    carpeta = RAIZ / "modelos" / ("experimentos" if args.experimento else "")
+    carpeta.mkdir(parents=True, exist_ok=True)
+    etiqueta = f"etapa{args.etapa}_{args.experimento + '_' if args.experimento else ''}{time.strftime('%Y%m%d_%H%M')}"
+    destino = carpeta / f"{etiqueta}.pt"
     shutil.copy2(best, destino)
-    destino.with_suffix(".json").write_text(json.dumps({"entorno": entorno(), "args": vars(args)}, indent=2))
-    print(f"\nModelo copiado a {destino}  (+ {destino.with_suffix('.json').name} con versiones)")
 
-    evaluar(destino, args.imgsz, batch, JULIACA, etiqueta=f"ETAPA {args.etapa}")
+    # Solo los argumentos que de verdad usó esta etapa (+ los que resolvió Ultralytics)
+    ta = vars(model.trainer.args)
+    usados = {k: ta.get(k) for k in ("model", "data", "epochs", "patience", "imgsz", "batch", "optimizer", "lr0",
+                                     "lrf", "warmup_epochs", "freeze", "dropout", "cos_lr", "seed", "hsv_h",
+                                     "hsv_s", "hsv_v", "fliplr", "flipud", "erasing", "auto_augment")}
+    if args.etapa == 2:
+        usados["replay"] = args.replay
+    filas = list(csv.DictReader(open(save_dir / "results.csv", encoding="utf-8")))
+    filas = [{k.strip(): v for k, v in f.items()} for f in filas]
+    mejor = max(filas, key=lambda f: float(f.get("metrics/accuracy_top1", 0) or 0)) if filas else {}
+    historial = {"epocas_corridas": len(filas), "mejor_epoca": int(float(mejor.get("epoch", 0) or 0)),
+                 "mejor_top1_val": float(mejor.get("metrics/accuracy_top1", 0) or 0)}
+    destino.with_suffix(".json").write_text(json.dumps(
+        {"etapa": args.etapa, "pesos_iniciales": args.pesos, "entorno": entorno(),
+         "parametros": usados, "historial": historial}, indent=2, default=str))
+    print(f"\nModelo copiado a {destino}  (+ {destino.with_suffix('.json').name})")
+
+    datos_val = PUBLICO if args.etapa == 1 else JULIACA
+    rep_val = evaluar(destino, args.imgsz, batch, datos_val, "val", etiqueta=f"ETAPA {args.etapa} (validación)")
+    if args.etapa == 1 and any(imagenes(JULIACA / "val" / c) for c in CLASES):
+        evaluar(destino, args.imgsz, batch, JULIACA, "val", etiqueta="ETAPA 1 en juliaca/val (referencia)")
+
+    if args.experimento:
+        d = RAIZ / "reportes" / "experimentos"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / f"{args.experimento}.json").write_text(json.dumps({
+            "experimento": args.experimento, "etapa": args.etapa, "modelo": str(destino),
+            "parametros": usados, "historial": historial,
+            "val": {"datos": f"{datos_val.name}/val",
+                    "accuracy_top1": rep_val["accuracy_top1"] if rep_val else None,
+                    "f1_macro": rep_val["f1_macro"] if rep_val else None},
+            "minutos": round((time.time() - _t["t0"]) / 60, 1)}, indent=2, default=str), encoding="utf-8")
+
+    if args.evaluar_test:
+        print("\n*** EVALUACIÓN FINAL EN juliaca/test ***")
+        evaluar(destino, args.imgsz, batch, JULIACA, "test", etiqueta=f"ETAPA {args.etapa} (TEST FINAL)")
+    else:
+        print("\n(No se evaluó en juliaca/test. Hazlo una sola vez con el modelo final: "
+              f"python scripts/evaluar.py --pesos {destino.relative_to(RAIZ)} --split test)")
 
 
 if __name__ == "__main__":

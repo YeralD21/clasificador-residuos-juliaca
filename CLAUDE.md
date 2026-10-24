@@ -16,6 +16,7 @@ El modelo clasifica MATERIAL; el color es el tacho donde va (ver tabla en README
 6. Nunca simules un entrenamiento ni escribas métricas que no salgan de una ejecución real. Copia números de `reportes/*.json` o `runs/*/results.csv`.
 7. Antes de entrenar, ejecuta `python scripts/auditar.py`. Si hay ERRORES, detente y muéstralos.
 8. No borres nada en `dataset/crudo/`. `dataset/publico/` y `dataset/_etapa2/` son generados y se pueden regenerar.
+9. Los experimentos se comparan SOLO con validación (F1 macro). dataset/juliaca/test se evalúa UNA sola vez, con el modelo final que yo elija, mediante `python scripts/evaluar.py --split test`. Nunca uses --split test ni --evaluar-test sin que te lo pida explícitamente.
 
 ## Hardware
 - PC (entrenamiento): RTX 3060 12GB → `--equipo pc` (batch 64, imgsz 224)
