@@ -97,7 +97,7 @@ Puedes copiar fotos del celular a mano en esas carpetas, o usar la Brio con `scr
 ## 5. Flujo completo
 
 ```bash
-# Datos públicos → dataset/crudo/<fuente>/<clase>/   (ver sección 6)
+# Datos públicos → dataset/crudo/<fuente>/<clase>/   (ver sección 7)
 # Revisar class_mapping.csv y poner aprobado=SI a mano
 python scripts/preparar_publico.py --max-por-clase 1500
 # Tus fotos → dataset/juliaca/<split>/<clase>/<objeto>/
@@ -119,7 +119,22 @@ python scripts/inferencia_webcam.py --modelo modelos/etapa2_AAAAMMDD_HHMM.pt
 ```
 Con `S` guardas un recorte en `capturas_revisar/`. Tú decides su clase y lo mueves a `dataset/juliaca/...` para reentrenar.
 
-## 6. Datos públicos
+## 6. Usar el modelo en la laptop
+
+> **Modelo provisional:** `modelos/etapa2_avance.pt` es e2_replay2, elegido solo por validación (ver `EXPERIMENTOS.md`, "Avance etapa 2"). `dataset/juliaca/test` aún **no** se ha evaluado.
+
+```bash
+git pull
+.venv\Scripts\activate
+python scripts/verificar_entorno.py --comparar entorno_referencia.json      # debe decir "Todo coincide."
+python scripts/inferencia_webcam.py --modelo modelos/etapa2_avance.pt --camara 0 --imgsz 224
+```
+
+- Si `.venv` no existe en la laptop, créalo como en la sección 4, paso 4: `py -3.13 -m venv .venv`, actívalo y `pip install -r requirements-lock.txt --extra-index-url https://download.pytorch.org/whl/cu130`.
+- `--camara` es el índice de OpenCV de la MX Brio (por defecto `0`; si se abre otra cámara, prueba `1`). `--imgsz 224` es el tamaño con el que se entrenó. Opcionales: `--umbral` (por defecto `0.6`; por debajo muestra "NO SEGURO") y `--suavizado` (por defecto `8` frames promediados).
+- Teclas: **Q** sale; **S** guarda el recorte actual en `capturas_revisar/` (úsalo cuando el modelo se equivoque). Esas fotos no se clasifican solas: tú decides su clase y las pasas a `dataset/juliaca/<split>/<clase>/<objeto>/`.
+
+## 7. Datos públicos
 
 | Fuente (carpeta en `crudo/`) | Contenido | Nota |
 |---|---|---|
@@ -128,7 +143,7 @@ Con `S` guardas un recorte en `capturas_revisar/`. Tú decides su clase y lo mue
 
 Antes de aprobar `garbage12/plastic`, abre la carpeta y **saca a mano** las bolsas de snack metalizadas (van a `generales`). Revisa la licencia de cada dataset y cítalo en tu informe.
 
-## 7. Reglas de integridad
+## 8. Reglas de integridad
 
 - No se generan ni sintetizan imágenes. Solo fotos reales.
 - La clase de cada foto la decides tú (carpetas). Ningún script mueve fotos entre clases o splits de `dataset/juliaca`.

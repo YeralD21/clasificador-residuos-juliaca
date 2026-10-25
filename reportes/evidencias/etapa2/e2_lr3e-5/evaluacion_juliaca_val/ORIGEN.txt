@@ -1,0 +1,1 @@
+runs/evaluaciones/etapa2_e2_lr3e-5_20261024_2057_juliaca_val
