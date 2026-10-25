@@ -135,39 +135,51 @@ python scripts/inferencia_webcam.py --modelo modelos/etapa2_avance.pt --camara 0
 - Ventana: se puede maximizar o redimensionar y el video ocupa toda la ventana. Antes quedaba una franja gris porque `cv2.imshow` sin `namedWindow` crea una ventana `WINDOW_AUTOSIZE`, que dibuja el frame a su tamaño nativo; ahora se crea con `WINDOW_NORMAL | WINDOW_FREERATIO` (`scripts/comun.py`, `crear_ventana`).
 - Teclas: **Q** sale (o cerrar la ventana); **F** alterna pantalla completa; **S** guarda el recorte actual en `capturas_revisar/` (úsalo cuando el modelo se equivoque). Esas fotos no se clasifican solas: tú decides su clase y las pasas a `dataset/juliaca/<split>/<clase>/<objeto>/`.
 
-### 6.1 Modo detección + clasificación (dos etapas, sin recuadro fijo)
+### 6.1 Modo detección + clasificación (dos etapas, todo el frame)
 
-`scripts/inferencia_deteccion.py` busca objetos en **toda** la imagen y clasifica cada uno con tu modelo:
+`scripts/inferencia_deteccion.py` busca objetos en **toda** la imagen (varios a la vez, priorizando los cercanos) y clasifica cada uno con tu modelo:
 
-1. **Detector de vocabulario abierto** (no se entrena): YOLOE con prompts de texto (`--prompts`, en inglés, separados por coma). Solo localiza las cajas; su etiqueta no se usa.
-2. **Filtros** para que no detecte de más: solo cuentan las cajas con confianza ≥ `--conf-det`, cuyo **centro** cae dentro de la zona central `--roi` (dibujada como un rectángulo fino) y cuya área está entre `--min-area` y `--max-area`; como máximo `--max-objetos` por frame (las de mayor confianza).
+1. **Detector de vocabulario abierto** (no se entrena): YOLOE con prompts de texto en inglés. Busca los de residuo (`--prompts`) y también los **negativos** (`--ignorar`: persona, cara, mano, ropa, muebles, pared...). Solo localiza las cajas; la clase la decide siempre el clasificador.
+2. **Filtros**, en este orden (con `--bench` se imprime cuántas cajas descarta cada uno):
+   - `ignorada`: cajas de los prompts negativos; no se clasifican ni se dibujan.
+   - `duplicada`: dos prompts de residuo sobre el mismo objeto (p. ej. `bottle` y `cup`, IoU > 0.7); queda la de mayor confianza.
+   - `roi`: el centro de la caja debe caer en la zona central `--roi` (por defecto `1.0` = todo el frame; si es menor se dibuja la zona).
+   - `area`: área entre `--min-area` y `--max-area`.
+   - `ropa_mueble`: se descarta la caja de residuo que coincide casi entera (IoU ≥ `--iou-ignorar`) con una caja de ropa o mueble (clothing, jacket, sofa, chair, shelf, bed, furniture...) de confianza igual o mayor, es decir, cuando el detector cree que es la prenda o el mueble. Persona, cara y mano **no** anulan cajas: un objeto en la mano sí se muestra. Pared, puerta, ventana y cortina tampoco, porque cubren todo el fondo y anularían a un objeto en primer plano (pasaba en `dataset/crudo/val`: una botella cercana contra una caja `wall` y unos vasos detectados como `curtain`).
+   - `lejana`: **foco en lo cercano**, solo quedan las cajas con área ≥ `--foco-relativo` × la caja de residuo más grande del frame.
+   - `borrosa`: **nitidez**, varianza del Laplaciano del recorte (a 128×128) ≥ `--nitidez-rel` × la del recorte más nítido del frame. Desactívalo con `--no-nitidez`.
+   - `exceso`: se ordenan por área (mayor primero) y se quedan `--max-objetos`.
 3. Cada caja se recorta **cuadrada con ~10 % de margen** y la clasifica `--modelo` a `imgsz 224`.
 4. **Persistencia**: cada caja se sigue entre frames por IoU (≥ `--iou`). Se muestra solo si apareció en al menos `--persistencia` de los últimos `--historial` frames (3 de 5), y su clase es el **promedio de las probabilidades** del clasificador en esos frames. Se dibuja con el color del tacho y "clase (conf)"; si la confianza promedio es menor a `--umbral`, gris con "NO SEGURO". Se ignoran las cajas cuyo promedio da `sin_residuo`.
 
-Teclas: **Q** sale, **F** pantalla completa, **S** guarda los recortes mostrados en `capturas_revisar/`. La ventana se maximiza sin franja gris, igual que en `inferencia_webcam.py`.
+Teclas: **Q** sale, **F** pantalla completa, **S** guarda los recortes mostrados en `capturas_revisar/` (nombre `pred-<clase>_...jpg`, o `pred-NOSEGURO_...`; la clase la decides tú). La ventana se maximiza sin franja gris, igual que en `inferencia_webcam.py`.
 
 ```bash
-python scripts/inferencia_deteccion.py --camara 1                       # MX Brio en la laptop
-python scripts/inferencia_deteccion.py --fuente video.mp4               # probar con un video
-python scripts/inferencia_deteccion.py --fuente foto.jpg --bench 100    # medir FPS sin ventana
+python scripts/inferencia_deteccion.py --camara 0                                     # cámara de la laptop / MX Brio
+python scripts/inferencia_deteccion.py --camara 0 --modelo modelos/etapa2_avance.pt   # con el modelo de etapa 2
+python scripts/inferencia_deteccion.py --fuente video.mp4                             # probar con un video
+python scripts/inferencia_deteccion.py --fuente foto.jpg --bench 100                  # FPS y descartes por filtro, sin ventana
 ```
 
 | Argumento | Defecto | Qué hace |
 |---|---|---|
-| `--modelo` | `modelos/etapa2_avance.pt` | clasificador (tu modelo) |
+| `--modelo` | `modelos/etapa1_ganador.pt` | clasificador. Por ahora es el que mejor generaliza en vivo; `modelos/etapa2_avance.pt` sigue disponible |
 | `--detector` | `yoloe-26n-seg.pt` | detector; se descarga solo a `modelos/detectores/` (no se sube a git) |
 | `--camara` / `--fuente` | `0` / — | índice de webcam, o video/imagen para pruebas |
 | `--umbral` | `0.6` | confianza mínima del clasificador; por debajo, "NO SEGURO" |
-| `--conf-det` | `0.35` | confianza mínima del detector |
-| `--max-objetos` | `3` | máximo de cajas clasificadas y mostradas por frame (las de mayor confianza) |
-| `--roi` | `0.8` | zona central (fracción del ancho y del alto) donde debe caer el centro de la caja; `1.0` = todo el frame |
-| `--min-area` | `0.01` | área mínima de la caja (fracción del frame) |
-| `--max-area` | `0.6` | área máxima de la caja (fracción del frame); descarta cajas que abarcan mesa/fondo |
+| `--conf-det` | `0.35` | confianza mínima del detector (también para los negativos) |
+| `--max-objetos` | `4` | máximo de cajas mostradas por frame (las de mayor área) |
+| `--roi` | `1.0` | zona central (fracción del ancho y del alto) donde debe caer el centro de la caja; `1.0` = todo el frame, sin dibujar zona |
+| `--min-area` / `--max-area` | `0.01` / `0.6` | área mínima y máxima de la caja (fracción del frame) |
+| `--ignorar` | person, face, hand, clothing, jacket, furniture, sofa, chair, wall, door, window, shelf, curtain, bed | prompts negativos (`--ignorar ""` = ninguno) |
+| `--iou-ignorar` | `0.6` | IoU con una caja de ropa/mueble a partir del cual se descarta la de residuo |
+| `--foco-relativo` | `0.25` | área mínima relativa a la caja de residuo más grande (`0` = desactivado) |
+| `--nitidez` / `--no-nitidez` | activado | filtro de recortes borrosos |
+| `--nitidez-rel` | `0.3` | nitidez mínima relativa al recorte más nítido del frame |
 | `--persistencia` / `--historial` | `3` / `5` | la caja debe aparecer en 3 de los últimos 5 frames; las probabilidades se promedian en esos 5 |
 | `--iou` | `0.3` | IoU mínimo para considerar que dos cajas de frames seguidos son el mismo objeto |
-| `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, fruit peel, food waste, tube | qué busca el detector. Se quitaron los genéricos `box`, `paper` y `container` (marcaban mesa, hojas y fondo); si los necesitas, pásalos con `--prompts "...,box,paper,container"` |
+| `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, fruit peel, food waste, tube | qué residuos busca el detector. Se quitaron los genéricos `box`, `paper` y `container` (marcaban mesa, hojas y fondo); si los necesitas, pásalos con `--prompts "...,box,paper,container"` |
 | `--imgsz-det` | `640` | tamaño del detector; bajarlo (p. ej. `480`, `416`) acelera |
-
 Detectores que soporta Ultralytics 8.4.184 (`ultralytics/utils/downloads.py`):
 - YOLOE con texto: `yoloe-26{n,s,m,l,x}-seg.pt`, `yoloe-11{s,m,l}-seg.pt`, `yoloe-v8{s,m,l}-seg.pt` (el codificador de texto `mobileclip2_b.ts` se descarga la primera vez a la raíz del repo; está en `.gitignore`).
 - YOLOE prompt-free (vocabulario interno, ignora `--prompts`): los mismos con sufijo `-seg-pf.pt`.
@@ -178,7 +190,20 @@ FPS medidos en la laptop (RTX 3050 Laptop 4 GB, `--bench`, sin ventana ni captur
 
 Con los filtros y la persistencia (valores por defecto actuales, misma laptop, `--bench 200`, imágenes de `dataset/crudo/val`): 1 caja mostrada ~22.5–23.8 ms (~42–44 FPS); 3 cajas mostradas ~22.6–24.1 ms (~41–44 FPS, el tope de `--max-objetos`); 0 cajas ~13.8–15 ms (~66–72 FPS; en las dos primeras corridas de la sesión, con la GPU recién activada, el detector tardó 36–39 ms y el total dio ~26–28 FPS). Una imagen con una sola caja de área 0.68 queda en 0 cajas por `--max-area 0.6`.
 
-Teclas: **Q** sale; **S** guarda **cada recorte** del frame en `capturas_revisar/` (nombre `pred-<clase>_...jpg`, o `pred-NOSEGURO_...`). Igual que en el otro modo, la clase la decides tú.
+Detección global (valores por defecto actuales: `--roi 1.0`, `--ignorar`, foco y nitidez, `--max-objetos 4`, `etapa1_ganador.pt`; misma laptop, `--bench 200`). En `clf` entran también los filtros, la nitidez y la persistencia:
+
+| Imagen (`dataset/crudo/val`) | Cajas detector → mostradas | Descartes (último frame) | Total |
+|---|---|---|---|
+| `Blanco/dl_blanco_00098` | 31 → 4 | area 10, borrosa 7, exceso 10 | 27.1 ms (36.9 FPS) |
+| `Gris/dl_gris_00001` | 14 → 4 | lejana 2, borrosa 3, exceso 5 | 25.1 ms (39.9 FPS) |
+| `Negro/dl_negro_00138` | 10 → 4 | lejana 3, borrosa 2, exceso 1 | 27.0 ms (37.0 FPS) |
+| `Amarillo/dl_amarillo_00002` | 8 → 3 | duplicada 5 | 25.6 ms (39.0 FPS) |
+| `Gris/dl_gris_00227` (con persona) | 11 → 4 | ignorada 1, duplicada 1, borrosa 1, exceso 4 | 24.7 ms (40.5 FPS) |
+| `Amarillo/dl_amarillo_00018` (latas en la mano) | 9 → 4 | ignorada 3, duplicada 1, borrosa 1 | 26.2 ms (38.2 FPS) |
+| `Azul/dl_azul_00016` (envase en la mano) | 4 → 1 | ignorada 3 | 21.4 ms (46.8 FPS) |
+| `Azul/dl_azul_00098` (solo personas) | 7 → 0 | ignorada 7 | 15.3 ms (65.6 FPS) |
+
+Con `--modelo modelos/etapa2_avance.pt` en `Gris/dl_gris_00001`: 25.6 ms (39.1 FPS), los mismos descartes. En las 2100 imágenes de `dataset/crudo/val` (una pasada por imagen, sin persistencia) el detector dio 2038 cajas; los filtros dejaron 1078 y descartaron: ignorada 543, duplicada 107, roi 0, area 78, ropa_mueble 0, lejana 44, borrosa 73 y exceso 115. `ropa_mueble` no se activó en val (son fotos de producto); la regla se comprobó con cajas sintéticas: una bolsa que coincide con una chaqueta más segura se descarta, y una botella pequeña sobre la chaqueta, en la mano o delante de una pared se muestra.
 
 ## 7. Datos públicos
 
