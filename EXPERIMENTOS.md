@@ -51,3 +51,17 @@ Curvas de cada entrenamiento: `runs/etapaN_<experimento>/results.png`.
 4. Limitaciones: la partición pública venía aleatoria por foto (se quitaron casi-duplicados por hash
    perceptual, pero puede quedar correlación); por eso la métrica válida es `juliaca/test`, separado por objeto.
 5. Que el data augmentation (giros, color, RandAugment) transforma fotos reales al entrenar; no se generaron datos.
+
+## Decisión etapa 1
+Resultados reales en `publico/val` (copiados de `reportes/experimentos.csv`):
+
+| Experimento | F1 macro val | top-1 val | Modelo base | imgsz | dropout | Épocas | Mejor época | Minutos |
+|---|---|---|---|---|---|---|---|---|
+| e1_m224 | 0.9139 | 0.9126 | yolo26m-cls.pt | 224 | 0.0 | 60 | 58 | 16.9 |
+| e1_base | 0.9129 | 0.9116 | yolo26s-cls.pt | 224 | 0.0 | 60 | 56 | 9.5 |
+| e1_s320 | 0.9113 | 0.911 | yolo26s-cls.pt | 320 | 0.0 | 60 | 47 | 15.8 |
+| e1_drop02 | 0.9086 | 0.9073 | yolo26s-cls.pt | 224 | 0.2 | 60 | 54 | 9.6 |
+
+**Ganador: e1_base.** Criterio: empate técnico con e1_m224 (diferencia de F1 macro 0.001 < 0.005);
+se prefiere el modelo más simple y rápido (yolo26s, 9.5 min frente a 16.9 min de yolo26m).
+Copiado a `modelos/etapa1_ganador.pt` (+ `.json`) desde `modelos/experimentos/etapa1_e1_base_20261024_1453.pt`.
