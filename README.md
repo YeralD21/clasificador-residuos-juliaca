@@ -134,6 +134,41 @@ python scripts/inferencia_webcam.py --modelo modelos/etapa2_avance.pt --camara 0
 - `--camara` es el índice de OpenCV de la MX Brio (por defecto `0`; si se abre otra cámara, prueba `1`). `--imgsz 224` es el tamaño con el que se entrenó. Opcionales: `--umbral` (por defecto `0.6`; por debajo muestra "NO SEGURO") y `--suavizado` (por defecto `8` frames promediados).
 - Teclas: **Q** sale; **S** guarda el recorte actual en `capturas_revisar/` (úsalo cuando el modelo se equivoque). Esas fotos no se clasifican solas: tú decides su clase y las pasas a `dataset/juliaca/<split>/<clase>/<objeto>/`.
 
+### 6.1 Modo detección + clasificación (dos etapas, sin recuadro fijo)
+
+`scripts/inferencia_deteccion.py` busca objetos en **toda** la imagen y clasifica cada uno con tu modelo:
+
+1. **Detector de vocabulario abierto** (no se entrena): YOLOE con prompts de texto (`--prompts`, en inglés, separados por coma). Solo localiza las cajas; su etiqueta no se usa.
+2. Cada caja se recorta **cuadrada con ~10 % de margen** y la clasifica `--modelo` a `imgsz 224`. La caja se dibuja con el color del tacho y "clase (conf)"; si la confianza es menor a `--umbral` se dibuja gris con "NO SEGURO". Se ignoran los recortes clasificados como `sin_residuo` y las cajas con área menor a `--min-area`.
+
+```bash
+python scripts/inferencia_deteccion.py --camara 1                       # MX Brio en la laptop
+python scripts/inferencia_deteccion.py --fuente video.mp4               # probar con un video
+python scripts/inferencia_deteccion.py --fuente foto.jpg --bench 100    # medir FPS sin ventana
+```
+
+| Argumento | Defecto | Qué hace |
+|---|---|---|
+| `--modelo` | `modelos/etapa2_avance.pt` | clasificador (tu modelo) |
+| `--detector` | `yoloe-26n-seg.pt` | detector; se descarga solo a `modelos/detectores/` (no se sube a git) |
+| `--camara` / `--fuente` | `0` / — | índice de webcam, o video/imagen para pruebas |
+| `--umbral` | `0.6` | confianza mínima del clasificador; por debajo, "NO SEGURO" |
+| `--conf-det` | `0.15` | confianza mínima del detector |
+| `--max-objetos` | `5` | máximo de cajas clasificadas por frame (las de mayor confianza) |
+| `--min-area` | `0.005` | área mínima de la caja (fracción del frame) |
+| `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, box, paper, fruit peel, food waste, tube, container | qué busca el detector |
+| `--imgsz-det` | `640` | tamaño del detector; bajarlo (p. ej. `480`, `416`) acelera |
+
+Detectores que soporta Ultralytics 8.4.184 (`ultralytics/utils/downloads.py`):
+- YOLOE con texto: `yoloe-26{n,s,m,l,x}-seg.pt`, `yoloe-11{s,m,l}-seg.pt`, `yoloe-v8{s,m,l}-seg.pt` (el codificador de texto `mobileclip2_b.ts` se descarga la primera vez a la raíz del repo; está en `.gitignore`).
+- YOLOE prompt-free (vocabulario interno, ignora `--prompts`): los mismos con sufijo `-seg-pf.pt`.
+- YOLO-World: `yolov8{s,m,l,x}-world.pt` y `yolov8{s,m,l,x}-worldv2.pt` (necesitan además el paquete `clip` de OpenAI).
+- Recomendado para la RTX 3050 4 GB: **`yoloe-26n-seg.pt`** (el más liviano y el único tamaño `n`).
+
+FPS medidos en la laptop (RTX 3050 Laptop 4 GB, `--bench`, sin ventana ni captura de cámara, imágenes de `dataset/crudo/val`): con `yoloe-26n-seg` el detector tarda ~22–26 ms. En total da ~42–45 FPS con 0 objetos, ~27 FPS con 1 objeto y ~23 FPS con 5 objetos. Con `yoloe-26s-seg` y 2 objetos da ~26 FPS. En vivo será algo menos por la captura y la ventana. Si baja de ~8 FPS: usa `--imgsz-det 480` o `416` y/o `--max-objetos 3`.
+
+Teclas: **Q** sale; **S** guarda **cada recorte** del frame en `capturas_revisar/` (nombre `pred-<clase>_...jpg`, o `pred-NOSEGURO_...`). Igual que en el otro modo, la clase la decides tú.
+
 ## 7. Datos públicos
 
 | Fuente (carpeta en `crudo/`) | Contenido | Nota |

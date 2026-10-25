@@ -8,6 +8,7 @@ dataset/**
 !modelos/*.pt
 *.onnx
 *.engine
+mobileclip*.ts
 runs/
 capturas_revisar/
 revision/
