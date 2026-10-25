@@ -2,10 +2,11 @@
 
   python scripts/inferencia_webcam.py --modelo modelos/etapa2_AAAAMMDD_HHMM.pt
   python scripts/inferencia_webcam.py --modelo modelos/etapa2_....pt --camara 1 --umbral 0.7
+  python scripts/inferencia_webcam.py --modelo modelos/etapa2_....pt --recuadro 1.0   # cuadrado de alto completo
 
 Pon el residuo dentro del recuadro: muestra el COLOR DEL TACHO al que va.
 Si la confianza es menor al umbral muestra "NO SEGURO" en lugar de adivinar.
-Teclas: Q salir, S guardar el recorte en capturas_revisar/ (para que TÚ lo clasifiques después).
+Teclas: Q salir, F pantalla completa, S guardar el recorte en capturas_revisar/ (para que TÚ lo clasifiques después).
 """
 import argparse
 import json
@@ -19,7 +20,7 @@ import torch
 import ultralytics
 from ultralytics import YOLO
 
-from comun import RAIZ, TACHO, abrir_camara, roi_cuadrado
+from comun import FRACCION_ROI, RAIZ, TACHO, abrir_camara, crear_ventana, roi_cuadrado, teclas_ventana
 
 
 def revisar_versiones(modelo: Path):
@@ -42,6 +43,8 @@ def main():
     ap.add_argument("--imgsz", type=int, default=224)
     ap.add_argument("--umbral", type=float, default=0.6)
     ap.add_argument("--suavizado", type=int, default=8, help="frames que se promedian")
+    ap.add_argument("--recuadro", type=float, default=FRACCION_ROI,
+                    help="lado del recuadro como fracción del alto del frame (1.0 = alto completo)")
     args = ap.parse_args()
 
     ruta = Path(args.modelo)
@@ -54,12 +57,14 @@ def main():
 
     cap = abrir_camara(args.camara)
     hist = deque(maxlen=args.suavizado)
+    ventana = "Clasificador de residuos - NTP 900.058"
+    crear_ventana(ventana)
     t0, fps = time.time(), 0.0
     while True:
         ok, frame = cap.read()
         if not ok:
             continue
-        recorte, (x1, y1, x2, y2) = roi_cuadrado(frame)
+        recorte, (x1, y1, x2, y2) = roi_cuadrado(frame, args.recuadro)
         r = model.predict(recorte, imgsz=args.imgsz, device=device, half=gpu, verbose=False)[0]
         hist.append(r.probs.data.float().cpu().numpy())
         prom = np.mean(hist, axis=0)
@@ -81,12 +86,12 @@ def main():
             cv2.putText(frame, f"{nombres[int(j)]}: {prom[j]:.2f}", (12, 80 + 26 * k),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
         cv2.putText(frame, f"{fps:.0f} FPS", (frame.shape[1] - 110, 35), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
-        cv2.imshow("Clasificador de residuos - NTP 900.058", frame)
+        cv2.imshow(ventana, frame)
 
-        k = cv2.waitKey(1) & 0xFF
-        if k in (ord("q"), ord("Q")):
+        k = teclas_ventana(ventana)
+        if k == "q":
             break
-        if k in (ord("s"), ord("S")):
+        if k == "s":
             d = RAIZ / "capturas_revisar"
             d.mkdir(exist_ok=True)
             f = d / f"pred-{clase}_{time.strftime('%Y%m%d_%H%M%S')}.jpg"

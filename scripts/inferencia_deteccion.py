@@ -5,15 +5,21 @@
   python scripts/inferencia_deteccion.py --fuente video.mp4            # probar sin webcam
   python scripts/inferencia_deteccion.py --fuente foto.jpg --bench 100 # medir FPS sin ventana
 
-Etapa 1: un detector de vocabulario abierto (YOLOE o YOLO-World) busca objetos en TODA la imagen
-usando prompts de texto (--prompts). Etapa 2: cada caja se recorta (cuadrada, +10 % de margen) y la
-clasifica TU modelo (--modelo). La caja se dibuja con el color del tacho (NTP 900.058); si la
-confianza es menor a --umbral se dibuja gris con "NO SEGURO". Los recortes que el modelo ve como
-sin_residuo se ignoran. El detector solo localiza: la clase la decide siempre el clasificador.
-Teclas: Q salir, S guardar cada recorte del frame en capturas_revisar/ (para que TÚ lo clasifiques).
+Etapa 1: un detector de vocabulario abierto (YOLOE o YOLO-World) busca objetos usando prompts de
+texto (--prompts). Solo cuentan las cajas cuyo centro cae dentro de la zona central --roi y cuya
+área está entre --min-area y --max-area. Etapa 2: cada caja se recorta (cuadrada, +10 % de margen)
+y la clasifica TU modelo (--modelo).
+Para que no parpadee ni detecte de más, cada caja se sigue entre frames por IoU: se muestra solo si
+apareció en al menos --persistencia de los últimos --historial frames, y su clase es el promedio
+de las probabilidades del clasificador en esos frames. La caja se dibuja con el color del tacho
+(NTP 900.058); si la confianza promedio es menor a --umbral se dibuja gris con "NO SEGURO". Las
+cajas que el modelo ve como sin_residuo se ignoran. El detector solo localiza: la clase la decide
+siempre el clasificador.
+Teclas: Q salir, F pantalla completa, S guardar cada recorte mostrado en capturas_revisar/ (para que TÚ lo clasifiques).
 """
 import argparse
 import time
+from collections import deque
 from pathlib import Path
 
 import cv2
@@ -22,11 +28,12 @@ import torch
 from ultralytics import YOLO, YOLOE, YOLOWorld
 from ultralytics.utils.downloads import attempt_download_asset
 
-from comun import RAIZ, TACHO, abrir_camara
+from comun import RAIZ, TACHO, abrir_camara, crear_ventana, teclas_ventana
 from inferencia_webcam import revisar_versiones
 
+# Sin genéricos (box, paper, container): detectaban mesas, hojas y fondo. Se pueden volver a poner con --prompts.
 PROMPTS = ("bottle,can,plastic bag,snack wrapper,battery,phone,charger,cable,cup,glass jar,"
-           "box,paper,fruit peel,food waste,tube,container")
+           "fruit peel,food waste,tube")
 DETECTORES = RAIZ / "modelos" / "detectores"   # pesos descargados de Ultralytics (no se suben, *.pt)
 GRIS = (150, 150, 150)
 
@@ -61,6 +68,59 @@ def recorte_cuadrado(frame, caja, margen=0.10):
                               cv2.BORDER_CONSTANT, value=(114, 114, 114))
 
 
+def zona_central(frame, fraccion):
+    """Rectángulo centrado que ocupa `fraccion` del ancho y del alto del frame."""
+    h, w = frame.shape[:2]
+    mx, my = w * (1 - fraccion) / 2, h * (1 - fraccion) / 2
+    return mx, my, w - mx, h - my
+
+
+def iou(a, b):
+    ix = max(0.0, min(a[2], b[2]) - max(a[0], b[0]))
+    iy = max(0.0, min(a[3], b[3]) - max(a[1], b[1]))
+    inter = ix * iy
+    union = (a[2] - a[0]) * (a[3] - a[1]) + (b[2] - b[0]) * (b[3] - b[1]) - inter
+    return inter / union if union > 0 else 0.0
+
+
+class Pista:
+    """Una caja seguida entre frames: historial de apariciones y de probabilidades del clasificador."""
+
+    def __init__(self, caja, historial):
+        self.caja = caja
+        self.visto = deque(maxlen=historial)
+        self.probs = deque(maxlen=historial)
+        self.recorte = None
+
+    def actualizar(self, caja, recorte, probs):
+        self.caja, self.recorte = caja, recorte
+        self.visto.append(True)
+        self.probs.append(probs)
+
+    def falta(self):
+        self.visto.append(False)
+
+
+def asociar(pistas, cajas, umbral_iou, historial):
+    """Empareja cajas nuevas con pistas por IoU (voraz, mayor IoU primero). Devuelve la pista de cada caja,
+    en el mismo orden que `cajas`; las cajas sin pareja abren una pista nueva."""
+    pares = sorted(((iou(p.caja, c), i, j) for i, p in enumerate(pistas) for j, c in enumerate(cajas)),
+                   reverse=True)
+    usadas, out = set(), [None] * len(cajas)
+    for v, i, j in pares:
+        if v < umbral_iou:
+            break
+        if i in usadas or out[j] is not None:
+            continue
+        usadas.add(i)
+        out[j] = pistas[i]
+    for j, c in enumerate(cajas):
+        if out[j] is None:
+            out[j] = Pista(c, historial)
+            pistas.append(out[j])
+    return out
+
+
 def etiqueta(frame, caja, texto, color):
     x1, y1, x2, y2 = map(int, caja)
     cv2.rectangle(frame, (x1, y1), (x2, y2), color, 3)
@@ -79,9 +139,15 @@ def main():
     ap.add_argument("--camara", type=int, default=0)
     ap.add_argument("--fuente", help="video o imagen en lugar de la webcam (para pruebas)")
     ap.add_argument("--umbral", type=float, default=0.6)
-    ap.add_argument("--conf-det", type=float, default=0.15, help="confianza mínima del detector")
-    ap.add_argument("--max-objetos", type=int, default=5)
-    ap.add_argument("--min-area", type=float, default=0.005, help="área mínima de la caja, fracción del frame")
+    ap.add_argument("--conf-det", type=float, default=0.35, help="confianza mínima del detector")
+    ap.add_argument("--max-objetos", type=int, default=3)
+    ap.add_argument("--roi", type=float, default=0.8,
+                    help="zona central (fracción del ancho y alto) donde debe caer el centro de la caja; 1.0 = todo")
+    ap.add_argument("--min-area", type=float, default=0.01, help="área mínima de la caja, fracción del frame")
+    ap.add_argument("--max-area", type=float, default=0.6, help="área máxima de la caja, fracción del frame")
+    ap.add_argument("--persistencia", type=int, default=3, help="frames (de los últimos --historial) en que debe aparecer")
+    ap.add_argument("--historial", type=int, default=5, help="frames recordados por caja (apariciones y probabilidades)")
+    ap.add_argument("--iou", type=float, default=0.3, help="IoU mínimo para considerar que es la misma caja")
     ap.add_argument("--prompts", default=PROMPTS, help="separados por coma")
     ap.add_argument("--imgsz", type=int, default=224, help="tamaño del clasificador (con el que se entrenó)")
     ap.add_argument("--imgsz-det", type=int, default=640, help="tamaño del detector (menor = más rápido)")
@@ -105,9 +171,13 @@ def main():
         cap = None if imagen is not None else cv2.VideoCapture(args.fuente)
     else:
         cap = abrir_camara(args.camara)
+    ventana = "Deteccion + clasificacion - NTP 900.058"
+    if not args.bench:
+        crear_ventana(ventana)
 
     t0, fps, n = time.time(), 0.0, 0
     tiempos = {"det": [], "clf": [], "total": []}
+    pistas = []
     while True:
         if imagen is not None:
             frame = imagen.copy()
@@ -123,21 +193,35 @@ def main():
         tb = time.perf_counter()
 
         area = frame.shape[0] * frame.shape[1]
+        zx1, zy1, zx2, zy2 = zona_central(frame, args.roi)
         cajas = [c for c in r.boxes.xyxy.cpu().numpy()
-                 if (c[2] - c[0]) * (c[3] - c[1]) >= args.min_area * area][:args.max_objetos]  # ya vienen por conf
+                 if args.min_area * area <= (c[2] - c[0]) * (c[3] - c[1]) <= args.max_area * area
+                 and zx1 <= (c[0] + c[2]) / 2 <= zx2 and zy1 <= (c[1] + c[3]) / 2 <= zy2][:args.max_objetos]  # ya vienen por conf
         recortes = [recorte_cuadrado(frame, c) for c in cajas]
-        dibujos = []
+        de_caja = asociar(pistas, cajas, args.iou, args.historial)
+        actualizadas = {id(p) for p in de_caja}
+        for p in pistas:
+            if id(p) not in actualizadas:
+                p.falta()
         if recortes:
-            for caja, rec, rc in zip(cajas, recortes, clf.predict(recortes, imgsz=args.imgsz, device=device,
-                                                                  quantize=16 if gpu else None, verbose=False)):
-                i, conf = int(rc.probs.top1), float(rc.probs.top1conf)
-                clase = nombres[i]
-                if clase == "sin_residuo":
-                    continue
-                if conf < args.umbral:
-                    dibujos.append((caja, rec, f"NO SEGURO ({conf:.0%})", GRIS, "NOSEGURO"))
-                else:
-                    dibujos.append((caja, rec, f"{clase} ({conf:.0%})", TACHO[clase][1], clase))
+            for p, caja, rec, rc in zip(de_caja, cajas, recortes, clf.predict(recortes, imgsz=args.imgsz, device=device,
+                                                                            quantize=16 if gpu else None, verbose=False)):
+                p.actualizar(caja, rec, rc.probs.data.float().cpu().numpy())
+        pistas = [p for p in pistas if any(p.visto)]  # olvida las que no aparecieron en todo el historial
+
+        dibujos = []
+        estables = sorted((p for p in pistas if sum(p.visto) >= args.persistencia),
+                          key=lambda p: sum(p.visto), reverse=True)[:args.max_objetos]
+        for p in estables:
+            prom = np.mean(p.probs, axis=0)
+            i = int(prom.argmax())
+            clase, conf = nombres[i], float(prom[i])
+            if clase == "sin_residuo":
+                continue
+            if conf < args.umbral:
+                dibujos.append((p.caja, p.recorte, f"NO SEGURO ({conf:.0%})", GRIS, "NOSEGURO"))
+            else:
+                dibujos.append((p.caja, p.recorte, f"{clase} ({conf:.0%})", TACHO[clase][1], clase))
         tc = time.perf_counter()
         tiempos["det"].append(tb - ta)
         tiempos["clf"].append(tc - tb)
@@ -149,6 +233,7 @@ def main():
                 break
             continue
 
+        cv2.rectangle(frame, (int(zx1), int(zy1)), (int(zx2), int(zy2)), (200, 200, 200), 1, cv2.LINE_AA)
         for caja, _, texto, color, _ in dibujos:
             etiqueta(frame, caja, texto, color)
         ahora = time.time()
@@ -156,12 +241,12 @@ def main():
         t0 = ahora
         cv2.putText(frame, f"{fps:.0f} FPS | {len(dibujos)} obj", (12, frame.shape[0] - 15),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
-        cv2.imshow("Deteccion + clasificacion - NTP 900.058", frame)
+        cv2.imshow(ventana, frame)
 
-        k = cv2.waitKey(0 if imagen is not None else 1) & 0xFF
-        if k in (ord("q"), ord("Q")):
+        k = teclas_ventana(ventana)
+        if k == "q":
             break
-        if k in (ord("s"), ord("S")):
+        if k == "s":
             d = RAIZ / "capturas_revisar"
             d.mkdir(exist_ok=True)
             marca = time.strftime("%Y%m%d_%H%M%S")
@@ -177,7 +262,8 @@ def main():
         for k, v in tiempos.items():
             ms = 1000 * float(np.mean(v[w:]))
             print(f"{k:6s} {ms:7.1f} ms  ({1000 / ms:5.1f} FPS)")
-        print(f"frames medidos: {n - w} (descartados {w} de calentamiento) | objetos último frame: {len(dibujos)}")
+        print(f"frames medidos: {n - w} (descartados {w} de calentamiento) | cajas tras filtros último frame: "
+              f"{len(cajas)} | mostradas: {len(dibujos)}")
     if cap is not None:
         cap.release()
     cv2.destroyAllWindows()

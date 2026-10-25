@@ -30,7 +30,7 @@ TACHO = {  # clase: (texto, color BGR para OpenCV)
     "sin_residuo":  ("Coloca un residuo en el recuadro", (120, 120, 120)),
 }
 
-FRACCION_ROI = 0.75  # el recuadro de captura/inferencia ocupa 75% del alto
+FRACCION_ROI = 0.75  # el recuadro de captura/inferencia ocupa 75% del alto (inferencia_webcam: --recuadro)
 
 
 def imagenes(carpeta: Path):
@@ -83,8 +83,33 @@ def abrir_camara(indice=0, ancho=1280, alto=720, fps=30):
     return cap
 
 
-def roi_cuadrado(frame):
+def roi_cuadrado(frame, fraccion=FRACCION_ROI):
+    """Cuadrado centrado de lado = fraccion * lado menor del frame. Con 1.0 es el cuadrado de alto completo,
+    que es justo lo que ve el clasificador si le pasas el frame entero (Ultralytics hace Resize + CenterCrop)."""
     h, w = frame.shape[:2]
-    lado = int(min(h, w) * FRACCION_ROI)
+    lado = int(min(h, w) * min(max(fraccion, 0.05), 1.0))
     x1, y1 = (w - lado) // 2, (h - lado) // 2
     return frame[y1:y1 + lado, x1:x1 + lado].copy(), (x1, y1, x1 + lado, y1 + lado)
+
+
+def crear_ventana(nombre, ancho=1280, alto=720):
+    """Ventana redimensionable. cv2.imshow sin namedWindow crea una WINDOW_AUTOSIZE: al maximizar, el frame
+    se queda en su tamaño nativo y el resto de la ventana sale gris. Con WINDOW_NORMAL | WINDOW_FREERATIO
+    el video se escala a toda el área de la ventana (maximizada o en pantalla completa)."""
+    import cv2
+    cv2.namedWindow(nombre, cv2.WINDOW_NORMAL | cv2.WINDOW_FREERATIO)
+    cv2.resizeWindow(nombre, ancho, alto)
+
+
+def teclas_ventana(nombre, espera=1):
+    """waitKey + tecla F (alterna pantalla completa). Devuelve la tecla en minúscula, o 'q' si cerraron la ventana."""
+    import cv2
+    k = cv2.waitKey(espera) & 0xFF
+    if cv2.getWindowProperty(nombre, cv2.WND_PROP_VISIBLE) < 1:
+        return "q"
+    c = chr(k).lower() if k != 255 else ""
+    if c == "f":
+        completa = cv2.getWindowProperty(nombre, cv2.WND_PROP_FULLSCREEN) == cv2.WINDOW_FULLSCREEN
+        cv2.setWindowProperty(nombre, cv2.WND_PROP_FULLSCREEN,
+                              cv2.WINDOW_NORMAL if completa else cv2.WINDOW_FULLSCREEN)
+    return c
