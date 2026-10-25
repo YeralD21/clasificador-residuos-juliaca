@@ -8,7 +8,13 @@ generales, metales, organico, papel_carton, peligrosos, plasticos, sin_residuo, 
 El modelo clasifica MATERIAL; el color es el tacho donde va (ver tabla en README). Nunca nombres carpetas por color.
 
 ## Reglas de integridad (OBLIGATORIAS)
-1. NUNCA generes, sintetices ni descargues imágenes por tu cuenta para rellenar clases. Solo fotos reales que el usuario coloca.
+1. No generes ni sintetices imágenes. Se permiten datos EXTERNOS reales solo si:
+   (a) los apruebo yo explícitamente por fuente;
+   (b) tienen licencia que permita uso académico y se registra en datos_externos.csv
+       (fuente, URL, licencia, fecha, clase destino, n imágenes);
+   (c) van SOLO a dataset/externo/train (nunca a val ni test, nunca a dataset/juliaca);
+   (d) antes de usarlas se eliminan duplicados y casi duplicados (dHash <= 4) contra
+       TODOS los splits de publico y juliaca, y el informe de eso se guarda en reportes/.
 2. NUNCA muevas, copies, renombres ni borres archivos dentro de `dataset/juliaca/`. La clase y el split de cada foto los decide el usuario a mano. Si detectas un problema (leakage, foto en clase dudosa), repórtalo y detente.
 3. La partición de `dataset/juliaca` es MANUAL y por objeto (`<split>/<clase>/<objeto>/`). Nunca propongas ni ejecutes un split aleatorio sobre ella.
 4. En `class_mapping.csv` la columna `aprobado` la cambia SOLO el usuario. No la edites.
