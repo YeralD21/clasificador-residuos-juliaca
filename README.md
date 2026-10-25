@@ -214,6 +214,18 @@ Con `--modelo modelos/etapa2_avance.pt` en `Gris/dl_gris_00001`: 25.6 ms (39.1 F
 
 Antes de aprobar `garbage12/plastic`, abre la carpeta y **saca a mano** las bolsas de snack metalizadas (van a `generales`). Revisa la licencia de cada dataset y cítalo en tu informe.
 
+### 7.1 Datos externos (regla 1 de CLAUDE.md)
+
+Van solo a `dataset/externo/train/` (nunca a val/test ni a `dataset/juliaca`), cada imagen queda registrada en `datos_externos.csv` y antes de usarse se eliminan los casi duplicados (dHash <= 4) contra todos los splits de `publico` y `juliaca` (`reportes/externo_dedup.csv`). Los recortes no se suben a git (`dataset/**`).
+
+| Fuente | Script | Categorías → destino | Licencia |
+|---|---|---|---|
+| TACO, `data/annotations.json` (commit `70479ad`) | `python scripts/importar_taco.py` | Crisp packet y Other plastic wrapper → `train/generales`; Aluminium foil → `train/metales`. Revisión manual por recorte en `reportes/externo_taco_revision.csv`; los descartados se mueven a `_descartados/<categoria>/` | Anotaciones CC BY 4.0. Imágenes: CC BY 4.0 (licencia vacía, por defecto según tacodataset.org) u ODbL 1.0. Se excluyen las marcadas "CC" sin especificar. |
+
+**Atribución:**
+- Proença, P. F., & Simões, P. (2020). *TACO: Trash Annotations in Context for Litter Detection*. arXiv:2003.06975. http://tacodataset.org — anotaciones bajo CC BY 4.0.
+- Imágenes con licencia ODbL: © OpenLitterMap & Contributors (https://openlittermap.com), Open Database License 1.0. Los recortes derivados de ellas se comparten, si se publican, bajo la misma licencia (share-alike).
+
 ## 8. Reglas de integridad
 
 - No se generan ni sintetizan imágenes. Solo fotos reales.

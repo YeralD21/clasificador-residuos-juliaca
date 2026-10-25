@@ -51,6 +51,9 @@ Curvas de cada entrenamiento: `runs/etapaN_<experimento>/results.png`.
 4. Limitaciones: la partición pública venía aleatoria por foto (se quitaron casi-duplicados por hash
    perceptual, pero puede quedar correlación); por eso la métrica válida es `juliaca/test`, separado por objeto.
 5. Que el data augmentation (giros, color, RandAugment) transforma fotos reales al entrenar; no se generaron datos.
+6. Datos externos, si se usan (solo en train, ver README §7.1 y `datos_externos.csv`), con su atribución:
+   TACO, Proença & Simões (2020), arXiv:2003.06975 (anotaciones CC BY 4.0; imágenes CC BY 4.0 u ODbL);
+   imágenes ODbL © OpenLitterMap & Contributors. Informe anti-leakage: `reportes/externo_dedup.csv`.
 
 ## Decisión etapa 1
 Resultados reales en `publico/val` (copiados de `reportes/experimentos.csv`):
