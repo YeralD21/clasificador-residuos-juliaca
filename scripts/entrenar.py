@@ -16,6 +16,11 @@ Se imprime una línea por época. Al final se evalúa SOLO en VALIDACIÓN
 (etapa 1: publico/val, etapa 2: juliaca/val). El test se usa una sola vez, al final, con
 `--evaluar-test` o con `scripts/evaluar.py --split test`.
 
+Con --externo se suma dataset/externo/train/<clase> (datos externos reales, regla 1 de CLAUDE.md)
+SOLO al train: etapa 1 -> dataset/_etapa1 (publico/train + externo, val = copia de publico/val);
+etapa 2 -> dataset/_etapa2/train/<clase>/externo (completo, aparte del replay). Nunca a val ni test.
+Sin --externo la etapa 1 entrena directo sobre dataset/publico, como siempre.
+
 Con --experimento NOMBRE el modelo va a modelos/experimentos/ (no se sube a git) y el
 resumen a reportes/experimentos/NOMBRE.json (lo usa scripts/experimentar.py).
 """
@@ -32,7 +37,7 @@ import torch
 import ultralytics
 from ultralytics import YOLO
 
-from comun import CLASES, ETAPA2, JULIACA, PUBLICO, RAIZ, imagenes
+from comun import CLASES, ETAPA1, ETAPA2, EXTERNO, JULIACA, PUBLICO, RAIZ, imagenes
 from evaluar import evaluar
 
 PERFIL = {"pc": {"batch": 64, "workers": 6}, "laptop": {"batch": 32, "workers": 4}}
@@ -75,7 +80,40 @@ def contar(base, split):
     return {c: len(imagenes(base / split / c)) for c in CLASES}
 
 
-def armar_etapa2(replay, seed):
+def copiar_externo(destino_train):
+    """Copia dataset/externo/train/<clase> a <destino_train>/<clase>/externo. Devuelve n por clase."""
+    n = {}
+    for c in CLASES:
+        fotos = imagenes(EXTERNO / "train" / c)
+        dst = destino_train / c / "externo"
+        dst.mkdir(parents=True, exist_ok=True)
+        for p in fotos:
+            shutil.copy2(p, dst / p.name)
+        n[c] = len(fotos)
+    if sum(n.values()) == 0:
+        raise SystemExit("--externo activo pero dataset/externo/train está vacío.")
+    return n
+
+
+def armar_etapa1_externo():
+    """dataset/_etapa1 = publico/train + externo/train (train) y copia de publico/val (val).
+    publico/test NO se copia, igual que juliaca/test en la etapa 2."""
+    if ETAPA1.exists():
+        shutil.rmtree(ETAPA1)
+    for s in ("train", "val"):
+        for c in CLASES:
+            dst = ETAPA1 / s / c
+            dst.mkdir(parents=True, exist_ok=True)
+            for p in imagenes(PUBLICO / s / c):
+                shutil.copy2(p, dst / p.name)
+    n = copiar_externo(ETAPA1 / "train")
+    print("\nEtapa 1 - train = publico + externo:")
+    for c in CLASES:
+        print(f"  {c:14s} publico={len(imagenes(PUBLICO / 'train' / c)):5d}  externo={n[c]:4d}")
+    return n
+
+
+def armar_etapa2(replay, seed, externo=False):
     """Copia juliaca train y val (sin tocar el original) + replay de publico en dataset/_etapa2.
     juliaca/test NO se copia: así Ultralytics nunca puede usarlo, ni siquiera como respaldo de val."""
     rng = random.Random(seed)
@@ -100,9 +138,11 @@ def armar_etapa2(replay, seed):
         for p in pub[:k]:
             shutil.copy2(p, dst / p.name)
         resumen[c] = (n_jul, k)
-    print("\nEtapa 2 - train = juliaca + replay público:")
+    n_ext = copiar_externo(ETAPA2 / "train") if externo else None
+    print("\nEtapa 2 - train = juliaca + replay público" + (" + externo:" if externo else ":"))
     for c, (a, b) in resumen.items():
-        print(f"  {c:14s} juliaca={a:4d}  replay={b:4d}")
+        print(f"  {c:14s} juliaca={a:4d}  replay={b:4d}" + (f"  externo={n_ext[c]:4d}" if externo else ""))
+    return n_ext
 
 
 def main():
@@ -117,6 +157,8 @@ def main():
     ap.add_argument("--freeze", type=int, default=6, help="solo etapa 2: capas congeladas (0-9 = backbone)")
     ap.add_argument("--replay", type=float, default=1.0, help="solo etapa 2: fotos públicas por cada foto tuya")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--externo", action="store_true",
+                    help="suma dataset/externo/train al train (etapa 1 y 2); nunca a val ni test")
     ap.add_argument("--dropout", type=float, default=0.0, help="dropout de la cabeza de clasificación")
     ap.add_argument("--experimento", default=None, help="nombre del experimento (ver experimentar.py)")
     ap.add_argument("--evaluar-test", action="store_true",
@@ -140,13 +182,14 @@ def main():
     if args.etapa == 1:
         if sum(contar(PUBLICO, "train").values()) == 0:
             raise SystemExit("dataset/publico/train está vacío. Ejecuta: python scripts/preparar_publico.py")
-        datos = PUBLICO
+        n_externo = armar_etapa1_externo() if args.externo else None
+        datos = ETAPA1 if args.externo else PUBLICO
         params = dict(data=str(datos), epochs=args.epochs or 60, patience=15, **comunes)
     else:
         tr, va = contar(JULIACA, "train"), contar(JULIACA, "val")
         if sum(tr.values()) == 0 or sum(va.values()) == 0:
             raise SystemExit("dataset/juliaca/train o val está vacío. Coloca tus fotos (ver README).")
-        armar_etapa2(args.replay, args.seed)
+        n_externo = armar_etapa2(args.replay, args.seed, args.externo)
         datos = ETAPA2
         params = dict(data=str(datos), epochs=args.epochs or 30, patience=10, optimizer="AdamW",
                       lr0=args.lr, lrf=0.1, warmup_epochs=1, freeze=args.freeze, **comunes)
@@ -172,6 +215,7 @@ def main():
                                      "hsv_s", "hsv_v", "fliplr", "flipud", "erasing", "auto_augment")}
     if args.etapa == 2:
         usados["replay"] = args.replay
+    usados["externo"] = n_externo  # None = apagado; si no, n imágenes externas por clase en train
     filas = list(csv.DictReader(open(save_dir / "results.csv", encoding="utf-8")))
     filas = [{k.strip(): v for k, v in f.items()} for f in filas]
     mejor = max(filas, key=lambda f: float(f.get("metrics/accuracy_top1", 0) or 0)) if filas else {}

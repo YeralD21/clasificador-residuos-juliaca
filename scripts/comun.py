@@ -9,6 +9,8 @@ CRUDO = DATASET / "crudo"
 PUBLICO = DATASET / "publico"
 JULIACA = DATASET / "juliaca"
 ETAPA2 = DATASET / "_etapa2"          # generado automáticamente, no editar
+ETAPA1 = DATASET / "_etapa1"          # generado con --externo (publico + externo), no editar
+EXTERNO = DATASET / "externo"         # datos externos reales: SOLO train (regla 1 de CLAUDE.md)
 SPLITS = ("train", "val", "test")
 EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 

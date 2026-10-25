@@ -49,6 +49,8 @@ dataset/
 │   ├── train/<clase>/<objeto>/*.jpg
 │   ├── val/<clase>/<objeto>/*.jpg
 │   └── test/<clase>/<objeto>/*.jpg       ← evaluación final, nunca se entrena con esto
+├── externo/train/<clase>/                datos externos reales (regla 1), SOLO train; ver §7.1
+├── _etapa1/                              GENERADO por entrenar.py --etapa 1 --externo (no editar)
 └── _etapa2/                              GENERADO por entrenar.py --etapa 2 (no editar)
 scripts/        código
 modelos/        best.pt de cada etapa + .json con versiones
@@ -217,6 +219,8 @@ Antes de aprobar `garbage12/plastic`, abre la carpeta y **saca a mano** las bols
 ### 7.1 Datos externos (regla 1 de CLAUDE.md)
 
 Van solo a `dataset/externo/train/` (nunca a val/test ni a `dataset/juliaca`), cada imagen queda registrada en `datos_externos.csv` y antes de usarse se eliminan los casi duplicados (dHash <= 4) contra todos los splits de `publico` y `juliaca` (`reportes/externo_dedup.csv`). Los recortes no se suben a git (`dataset/**`).
+
+`auditar.py` vuelve a comprobarlo antes de cada entrenamiento (registro, formatos, nada en val/test, dHash <= 4 = ERROR). Se usan solo con `--externo` (apagado por defecto) en `entrenar.py`/`experimentar.py`: en la etapa 1 se arma `dataset/_etapa1` (publico/train + externo; val = publico/val) y en la etapa 2 se suman completos a `_etapa2/train` aparte del replay. El `.json` del modelo guarda `parametros.externo` = n imágenes externas por clase.
 
 | Fuente | Script | Categorías → destino | Licencia |
 |---|---|---|---|

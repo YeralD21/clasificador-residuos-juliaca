@@ -1,0 +1,49 @@
+{
+  "experimento": "e1_ext",
+  "etapa": 1,
+  "modelo": "D:\\Proyecto-Residuos-ML\\clasificador-residuos-juliaca\\modelos\\experimentos\\etapa1_e1_ext_20261025_1657.pt",
+  "parametros": {
+    "model": "yolo26s-cls.pt",
+    "data": "D:\\Proyecto-Residuos-ML\\clasificador-residuos-juliaca\\dataset\\_etapa1",
+    "epochs": 60,
+    "patience": 15,
+    "imgsz": 224,
+    "batch": 64,
+    "optimizer": "AdamW",
+    "lr0": 0.000833,
+    "lrf": 0.01,
+    "warmup_epochs": 3.0,
+    "freeze": null,
+    "dropout": 0.0,
+    "cos_lr": true,
+    "seed": 42,
+    "hsv_h": 0.03,
+    "hsv_s": 0.5,
+    "hsv_v": 0.4,
+    "fliplr": 0.5,
+    "flipud": 0.2,
+    "erasing": 0.3,
+    "auto_augment": "randaugment",
+    "externo": {
+      "generales": 139,
+      "metales": 40,
+      "organico": 0,
+      "papel_carton": 0,
+      "peligrosos": 0,
+      "plasticos": 0,
+      "sin_residuo": 0,
+      "vidrio": 0
+    }
+  },
+  "historial": {
+    "epocas_corridas": 60,
+    "mejor_epoca": 52,
+    "mejor_top1_val": 0.91479
+  },
+  "val": {
+    "datos": "publico/val",
+    "accuracy_top1": 0.9143,
+    "f1_macro": 0.9153
+  },
+  "minutos": 15.3
+}

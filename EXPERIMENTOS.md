@@ -94,3 +94,46 @@ organico. juliaca/test NO se ha usado: se evaluará una sola vez cuando el datas
 completo.
 
 Copiado a `modelos/etapa2_avance.pt` (+ `.json`) desde `modelos/experimentos/etapa2_e2_replay2_20261024_2101.pt`.
+
+## Datos externos TACO (`--externo`, sin ganador elegido)
+`dataset/externo/train`: generales 139 (Crisp packet + Other plastic wrapper revisados), metales 40
+(Aluminium foil). Solo train; `auditar.py` sin errores (dHash <= 4 contra publico y juliaca).
+
+Etapa 1 en `publico/val` (de `reportes/experimentos.csv` y `reportes/etapa1_e1_*_publico_val.json`):
+
+| Experimento | F1 macro | top-1 | F1 generales | F1 metales |
+|---|---|---|---|---|
+| e1_base | 0.9129 | 0.9116 | 0.933 | 0.907 |
+| e1_ext  | 0.9153 | 0.9143 | 0.928 | 0.916 |
+
+Diferencia de F1 macro 0.0024 (< 0.005, empate técnico con el criterio de la etapa 1).
+
+Etapa 2 en `juliaca/val` (28 fotos / 9 objetos). Desde e2_replay2, `juliaca/train/generales` pasó de 15
+a 31 fotos (obj037, obj038 del 25-10), por eso se re-corrió e2_replay2 como control (`e2_replay2_v2`).
+F1 por clase de `reportes/etapa2_<exp>_*_juliaca_val.json` (aciertos/n):
+
+| Experimento | Parte de | juliaca/train | F1 macro | top-1 | generales | metales | organico | peligrosos | plasticos | sin_residuo | vidrio |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| e2_replay2    | e1_base | 24-10 | 0.8139 | 0.7500 | 0.444 (2/3) | 0.615 (4/9) | 1.000 (1/1) | 1.000 (2/2) | 0.923 (6/6) | 0.857 (3/4) | 0.857 (3/3) |
+| e2_replay2_v2 | e1_base | 25-10 | 0.8516 | 0.8214 | 0.667 (3/3) | 0.714 (5/9) | 1.000 (1/1) | 0.800 (2/2) | 0.923 (6/6) | 0.857 (3/4) | 1.000 (3/3) |
+| e2_ext        | e1_base | 25-10 | 0.7074 | 0.7857 | 0.600 (3/3) | 0.714 (5/9) | 0.000 (0/1) | 1.000 (2/2) | 0.923 (6/6) | 0.857 (3/4) | 0.857 (3/3) |
+| e2_ext_full   | e1_ext  | 25-10 | 0.8186 | 0.7500 | 0.444 (2/3) | 0.571 (4/9) | 1.000 (1/1) | 1.000 (2/2) | 0.857 (6/6) | 0.857 (3/4) | 1.000 (3/3) |
+
+e2_ext pierde F1 macro casi solo por la única foto de organico (predicha generales): con 1 foto esa
+clase pasa de F1 1.0 a 0.0. Comparación de un factor: e2_ext vs e2_replay2_v2 (mismo juliaca, misma base).
+
+Bolsa de panetón (`juliaca/val/generales/obj004_bolsa_paneton_milano`, multicapa), predicción top-1
+(`reportes/etapa2_ext_paneton_val.json`):
+
+| Foto | e2_replay2 | e2_replay2_v2 | e2_ext | e2_ext_full |
+|---|---|---|---|---|
+| 14.50.24 (2) | papel_carton 0.83 | generales 0.76 | generales 0.63 | metales 0.87 |
+| 14.50.25 (1) | generales 0.96 | generales 0.98 | generales 1.00 | generales 1.00 |
+| 14.50.25     | generales 0.52 | generales 0.92 | generales 1.00 | generales 0.93 |
+
+Modelos para prueba en vivo: `modelos/etapa2_ext.pt` (e2_ext) y `modelos/etapa2_ext_full.pt` (e2_ext_full),
+con su `.json`. juliaca/test NO se ha usado.
+
+## Pendientes
+- tetra/multicapa en papel_carton de publico (revision\tetra\), decisión diferida. Si se cambia
+  publico, hay que reentrenar e1_base con el publico nuevo antes de comparar (val cambia).

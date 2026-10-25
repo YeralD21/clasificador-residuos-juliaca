@@ -9,15 +9,20 @@ Revisa en dataset/juliaca (tu partición manual):
   - Fotos sueltas sin carpeta de objeto (no se puede verificar leakage).
   - Carpetas que no son una de las 8 clases, imágenes corruptas o muy pequeñas.
 Y en dataset/publico: conteos, duplicados entre splits y choques con juliaca.
+Y en dataset/externo/train (regla 1): conteo por clase, formatos, que no haya val/test,
+que cada archivo esté en datos_externos.csv y casi duplicados (dHash <= 4) contra TODOS los
+splits de publico y juliaca. Las carpetas que empiezan con "_" (_fuentes, _descartados...) se ignoran.
 Termina con código 1 si hay ERRORES (para que no entrenes con leakage).
 """
+import csv
 import sys
 from collections import defaultdict
 from itertools import combinations
 
+import numpy as np
 from PIL import Image
 
-from comun import CLASES, JULIACA, PUBLICO, SPLITS, dhash, imagenes, md5, objeto_de
+from comun import CLASES, EXT, EXTERNO, JULIACA, PUBLICO, RAIZ, SPLITS, dhash, imagenes, md5, objeto_de
 
 UMBRAL_DHASH = 4  # bits distintos (de 64) para considerar dos fotos "casi iguales"
 
@@ -55,10 +60,74 @@ def revisar_base(base, nombre, errores, avisos):
     return conteo, md5s
 
 
+def revisar_externo(mj, mp, errores, avisos):
+    """dataset/externo: solo train, clases válidas, formatos, registro y anti-leakage contra publico y juliaca."""
+    conteo = {c: [] for c in CLASES}
+    if not EXTERNO.exists():
+        return conteo
+    for sub in EXTERNO.iterdir():
+        if sub.name.startswith("_") or sub.name == ".gitkeep":
+            continue
+        if sub.name in ("val", "test") and imagenes(sub):
+            errores.append(f"[externo] hay imágenes en {sub.name}/: los datos externos van SOLO a train")
+        elif sub.name not in SPLITS:
+            avisos.append(f"[externo] carpeta o archivo inesperado (se ignora): {sub}")
+    tr = EXTERNO / "train"
+    if not tr.exists():
+        return conteo
+    for sub in tr.iterdir():
+        if sub.is_dir() and sub.name not in CLASES:
+            errores.append(f"[externo] carpeta desconocida: {sub}")
+        elif sub.is_file() and sub.name != ".gitkeep":
+            avisos.append(f"[externo] archivo fuera de una clase (se ignora): {sub}")
+    registrados = set()
+    reg = RAIZ / "datos_externos.csv"
+    if reg.exists():
+        with open(reg, newline="", encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                if r.get("clase_destino") != "descartado":
+                    registrados |= set(filter(None, (r.get("archivos") or "").split(";")))
+    else:
+        errores.append("[externo] falta datos_externos.csv")
+    for c in CLASES:
+        for p in sorted(x for x in (tr / c).rglob("*") if x.is_file()) if (tr / c).exists() else []:
+            if p.suffix.lower() not in EXT:
+                avisos.append(f"[externo] formato no soportado (se ignora): {p}")
+                continue
+            try:
+                with Image.open(p) as im:
+                    im.verify()
+                with Image.open(p) as im:
+                    if min(im.size) < 64:
+                        avisos.append(f"[externo] imagen muy pequeña {im.size}: {p}")
+            except Exception as e:  # noqa: BLE001
+                errores.append(f"[externo] imagen corrupta: {p} ({e})")
+                continue
+            if p.name not in registrados:
+                errores.append(f"[externo] {p.relative_to(EXTERNO)} no está registrado en datos_externos.csv")
+            conteo[c].append(p)
+    fotos = [p for c in CLASES for p in conteo[c]]
+    if not fotos:
+        return conteo
+    refs = [p for m in (mj, mp) for s in SPLITS for p in m[s]]
+    print(f"[externo] dHash de {len(fotos)} imágenes externas contra {len(refs)} de publico + juliaca...", flush=True)
+    ref_h = np.array([dhash(p) for p in refs], dtype=np.uint64)
+    tabla = np.array([bin(i).count("1") for i in range(256)], dtype=np.uint8)
+    for p in fotos:
+        x = (ref_h ^ np.uint64(dhash(p))).view(np.uint8).reshape(-1, 8)
+        dist = tabla[x].sum(axis=1)
+        j = int(dist.argmin())
+        if dist[j] <= UMBRAL_DHASH:
+            errores.append(f"[externo] LEAKAGE: {p.relative_to(EXTERNO)} casi igual (dHash {dist[j]}) a "
+                           f"{refs[j].relative_to(RAIZ)}")
+    return conteo
+
+
 def main():
     errores, avisos = [], []
     cj, mj = revisar_base(JULIACA, "juliaca", errores, avisos)
     cp, mp = revisar_base(PUBLICO, "publico", errores, avisos)
+    ce = revisar_externo(mj, mp, errores, avisos)
 
     # --- objetos en juliaca ---
     objetos = defaultdict(lambda: defaultdict(set))  # clase -> objeto -> {splits}
@@ -109,6 +178,11 @@ def main():
     print(f"{'clase':14s} {'train':>7s} {'val':>6s} {'test':>6s}")
     for c in CLASES:
         print(f"{c:14s} {len(cp['train'][c]):7d} {len(cp['val'][c]):6d} {len(cp['test'][c]):6d}")
+
+    print("\n=== dataset/externo (solo train) ===")
+    print(f"{'clase':14s} {'train':>7s}")
+    for c in CLASES:
+        print(f"{c:14s} {len(ce[c]):7d}")
 
     print(f"\n=== ERRORES ({len(errores)}) ===")
     for e in errores[:60]:

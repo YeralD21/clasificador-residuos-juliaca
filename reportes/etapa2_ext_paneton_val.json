@@ -1,0 +1,242 @@
+{
+  "objeto": "juliaca/val/generales/obj004_bolsa_paneton_milano",
+  "clase_real": "generales",
+  "modelos": {
+    "e2_replay2": {
+      "pesos": "etapa2_e2_replay2_20261024_2101.pt",
+      "fotos": [
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.24 (2).jpeg",
+          "prediccion": "papel_carton",
+          "top3": [
+            [
+              "papel_carton",
+              0.8327
+            ],
+            [
+              "metales",
+              0.066
+            ],
+            [
+              "generales",
+              0.0402
+            ]
+          ]
+        },
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.25 (1).jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.9607
+            ],
+            [
+              "plasticos",
+              0.0187
+            ],
+            [
+              "organico",
+              0.0088
+            ]
+          ]
+        },
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.25.jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.5193
+            ],
+            [
+              "papel_carton",
+              0.1728
+            ],
+            [
+              "metales",
+              0.156
+            ]
+          ]
+        }
+      ]
+    },
+    "e2_replay2_v2": {
+      "pesos": "etapa2_e2_replay2_v2_20261025_1848.pt",
+      "fotos": [
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.24 (2).jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.7607
+            ],
+            [
+              "papel_carton",
+              0.2267
+            ],
+            [
+              "plasticos",
+              0.0066
+            ]
+          ]
+        },
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.25 (1).jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.9819
+            ],
+            [
+              "organico",
+              0.0057
+            ],
+            [
+              "plasticos",
+              0.0054
+            ]
+          ]
+        },
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.25.jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.92
+            ],
+            [
+              "papel_carton",
+              0.0385
+            ],
+            [
+              "peligrosos",
+              0.0227
+            ]
+          ]
+        }
+      ]
+    },
+    "e2_ext": {
+      "pesos": "etapa2_e2_ext_20261025_1850.pt",
+      "fotos": [
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.24 (2).jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.6255
+            ],
+            [
+              "papel_carton",
+              0.2968
+            ],
+            [
+              "metales",
+              0.0607
+            ]
+          ]
+        },
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.25 (1).jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.9998
+            ],
+            [
+              "papel_carton",
+              0.0
+            ],
+            [
+              "organico",
+              0.0
+            ]
+          ]
+        },
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.25.jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.9962
+            ],
+            [
+              "papel_carton",
+              0.0034
+            ],
+            [
+              "peligrosos",
+              0.0003
+            ]
+          ]
+        }
+      ]
+    },
+    "e2_ext_full": {
+      "pesos": "etapa2_e2_ext_full_20261025_1851.pt",
+      "fotos": [
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.24 (2).jpeg",
+          "prediccion": "metales",
+          "top3": [
+            [
+              "metales",
+              0.8733
+            ],
+            [
+              "generales",
+              0.1148
+            ],
+            [
+              "plasticos",
+              0.0055
+            ]
+          ]
+        },
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.25 (1).jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.9995
+            ],
+            [
+              "plasticos",
+              0.0004
+            ],
+            [
+              "organico",
+              0.0001
+            ]
+          ]
+        },
+        {
+          "foto": "WhatsApp Image 2026-10-24 at 14.50.25.jpeg",
+          "prediccion": "generales",
+          "top3": [
+            [
+              "generales",
+              0.9288
+            ],
+            [
+              "plasticos",
+              0.0497
+            ],
+            [
+              "metales",
+              0.0094
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}
