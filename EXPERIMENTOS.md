@@ -39,6 +39,7 @@ Cada experimento cambia **una sola cosa** respecto a la referencia, para poder e
 python scripts/experimentar.py --listar                      # ver experimentos y resultados
 python scripts/experimentar.py --etapa 1                     # corre todos los de la etapa 1
 python scripts/experimentar.py --etapa 2 --pesos modelos/experimentos/<ganador_etapa1>.pt
+python scripts/evaluar.py --pesos modelos/a.pt modelos/b.pt --datos val_camara   # set aparte de la cámara (por foto)
 python scripts/evaluar.py --pesos <ganador_etapa1>.pt <ganador_etapa2>.pt --split test   # UNA vez, al final
 ```
 Resultados: `reportes/experimentos.csv` (tabla para el informe) y `reportes/experimentos/*.json`.
@@ -132,7 +133,11 @@ Bolsa de panetón (`juliaca/val/generales/obj004_bolsa_paneton_milano`, multicap
 | 14.50.25     | generales 0.52 | generales 0.92 | generales 1.00 | generales 0.93 |
 
 Modelos para prueba en vivo: `modelos/etapa2_ext.pt` (e2_ext) y `modelos/etapa2_ext_full.pt` (e2_ext_full),
-con su `.json`. juliaca/test NO se ha usado.
+con su `.json`. Control sin externos: `modelos/etapa2_v2.pt` (e2_replay2_v2, desde
+`modelos/experimentos/etapa2_e2_replay2_v2_20261025_1848.pt`). juliaca/test NO se ha usado.
+
+`dataset/val_camara/<clase>/<objeto>/`: objetos nuevos tomados con la cámara de la laptop. Evaluación
+aparte (`evaluar.py --datos val_camara`), nunca para entrenar ni early stopping.
 
 ## Pendientes
 - tetra/multicapa en papel_carton de publico (revision\tetra\), decisión diferida. Si se cambia
