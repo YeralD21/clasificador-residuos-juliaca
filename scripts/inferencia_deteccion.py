@@ -15,12 +15,16 @@ Filtros de residuo, en orden: zona central --roi (1.0 = todo el frame), área en
 --max-area, ropa/mueble, foco en lo cercano (área >= --foco-relativo x la caja de residuo más
 grande), nitidez (varianza del Laplaciano >= --nitidez-rel x la del recorte más nítido) y, ordenadas
 por área, hasta --max-objetos.
-Etapa 2: cada caja se recorta (cuadrada, +10 % de margen) y la clasifica TU modelo (--modelo).
+Etapa 2: cada caja se recorta (cuadrada, +10 % de margen, dentro del frame y sin relleno) y la clasifica
+TU modelo (--modelo) con el mismo preprocesado que evaluar.py (comprobado con scripts/diagnostico_inferencia.py).
 Para que no parpadee, cada caja se sigue entre frames por IoU: se muestra solo si apareció en al
 menos --persistencia de los últimos --historial frames, y su clase es el promedio de las
 probabilidades del clasificador en esos frames. La caja se dibuja con el color del tacho
-(NTP 900.058); si la confianza promedio es menor a --umbral se dibuja gris con "NO SEGURO". Las
-cajas que el modelo ve como sin_residuo se ignoran. La clase la decide siempre el clasificador.
+(NTP 900.058) y "AZUL - Papel y carton 87%"; si la confianza promedio es menor a --umbral, en morado con
+"NO SEGURO". Las cajas que el modelo ve como sin_residuo se ignoran. La clase la decide siempre el clasificador.
+Barra superior: el tacho del objeto de mayor área ("TACHO AZUL - Papel y carton (87%)", fondo del color del
+tacho), "Sin residuo" si no hay objetos, y una fila de chips si los objetos van a tachos distintos.
+--debug dibuja en gris las cajas descartadas con su motivo.
 Teclas: Q salir, F pantalla completa, S guardar cada recorte mostrado en capturas_revisar/ (para que TÚ lo clasifiques).
 """
 import argparse
@@ -38,8 +42,9 @@ from comun import RAIZ, TACHO, abrir_camara, crear_ventana, teclas_ventana
 from inferencia_webcam import revisar_versiones
 
 # Sin genéricos (box, paper, container): detectaban mesas, hojas y fondo. Se pueden volver a poner con --prompts.
+# "cardboard box" y "juice box" son más específicos que "box"; con --debug se ve si vuelven a agarrar fondo.
 PROMPTS = ("bottle,can,plastic bag,snack wrapper,battery,phone,charger,cable,cup,glass jar,"
-           "fruit peel,food waste,tube")
+           "fruit peel,food waste,tube,cardboard box,juice box,candy wrapper,chocolate bar,sachet")
 IGNORAR = "person,face,hand,clothing,jacket,furniture,sofa,chair,wall,door,window,shelf,curtain,bed"
 # Solo estas negativas anulan una caja de residuo que coincide con ellas. Las demás (persona, pared, cortina...) solo se
 # ocultan: un objeto en la mano o en primer plano delante de la pared debe seguir mostrándose.
@@ -47,7 +52,9 @@ ROPA_MUEBLE = {"clothing", "jacket", "shirt", "coat", "sweater", "furniture", "s
                "desk", "shelf", "bed", "cabinet"}
 FILTROS = ("ignorada", "duplicada", "roi", "area", "ropa_mueble", "lejana", "borrosa", "exceso")
 DETECTORES = RAIZ / "modelos" / "detectores"   # pesos descargados de Ultralytics (no se suben, *.pt)
-GRIS = (150, 150, 150)
+GRIS = (130, 130, 130)       # --debug: cajas descartadas (línea fina, sin relleno)
+NO_SEGURO = (170, 60, 170)   # morado: no es color de ningún tacho (el gris es vidrio)
+SIN_RESIDUO = (60, 60, 60)
 
 
 def cargar_detector(nombre: str, prompts: list[str]):
@@ -68,16 +75,16 @@ def cargar_detector(nombre: str, prompts: list[str]):
 
 
 def recorte_cuadrado(frame, caja, margen=0.10):
-    """Cuadrado centrado en la caja, lado = lado mayor * (1 + 2*margen). Rellena si sale del frame."""
+    """Cuadrado centrado en la caja, lado = lado mayor * (1 + 2*margen), desplazado para que quede DENTRO del frame.
+    Sin relleno: el borde gris no aparece al entrenar y cambiaba la predicción (scripts/diagnostico_inferencia.py).
+    Si el lado no cabe, se recorta a los bordes del frame y el clasificador hace Resize + CenterCrop, como evaluar.py."""
     h, w = frame.shape[:2]
     x1, y1, x2, y2 = caja
-    cx, cy = (x1 + x2) / 2, (y1 + y2) / 2
     lado = max(x2 - x1, y2 - y1) * (1 + 2 * margen)
-    a, b = int(round(cx - lado / 2)), int(round(cy - lado / 2))
-    c, d = a + int(round(lado)), b + int(round(lado))
-    rec = frame[max(b, 0):min(d, h), max(a, 0):min(c, w)]
-    return cv2.copyMakeBorder(rec, max(-b, 0), max(d - h, 0), max(-a, 0), max(c - w, 0),
-                              cv2.BORDER_CONSTANT, value=(114, 114, 114))
+    lw, lh = int(round(min(lado, w))), int(round(min(lado, h)))
+    a = int(round(min(max((x1 + x2) / 2 - lw / 2, 0), w - lw)))
+    b = int(round(min(max((y1 + y2) / 2 - lh / 2, 0), h - lh)))
+    return frame[b:b + lh, a:a + lw].copy()  # copia: luego se dibuja sobre el frame
 
 
 def zona_central(frame, fraccion):
@@ -111,23 +118,26 @@ def nitidez(frame, caja):
 
 def filtrar(r, frame, args, ignorar):
     """Separa cajas de residuo y negativas, y aplica los filtros en orden. Devuelve las cajas de residuo
-    (mayor área primero) y cuántas descartó cada filtro."""
+    (mayor área primero), cuántas descartó cada filtro y las descartadas [(caja, "motivo [prompt]")] para --debug."""
     total = frame.shape[0] * frame.shape[1]
     desc = dict.fromkeys(FILTROS, 0)
-    fondo, cands, conf = [], [], {}
+    fuera = []
+    fondo, cands, conf, prompt = [], [], {}, {}
     for c, cf, k in zip(r.boxes.xyxy.cpu().numpy(), r.boxes.conf.cpu().numpy(), r.boxes.cls.cpu().numpy()):
         nombre = r.names[int(k)]
         if nombre in ignorar:
             desc["ignorada"] += 1
+            fuera.append((c, f"ignorada [{nombre}]"))
             if nombre in ROPA_MUEBLE:
                 fondo.append((c, cf))
         else:
             cands.append((cf, c))
-            conf[id(c)] = cf
+            conf[id(c)], prompt[id(c)] = cf, nombre
     cajas = []
     for _, c in sorted(cands, key=lambda t: -t[0]):  # NMS sin clase entre prompts de residuo (bottle y cup sobre lo mismo)
         if any(iou(c, d) > 0.7 for d in cajas):
             desc["duplicada"] += 1
+            fuera.append((c, f"duplicada [{prompt[id(c)]}]"))
         else:
             cajas.append(c)
 
@@ -135,6 +145,7 @@ def filtrar(r, frame, args, ignorar):
         nonlocal cajas
         quedan = [c for c in cajas if ok(c)]
         desc[clave] += len(cajas) - len(quedan)
+        fuera.extend((c, f"{clave} [{prompt[id(c)]}]") for c in cajas if not ok(c))
         cajas = quedan
 
     zx1, zy1, zx2, zy2 = zona_central(frame, args.roi)
@@ -150,7 +161,18 @@ def filtrar(r, frame, args, ignorar):
         criba("borrosa", lambda c: nit[id(c)] >= args.nitidez_rel * tope)
     cajas.sort(key=area, reverse=True)
     desc["exceso"] += max(0, len(cajas) - args.max_objetos)
-    return cajas[:args.max_objetos], desc
+    fuera.extend((c, f"exceso [{prompt[id(c)]}]") for c in cajas[args.max_objetos:])
+    return cajas[:args.max_objetos], desc, fuera
+
+
+def clasificar(clf, recortes, imgsz, device, gpu):
+    """Probabilidades del clasificador para cada recorte (BGR uint8, como sale de OpenCV). Ultralytics hace
+    Resize(lado corto = imgsz) + CenterCrop, BGR->RGB y /255, igual que con una ruta (evaluar.py). En fp32, como
+    evaluar.py: con fp16 cambiaban 2 de 293 fotos de val_camara. `gpu` se mantiene por compatibilidad."""
+    if not recortes:
+        return []
+    res = clf.predict(recortes, imgsz=imgsz, device=device, verbose=False)
+    return [r.probs.data.float().cpu().numpy() for r in res]
 
 
 class Pista:
@@ -191,17 +213,66 @@ def asociar(pistas, cajas, umbral_iou, historial):
     return out
 
 
+def tinta(color):
+    return (0, 0, 0) if sum(color) > 380 else (255, 255, 255)  # texto legible sobre blanco/amarillo/gris
+
+
 def etiqueta(frame, caja, texto, color):
     x1, y1, x2, y2 = map(int, caja)
     cv2.rectangle(frame, (x1, y1), (x2, y2), color, 3)
     (tw, th), _ = cv2.getTextSize(texto, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2)
     y = max(y1, th + 10)
     cv2.rectangle(frame, (x1, y - th - 10), (x1 + tw + 10, y), color, -1)
-    tinta = (0, 0, 0) if sum(color) > 380 else (255, 255, 255)  # texto legible sobre blanco/amarillo
-    cv2.putText(frame, texto, (x1 + 5, y - 6), cv2.FONT_HERSHEY_SIMPLEX, 0.7, tinta, 2)
+    cv2.putText(frame, texto, (x1 + 5, y - 6), cv2.FONT_HERSHEY_SIMPLEX, 0.7, tinta(color), 2)
 
 
-def main():
+def descartada(frame, caja, motivo):
+    """--debug: caja descartada, gris y fina, con el motivo dentro de la esquina superior."""
+    x1, y1, x2, y2 = map(int, caja)
+    cv2.rectangle(frame, (x1, y1), (x2, y2), GRIS, 1, cv2.LINE_AA)
+    cv2.putText(frame, motivo, (x1 + 4, y1 + 16), cv2.FONT_HERSHEY_SIMPLEX, 0.45, GRIS, 1, cv2.LINE_AA)
+
+
+def barra(ancho, objetos):
+    """Barra superior. objetos: [(tacho, conf, color)] de mayor a menor área; tacho=None si es NO SEGURO.
+    Fila 1: el objeto principal (el de mayor área), fondo del color de su tacho y texto grande.
+    Fila 2, solo si los objetos van a tachos distintos: un chip por tacho, con su mayor confianza."""
+    e = ancho / 1280
+    if not objetos:
+        texto, color = "Sin residuo", SIN_RESIDUO
+    else:
+        t, conf, color = objetos[0]
+        texto = f"NO SEGURO ({conf:.0%})" if t is None else f"TACHO {t} ({conf:.0%})"
+    fila = np.full((int(72 * e), ancho, 3), color, np.uint8)
+    esc, gr = 1.4 * e, max(2, int(round(3 * e)))
+    (_, th), _ = cv2.getTextSize(texto, cv2.FONT_HERSHEY_SIMPLEX, esc, gr)
+    cv2.putText(fila, texto, (int(16 * e), (fila.shape[0] + th) // 2), cv2.FONT_HERSHEY_SIMPLEX, esc, tinta(color),
+                gr, cv2.LINE_AA)
+
+    chips = {}  # tacho -> (conf máx, color), en orden de área
+    for t, conf, color in objetos:
+        k = t or "NO SEGURO"
+        if conf > chips.get(k, (-1.0,))[0]:
+            chips[k] = (conf, color)  # actualizar no cambia el orden del dict
+    if len(chips) < 2:
+        return fila
+    fila2 = np.full((int(50 * e), ancho, 3), (30, 30, 30), np.uint8)
+    esc2, gr2, x = 0.75 * e, max(1, int(round(2 * e))), int(10 * e)
+    for k, (conf, color) in chips.items():
+        texto = f"{k} {conf:.0%}"
+        (tw, th), _ = cv2.getTextSize(texto, cv2.FONT_HERSHEY_SIMPLEX, esc2, gr2)
+        if x + tw + 20 * e > ancho:
+            break
+        y1, y2 = int(7 * e), fila2.shape[0] - int(7 * e)
+        cv2.rectangle(fila2, (x, y1), (int(x + tw + 20 * e), y2), color, -1)
+        cv2.rectangle(fila2, (x, y1), (int(x + tw + 20 * e), y2), (200, 200, 200), 1)  # borde: chip blanco o negro
+        cv2.putText(fila2, texto, (int(x + 10 * e), (y1 + y2 + th) // 2), cv2.FONT_HERSHEY_SIMPLEX, esc2, tinta(color),
+                    gr2, cv2.LINE_AA)
+        x = int(x + tw + 32 * e)
+    return np.vstack([fila, fila2])
+
+
+def crear_parser():
     ap = argparse.ArgumentParser()
     ap.add_argument("--modelo", default=str(RAIZ / "modelos" / "etapa2_ext_full.pt"),
                     help="clasificador (modelo actual, ver EXPERIMENTOS.md); también modelos/etapa1_ganador.pt")
@@ -215,7 +286,7 @@ def main():
     ap.add_argument("--roi", type=float, default=1.0,
                     help="zona central (fracción del ancho y alto) donde debe caer el centro de la caja; 1.0 = todo")
     ap.add_argument("--min-area", type=float, default=0.01, help="área mínima de la caja, fracción del frame")
-    ap.add_argument("--max-area", type=float, default=0.6, help="área máxima de la caja, fracción del frame")
+    ap.add_argument("--max-area", type=float, default=0.85, help="área máxima de la caja, fracción del frame")
     ap.add_argument("--ignorar", default=IGNORAR, help="prompts negativos, separados por coma ('' = ninguno)")
     ap.add_argument("--iou-ignorar", type=float, default=0.6,
                     help="IoU con una caja de ropa/mueble a partir del cual se descarta la caja de residuo")
@@ -232,7 +303,13 @@ def main():
     ap.add_argument("--imgsz", type=int, default=224, help="tamaño del clasificador (con el que se entrenó)")
     ap.add_argument("--imgsz-det", type=int, default=640, help="tamaño del detector (menor = más rápido)")
     ap.add_argument("--bench", type=int, default=0, help="N frames sin ventana y muestra FPS por etapa")
-    args = ap.parse_args()
+    ap.add_argument("--debug", action="store_true",
+                    help="dibuja en gris las cajas descartadas con su motivo (filtro, persistencia o sin_residuo)")
+    return ap
+
+
+def main():
+    args = crear_parser().parse_args()
 
     ignorar = [p.strip() for p in args.ignorar.split(",") if p.strip()]
     prompts = [p.strip() for p in args.prompts.split(",") if p.strip() and p.strip() not in ignorar]
@@ -274,20 +351,18 @@ def main():
                         agnostic_nms=False, max_det=50, verbose=False)[0]
         tb = time.perf_counter()
 
-        cajas, descartes = filtrar(r, frame, args, ignorar)
+        cajas, descartes, fuera = filtrar(r, frame, args, ignorar)
         recortes = [recorte_cuadrado(frame, c) for c in cajas]
         de_caja = asociar(pistas, cajas, args.iou, args.historial)
         actualizadas = {id(p) for p in de_caja}
         for p in pistas:
             if id(p) not in actualizadas:
                 p.falta()
-        if recortes:
-            for p, caja, rec, rc in zip(de_caja, cajas, recortes, clf.predict(recortes, imgsz=args.imgsz, device=device,
-                                                                            quantize=16 if gpu else None, verbose=False)):
-                p.actualizar(caja, rec, rc.probs.data.float().cpu().numpy())
+        for p, caja, rec, pr in zip(de_caja, cajas, recortes, clasificar(clf, recortes, args.imgsz, device, gpu)):
+            p.actualizar(caja, rec, pr)
         pistas = [p for p in pistas if any(p.visto)]  # olvida las que no aparecieron en todo el historial
 
-        dibujos = []
+        dibujos = []  # (caja, recorte, tacho o None, conf, color, clase), de mayor a menor área
         estables = sorted((p for p in pistas if sum(p.visto) >= args.persistencia),
                           key=lambda p: area(p.caja), reverse=True)[:args.max_objetos]
         for p in estables:
@@ -295,11 +370,14 @@ def main():
             i = int(prom.argmax())
             clase, conf = nombres[i], float(prom[i])
             if clase == "sin_residuo":
-                continue
-            if conf < args.umbral:
-                dibujos.append((p.caja, p.recorte, f"NO SEGURO ({conf:.0%})", GRIS, "NOSEGURO"))
+                fuera.append((p.caja, f"sin_residuo {conf:.0%}"))
+            elif conf < args.umbral:
+                dibujos.append((p.caja, p.recorte, None, conf, NO_SEGURO, "NOSEGURO"))
             else:
-                dibujos.append((p.caja, p.recorte, f"{clase} ({conf:.0%})", TACHO[clase][1], clase))
+                dibujos.append((p.caja, p.recorte, TACHO[clase][0], conf, TACHO[clase][1], clase))
+        if args.debug:
+            fuera += [(p.caja, f"persistencia {sum(p.visto)}/{args.persistencia}") for p in pistas
+                      if p.visto[-1] and sum(p.visto) < args.persistencia]
         tc = time.perf_counter()
         tiempos["det"].append(tb - ta)
         tiempos["clf"].append(tc - tb)
@@ -314,14 +392,17 @@ def main():
         if args.roi < 1.0:
             zx1, zy1, zx2, zy2 = zona_central(frame, args.roi)
             cv2.rectangle(frame, (int(zx1), int(zy1)), (int(zx2), int(zy2)), (200, 200, 200), 1, cv2.LINE_AA)
-        for caja, _, texto, color, _ in dibujos:
-            etiqueta(frame, caja, texto, color)
+        if args.debug:
+            for caja, motivo in fuera:
+                descartada(frame, caja, motivo)
+        for caja, _, tacho, conf, color, _ in dibujos:
+            etiqueta(frame, caja, f"NO SEGURO {conf:.0%}" if tacho is None else f"{tacho} {conf:.0%}", color)
         ahora = time.time()
         fps = 0.9 * fps + 0.1 / max(ahora - t0, 1e-6)
         t0 = ahora
-        cv2.putText(frame, f"{fps:.0f} FPS | {len(dibujos)} obj", (12, frame.shape[0] - 15),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
-        cv2.imshow(ventana, frame)
+        cv2.putText(frame, f"{fps:.0f} FPS | {len(dibujos)} obj" + (" | DEBUG" if args.debug else ""),
+                    (12, frame.shape[0] - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
+        cv2.imshow(ventana, np.vstack([barra(frame.shape[1], [(t, c, col) for _, _, t, c, col, _ in dibujos]), frame]))
 
         k = teclas_ventana(ventana)
         if k == "q":
@@ -330,7 +411,7 @@ def main():
             d = RAIZ / "capturas_revisar"
             d.mkdir(exist_ok=True)
             marca = time.strftime("%Y%m%d_%H%M%S")
-            for j, (_, rec, _, _, clase) in enumerate(dibujos):
+            for j, (_, rec, _, _, _, clase) in enumerate(dibujos):
                 f = d / f"pred-{clase}_{marca}_{j}.jpg"
                 cv2.imwrite(str(f), rec)
                 print(f"Guardado {f}")

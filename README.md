@@ -146,13 +146,19 @@ python scripts/inferencia_webcam.py --camara 0 --imgsz 224                  # = 
    - `ignorada`: cajas de los prompts negativos; no se clasifican ni se dibujan.
    - `duplicada`: dos prompts de residuo sobre el mismo objeto (p. ej. `bottle` y `cup`, IoU > 0.7); queda la de mayor confianza.
    - `roi`: el centro de la caja debe caer en la zona central `--roi` (por defecto `1.0` = todo el frame; si es menor se dibuja la zona).
-   - `area`: área entre `--min-area` y `--max-area`.
+   - `area`: área entre `--min-area` y `--max-area` (por defecto 0.01 y 0.85).
    - `ropa_mueble`: se descarta la caja de residuo que coincide casi entera (IoU ≥ `--iou-ignorar`) con una caja de ropa o mueble (clothing, jacket, sofa, chair, shelf, bed, furniture...) de confianza igual o mayor, es decir, cuando el detector cree que es la prenda o el mueble. Persona, cara y mano **no** anulan cajas: un objeto en la mano sí se muestra. Pared, puerta, ventana y cortina tampoco, porque cubren todo el fondo y anularían a un objeto en primer plano (pasaba en `dataset/crudo/val`: una botella cercana contra una caja `wall` y unos vasos detectados como `curtain`).
    - `lejana`: **foco en lo cercano**, solo quedan las cajas con área ≥ `--foco-relativo` × la caja de residuo más grande del frame.
    - `borrosa`: **nitidez**, varianza del Laplaciano del recorte (a 128×128) ≥ `--nitidez-rel` × la del recorte más nítido del frame. Desactívalo con `--no-nitidez`.
    - `exceso`: se ordenan por área (mayor primero) y se quedan `--max-objetos`.
-3. Cada caja se recorta **cuadrada con ~10 % de margen** y la clasifica `--modelo` a `imgsz 224`.
-4. **Persistencia**: cada caja se sigue entre frames por IoU (≥ `--iou`). Se muestra solo si apareció en al menos `--persistencia` de los últimos `--historial` frames (3 de 5), y su clase es el **promedio de las probabilidades** del clasificador en esos frames. Se dibuja con el color del tacho y "clase (conf)"; si la confianza promedio es menor a `--umbral`, gris con "NO SEGURO". Se ignoran las cajas cuyo promedio da `sin_residuo`.
+3. Cada caja se recorta **cuadrada con ~10 % de margen, dentro del frame y sin relleno** (si no cabe, se recorta a los bordes) y la clasifica `--modelo` a `imgsz 224` en fp32, con el mismo preprocesado que `evaluar.py` (ver "Diagnóstico" abajo).
+4. **Persistencia**: cada caja se sigue entre frames por IoU (≥ `--iou`). Se muestra solo si apareció en al menos `--persistencia` de los últimos `--historial` frames (3 de 5), y su clase es el **promedio de las probabilidades** del clasificador en esos frames. Se ignoran las cajas cuyo promedio da `sin_residuo`.
+
+**Pantalla:**
+- Cada objeto: recuadro del color de su tacho (NTP 900.058: azul papel_carton, amarillo metales, blanco plasticos, gris vidrio, marrón organico, rojo peligrosos, negro generales) con la etiqueta `AZUL - Papel y carton 87%`. Si la confianza promedio es menor a `--umbral`: morado con `NO SEGURO 45%` (morado porque el gris es el tacho de vidrio).
+- **Barra superior**: el tacho del objeto principal (el de mayor área) con fondo de su color y texto grande, p. ej. `TACHO AZUL - Papel y carton (87%)`; `NO SEGURO (45%)` si su confianza es baja; `Sin residuo` si no hay objetos. Si los objetos van a tachos distintos, debajo aparece una fila de **chips** de colores, uno por tacho con su mayor confianza.
+- Los textos van sin tildes (`carton`, `Organicos`) porque la fuente de OpenCV solo dibuja ASCII.
+- `--debug`: dibuja además, en gris fino, las cajas descartadas con el motivo y el prompt: `ignorada [wall]`, `duplicada [cup]`, `area [cardboard box]`, `lejana`, `borrosa`, `exceso`, `persistencia 1/3` o `sin_residuo 80%`.
 
 Teclas: **Q** sale, **F** pantalla completa, **S** guarda los recortes mostrados en `capturas_revisar/` (nombre `pred-<clase>_...jpg`, o `pred-NOSEGURO_...`; la clase la decides tú). La ventana se maximiza sin franja gris, igual que en `inferencia_webcam.py`.
 
@@ -161,6 +167,7 @@ python scripts/inferencia_deteccion.py --camara 0                               
 python scripts/inferencia_deteccion.py --camara 0 --modelo modelos/etapa1_ganador.pt  # con el modelo de etapa 1
 python scripts/inferencia_deteccion.py --fuente video.mp4                             # probar con un video
 python scripts/inferencia_deteccion.py --fuente foto.jpg --bench 100                  # FPS y descartes por filtro, sin ventana
+python scripts/inferencia_deteccion.py --camara 0 --debug                             # además, cajas descartadas en gris con su motivo
 ```
 
 | Argumento | Defecto | Qué hace |
@@ -168,6 +175,9 @@ python scripts/inferencia_deteccion.py --fuente foto.jpg --bench 100            
 | `--modelo` | `modelos/etapa2_ext_full.pt` | clasificador (modelo actual, ver `EXPERIMENTOS.md`); `modelos/etapa1_ganador.pt` y `modelos/etapa2_v2.pt` siguen disponibles |
 | `--detector` | `yoloe-26n-seg.pt` | detector; se descarga solo a `modelos/detectores/` (no se sube a git) |
 | `--camara` / `--fuente` | `0` / — | índice de webcam, o video/imagen para pruebas |
+| `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, fruit peel, food waste, tube, cardboard box, juice box, candy wrapper, chocolate bar, sachet | qué busca el detector |
+| `--max-area` | `0.85` | área máxima de la caja (fracción del frame); antes `0.6` |
+| `--debug` | apagado | cajas descartadas en gris con su motivo |
 | `--umbral` | `0.6` | confianza mínima del clasificador; por debajo, "NO SEGURO" |
 | `--conf-det` | `0.35` | confianza mínima del detector (también para los negativos) |
 | `--max-objetos` | `4` | máximo de cajas mostradas por frame (las de mayor área) |
@@ -190,7 +200,18 @@ Detectores que soporta Ultralytics 8.4.184 (`ultralytics/utils/downloads.py`):
 
 FPS medidos en la laptop (RTX 3050 Laptop 4 GB, `--bench`, sin ventana ni captura de cámara, imágenes de `dataset/crudo/val`): con `yoloe-26n-seg` el detector tarda ~22–26 ms. En total da ~42–45 FPS con 0 objetos, ~27 FPS con 1 objeto y ~23 FPS con 5 objetos. Con `yoloe-26s-seg` y 2 objetos da ~26 FPS. En vivo será algo menos por la captura y la ventana. Si baja de ~8 FPS: usa `--imgsz-det 480` o `416` y/o `--max-objetos 3`.
 
-Con los filtros y la persistencia (valores por defecto actuales, misma laptop, `--bench 200`, imágenes de `dataset/crudo/val`): 1 caja mostrada ~22.5–23.8 ms (~42–44 FPS); 3 cajas mostradas ~22.6–24.1 ms (~41–44 FPS, el tope de `--max-objetos`); 0 cajas ~13.8–15 ms (~66–72 FPS; en las dos primeras corridas de la sesión, con la GPU recién activada, el detector tardó 36–39 ms y el total dio ~26–28 FPS). Una imagen con una sola caja de área 0.68 queda en 0 cajas por `--max-area 0.6`.
+Con los filtros y la persistencia (valores por defecto actuales, misma laptop, `--bench 200`, imágenes de `dataset/crudo/val`): 1 caja mostrada ~22.5–23.8 ms (~42–44 FPS); 3 cajas mostradas ~22.6–24.1 ms (~41–44 FPS, el tope de `--max-objetos`); 0 cajas ~13.8–15 ms (~66–72 FPS; en las dos primeras corridas de la sesión, con la GPU recién activada, el detector tardó 36–39 ms y el total dio ~26–28 FPS). Una imagen con una sola caja de área 0.68 quedaba en 0 cajas por `--max-area 0.6` (ahora el defecto es 0.85). Esas medidas son de antes de pasar el clasificador a fp32 y de los prompts nuevos; en la PC (RTX 3060, `--bench 200`, 1 caja) ahora da det 19.5 ms + clf 10.2 ms = 29.7 ms (33.7 FPS). Falta medirlo en la laptop.
+
+**Diagnóstico** (`python scripts/diagnostico_inferencia.py`): pasa cada foto de `dataset/val_camara` por `evaluar.py` y por la función `clasificar()` de este script (la imagen completa como si fuera una caja, leída con `cv2.imread`), y guarda 10 recortes reales del detector en `revision/recortes_debug/` (no se sube a git). Con `etapa2_ext_full.pt`:
+
+| Camino | top-1 | F1 macro |
+|---|---|---|
+| `evaluar.py` (ruta) | 0.5529 | 0.5183 |
+| antes: recorte con relleno gris + fp16 | 0.4437 | 0.3189 |
+| sin relleno, fp16 | 0.5495 | 0.5113 |
+| ahora: sin relleno, fp32 | 0.5529 | 0.5183 (0 de 293 fotos distintas) |
+
+El orden de canales y la lectura no tenían problema: `cv2.imread` y el lector de Ultralytics dan los mismos píxeles en las 293 fotos, y Ultralytics recibe BGR en ambos caminos (Resize del lado corto + CenterCrop, BGR→RGB, /255). La diferencia era el relleno gris de `recorte_cuadrado` (cambiaba 142 de 293 predicciones) y fp16 (2 de 293).
 
 Detección global (`--roi 1.0`, `--ignorar`, foco y nitidez, `--max-objetos 4`, con `--modelo modelos/etapa1_ganador.pt`, el defecto cuando se midió; misma laptop, `--bench 200`). En `clf` entran también los filtros, la nitidez y la persistencia:
 
