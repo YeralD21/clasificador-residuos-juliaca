@@ -1,0 +1,14 @@
+# Revisión manual de RealWaste Metal (672 imágenes, mosaicos en reportes/revision_realwaste_metal/).
+# El número de cada imagen está en su esquina; indice.csv dice qué archivo es cada número.
+# - aerosoles: números separados por coma o espacio; pasan a peligrosos.
+# - otras correcciones: una por línea, "número clase" (una de: generales, metales, organico, papel_carton, peligrosos, plasticos, sin_residuo, vidrio) o "número descartar".
+# - cuando termines, cambia "terminado: no" por "terminado: si". Sin eso no se importa nada.
+# Las líneas que empiezan con # se ignoran. Este archivo no lo sobrescribe ningún script.
+
+terminado: no
+
+aerosoles:
+
+# otras correcciones (ejemplos, borra el # para usarlos):
+# 123 generales
+# 456 descartar

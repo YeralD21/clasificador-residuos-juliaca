@@ -284,6 +284,20 @@ Van solo a `dataset/externo/train/` (nunca a val/test ni a `dataset/juliaca`), c
 |---|---|---|---|
 | TACO, `data/annotations.json` (commit `70479ad`) | `python scripts/importar_taco.py` | Crisp packet y Other plastic wrapper → `train/generales`; Aluminium foil → `train/metales`. Revisión manual por recorte en `reportes/externo_taco_revision.csv`; los descartados se mueven a `_descartados/<categoria>/` | Anotaciones CC BY 4.0. Imágenes: CC BY 4.0 (licencia vacía, por defecto según tacodataset.org) u ODbL 1.0. Se excluyen las marcadas "CC" sin especificar. |
 
+Fuentes añadidas el 2026-10-26 con `python scripts/importar_publicos.py` (`--dry-run` primero). Cada una fue aprobada por el usuario. Mapeo completo, licencias y citas en **`datos/fuentes.md`**:
+
+| Fuente (prioridad en el tope) | Licencia | Usa | Descarta |
+|---|---|---|---|
+| 1. RealWaste (UCI) | CC BY 4.0 | 7 clases; `Metal` con **revisión manual** (aerosoles → `peligrosos`) | Textile, Miscellaneous Trash |
+| 2. TACO extra (prefijo `tacox_`) | CC BY 4.0 / ODbL | 41 categorías, recortes ≥ 96 px | Cigarette, Unlabeled litter, Meal carton... |
+| 3. TrashNet (GitHub) | MIT | glass, paper, cardboard, plastic, metal | trash |
+
+**No aprobados:** Garbage-12 (las imágenes no tienen licencia) y **Household Waste** (Kaggle, alistairking). Household se descartó tras revisar una muestra: su parte `real_world` son fotos de stock, gráficos con texto, ilustraciones e infografías, con duplicados entre clases (detalle en `datos/fuentes.md`).
+
+**Revisión de RealWaste `Metal`:** el script genera mosaicos numerados de 48 en `reportes/revision_realwaste_metal/` (con `indice.csv`) y la plantilla `reportes/revision_realwaste_metal.txt`, que nunca sobrescribe. En la plantilla anotas los números de los aerosoles, más otras correcciones como `número clase` o `número descartar`, y cambias `terminado: no` por `terminado: si`. Hasta entonces, la importación real se niega. Si las candidatas de `Metal` cambian y el índice ya no corresponde, el script se detiene en vez de aplicar mal los números.
+
+Tope: **1.200 imágenes nuevas por clase**, llenado por prioridad (muestra con semilla 42 dentro de cada fuente y clase). Todo va solo a `externo/train`. Deduplicación con dHash ≤ 4 contra publico (train/val/test), juliaca y el externo previo, y dentro y entre las fuentes; si dos se parecen, se queda la de mayor prioridad. Informes: `reportes/externo_publicos_dedup.csv` y `reportes/externo_publicos_conteos.csv`. Mosaicos de revisión (24 por fuente y clase) en `reportes/mosaicos_externos/`, que no se suben a git. El script solo reemplaza sus propios archivos y filas (prefijos `realwaste_`, `tacox_`, `trashnet_`); no toca lo de `importar_taco.py`. Sin la revisión de RealWaste Metal terminada, la importación real se niega.
+
 **Atribución:**
 - Proença, P. F., & Simões, P. (2020). *TACO: Trash Annotations in Context for Litter Detection*. arXiv:2003.06975. http://tacodataset.org — anotaciones bajo CC BY 4.0.
 - Imágenes con licencia ODbL: © OpenLitterMap & Contributors (https://openlittermap.com), Open Database License 1.0. Los recortes derivados de ellas se comparten, si se publican, bajo la misma licencia (share-alike).
