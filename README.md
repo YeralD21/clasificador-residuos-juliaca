@@ -238,3 +238,13 @@ Van solo a `dataset/externo/train/` (nunca a val/test ni a `dataset/juliaca`), c
 - Las métricas del informe se copian de `reportes/*.json` y `runs/*/results.csv`, tal como salieron.
 
 Las fotos (`dataset/`) no se suben a git (ver `.gitignore`); para pasarlas entre equipos usa un USB o Google Drive. Los modelos finales de `modelos/` (con su `.json` de versiones) y `reportes/` sí se suben.
+
+## 9. Respaldo de fotos (fuera de git)
+
+`dataset/` no se sube a git (`.gitignore` ignora `dataset/**` salvo las carpetas y los `.gitkeep`). Si se pierde el disco o se clona el repo en otro equipo, las fotos no vienen con él. Las carpetas de abajo son la copia de seguridad: no se editan a mano y no las modifica ningún script.
+
+| Conjunto | Copia de seguridad | Destino en el repo |
+|---|---|---|
+| `val_camara` (Grupo 3) | `D:\Proyecto-Residuos-ML\Paquetes de FOTOS\Grupo 3\val_camara_paquete-clasificadas` | `dataset/val_camara/<clase>/<objeto>/` |
+
+En la misma carpeta del Grupo 3 están también los `.zip` del paquete (`val_camara_paquete-CLASIFICADAS.zip` y `val_camara_paquete-IMAGENES-CRUDAS.zip`).

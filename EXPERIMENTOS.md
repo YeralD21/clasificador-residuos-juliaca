@@ -139,6 +139,27 @@ con su `.json`. Control sin externos: `modelos/etapa2_v2.pt` (e2_replay2_v2, des
 `dataset/val_camara/<clase>/<objeto>/`: objetos nuevos tomados con la cámara de la laptop. Evaluación
 aparte (`evaluar.py --datos val_camara`), nunca para entrenar ni early stopping.
 
+### val_camara (Grupo 3, 2026-10-26): 29 objetos nuevos, 293 fotos
+Copia de `Paquetes de FOTOS\Grupo 3\val_camara_paquete-clasificadas\val_camara` (README §9).
+Reclasificados por el usuario antes de evaluar: `plasticos/tetra_bonle` → `papel_carton/obj128_caja_tetra_bonle`
+(decisión tetra) y `plasticos/cinta_peligro_obras` → `plasticos/obj129_cinta_peligro_obras`.
+
+Anti-leakage (dHash <= 4 contra juliaca train/val/test, publico y externo; `reportes/val_camara_dedup.csv`):
+1 coincidencia (dist 3), `peligrosos/obj106_estuche_audifonos/…13.53.00 (1).jpeg` vs
+`publico/train/organico/companero_000974_dl_marron_01283.jpg`. Revisada a ojo: falso positivo
+(estuche negro sobre sofá gris vs papa con moho sobre fondo blanco), no es la misma foto.
+
+| modelo | top1 | F1 macro (7 clases) |
+|---|---|---|
+| etapa2_v2 | 0.4403 | 0.4309 |
+| etapa2_ext | 0.4881 | 0.4606 |
+| etapa2_ext_full | 0.5529 | 0.5183 |
+| etapa1_ganador | 0.3515 | 0.3760 |
+
+F1 por clase: `reportes/*_val_camara.json`. Por foto: `reportes/val_camara_por_foto.csv`. Accuracy
+por objeto (% de fotos acertadas): `reportes/val_camara_por_objeto.csv`. Sin ganador elegido.
+
 ## Pendientes
-- tetra/multicapa en papel_carton de publico (revision\tetra\), decisión diferida. Si se cambia
-  publico, hay que reentrenar e1_base con el publico nuevo antes de comparar (val cambia).
+- ~~tetra/multicapa en papel_carton de publico (revision\tetra\), decisión diferida.~~ CERRADO
+  (2026-10-26): los envases tetra/multicapa de cartón se clasifican como `papel_carton` y se
+  mantienen en publico. publico no cambia, así que no hay que reentrenar e1_base.
