@@ -24,6 +24,9 @@ probabilidades del clasificador en esos frames. La caja se dibuja con el color d
 "NO SEGURO". Las cajas que el modelo ve como sin_residuo se ignoran. La clase la decide siempre el clasificador.
 Barra superior: el tacho del objeto de mayor área ("TACHO AZUL - Papel y carton (87%)", fondo del color del
 tacho), "Sin residuo" si no hay objetos, y una fila de chips si los objetos van a tachos distintos.
+Respaldo: si los filtros no dejan ninguna caja, se clasifica el frame completo (mismo camino que evaluar.py,
+promediado en --historial frames): sin_residuo -> "Sin residuo"; otra clase con conf >= --umbral -> su tacho con
+"(vista completa)"; si no, NO SEGURO. --sin-respaldo lo desactiva.
 --debug dibuja en gris las cajas descartadas con su motivo.
 Teclas: Q salir, F pantalla completa, S guardar cada recorte mostrado en capturas_revisar/ (para que TÚ lo clasifiques).
 """
@@ -233,19 +236,22 @@ def descartada(frame, caja, motivo):
     cv2.putText(frame, motivo, (x1 + 4, y1 + 16), cv2.FONT_HERSHEY_SIMPLEX, 0.45, GRIS, 1, cv2.LINE_AA)
 
 
-def barra(ancho, objetos):
+def barra(ancho, objetos, nota=""):
     """Barra superior. objetos: [(tacho, conf, color)] de mayor a menor área; tacho=None si es NO SEGURO.
-    Fila 1: el objeto principal (el de mayor área), fondo del color de su tacho y texto grande.
+    Fila 1: el objeto principal (el de mayor área), fondo del color de su tacho y texto grande (+ `nota`).
     Fila 2, solo si los objetos van a tachos distintos: un chip por tacho, con su mayor confianza."""
     e = ancho / 1280
     if not objetos:
         texto, color = "Sin residuo", SIN_RESIDUO
     else:
         t, conf, color = objetos[0]
-        texto = f"NO SEGURO ({conf:.0%})" if t is None else f"TACHO {t} ({conf:.0%})"
+        texto = (f"NO SEGURO ({conf:.0%})" if t is None else f"TACHO {t} ({conf:.0%})") + nota
     fila = np.full((int(72 * e), ancho, 3), color, np.uint8)
     esc, gr = 1.4 * e, max(2, int(round(3 * e)))
-    (_, th), _ = cv2.getTextSize(texto, cv2.FONT_HERSHEY_SIMPLEX, esc, gr)
+    (tw, th), _ = cv2.getTextSize(texto, cv2.FONT_HERSHEY_SIMPLEX, esc, gr)
+    if tw > ancho - 32 * e:  # textos largos ("... (vista completa)"): se achican para que quepan
+        esc *= (ancho - 32 * e) / tw
+        (_, th), _ = cv2.getTextSize(texto, cv2.FONT_HERSHEY_SIMPLEX, esc, gr)
     cv2.putText(fila, texto, (int(16 * e), (fila.shape[0] + th) // 2), cv2.FONT_HERSHEY_SIMPLEX, esc, tinta(color),
                 gr, cv2.LINE_AA)
 
@@ -305,6 +311,8 @@ def crear_parser():
     ap.add_argument("--bench", type=int, default=0, help="N frames sin ventana y muestra FPS por etapa")
     ap.add_argument("--debug", action="store_true",
                     help="dibuja en gris las cajas descartadas con su motivo (filtro, persistencia o sin_residuo)")
+    ap.add_argument("--sin-respaldo", action="store_true",
+                    help="no clasificar el frame completo cuando el detector no deja ninguna caja")
     return ap
 
 
@@ -336,6 +344,7 @@ def main():
     t0, fps, n = time.time(), 0.0, 0
     tiempos = {"det": [], "clf": [], "total": []}
     pistas = []
+    completo = deque(maxlen=args.historial)  # respaldo: probabilidades del frame completo, se promedian como una pista
     while True:
         if imagen is not None:
             frame = imagen.copy()
@@ -378,6 +387,20 @@ def main():
         if args.debug:
             fuera += [(p.caja, f"persistencia {sum(p.visto)}/{args.persistencia}") for p in pistas
                       if p.visto[-1] and sum(p.visto) < args.persistencia]
+
+        # Respaldo: si los filtros no dejan ninguna caja, se clasifica el frame completo (mismo camino que evaluar.py,
+        # ver diagnostico_inferencia.py). sin_residuo -> "Sin residuo"; conf >= umbral -> su tacho; si no, NO SEGURO.
+        vista = []  # [(tacho o None, conf, color, clase)] de la vista completa, para la barra
+        if cajas or args.sin_respaldo:
+            completo.clear()
+        else:
+            completo.append(clasificar(clf, [frame], args.imgsz, device, gpu)[0])
+            prom = np.mean(completo, axis=0)
+            i = int(prom.argmax())
+            clase, conf = nombres[i], float(prom[i])
+            if clase != "sin_residuo":
+                vista = [(TACHO[clase][0], conf, TACHO[clase][1], clase) if conf >= args.umbral
+                         else (None, conf, NO_SEGURO, "NOSEGURO")]
         tc = time.perf_counter()
         tiempos["det"].append(tb - ta)
         tiempos["clf"].append(tc - tb)
@@ -400,9 +423,15 @@ def main():
         ahora = time.time()
         fps = 0.9 * fps + 0.1 / max(ahora - t0, 1e-6)
         t0 = ahora
-        cv2.putText(frame, f"{fps:.0f} FPS | {len(dibujos)} obj" + (" | DEBUG" if args.debug else ""),
+        limpio = frame.copy() if vista else None  # para S: el frame sin dibujos
+        cv2.putText(frame, f"{fps:.0f} FPS | {len(dibujos)} obj" + (" | vista completa" if completo else "")
+                    + (" | DEBUG" if args.debug else ""),
                     (12, frame.shape[0] - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
-        cv2.imshow(ventana, np.vstack([barra(frame.shape[1], [(t, c, col) for _, _, t, c, col, _ in dibujos]), frame]))
+        if vista:
+            sup = barra(frame.shape[1], [v[:3] for v in vista], nota=" (vista completa)")
+        else:
+            sup = barra(frame.shape[1], [(t, c, col) for _, _, t, c, col, _ in dibujos])
+        cv2.imshow(ventana, np.vstack([sup, frame]))
 
         k = teclas_ventana(ventana)
         if k == "q":
@@ -411,11 +440,13 @@ def main():
             d = RAIZ / "capturas_revisar"
             d.mkdir(exist_ok=True)
             marca = time.strftime("%Y%m%d_%H%M%S")
-            for j, (_, rec, _, _, _, clase) in enumerate(dibujos):
+            guardar = [(rec, clase) for _, rec, _, _, _, clase in dibujos]
+            guardar += [(limpio, f"{v[3]}_completo") for v in vista]
+            for j, (rec, clase) in enumerate(guardar):
                 f = d / f"pred-{clase}_{marca}_{j}.jpg"
                 cv2.imwrite(str(f), rec)
                 print(f"Guardado {f}")
-            if dibujos:
+            if guardar:
                 print("Clasifícalos TÚ y muévelos a dataset/juliaca/<split>/<clase>/objNNN/")
 
     if args.bench and n:

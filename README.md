@@ -158,6 +158,7 @@ python scripts/inferencia_webcam.py --camara 0 --imgsz 224                  # = 
 - Cada objeto: recuadro del color de su tacho (NTP 900.058: azul papel_carton, amarillo metales, blanco plasticos, gris vidrio, marrón organico, rojo peligrosos, negro generales) con la etiqueta `AZUL - Papel y carton 87%`. Si la confianza promedio es menor a `--umbral`: morado con `NO SEGURO 45%` (morado porque el gris es el tacho de vidrio).
 - **Barra superior**: el tacho del objeto principal (el de mayor área) con fondo de su color y texto grande, p. ej. `TACHO AZUL - Papel y carton (87%)`; `NO SEGURO (45%)` si su confianza es baja; `Sin residuo` si no hay objetos. Si los objetos van a tachos distintos, debajo aparece una fila de **chips** de colores, uno por tacho con su mayor confianza.
 - Los textos van sin tildes (`carton`, `Organicos`) porque la fuente de OpenCV solo dibuja ASCII.
+- **Respaldo (vista completa)**: si los filtros no dejan ninguna caja (el detector no ve el objeto, p. ej. una caja que llena el encuadre), se clasifica el **frame completo** por el mismo camino que `evaluar.py`, promediando los últimos `--historial` frames. Si sale `sin_residuo` → `Sin residuo`; otra clase con confianza ≥ `--umbral` → `TACHO ... (87%) (vista completa)`; si no → `NO SEGURO (45%) (vista completa)`. Abajo a la izquierda aparece `vista completa`. Con **S** se guarda el frame entero (`pred-<clase>_completo_...jpg`). `--sin-respaldo` lo desactiva.
 - `--debug`: dibuja además, en gris fino, las cajas descartadas con el motivo y el prompt: `ignorada [wall]`, `duplicada [cup]`, `area [cardboard box]`, `lejana`, `borrosa`, `exceso`, `persistencia 1/3` o `sin_residuo 80%`.
 
 Teclas: **Q** sale, **F** pantalla completa, **S** guarda los recortes mostrados en `capturas_revisar/` (nombre `pred-<clase>_...jpg`, o `pred-NOSEGURO_...`; la clase la decides tú). La ventana se maximiza sin franja gris, igual que en `inferencia_webcam.py`.
@@ -178,6 +179,7 @@ python scripts/inferencia_deteccion.py --camara 0 --debug                       
 | `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, fruit peel, food waste, tube, cardboard box, juice box, candy wrapper, chocolate bar, sachet | qué busca el detector |
 | `--max-area` | `0.85` | área máxima de la caja (fracción del frame); antes `0.6` |
 | `--debug` | apagado | cajas descartadas en gris con su motivo |
+| `--sin-respaldo` | apagado | no clasifica el frame completo cuando no hay cajas |
 | `--umbral` | `0.6` | confianza mínima del clasificador; por debajo, "NO SEGURO" |
 | `--conf-det` | `0.35` | confianza mínima del detector (también para los negativos) |
 | `--max-objetos` | `4` | máximo de cajas mostradas por frame (las de mayor área) |
@@ -212,6 +214,15 @@ Con los filtros y la persistencia (valores por defecto actuales, misma laptop, `
 | ahora: sin relleno, fp32 | 0.5529 | 0.5183 (0 de 293 fotos distintas) |
 
 El orden de canales y la lectura no tenían problema: `cv2.imread` y el lector de Ultralytics dan los mismos píxeles en las 293 fotos, y Ultralytics recibe BGR en ambos caminos (Resize del lado corto + CenterCrop, BGR→RGB, /255). La diferencia era el relleno gris de `recorte_cuadrado` (cambiaba 142 de 293 predicciones) y fp16 (2 de 293).
+
+**Comparación de detectores** (`python scripts/comparar_detectores.py`, 293 fotos de `dataset/val_camara`, filtros por defecto, una pasada por foto, clasificador `etapa2_ext_full.pt`). val_camara no tiene cajas anotadas, así que "la caja cubre el objeto" se aproxima: `caja` = queda al menos una caja tras los filtros; `centro` = la caja principal contiene el centro de la foto; `clase_ok` = su recorte se clasifica bien; `final_ok` = clase final de un frame (caja, o frame completo si no hay caja). Detalle en `reportes/comparar_detectores.csv`; hojas de contacto con la caja dibujada en `revision/comparar_detectores/` (no se suben).
+
+| Detector | caja | centro | clase_ok | final_ok |
+|---|---|---|---|---|
+| `yoloe-26n-seg` (defecto) | 97 (33.1 %) | 91 (31.1 %) | 48 (16.4 %) | 159 (54.3 %) |
+| `yoloe-26s-seg` | 152 (51.9 %) | 147 (50.2 %) | 84 (28.7 %) | 163 (55.6 %) |
+
+En la primera hoja de contacto, 26n además encuadra a veces solo una parte del envoltorio (y aun así cuenta en `centro`). FPS en la PC (RTX 3060, `--bench 200`): 26n 30.0 FPS con 1 caja / 29.9 sin cajas (respaldo); 26s 29.4 / 29.2. **Falta medir en la laptop (RTX 3050)**, donde la diferencia será mayor. El defecto sigue siendo `yoloe-26n-seg.pt` hasta decidir.
 
 Detección global (`--roi 1.0`, `--ignorar`, foco y nitidez, `--max-objetos 4`, con `--modelo modelos/etapa1_ganador.pt`, el defecto cuando se midió; misma laptop, `--bench 200`). En `clf` entran también los filtros, la nitidez y la persistencia:
 
