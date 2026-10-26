@@ -1,7 +1,7 @@
 """Detección + clasificación en dos etapas sobre TODO el frame, pensado para la laptop RTX 3050.
 
   python scripts/inferencia_deteccion.py --camara 0
-  python scripts/inferencia_deteccion.py --camara 0 --modelo modelos/etapa2_avance.pt --umbral 0.7
+  python scripts/inferencia_deteccion.py --camara 0 --modelo modelos/etapa1_ganador.pt --umbral 0.7
   python scripts/inferencia_deteccion.py --fuente video.mp4            # probar sin webcam
   python scripts/inferencia_deteccion.py --fuente foto.jpg --bench 100 # medir FPS sin ventana
 
@@ -203,8 +203,8 @@ def etiqueta(frame, caja, texto, color):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--modelo", default=str(RAIZ / "modelos" / "etapa1_ganador.pt"),
-                    help="clasificador; también modelos/etapa2_avance.pt")
+    ap.add_argument("--modelo", default=str(RAIZ / "modelos" / "etapa2_ext_full.pt"),
+                    help="clasificador (modelo actual, ver EXPERIMENTOS.md); también modelos/etapa1_ganador.pt")
     ap.add_argument("--detector", default="yoloe-26n-seg.pt",
                     help="yoloe-26{n,s,m,l,x}-seg.pt (texto), yoloe-26?-seg-pf.pt (prompt-free), yolov8s-worldv2.pt")
     ap.add_argument("--camara", type=int, default=0)

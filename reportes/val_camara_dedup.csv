@@ -76,7 +76,7 @@ dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.12 (1).jpeg,13,dataset/publico/train/peligrosos/companero_000193_dl_rojo_00201.jpg,publico/train,0
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.12.jpeg,13,dataset/publico/val/vidrio/companero_000007_dl_gris_00008.jpg,publico/val,0
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.13.jpeg,14,dataset/publico/train/peligrosos/companero_000878_dl_rojo_00945.jpg,publico/train,0
-dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48 (1).jpeg,13,dataset/externo/_fuentes/taco/img/1072.jpg,externo,0
+dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48 (1).jpeg,13,dataset/externo/_fuentes/taco/img/1072.jpg,externo/_fuentes,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48.jpeg,17,dataset/publico/train/generales/companero_000110_dl_negro_00157.jpg,publico/train,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.50 (1).jpeg,14,dataset/publico/train/peligrosos/companero_000449_dl_rojo_00476.jpg,publico/train,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.50.jpeg,16,dataset/publico/train/metales/companero_000711_dl_amarillo_00764.jpg,publico/train,0
@@ -278,7 +278,7 @@ dataset/val_camara/plasticos/obj129_cinta_peligro_obras/WhatsApp Image 2026-10-2
 dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33 (1).jpeg,13,dataset/publico/train/metales/companero_001266_dl_amarillo_01369.jpg,publico/train,0
 dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33 (2).jpeg,15,dataset/publico/train/papel_carton/companero_000215_dl_azul_00234.jpg,publico/train,0
 dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33.jpeg,15,dataset/publico/test/papel_carton/companero_000226_dl_azul_00226.jpg,publico/test,0
-dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.34.jpeg,16,dataset/externo/train/generales/taco_568_1799.jpg,externo,0
+dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.34.jpeg,16,dataset/externo/train/generales/taco_568_1799.jpg,externo/train,0
 dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.35 (1).jpeg,12,dataset/publico/val/vidrio/companero_000042_dl_gris_00045.jpg,publico/val,0
 dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.35.jpeg,5,dataset/publico/train/papel_carton/companero_000398_dl_azul_00431.jpg,publico/train,0
 dataset/val_camara/vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.41.jpeg,13,dataset/publico/train/generales/companero_000828_dl_negro_01226.jpg,publico/train,0

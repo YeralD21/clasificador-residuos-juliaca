@@ -117,19 +117,19 @@ Cada época imprime una línea:
 
 Uso en vivo (laptop): en la PC haz `git add modelos/ reportes/ && git commit -m "Modelo etapa 2" && git push`; en la laptop `git pull` y ejecuta
 ```bash
-python scripts/inferencia_webcam.py --modelo modelos/etapa2_AAAAMMDD_HHMM.pt
+python scripts/inferencia_webcam.py --modelo modelos/etapa2_AAAAMMDD_HHMM.pt   # sin --modelo usa el modelo actual
 ```
 Con `S` guardas un recorte en `capturas_revisar/`. Tú decides su clase y lo mueves a `dataset/juliaca/...` para reentrenar.
 
 ## 6. Usar el modelo en la laptop
 
-> **Modelo provisional:** `modelos/etapa2_avance.pt` es e2_replay2, elegido solo por validación (ver `EXPERIMENTOS.md`, "Avance etapa 2"). `dataset/juliaca/test` aún **no** se ha evaluado.
+> **Modelo actual:** `modelos/etapa2_ext_full.pt` (e2_ext_full), es el `--modelo` por defecto de `inferencia_webcam.py` e `inferencia_deteccion.py`. Se eligió por el máximo F1 macro en `val_camara` (0.5183), así que ese número es optimista (ver `EXPERIMENTOS.md`, "Modelo actual"). La medida final será `dataset/juliaca/test`, una sola vez; aún **no** se ha evaluado.
 
 ```bash
 git pull
 .venv\Scripts\activate
 python scripts/verificar_entorno.py --comparar entorno_referencia.json      # debe decir "Todo coincide."
-python scripts/inferencia_webcam.py --modelo modelos/etapa2_avance.pt --camara 0 --imgsz 224
+python scripts/inferencia_webcam.py --camara 0 --imgsz 224                  # = --modelo modelos/etapa2_ext_full.pt
 ```
 
 - Si `.venv` no existe en la laptop, créalo como en la sección 4, paso 4: `py -3.13 -m venv .venv`, actívalo y `pip install -r requirements-lock.txt --extra-index-url https://download.pytorch.org/whl/cu130`.
@@ -157,15 +157,15 @@ python scripts/inferencia_webcam.py --modelo modelos/etapa2_avance.pt --camara 0
 Teclas: **Q** sale, **F** pantalla completa, **S** guarda los recortes mostrados en `capturas_revisar/` (nombre `pred-<clase>_...jpg`, o `pred-NOSEGURO_...`; la clase la decides tú). La ventana se maximiza sin franja gris, igual que en `inferencia_webcam.py`.
 
 ```bash
-python scripts/inferencia_deteccion.py --camara 0                                     # cámara de la laptop / MX Brio
-python scripts/inferencia_deteccion.py --camara 0 --modelo modelos/etapa2_avance.pt   # con el modelo de etapa 2
+python scripts/inferencia_deteccion.py --camara 0                                     # cámara de la laptop / MX Brio, modelo actual
+python scripts/inferencia_deteccion.py --camara 0 --modelo modelos/etapa1_ganador.pt  # con el modelo de etapa 1
 python scripts/inferencia_deteccion.py --fuente video.mp4                             # probar con un video
 python scripts/inferencia_deteccion.py --fuente foto.jpg --bench 100                  # FPS y descartes por filtro, sin ventana
 ```
 
 | Argumento | Defecto | Qué hace |
 |---|---|---|
-| `--modelo` | `modelos/etapa1_ganador.pt` | clasificador. Por ahora es el que mejor generaliza en vivo; `modelos/etapa2_avance.pt` sigue disponible |
+| `--modelo` | `modelos/etapa2_ext_full.pt` | clasificador (modelo actual, ver `EXPERIMENTOS.md`); `modelos/etapa1_ganador.pt` y `modelos/etapa2_v2.pt` siguen disponibles |
 | `--detector` | `yoloe-26n-seg.pt` | detector; se descarga solo a `modelos/detectores/` (no se sube a git) |
 | `--camara` / `--fuente` | `0` / — | índice de webcam, o video/imagen para pruebas |
 | `--umbral` | `0.6` | confianza mínima del clasificador; por debajo, "NO SEGURO" |
@@ -192,7 +192,7 @@ FPS medidos en la laptop (RTX 3050 Laptop 4 GB, `--bench`, sin ventana ni captur
 
 Con los filtros y la persistencia (valores por defecto actuales, misma laptop, `--bench 200`, imágenes de `dataset/crudo/val`): 1 caja mostrada ~22.5–23.8 ms (~42–44 FPS); 3 cajas mostradas ~22.6–24.1 ms (~41–44 FPS, el tope de `--max-objetos`); 0 cajas ~13.8–15 ms (~66–72 FPS; en las dos primeras corridas de la sesión, con la GPU recién activada, el detector tardó 36–39 ms y el total dio ~26–28 FPS). Una imagen con una sola caja de área 0.68 queda en 0 cajas por `--max-area 0.6`.
 
-Detección global (valores por defecto actuales: `--roi 1.0`, `--ignorar`, foco y nitidez, `--max-objetos 4`, `etapa1_ganador.pt`; misma laptop, `--bench 200`). En `clf` entran también los filtros, la nitidez y la persistencia:
+Detección global (`--roi 1.0`, `--ignorar`, foco y nitidez, `--max-objetos 4`, con `--modelo modelos/etapa1_ganador.pt`, el defecto cuando se midió; misma laptop, `--bench 200`). En `clf` entran también los filtros, la nitidez y la persistencia:
 
 | Imagen (`dataset/crudo/val`) | Cajas detector → mostradas | Descartes (último frame) | Total |
 |---|---|---|---|
@@ -246,5 +246,7 @@ Las fotos (`dataset/`) no se suben a git (ver `.gitignore`); para pasarlas entre
 | Conjunto | Copia de seguridad | Destino en el repo |
 |---|---|---|
 | `val_camara` (Grupo 3) | `D:\Proyecto-Residuos-ML\Paquetes de FOTOS\Grupo 3\val_camara_paquete-clasificadas` | `dataset/val_camara/<clase>/<objeto>/` |
+
+`python scripts/auditar.py` verifica que ninguna foto de `val_camara` esté (idéntica o casi igual, dHash <= 4) en juliaca, publico o externo; si está en algún `train` es ERROR, porque `val_camara` nunca se entrena. Informe en `reportes/val_camara_dedup.csv`; los falsos positivos revisados a ojo van en `reportes/val_camara_falsos_positivos.csv`.
 
 En la misma carpeta del Grupo 3 están también los `.zip` del paquete (`val_camara_paquete-CLASIFICADAS.zip` y `val_camara_paquete-IMAGENES-CRUDAS.zip`).

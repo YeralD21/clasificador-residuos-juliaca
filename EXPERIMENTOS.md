@@ -159,6 +159,34 @@ Anti-leakage (dHash <= 4 contra juliaca train/val/test, publico y externo; `repo
 F1 por clase: `reportes/*_val_camara.json`. Por foto: `reportes/val_camara_por_foto.csv`. Accuracy
 por objeto (% de fotos acertadas): `reportes/val_camara_por_objeto.csv`. Sin ganador elegido.
 
+## Modelo actual
+**`modelos/etapa2_ext_full.pt` (e2_ext_full)**, decisión del usuario (2026-10-26): máximo F1 macro en
+val_camara (0.5183). Es el `--modelo` por defecto de `inferencia_webcam.py` e `inferencia_deteccion.py`.
+
+| modelo | top1 val_camara | F1 macro val_camara (7 clases) |
+|---|---|---|
+| etapa2_v2 | 0.4403 | 0.4309 |
+| etapa2_ext | 0.4881 | 0.4606 |
+| **etapa2_ext_full** | **0.5529** | **0.5183** |
+| etapa1_ganador | 0.3515 | 0.3760 |
+
+F1 por clase en val_camara (de `reportes/*_val_camara.json`):
+
+| clase | n | etapa2_v2 | etapa2_ext | etapa2_ext_full | etapa1_ganador |
+|---|---|---|---|---|---|
+| generales | 122 | 0.578 | 0.614 | 0.691 | 0.134 |
+| metales | 13 | 0.259 | 0.174 | 0.298 | 0.062 |
+| organico | 20 | 0.737 | 0.757 | 0.769 | 0.788 |
+| papel_carton | 26 | 0.509 | 0.415 | 0.475 | 0.489 |
+| peligrosos | 22 | 0.384 | 0.464 | 0.429 | 0.360 |
+| plasticos | 73 | 0.216 | 0.311 | 0.467 | 0.408 |
+| vidrio | 17 | 0.333 | 0.490 | 0.500 | 0.390 |
+
+> **Advertencia:** val_camara se usó para ELEGIR el modelo, así que su 0.5183 es optimista
+> (sesgo de selección; además son solo 29 objetos y 293 fotos, sin `sin_residuo`). No es la medida
+> final. La medida final será `dataset/juliaca/test`, evaluado UNA sola vez con este modelo
+> (`python scripts/evaluar.py --split test`, cuando el usuario lo pida). juliaca/test NO se ha usado.
+
 ## Pendientes
 - ~~tetra/multicapa en papel_carton de publico (revision\tetra\), decisión diferida.~~ CERRADO
   (2026-10-26): los envases tetra/multicapa de cartón se clasifican como `papel_carton` y se
