@@ -72,9 +72,73 @@ def dhash(ruta: Path, tam: int = 8) -> int:
     return bits
 
 
-def abrir_camara(indice=0, ancho=1280, alto=720, fps=30):
-    """Abre la Logitech MX Brio (o cualquier webcam). En Windows usa DirectShow + MJPG."""
+def nombres_camaras():
+    """Nombres de las cámaras conectadas según Windows (WMI), o None si no se pueden consultar. Dicen SI está la
+    MX Brio, pero no su índice en OpenCV (el orden de WMI no es el de DirectShow)."""
+    if platform.system() != "Windows":
+        return None
+    import subprocess
+    cmd = ("Get-CimInstance Win32_PnPEntity | Where-Object { $_.PNPClass -in 'Camera','Image' -and "
+           "$_.Status -eq 'OK' } | ForEach-Object { $_.Name }")
+    try:
+        r = subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True, text=True, timeout=15)
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    return [n.strip() for n in r.stdout.splitlines() if n.strip()] if r.returncode == 0 else None
+
+
+def probar_camara(indice):
+    """(ancho, alto) máximos que acepta la cámara `indice` (pide 4K y lee lo que queda), o None si no da frames."""
     import cv2
+    backend = cv2.CAP_DSHOW if platform.system() == "Windows" else cv2.CAP_ANY
+    cap = cv2.VideoCapture(indice, backend)
+    try:
+        if not cap.isOpened():
+            return None
+        cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 3840)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 2160)
+        ok, frame = cap.read()
+        return (frame.shape[1], frame.shape[0]) if ok and frame is not None else None
+    finally:
+        cap.release()
+
+
+def elegir_camara(camara="auto"):
+    """--camara: un número se usa tal cual. 'auto' prueba los índices 0-5: si Windows ve una MX Brio, elige la
+    cámara que acepta mayor resolución (la Brio llega a 4K); si no hay Brio, la primera que funciona (la integrada).
+    Imprime qué eligió."""
+    if str(camara).lower() != "auto":
+        return int(camara)
+    import cv2
+    try:
+        cv2.utils.logging.setLogLevel(cv2.utils.logging.LOG_LEVEL_ERROR)  # sin avisos por índices vacíos
+    except AttributeError:
+        pass
+    nombres = nombres_camaras()
+    brio = [n for n in nombres or [] if "brio" in n.lower()]
+    print(f"[camara auto] Windows ve: {nombres if nombres is not None else '(no se pudo consultar)'}", flush=True)
+    halladas = {i: r for i in range(6) if (r := probar_camara(i))}
+    if not halladas:
+        raise SystemExit("[camara auto] No se encontró ninguna cámara en los índices 0-5. Cierra Logi Tune / OBS / "
+                         "Teams o usa --camara N.")
+    print("[camara auto] índices que dan imagen: " + ", ".join(f"{i} ({w}x{h} máx)" for i, (w, h) in halladas.items()))
+    if brio or nombres is None:
+        i = max(halladas, key=lambda k: halladas[k][0] * halladas[k][1])
+        motivo = f"MX Brio conectada ({brio[0]}): la de mayor resolución" if brio else "la de mayor resolución"
+    else:
+        i = min(halladas)
+        motivo = "sin MX Brio: la integrada (primer índice que funciona)"
+    print(f"[camara auto] Elegida: índice {i}, {halladas[i][0]}x{halladas[i][1]} máx -> {motivo}. "
+          "Para forzar otra: --camara N", flush=True)
+    return i
+
+
+def abrir_camara(indice="auto", ancho=1280, alto=720, fps=30):
+    """Abre la Logitech MX Brio (o cualquier webcam). En Windows usa DirectShow + MJPG. indice: número o 'auto'
+    (ver elegir_camara)."""
+    import cv2
+    indice = elegir_camara(indice)
     backend = cv2.CAP_DSHOW if platform.system() == "Windows" else cv2.CAP_ANY
     cap = cv2.VideoCapture(indice, backend)
     cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))

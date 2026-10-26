@@ -282,9 +282,9 @@ def crear_parser():
     ap = argparse.ArgumentParser()
     ap.add_argument("--modelo", default=str(RAIZ / "modelos" / "etapa2_ext_full.pt"),
                     help="clasificador (modelo actual, ver EXPERIMENTOS.md); también modelos/etapa1_ganador.pt")
-    ap.add_argument("--detector", default="yoloe-26n-seg.pt",
+    ap.add_argument("--detector", default="yoloe-26s-seg.pt",
                     help="yoloe-26{n,s,m,l,x}-seg.pt (texto), yoloe-26?-seg-pf.pt (prompt-free), yolov8s-worldv2.pt")
-    ap.add_argument("--camara", type=int, default=0)
+    ap.add_argument("--camara", default="auto", help="índice de OpenCV, o auto (MX Brio si está, si no la integrada)")
     ap.add_argument("--fuente", help="video o imagen en lugar de la webcam (para pruebas)")
     ap.add_argument("--umbral", type=float, default=0.6)
     ap.add_argument("--conf-det", type=float, default=0.35, help="confianza mínima del detector")

@@ -43,7 +43,7 @@ def siguiente_objeto(clase):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--split", required=True, choices=SPLITS)
-    ap.add_argument("--camara", type=int, default=0)
+    ap.add_argument("--camara", default="auto", help="índice de OpenCV, o auto (MX Brio si está, si no la integrada)")
     args = ap.parse_args()
 
     cap = abrir_camara(args.camara)

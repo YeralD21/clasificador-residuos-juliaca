@@ -5,6 +5,18 @@ Clasificación de un residuo por imagen en el tacho que le corresponde según el
 - **Entrenamiento:** PC con RTX 3060 12 GB
 - **Uso en vivo:** laptop con RTX 3050 4 GB + webcam Logitech MX Brio
 
+## Uso rápido
+
+Tres lanzadores en la raíz del repo. Se abren con **doble clic**, o escribiendo su nombre en la terminal desde la raíz (`demo` en cmd, `.\demo` en PowerShell). Funcionan desde cualquier carpeta (hacen `cd` al repo con `%~dp0`) y activan `.venv` solos; si `.venv` no existe, lo dicen (créalo como en la sección 4).
+
+| Lanzador | Qué hace | Script |
+|---|---|---|
+| `demo.bat` | Demo en vivo: detección + clasificación con los valores por defecto (cámara `auto`, detector `yoloe-26s-seg.pt`, modelo `modelos/etapa2_ext_full.pt`). Q sale, F pantalla completa, S guarda recortes. | `scripts/inferencia_deteccion.py` (sección 6.1) |
+| `capturar.bat` | Sesión de fotos: **ESPACIO o clic** = foto JPG calidad 95, sin modificar y a la resolución completa de la cámara; **N** = nuevo objeto (`objNNN` automático); **Q** = salir. Muestra el objeto actual, cuántas fotos lleva y un destello al capturar. Guarda en `D:\Proyecto-Residuos-ML\fotos_laptop\<AAAA-MM-DD>\objNNN\`, **fuera del repo y de `dataset\`**: la clase y el split los decides tú después. | `scripts/capturar_sesion.py` |
+| `evaluar.bat` | Evalúa todos los `modelos\*.pt` en `dataset\val_camara` (nunca en `juliaca\test`) y deja una pausa para leer la tabla. | `scripts/evaluar.py --datos val_camara` |
+
+Los argumentos pasan al script: `demo --debug`, `demo --camara 1`, `capturar --camara 1`. La cámara `auto` imprime cuál eligió (ver sección 6). El `capturar_fotos.py` de antes (guarda directo en `dataset/juliaca/<split>/<clase>/` con recorte central) sigue disponible.
+
 ## 1. Qué clasifica el modelo: el MATERIAL, no el color
 
 El color de la norma es el **color del tacho**, no el color del objeto. El modelo reconoce el material y el programa muestra el tacho:
@@ -129,11 +141,11 @@ Con `S` guardas un recorte en `capturas_revisar/`. Tú decides su clase y lo mue
 git pull
 .venv\Scripts\activate
 python scripts/verificar_entorno.py --comparar entorno_referencia.json      # debe decir "Todo coincide."
-python scripts/inferencia_webcam.py --camara 0 --imgsz 224                  # = --modelo modelos/etapa2_ext_full.pt
+python scripts/inferencia_webcam.py --imgsz 224                             # cámara auto, --modelo modelos/etapa2_ext_full.pt
 ```
 
 - Si `.venv` no existe en la laptop, créalo como en la sección 4, paso 4: `py -3.13 -m venv .venv`, actívalo y `pip install -r requirements-lock.txt --extra-index-url https://download.pytorch.org/whl/cu130`.
-- `--camara` es el índice de OpenCV de la MX Brio (por defecto `0`; si se abre otra cámara, prueba `1`). `--imgsz 224` es el tamaño con el que se entrenó. Opcionales: `--umbral` (por defecto `0.6`; por debajo muestra "NO SEGURO"), `--suavizado` (por defecto `8` frames promediados) y `--recuadro` (lado del recuadro como fracción del alto del frame; por defecto `0.75`, admite p. ej. `0.9` o `1.0`). Con `1.0` el recuadro es el cuadrado central de alto completo, que es exactamente lo que vería el clasificador si le pasaras el frame entero (Ultralytics redimensiona y recorta al centro).
+- `--camara` es `auto` por defecto (en los 3 scripts de cámara): prueba los índices 0-5, y si Windows ve una MX Brio elige la que acepta mayor resolución (la Brio llega a 4K); si no hay Brio, la integrada (el primer índice que funciona). Imprime cuál eligió. OpenCV no da el nombre de cada índice en Windows, por eso el nombre solo dice si la Brio está y la resolución dice cuál es. `--camara N` fuerza el índice N. `--imgsz 224` es el tamaño con el que se entrenó. Opcionales: `--umbral` (por defecto `0.6`; por debajo muestra "NO SEGURO"), `--suavizado` (por defecto `8` frames promediados) y `--recuadro` (lado del recuadro como fracción del alto del frame; por defecto `0.75`, admite p. ej. `0.9` o `1.0`). Con `1.0` el recuadro es el cuadrado central de alto completo, que es exactamente lo que vería el clasificador si le pasaras el frame entero (Ultralytics redimensiona y recorta al centro).
 - Ventana: se puede maximizar o redimensionar y el video ocupa toda la ventana. Antes quedaba una franja gris porque `cv2.imshow` sin `namedWindow` crea una ventana `WINDOW_AUTOSIZE`, que dibuja el frame a su tamaño nativo; ahora se crea con `WINDOW_NORMAL | WINDOW_FREERATIO` (`scripts/comun.py`, `crear_ventana`).
 - Teclas: **Q** sale (o cerrar la ventana); **F** alterna pantalla completa; **S** guarda el recorte actual en `capturas_revisar/` (úsalo cuando el modelo se equivoque). Esas fotos no se clasifican solas: tú decides su clase y las pasas a `dataset/juliaca/<split>/<clase>/<objeto>/`.
 
@@ -164,18 +176,18 @@ python scripts/inferencia_webcam.py --camara 0 --imgsz 224                  # = 
 Teclas: **Q** sale, **F** pantalla completa, **S** guarda los recortes mostrados en `capturas_revisar/` (nombre `pred-<clase>_...jpg`, o `pred-NOSEGURO_...`; la clase la decides tú). La ventana se maximiza sin franja gris, igual que en `inferencia_webcam.py`.
 
 ```bash
-python scripts/inferencia_deteccion.py --camara 0                                     # cámara de la laptop / MX Brio, modelo actual
-python scripts/inferencia_deteccion.py --camara 0 --modelo modelos/etapa1_ganador.pt  # con el modelo de etapa 1
+python scripts/inferencia_deteccion.py                                                 # cámara auto (MX Brio si está), modelo actual
+python scripts/inferencia_deteccion.py --modelo modelos/etapa1_ganador.pt  # con el modelo de etapa 1
 python scripts/inferencia_deteccion.py --fuente video.mp4                             # probar con un video
 python scripts/inferencia_deteccion.py --fuente foto.jpg --bench 100                  # FPS y descartes por filtro, sin ventana
-python scripts/inferencia_deteccion.py --camara 0 --debug                             # además, cajas descartadas en gris con su motivo
+python scripts/inferencia_deteccion.py --debug                           # además, cajas descartadas en gris con su motivo
 ```
 
 | Argumento | Defecto | Qué hace |
 |---|---|---|
 | `--modelo` | `modelos/etapa2_ext_full.pt` | clasificador (modelo actual, ver `EXPERIMENTOS.md`); `modelos/etapa1_ganador.pt` y `modelos/etapa2_v2.pt` siguen disponibles |
-| `--detector` | `yoloe-26n-seg.pt` | detector; se descarga solo a `modelos/detectores/` (no se sube a git) |
-| `--camara` / `--fuente` | `0` / — | índice de webcam, o video/imagen para pruebas |
+| `--detector` | `yoloe-26s-seg.pt` | detector (decisión del usuario tras la comparación de abajo; antes `yoloe-26n-seg.pt`); se descarga solo a `modelos/detectores/` (no se sube a git) |
+| `--camara` / `--fuente` | `auto` / — | índice de webcam (auto: MX Brio si está, si no la integrada), o video/imagen para pruebas |
 | `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, fruit peel, food waste, tube, cardboard box, juice box, candy wrapper, chocolate bar, sachet | qué busca el detector |
 | `--max-area` | `0.85` | área máxima de la caja (fracción del frame); antes `0.6` |
 | `--debug` | apagado | cajas descartadas en gris con su motivo |
@@ -198,7 +210,7 @@ Detectores que soporta Ultralytics 8.4.184 (`ultralytics/utils/downloads.py`):
 - YOLOE con texto: `yoloe-26{n,s,m,l,x}-seg.pt`, `yoloe-11{s,m,l}-seg.pt`, `yoloe-v8{s,m,l}-seg.pt` (el codificador de texto `mobileclip2_b.ts` se descarga la primera vez a la raíz del repo; está en `.gitignore`).
 - YOLOE prompt-free (vocabulario interno, ignora `--prompts`): los mismos con sufijo `-seg-pf.pt`.
 - YOLO-World: `yolov8{s,m,l,x}-world.pt` y `yolov8{s,m,l,x}-worldv2.pt` (necesitan además el paquete `clip` de OpenAI).
-- Recomendado para la RTX 3050 4 GB: **`yoloe-26n-seg.pt`** (el más liviano y el único tamaño `n`).
+- Detector por defecto: **`yoloe-26s-seg.pt`** (detecta más objetos en val_camara, ver "Comparación de detectores"). Si en la RTX 3050 4 GB va lento, `--detector yoloe-26n-seg.pt` es el más liviano.
 
 FPS medidos en la laptop (RTX 3050 Laptop 4 GB, `--bench`, sin ventana ni captura de cámara, imágenes de `dataset/crudo/val`): con `yoloe-26n-seg` el detector tarda ~22–26 ms. En total da ~42–45 FPS con 0 objetos, ~27 FPS con 1 objeto y ~23 FPS con 5 objetos. Con `yoloe-26s-seg` y 2 objetos da ~26 FPS. En vivo será algo menos por la captura y la ventana. Si baja de ~8 FPS: usa `--imgsz-det 480` o `416` y/o `--max-objetos 3`.
 
@@ -219,10 +231,10 @@ El orden de canales y la lectura no tenían problema: `cv2.imread` y el lector d
 
 | Detector | caja | centro | clase_ok | final_ok |
 |---|---|---|---|---|
-| `yoloe-26n-seg` (defecto) | 97 (33.1 %) | 91 (31.1 %) | 48 (16.4 %) | 159 (54.3 %) |
-| `yoloe-26s-seg` | 152 (51.9 %) | 147 (50.2 %) | 84 (28.7 %) | 163 (55.6 %) |
+| `yoloe-26n-seg` | 97 (33.1 %) | 91 (31.1 %) | 48 (16.4 %) | 159 (54.3 %) |
+| `yoloe-26s-seg` (defecto) | 152 (51.9 %) | 147 (50.2 %) | 84 (28.7 %) | 163 (55.6 %) |
 
-En la primera hoja de contacto, 26n además encuadra a veces solo una parte del envoltorio (y aun así cuenta en `centro`). FPS en la PC (RTX 3060, `--bench 200`): 26n 30.0 FPS con 1 caja / 29.9 sin cajas (respaldo); 26s 29.4 / 29.2. **Falta medir en la laptop (RTX 3050)**, donde la diferencia será mayor. El defecto sigue siendo `yoloe-26n-seg.pt` hasta decidir.
+En la primera hoja de contacto, 26n además encuadra a veces solo una parte del envoltorio (y aun así cuenta en `centro`). FPS en la PC (RTX 3060, `--bench 200`): 26n 30.0 FPS con 1 caja / 29.9 sin cajas (respaldo); 26s 29.4 / 29.2. **Falta medir en la laptop (RTX 3050)**, donde la diferencia será mayor. Defecto elegido por el usuario: `yoloe-26s-seg.pt`.
 
 Detección global (`--roi 1.0`, `--ignorar`, foco y nitidez, `--max-objetos 4`, con `--modelo modelos/etapa1_ganador.pt`, el defecto cuando se midió; misma laptop, `--bench 200`). En `clf` entran también los filtros, la nitidez y la persistencia:
 

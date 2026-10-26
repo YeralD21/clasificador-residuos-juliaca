@@ -40,7 +40,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--modelo", default=str(RAIZ / "modelos" / "etapa2_ext_full.pt"),
                     help="clasificador (modelo actual, ver EXPERIMENTOS.md)")
-    ap.add_argument("--camara", type=int, default=0)
+    ap.add_argument("--camara", default="auto", help="índice de OpenCV, o auto (MX Brio si está, si no la integrada)")
     ap.add_argument("--imgsz", type=int, default=224)
     ap.add_argument("--umbral", type=float, default=0.6)
     ap.add_argument("--suavizado", type=int, default=8, help="frames que se promedian")
