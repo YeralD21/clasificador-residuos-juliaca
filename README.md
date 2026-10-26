@@ -7,15 +7,24 @@ Clasificación de un residuo por imagen en el tacho que le corresponde según el
 
 ## Uso rápido
 
-Tres lanzadores en la raíz del repo. Se abren con **doble clic**, o escribiendo su nombre en la terminal desde la raíz (`demo` en cmd, `.\demo` en PowerShell). Funcionan desde cualquier carpeta (hacen `cd` al repo con `%~dp0`) y activan `.venv` solos; si `.venv` no existe, lo dicen (créalo como en la sección 4).
+Lanzadores en la raíz del repo. Se abren con **doble clic**, o escribiendo su nombre en la terminal desde la raíz (`demo` en cmd, `.\demo` en PowerShell). Funcionan desde cualquier carpeta (hacen `cd` al repo con `%~dp0`) y activan `.venv` solos; si `.venv` no existe, lo dicen (créalo como en la sección 4).
 
 | Lanzador | Qué hace | Script |
 |---|---|---|
 | `demo.bat` | Demo en vivo: detección + clasificación con los valores por defecto (cámara `auto`, detector `yoloe-26s-seg.pt`, modelo `modelos/etapa2_ext_full.pt`). Q sale, F pantalla completa, S guarda recortes. | `scripts/inferencia_deteccion.py` (sección 6.1) |
 | `capturar.bat` | Sesión de fotos: **ESPACIO o clic** = foto JPG calidad 95, sin modificar y a la resolución completa de la cámara; **N** = nuevo objeto (`objNNN` automático); **Q** = salir. Muestra el objeto actual, cuántas fotos lleva y un destello al capturar. Guarda en `D:\Proyecto-Residuos-ML\fotos_laptop\<AAAA-MM-DD>\objNNN\`, **fuera del repo y de `dataset\`**: la clase y el split los decides tú después. | `scripts/capturar_sesion.py` |
+| `etiquetar.bat` | Etiquetas **a mano** cada objeto de la última sesión de `capturar.bat`: ves un mosaico de sus fotos, eliges la **clase** (1 papel_carton, 2 metales, 3 plasticos, 4 vidrio, 5 organico, 6 peligrosos, 7 generales, 0 sin_residuo) y el **split** (T train, V val). S salta el objeto (vuelve a salir la próxima vez), D lo descarta, Z deshace, Q sale. Guarda en `fotos_laptop\<fecha>\etiquetas.csv` (objeto, clase, split, n_fotos, nota) tras cada decisión y retoma donde te quedaste. | `scripts/etiquetar_sesion.py` |
+| `importar.bat` | Con doble clic **solo muestra** qué haría (`--dry-run`): a qué split/clase va cada objeto y la tabla de fotos/objetos antes y después. `importar --importar` copia de verdad a `dataset\juliaca\<split>\<clase>\objNNN_<fecha>-objMMM\` (siguiente número libre de juliaca, archivos `20261026_obj003_01.jpg`) y luego corre `auditar.py`. | `scripts/importar_sesion.py` |
 | `evaluar.bat` | Evalúa todos los `modelos\*.pt` en `dataset\val_camara` (nunca en `juliaca\test`) y deja una pausa para leer la tabla. | `scripts/evaluar.py --datos val_camara` |
 
-Los argumentos pasan al script: `demo --debug`, `demo --camara 1`, `capturar --camara 1`. La cámara `auto` imprime cuál eligió (ver sección 6). El `capturar_fotos.py` de antes (guarda directo en `dataset/juliaca/<split>/<clase>/` con recorte central) sigue disponible.
+**Flujo de fotos nuevas:** `capturar` → `etiquetar` → `importar` (revisar) → `importar --importar`. La clase y el split los decides tú por objeto en `etiquetar` (reglas 2 y 3 de CLAUDE.md: la partición de juliaca es manual y por objeto); `importar` no decide nada, solo copia lo que dice `etiquetas.csv`. Garantías de `importar_sesion.py`:
+- cada objeto va **entero a un solo split**, en su propia carpeta; solo `train` y `val` (`test` se arma aparte, y el CSV con `test` se rechaza);
+- valida todo el CSV antes de escribir (clase, split, objeto repetido o sin fotos) y, si hay un error, no copia nada;
+- nunca sobrescribe; un objeto ya importado (misma fecha y objeto) se salta, así que repetirlo no duplica;
+- no toca las fotos originales de `fotos_laptop`;
+- imagen: el frame completo escalado a lado mayor **1600 px**, JPG 95, igual que las fotos que ya hay en juliaca (1200×1600 y 1600×1200, del celular). `--recorte roi` aplica antes el cuadrado central de `capturar_fotos.py` (75 % del lado menor); ninguna foto actual de juliaca tiene ese recorte. `--lado-max 0` no redimensiona.
+
+Los argumentos pasan al script: `demo --debug`, `demo --camara 1`, `capturar --camara 1`, `etiquetar --fecha 2026-10-26`, `importar --importar --fecha 2026-10-26`. La cámara `auto` imprime cuál eligió (ver sección 6). El `capturar_fotos.py` de antes (guarda directo en `dataset/juliaca/<split>/<clase>/` con recorte central) sigue disponible.
 
 ## 1. Qué clasifica el modelo: el MATERIAL, no el color
 
@@ -23,7 +32,7 @@ El color de la norma es el **color del tacho**, no el color del objeto. El model
 
 | Clase (carpeta) | Tacho | Ejemplos | Ojo con |
 |---|---|---|---|
-| `papel_carton` | 🔵 Azul | cajas, hojas, periódico, cartón de huevos | papel con grasa o comida → `generales` |
+| `papel_carton` | 🔵 Azul | cajas, hojas, periódico, cartón de huevos, envases Tetra Pak | papel con grasa o comida → `generales` |
 | `metales` | 🟡 Amarillo | latas de bebida, conservas, tapas metálicas | latas de pintura/aerosol → `peligrosos` |
 | `plasticos` | ⚪ Blanco | botellas PET de **cualquier color**, envases, bolsas simples | bolsas metalizadas de snack → `generales` |
 | `vidrio` | ⚫ Gris | botellas y frascos verdes, marrones, transparentes | focos y fluorescentes → `peligrosos` |
@@ -33,6 +42,11 @@ El color de la norma es el **color del tacho**, no el color del objeto. El model
 | `sin_residuo` | — | fondo vacío, solo la mano | evita que el modelo "adivine" cuando no hay nada |
 
 Para que el modelo **no aprenda "blanco = plástico"**: toma fotos de varios colores en cada clase (botellas verdes, azules y transparentes; latas de distintas marcas). Además, el entrenamiento varía el tono de las imágenes (`hsv_h`).
+
+**Casos dudosos (reglas de etiquetado ya decididas):**
+- **Envases Tetra Pak / multicapa de cartón** (cajitas de leche o jugo, p. ej. `obj128_caja_tetra_bonle`) → `papel_carton` (aprovechable), porque son ~75 % fibra de cartón (el resto, polietileno y aluminio). Se asume **envase vacío y enjuagado**; con restos de leche o jugo, el material sigue siendo el mismo pero en la práctica no se recicla. Decisión del 2026-10-26, también en `EXPERIMENTOS.md` ("Pendientes", cerrado).
+- **Sachets y envolturas multicapa** (snacks, salsas, golosinas metalizadas) → `generales`: no se separan sus capas.
+- **Cinta plástica de señalización** aunque diga "PELIGRO" (`obj129_cinta_peligro_obras`) → `plasticos`: se clasifica el material, no el texto.
 
 ## 2. Plan: dos etapas de fine-tuning
 
