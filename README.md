@@ -202,7 +202,7 @@ python scripts/inferencia_deteccion.py --debug                           # adem�
 | `--modelo` | `modelos/etapa2_ext_full.pt` | clasificador (modelo actual, ver `EXPERIMENTOS.md`); `modelos/etapa1_ganador.pt` y `modelos/etapa2_v2.pt` siguen disponibles |
 | `--detector` | `yoloe-26s-seg.pt` | detector (decisión del usuario tras la comparación de abajo; antes `yoloe-26n-seg.pt`); se descarga solo a `modelos/detectores/` (no se sube a git) |
 | `--camara` / `--fuente` | `auto` / — | índice de webcam (auto: MX Brio si está, si no la integrada), o video/imagen para pruebas |
-| `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, fruit peel, food waste, tube, cardboard box, juice box, candy wrapper, chocolate bar, sachet | qué busca el detector |
+| `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, fruit peel, food waste, tube, cardboard box, juice box, candy wrapper, chocolate bar, sachet, printed paper document, sheet of paper, newspaper, notebook, paper bag, egg carton, used tissue | qué residuos busca el detector. Sin los genéricos `box`, `paper` y `container` (marcaban mesa, hojas y fondo); si los necesitas, pásalos con `--prompts "...,box,paper,container"` |
 | `--max-area` | `0.85` | área máxima de la caja (fracción del frame); antes `0.6` |
 | `--debug` | apagado | cajas descartadas en gris con su motivo |
 | `--sin-respaldo` | apagado | no clasifica el frame completo cuando no hay cajas |
@@ -218,7 +218,6 @@ python scripts/inferencia_deteccion.py --debug                           # adem�
 | `--nitidez-rel` | `0.3` | nitidez mínima relativa al recorte más nítido del frame |
 | `--persistencia` / `--historial` | `3` / `5` | la caja debe aparecer en 3 de los últimos 5 frames; las probabilidades se promedian en esos 5 |
 | `--iou` | `0.3` | IoU mínimo para considerar que dos cajas de frames seguidos son el mismo objeto |
-| `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, fruit peel, food waste, tube | qué residuos busca el detector. Se quitaron los genéricos `box`, `paper` y `container` (marcaban mesa, hojas y fondo); si los necesitas, pásalos con `--prompts "...,box,paper,container"` |
 | `--imgsz-det` | `640` | tamaño del detector; bajarlo (p. ej. `480`, `416`) acelera |
 Detectores que soporta Ultralytics 8.4.184 (`ultralytics/utils/downloads.py`):
 - YOLOE con texto: `yoloe-26{n,s,m,l,x}-seg.pt`, `yoloe-11{s,m,l}-seg.pt`, `yoloe-v8{s,m,l}-seg.pt` (el codificador de texto `mobileclip2_b.ts` se descarga la primera vez a la raíz del repo; está en `.gitignore`).

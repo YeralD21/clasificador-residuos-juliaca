@@ -45,9 +45,10 @@ from comun import RAIZ, TACHO, abrir_camara, crear_ventana, teclas_ventana
 from inferencia_webcam import revisar_versiones
 
 # Sin genéricos (box, paper, container): detectaban mesas, hojas y fondo. Se pueden volver a poner con --prompts.
-# "cardboard box" y "juice box" son más específicos que "box"; con --debug se ve si vuelven a agarrar fondo.
+# "cardboard box", "juice box", "sheet of paper"... son más específicos que "box"/"paper"; con --debug se ve si vuelven a agarrar fondo.
 PROMPTS = ("bottle,can,plastic bag,snack wrapper,battery,phone,charger,cable,cup,glass jar,"
-           "fruit peel,food waste,tube,cardboard box,juice box,candy wrapper,chocolate bar,sachet")
+           "fruit peel,food waste,tube,cardboard box,juice box,candy wrapper,chocolate bar,sachet,"
+           "printed paper document,sheet of paper,newspaper,notebook,paper bag,egg carton,used tissue")
 IGNORAR = "person,face,hand,clothing,jacket,furniture,sofa,chair,wall,door,window,shelf,curtain,bed"
 # Solo estas negativas anulan una caja de residuo que coincide con ellas. Las demás (persona, pared, cortina...) solo se
 # ocultan: un objeto en la mano o en primer plano delante de la pared debe seguir mostrándose.
