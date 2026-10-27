@@ -320,7 +320,33 @@ Informes: `reportes/etapa2_e2_ext2_{taco_20261026_2041,sinext_20261026_2043}_{pu
 No cambia el modelo por defecto (decisión del usuario). juliaca/test NO se usó. Recordatorio: val_camara ya se usó
 para elegir `etapa2_ext_full`, así que su número es algo optimista para ese modelo.
 
+### Cierre de la línea de datos públicos (decisión del usuario, 2026-10-26)
+- **Los datos externos nuevos no mejoran el modelo final.** Ninguna variante con ellos (`e2_ext2_full`,
+  `e2_ext2_taco`, `e2_ext2_sinext`) supera a `etapa2_ext_full` en val_camara (0.5183 frente a 0.4301, 0.5031 y
+  0.4646). En juliaca/val los cuatro aciertan 21/28.
+- **Modelo por defecto: `modelos/etapa2_ext_full.pt`** (`inferencia_deteccion.py`, `inferencia_webcam.py`,
+  `demo.bat`), sin cambios.
+- **`dataset/externo/train` se queda** con sus 5.684 imágenes (registro en `datos_externos.csv`, fuentes en
+  `datos/fuentes.md`), disponible para otros experimentos.
+- **Receta recomendada: en la etapa 2, externo solo TACO (`--externo --externo-fuentes taco`).** Meter todo el
+  externo en la etapa 2 hace que domine el train y que `best.pt` salga en la época 1 (`e2_ext2_full`).
+- **Para reproducir exactamente `etapa2_ext_full`** hay que usar `--externo-fuentes taco` en las **dos** etapas: se
+  entrenó el 25-10, cuando `externo/train` solo tenía los `taco_*`, y hoy `--externo` sin filtro toma las 5.684.
+  Por eso `e1_ext`, `e2_ext` y `e2_ext_full` de `experimentar.py` ahora llevan `--externo-fuentes taco`:
+  `--repetir` reproduce lo que se corrió y no los datos del 26-10. Sus resultados registrados no cambian.
+
 ## Pendientes
+- **Siguiente paso: aumentar las fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
+  1. **plasticos y vidrio**: la confusión plasticos → vidrio es la principal en val_camara (11 con `e2_ext_full`;
+     25-26 al partir de `e1_ext2`). Hacen falta plásticos transparentes y vidrios lado a lado: botellas PET
+     transparentes, vasos y tapers frente a frascos y botellas de vidrio;
+  2. **metales**: F1 0.298 en val_camara (7/13); en juliaca/val, metales → generales 4;
+  3. **peligrosos**: F1 0.429 en val_camara (12/22); ninguna fuente externa con licencia clara lo refuerza
+     (solo 80 externas);
+  4. **generales**: generales → papel_carton 12 y → plasticos 11 en val_camara (envoltorios multicapa).
+  Para referencia, juliaca/train tiene hoy plasticos 28, vidrio 19, metales 26, peligrosos 16, generales 31
+  fotos; organico (2) y papel_carton (3) también son muy pocas, y no tienen fotos en test (aviso de `auditar.py`).
+  Al reentrenar se compara con `etapa2_ext_full` solo en validación (regla 9).
 - ~~tetra/multicapa en papel_carton de publico (revision\tetra\), decisión diferida.~~ CERRADO
   (2026-10-26): los envases tetra/multicapa de cartón se clasifican como `papel_carton` y se
   mantienen en publico. publico no cambia, así que no hay que reentrenar e1_base.
