@@ -1,7 +1,7 @@
 foto_val_camara,dist_min,mas_cercano,base_mas_cercano,n_refs_dist_le_4
 dataset/val_camara/generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28 (1).jpeg,12,dataset/publico/val/organico/companero_000162_dl_marron_00193.jpg,publico/val,0
-dataset/val_camara/generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28 (2).jpeg,12,dataset/publico/train/metales/companero_000152_dl_amarillo_00166.jpg,publico/train,0
-dataset/val_camara/generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28.jpeg,15,dataset/publico/train/metales/companero_000859_dl_amarillo_00922.jpg,publico/train,0
+dataset/val_camara/generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28 (2).jpeg,11,dataset/externo/train/metales/realwaste_metal_metal-167.jpg,externo/train,0
+dataset/val_camara/generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28.jpeg,13,dataset/externo/train/plasticos/realwaste_plastic_plastic-349.jpg,externo/train,0
 dataset/val_camara/generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.29.jpeg,11,dataset/publico/val/generales/companero_000144_dl_negro_00215.jpg,publico/val,0
 dataset/val_camara/generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.30 (1).jpeg,17,dataset/publico/test/generales/companero_000176_dl_negro_00248.jpg,publico/test,0
 dataset/val_camara/generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.30.jpeg,11,dataset/publico/val/metales/companero_000111_dl_amarillo_00114.jpg,publico/val,0
@@ -16,38 +16,38 @@ dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.33 (1).jpeg,10,dataset/publico/train/vidrio/companero_000164_dl_gris_00187.jpg,publico/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.33.jpeg,11,dataset/publico/train/vidrio/companero_000388_dl_gris_00458.jpg,publico/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34 (1).jpeg,14,dataset/publico/train/papel_carton/companero_001186_dl_azul_01285.jpg,publico/train,0
-dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34 (2).jpeg,12,dataset/publico/train/papel_carton/companero_000983_dl_azul_01067.jpg,publico/train,0
+dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34 (2).jpeg,11,dataset/externo/train/generales/tacox_278_858.jpg,externo/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34.jpeg,15,dataset/juliaca/train/metales/obj023_lata_cusquena_trigo/WhatsApp Image 2026-10-24 at 19.56.11 (3).jpeg,juliaca/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.35 (1).jpeg,9,dataset/publico/train/papel_carton/companero_001157_dl_azul_01255.jpg,publico/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.35.jpeg,12,dataset/publico/train/plasticos/companero_001180_dl_blanco_01323.jpg,publico/train,0
-dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.36.jpeg,11,dataset/publico/train/vidrio/companero_001178_dl_gris_01382.jpg,publico/train,0
+dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.36.jpeg,7,dataset/externo/train/plasticos/realwaste_plastic_plastic-589.jpg,externo/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37 (1).jpeg,11,dataset/publico/train/plasticos/companero_000305_dl_blanco_00349.jpg,publico/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37 (2).jpeg,12,dataset/publico/train/plasticos/companero_000161_dl_blanco_00184.jpg,publico/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37 (3).jpeg,15,dataset/publico/train/peligrosos/companero_001243_dl_rojo_01329.jpg,publico/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37.jpeg,13,dataset/publico/test/plasticos/companero_000235_dl_blanco_00235.jpg,publico/test,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.38.jpeg,9,dataset/publico/train/plasticos/companero_001057_dl_blanco_01181.jpg,publico/train,0
-dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.39 (1).jpeg,14,dataset/publico/train/peligrosos/companero_000439_dl_rojo_00466.jpg,publico/train,0
-dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.39.jpeg,13,dataset/publico/train/papel_carton/companero_000068_dl_azul_00074.jpg,publico/train,0
+dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.39 (1).jpeg,13,dataset/externo/train/plasticos/tacox_1269_3936.jpg,externo/train,0
+dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.39.jpeg,11,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-235.jpg,externo/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.40.jpeg,14,dataset/publico/train/papel_carton/companero_000539_dl_azul_00583.jpg,publico/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.37 (3).jpeg,9,dataset/publico/test/plasticos/companero_000212_dl_blanco_00212.jpg,publico/test,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.37 (4).jpeg,11,dataset/publico/test/organico/companero_000027_dl_marron_00027.jpg,publico/test,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (1).jpeg,17,dataset/publico/val/organico/companero_000054_dl_marron_00065.jpg,publico/val,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (2).jpeg,11,dataset/publico/test/peligrosos/companero_000282_dl_rojo_00282.jpg,publico/test,0
-dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (3).jpeg,15,dataset/publico/test/metales/companero_000265_dl_amarillo_00265.jpg,publico/test,0
+dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (3).jpeg,14,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-208.jpg,externo/train,0
 dataset/val_camara/generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38.jpeg,15,dataset/publico/train/generales/companero_000147_dl_negro_00216.jpg,publico/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.40 (1).jpeg,7,dataset/publico/train/plasticos/companero_000802_dl_blanco_00896.jpg,publico/train,0
-dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.41 (1).jpeg,14,dataset/juliaca/train/sin_residuo/esc06_manta_cuadros/WhatsApp Image 2026-10-24 at 20.42.33.jpeg,juliaca/train,0
+dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.41 (1).jpeg,12,dataset/externo/train/metales/realwaste_metal_metal-305.jpg,externo/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.41.jpeg,15,dataset/publico/train/metales/companero_000430_dl_amarillo_00461.jpg,publico/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.44 (1).jpeg,13,dataset/publico/train/peligrosos/companero_000193_dl_rojo_00201.jpg,publico/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.44 (2).jpeg,12,dataset/juliaca/train/metales/obj021_pinza_metalica/WhatsApp Image 2026-10-24 at 14.50.23 (2).jpeg,juliaca/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.44.jpeg,8,dataset/publico/train/plasticos/companero_000406_dl_blanco_00460.jpg,publico/train,0
-dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45 (1).jpeg,15,dataset/juliaca/train/metales/obj024_lata_monster_ultra/WhatsApp Image 2026-10-24 at 19.56.14 (1).jpeg,juliaca/train,0
+dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45 (1).jpeg,14,dataset/externo/train/plasticos/tacox_1145_3509.jpg,externo/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45 (2).jpeg,14,dataset/publico/train/peligrosos/companero_000821_dl_rojo_00883.jpg,publico/train,0
-dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45.jpeg,12,dataset/publico/val/metales/companero_000111_dl_amarillo_00114.jpg,publico/val,0
+dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45.jpeg,11,dataset/externo/train/metales/realwaste_metal_metal-167.jpg,externo/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46 (1).jpeg,14,dataset/publico/train/plasticos/companero_001133_dl_blanco_01266.jpg,publico/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46 (2).jpeg,14,dataset/publico/train/organico/companero_000765_dl_marron_01002.jpg,publico/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46 (3).jpeg,11,dataset/publico/train/papel_carton/companero_000742_dl_azul_00804.jpg,publico/train,0
-dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46.jpeg,10,dataset/publico/train/plasticos/companero_000550_dl_blanco_00621.jpg,publico/train,0
+dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46.jpeg,8,dataset/externo/train/organico/realwaste_food-organics_food-organics-136.jpg,externo/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.47 (1).jpeg,13,dataset/publico/train/generales/companero_000384_dl_negro_00591.jpg,publico/train,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.47 (2).jpeg,9,dataset/publico/test/peligrosos/companero_000280_dl_rojo_00280.jpg,publico/test,0
 dataset/val_camara/generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.47.jpeg,13,dataset/juliaca/train/metales/obj023_lata_cusquena_trigo/WhatsApp Image 2026-10-24 at 19.56.13 (1).jpeg,juliaca/train,0
@@ -55,9 +55,9 @@ dataset/val_camara/generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 a
 dataset/val_camara/generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.57.jpeg,11,dataset/publico/train/peligrosos/companero_001294_dl_rojo_01383.jpg,publico/train,0
 dataset/val_camara/generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.58 (1).jpeg,8,dataset/publico/train/generales/companero_000105_dl_negro_00152.jpg,publico/train,0
 dataset/val_camara/generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.58.jpeg,13,dataset/publico/train/papel_carton/companero_001064_dl_azul_01154.jpg,publico/train,0
-dataset/val_camara/generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.59.jpeg,14,dataset/publico/val/peligrosos/companero_000020_dl_rojo_00020.jpg,publico/val,0
-dataset/val_camara/generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.04 (1).jpeg,8,dataset/publico/train/generales/companero_000934_dl_negro_01387.jpg,publico/train,0
-dataset/val_camara/generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.04.jpeg,8,dataset/publico/train/plasticos/companero_000203_dl_blanco_00230.jpg,publico/train,0
+dataset/val_camara/generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.59.jpeg,13,dataset/externo/train/metales/trashnet_metal_metal304.jpg,externo/train,0
+dataset/val_camara/generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.04 (1).jpeg,5,dataset/externo/train/metales/realwaste_metal_metal-400.jpg,externo/train,0
+dataset/val_camara/generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.04.jpeg,6,dataset/externo/train/papel_carton/realwaste_paper_paper-251.jpg,externo/train,0
 dataset/val_camara/generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.05 (1).jpeg,9,dataset/publico/train/papel_carton/companero_000705_dl_azul_00765.jpg,publico/train,0
 dataset/val_camara/generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.05.jpeg,9,dataset/publico/test/papel_carton/companero_000081_dl_azul_00081.jpg,publico/test,0
 dataset/val_camara/generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.06 (1).jpeg,7,dataset/publico/val/peligrosos/companero_000018_dl_rojo_00018.jpg,publico/val,0
@@ -70,37 +70,37 @@ dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.09 (2).jpeg,13,dataset/publico/test/metales/companero_000258_dl_amarillo_00258.jpg,publico/test,0
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.09.jpeg,11,dataset/publico/train/peligrosos/companero_000797_dl_rojo_00857.jpg,publico/train,0
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.10.jpeg,14,dataset/juliaca/test/generales/obj007_pasta_dental_oral_b/WhatsApp Image 2026-10-24 at 20.05.31 (1).jpeg,juliaca/test,0
-dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11 (1).jpeg,13,dataset/publico/train/metales/companero_000774_dl_amarillo_00829.jpg,publico/train,0
+dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11 (1).jpeg,12,dataset/externo/train/vidrio/realwaste_glass_glass-100.jpg,externo/train,0
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11 (2).jpeg,15,dataset/publico/train/vidrio/companero_000674_dl_gris_00789.jpg,publico/train,0
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11.jpeg,13,dataset/publico/train/vidrio/companero_000776_dl_gris_00914.jpg,publico/train,0
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.12 (1).jpeg,13,dataset/publico/train/peligrosos/companero_000193_dl_rojo_00201.jpg,publico/train,0
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.12.jpeg,13,dataset/publico/val/vidrio/companero_000007_dl_gris_00008.jpg,publico/val,0
 dataset/val_camara/generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.13.jpeg,14,dataset/publico/train/peligrosos/companero_000878_dl_rojo_00945.jpg,publico/train,0
-dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48 (1).jpeg,13,dataset/externo/_fuentes/taco/img/1072.jpg,externo/_fuentes,0
+dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48 (1).jpeg,17,dataset/publico/train/metales/companero_000749_dl_amarillo_00802.jpg,publico/train,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48.jpeg,17,dataset/publico/train/generales/companero_000110_dl_negro_00157.jpg,publico/train,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.50 (1).jpeg,14,dataset/publico/train/peligrosos/companero_000449_dl_rojo_00476.jpg,publico/train,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.50.jpeg,16,dataset/publico/train/metales/companero_000711_dl_amarillo_00764.jpg,publico/train,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.51 (1).jpeg,16,dataset/publico/train/papel_carton/companero_001115_dl_azul_01210.jpg,publico/train,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.51.jpeg,13,dataset/publico/train/peligrosos/companero_000443_dl_rojo_00470.jpg,publico/train,0
-dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.52 (1).jpeg,15,dataset/publico/train/peligrosos/companero_000806_dl_rojo_00866.jpg,publico/train,0
+dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.52 (1).jpeg,14,dataset/externo/train/organico/realwaste_food-organics_food-organics-120.jpg,externo/train,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.52.jpeg,15,dataset/publico/test/peligrosos/companero_000006_dl_rojo_00006.jpg,publico/test,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.53 (1).jpeg,11,dataset/publico/train/metales/companero_000015_dl_amarillo_00018.jpg,publico/train,0
 dataset/val_camara/generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.53.jpeg,14,dataset/publico/test/vidrio/companero_000180_dl_gris_00180.jpg,publico/test,0
-dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.17.jpeg,8,dataset/publico/train/metales/companero_000515_dl_amarillo_00556.jpg,publico/train,0
+dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.17.jpeg,6,dataset/externo/train/papel_carton/realwaste_paper_paper-130.jpg,externo/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.18 (1).jpeg,15,dataset/juliaca/train/peligrosos/obj028_cargador_negro/WhatsApp Image 2026-10-24 at 20.01.34 (1).jpeg,juliaca/train,0
-dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.18.jpeg,10,dataset/publico/train/vidrio/companero_000911_dl_gris_01077.jpg,publico/train,0
+dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.18.jpeg,9,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-171.jpg,externo/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.19 (1).jpeg,16,dataset/publico/train/peligrosos/companero_000800_dl_rojo_00860.jpg,publico/train,0
-dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.19.jpeg,13,dataset/publico/train/metales/companero_000766_dl_amarillo_00820.jpg,publico/train,0
+dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.19.jpeg,11,dataset/externo/train/metales/realwaste_metal_metal-62.jpg,externo/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20 (1).jpeg,10,dataset/publico/train/papel_carton/companero_000964_dl_azul_01046.jpg,publico/train,0
-dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20 (2).jpeg,12,dataset/publico/train/organico/companero_000560_dl_marron_00740.jpg,publico/train,0
+dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20 (2).jpeg,10,dataset/externo/train/papel_carton/realwaste_paper_paper-499.jpg,externo/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20.jpeg,15,dataset/publico/train/peligrosos/companero_000077_dl_rojo_00082.jpg,publico/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.21 (1).jpeg,8,dataset/publico/train/organico/companero_000076_dl_marron_00103.jpg,publico/train,0
-dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.21.jpeg,15,dataset/publico/test/peligrosos/companero_000167_dl_rojo_00167.jpg,publico/test,0
+dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.21.jpeg,14,dataset/externo/train/organico/realwaste_food-organics_food-organics-195.jpg,externo/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.22.jpeg,7,dataset/publico/train/vidrio/companero_001076_dl_gris_01266.jpg,publico/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.23 (1).jpeg,13,dataset/publico/test/plasticos/companero_000252_dl_blanco_00252.jpg,publico/test,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.23.jpeg,9,dataset/publico/train/peligrosos/companero_000679_dl_rojo_00730.jpg,publico/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.24 (1).jpeg,16,dataset/publico/train/papel_carton/companero_001093_dl_azul_01187.jpg,publico/train,0
-dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.24.jpeg,17,dataset/juliaca/train/generales/obj002_doypack_mayonesa_alacena/WhatsApp Image 2026-10-24 at 14.50.05.jpeg,juliaca/train,0
+dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.24.jpeg,16,dataset/externo/train/organico/realwaste_food-organics_food-organics-86.jpg,externo/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.25 (1).jpeg,13,dataset/publico/train/metales/companero_000715_dl_amarillo_00768.jpg,publico/train,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.25.jpeg,13,dataset/publico/test/vidrio/companero_000177_dl_gris_00177.jpg,publico/test,0
 dataset/val_camara/generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.26 (1).jpeg,8,dataset/publico/val/plasticos/companero_000014_dl_blanco_00014.jpg,publico/val,0
@@ -111,19 +111,19 @@ dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.29.jpeg,13,dataset/publico/train/vidrio/companero_000206_dl_gris_00236.jpg,publico/train,0
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.30.jpeg,7,dataset/publico/train/papel_carton/companero_000747_dl_azul_00809.jpg,publico/train,0
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.31 (1).jpeg,11,dataset/publico/train/papel_carton/companero_000128_dl_azul_00139.jpg,publico/train,0
-dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.31.jpeg,12,dataset/publico/train/plasticos/companero_000506_dl_blanco_00573.jpg,publico/train,0
-dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32 (1).jpeg,17,dataset/publico/train/organico/companero_000122_dl_marron_00166.jpg,publico/train,0
+dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.31.jpeg,10,dataset/externo/train/organico/realwaste_vegetation_vegetation-82.jpg,externo/train,0
+dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32 (1).jpeg,14,dataset/externo/train/metales/tacox_1253_3913.jpg,externo/train,0
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32 (2).jpeg,13,dataset/publico/train/organico/companero_000775_dl_marron_01014.jpg,publico/train,0
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32.jpeg,15,dataset/publico/train/papel_carton/companero_000498_dl_azul_00540.jpg,publico/train,0
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.33 (1).jpeg,11,dataset/publico/train/vidrio/companero_000700_dl_gris_00821.jpg,publico/train,0
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.33 (2).jpeg,13,dataset/publico/train/papel_carton/companero_000983_dl_azul_01067.jpg,publico/train,0
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.33.jpeg,11,dataset/publico/train/peligrosos/companero_000666_dl_rojo_00717.jpg,publico/train,0
-dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37 (1).jpeg,13,dataset/publico/train/metales/companero_000137_dl_amarillo_00150.jpg,publico/train,0
+dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37 (1).jpeg,12,dataset/externo/train/metales/realwaste_metal_metal-623.jpg,externo/train,0
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37 (2).jpeg,14,dataset/publico/train/peligrosos/companero_000196_dl_rojo_00205.jpg,publico/train,0
 dataset/val_camara/generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37.jpeg,12,dataset/publico/train/peligrosos/companero_001272_dl_rojo_01360.jpg,publico/train,0
-dataset/val_camara/metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.39 (1).jpeg,14,dataset/publico/train/papel_carton/companero_000557_dl_azul_00603.jpg,publico/train,0
+dataset/val_camara/metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.39 (1).jpeg,12,dataset/externo/train/plasticos/tacox_803_2528.jpg,externo/train,0
 dataset/val_camara/metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40 (1).jpeg,15,dataset/publico/train/metales/companero_000408_dl_amarillo_00438.jpg,publico/train,0
-dataset/val_camara/metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40 (2).jpeg,15,dataset/publico/train/metales/companero_000618_dl_amarillo_00666.jpg,publico/train,0
+dataset/val_camara/metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40 (2).jpeg,14,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-439.jpg,externo/train,0
 dataset/val_camara/metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40.jpeg,15,dataset/publico/train/plasticos/companero_001100_dl_blanco_01229.jpg,publico/train,0
 dataset/val_camara/metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.41 (1).jpeg,9,dataset/publico/train/metales/companero_000891_dl_amarillo_00956.jpg,publico/train,0
 dataset/val_camara/metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.41.jpeg,10,dataset/publico/train/generales/companero_000296_dl_negro_00457.jpg,publico/train,0
@@ -132,7 +132,7 @@ dataset/val_camara/metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 
 dataset/val_camara/metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.43 (1).jpeg,10,dataset/publico/val/vidrio/companero_000024_dl_gris_00025.jpg,publico/val,0
 dataset/val_camara/metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.43 (2).jpeg,11,dataset/publico/train/peligrosos/companero_000741_dl_rojo_00795.jpg,publico/train,0
 dataset/val_camara/metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.43.jpeg,10,dataset/publico/val/papel_carton/companero_000278_dl_azul_00292.jpg,publico/val,0
-dataset/val_camara/metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.45 (1).jpeg,13,dataset/juliaca/train/plasticos/obj015_envoltura_transparente/WhatsApp Image 2026-10-24 at 14.50.28 (1).jpeg,juliaca/train,0
+dataset/val_camara/metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.45 (1).jpeg,12,dataset/externo/train/metales/tacox_1020_3034.jpg,externo/train,0
 dataset/val_camara/metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.45.jpeg,15,dataset/publico/train/papel_carton/companero_000855_dl_azul_00926.jpg,publico/train,0
 dataset/val_camara/organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.48.jpeg,9,dataset/publico/train/vidrio/companero_000924_dl_gris_01093.jpg,publico/train,0
 dataset/val_camara/organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.49 (1).jpeg,8,dataset/publico/train/metales/companero_000181_dl_amarillo_00197.jpg,publico/train,0
@@ -147,7 +147,7 @@ dataset/val_camara/organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13
 dataset/val_camara/organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.52.jpeg,13,dataset/publico/train/vidrio/companero_000978_dl_gris_01154.jpg,publico/train,0
 dataset/val_camara/organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.53.jpeg,12,dataset/publico/val/organico/companero_000002_dl_marron_00002.jpg,publico/val,0
 dataset/val_camara/organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.54.jpeg,11,dataset/publico/train/peligrosos/companero_000859_dl_rojo_00926.jpg,publico/train,0
-dataset/val_camara/organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.54 (1).jpeg,12,dataset/publico/train/organico/companero_000558_dl_marron_00737.jpg,publico/train,0
+dataset/val_camara/organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.54 (1).jpeg,11,dataset/externo/train/metales/realwaste_metal_metal-299.jpg,externo/train,0
 dataset/val_camara/organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.54 (2).jpeg,12,dataset/publico/train/vidrio/companero_000920_dl_gris_01088.jpg,publico/train,0
 dataset/val_camara/organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.55 (1).jpeg,9,dataset/publico/val/papel_carton/companero_000217_dl_azul_00228.jpg,publico/val,0
 dataset/val_camara/organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.55.jpeg,12,dataset/publico/train/peligrosos/companero_001160_dl_rojo_01242.jpg,publico/train,0
@@ -163,33 +163,33 @@ dataset/val_camara/papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-
 dataset/val_camara/papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.45 (2).jpeg,14,dataset/publico/test/papel_carton/companero_000228_dl_azul_00228.jpg,publico/test,0
 dataset/val_camara/papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.46.jpeg,15,dataset/publico/val/organico/companero_000231_dl_marron_00273.jpg,publico/val,0
 dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.54.58.jpeg,14,dataset/publico/train/generales/companero_000703_dl_negro_01054.jpg,publico/train,0
-dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.54.59.jpeg,17,dataset/publico/train/generales/companero_000334_dl_negro_00516.jpg,publico/train,0
-dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.00 (1).jpeg,12,dataset/publico/test/vidrio/companero_000127_dl_gris_00127.jpg,publico/test,0
+dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.54.59.jpeg,16,dataset/externo/train/papel_carton/tacox_457_1624.jpg,externo/train,0
+dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.00 (1).jpeg,11,dataset/externo/train/papel_carton/realwaste_paper_paper-390.jpg,externo/train,0
 dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.00.jpeg,14,dataset/publico/train/papel_carton/companero_001164_dl_azul_01263.jpg,publico/train,0
 dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02 (1).jpeg,13,dataset/publico/test/generales/companero_000110_dl_negro_00163.jpg,publico/test,0
 dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02 (2).jpeg,9,dataset/publico/train/peligrosos/companero_000804_dl_rojo_00864.jpg,publico/train,0
-dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02.jpeg,14,dataset/publico/train/plasticos/companero_001138_dl_blanco_01271.jpg,publico/train,0
+dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02.jpeg,13,dataset/externo/train/papel_carton/tacox_1041_3100.jpg,externo/train,0
 dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03 (1).jpeg,11,dataset/publico/val/metales/companero_000188_dl_amarillo_00195.jpg,publico/val,0
-dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03 (2).jpeg,12,dataset/publico/train/vidrio/companero_001122_dl_gris_01319.jpg,publico/train,0
+dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03 (2).jpeg,11,dataset/externo/train/metales/trashnet_metal_metal347.jpg,externo/train,0
 dataset/val_camara/papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03.jpeg,7,dataset/publico/test/peligrosos/companero_000121_dl_rojo_00121.jpg,publico/test,0
 dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (1).jpeg,16,dataset/publico/train/metales/companero_000556_dl_amarillo_00599.jpg,publico/train,0
-dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (2).jpeg,14,dataset/publico/train/plasticos/companero_000214_dl_blanco_00242.jpg,publico/train,0
+dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (2).jpeg,13,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-380.jpg,externo/train,0
 dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (3).jpeg,15,dataset/publico/train/plasticos/companero_000389_dl_blanco_00442.jpg,publico/train,0
 dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39.jpeg,14,dataset/publico/train/vidrio/companero_000216_dl_gris_00246.jpg,publico/train,0
 dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40 (1).jpeg,11,dataset/publico/train/organico/companero_000000_dl_marron_00000.jpg,publico/train,0
 dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40 (2).jpeg,13,dataset/publico/val/peligrosos/companero_000202_dl_rojo_00209.jpg,publico/val,0
 dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40 (3).jpeg,15,dataset/publico/train/papel_carton/companero_000048_dl_azul_00053.jpg,publico/train,0
-dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40.jpeg,13,dataset/juliaca/test/metales/obj026_lata_atun/WhatsApp Image 2026-10-24 at 20.38.06 (3).jpeg,juliaca/test,0
+dataset/val_camara/papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40.jpeg,11,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-50.jpg,externo/train,0
 dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.52.59 (1).jpeg,6,dataset/publico/val/peligrosos/companero_000124_dl_rojo_00128.jpg,publico/val,0
 dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.00 (1).jpeg,3,dataset/publico/train/organico/companero_000974_dl_marron_01283.jpg,publico/train,1
 dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.00.jpeg,5,dataset/publico/train/metales/companero_000766_dl_amarillo_00820.jpg,publico/train,0
-dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.01.jpeg,7,dataset/publico/train/plasticos/companero_000048_dl_blanco_00054.jpg,publico/train,0
-dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02 (1).jpeg,7,dataset/publico/train/generales/companero_000478_dl_negro_00732.jpg,publico/train,0
+dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.01.jpeg,6,dataset/externo/train/metales/realwaste_metal_metal-274.jpg,externo/train,0
+dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02 (1).jpeg,5,dataset/externo/train/metales/realwaste_metal_metal-123.jpg,externo/train,0
 dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02 (2).jpeg,5,dataset/publico/train/plasticos/companero_000203_dl_blanco_00230.jpg,publico/train,0
 dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02.jpeg,6,dataset/publico/train/generales/companero_000522_dl_negro_00799.jpg,publico/train,0
 dataset/val_camara/peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.03.jpeg,9,dataset/publico/train/metales/companero_000603_dl_amarillo_00649.jpg,publico/train,0
 dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.14 (1).jpeg,14,dataset/juliaca/test/generales/obj007_pasta_dental_oral_b/WhatsApp Image 2026-10-24 at 20.05.31 (1).jpeg,juliaca/test,0
-dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.14.jpeg,14,dataset/publico/train/papel_carton/companero_000832_dl_azul_00900.jpg,publico/train,0
+dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.14.jpeg,11,dataset/externo/train/vidrio/tacox_687_2201.jpg,externo/train,0
 dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.15 (1).jpeg,13,dataset/publico/train/metales/companero_000359_dl_amarillo_00385.jpg,publico/train,0
 dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.15.jpeg,15,dataset/publico/train/metales/companero_000281_dl_amarillo_00302.jpg,publico/train,0
 dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.16 (1).jpeg,15,dataset/publico/train/vidrio/companero_000288_dl_gris_00330.jpg,publico/train,0
@@ -197,48 +197,48 @@ dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 1
 dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.17 (1).jpeg,14,dataset/publico/test/plasticos/companero_000200_dl_blanco_00200.jpg,publico/test,0
 dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.17.jpeg,13,dataset/publico/val/metales/companero_000079_dl_amarillo_00082.jpg,publico/val,0
 dataset/val_camara/peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.23.jpeg,17,dataset/publico/train/metales/companero_000628_dl_amarillo_00676.jpg,publico/train,0
-dataset/val_camara/peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.46 (2).jpeg,17,dataset/publico/train/metales/companero_000589_dl_amarillo_00634.jpg,publico/train,0
+dataset/val_camara/peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.46 (2).jpeg,16,dataset/externo/train/plasticos/tacox_630_2026.jpg,externo/train,0
 dataset/val_camara/peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47 (1).jpeg,18,dataset/publico/train/papel_carton/companero_000748_dl_azul_00810.jpg,publico/train,0
 dataset/val_camara/peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47 (2).jpeg,11,dataset/publico/train/generales/companero_000922_dl_negro_01367.jpg,publico/train,0
-dataset/val_camara/peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47.jpeg,15,dataset/publico/train/peligrosos/companero_000271_dl_rojo_00287.jpg,publico/train,0
-dataset/val_camara/peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.48.jpeg,9,dataset/publico/train/peligrosos/companero_000760_dl_rojo_00815.jpg,publico/train,0
+dataset/val_camara/peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47.jpeg,14,dataset/externo/train/vidrio/trashnet_glass_glass344.jpg,externo/train,0
+dataset/val_camara/peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.48.jpeg,8,dataset/externo/train/plasticos/realwaste_plastic_plastic-66.jpg,externo/train,0
 dataset/val_camara/plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.25.jpeg,7,dataset/publico/train/plasticos/companero_000110_dl_blanco_00128.jpg,publico/train,0
-dataset/val_camara/plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26 (1).jpeg,6,dataset/publico/train/papel_carton/companero_000549_dl_azul_00595.jpg,publico/train,0
+dataset/val_camara/plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26 (1).jpeg,5,dataset/externo/train/organico/realwaste_vegetation_vegetation-83.jpg,externo/train,0
 dataset/val_camara/plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26 (2).jpeg,6,dataset/publico/train/metales/companero_000515_dl_amarillo_00556.jpg,publico/train,0
-dataset/val_camara/plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26.jpeg,6,dataset/publico/train/peligrosos/companero_001001_dl_rojo_01078.jpg,publico/train,0
-dataset/val_camara/plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.27.jpeg,9,dataset/publico/train/metales/companero_000427_dl_amarillo_00458.jpg,publico/train,0
+dataset/val_camara/plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26.jpeg,5,dataset/externo/train/vidrio/realwaste_glass_glass-161.jpg,externo/train,0
+dataset/val_camara/plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.27.jpeg,8,dataset/externo/train/metales/trashnet_metal_metal73.jpg,externo/train,0
 dataset/val_camara/plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28 (1).jpeg,10,dataset/publico/train/papel_carton/companero_000427_dl_azul_00462.jpg,publico/train,0
 dataset/val_camara/plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28 (2).jpeg,11,dataset/publico/train/organico/companero_000300_dl_marron_00406.jpg,publico/train,0
-dataset/val_camara/plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28.jpeg,9,dataset/publico/train/plasticos/companero_000731_dl_blanco_00816.jpg,publico/train,0
+dataset/val_camara/plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28.jpeg,8,dataset/externo/train/organico/realwaste_food-organics_food-organics-36.jpg,externo/train,0
 dataset/val_camara/plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.30 (1).jpeg,15,dataset/publico/train/papel_carton/companero_000292_dl_azul_00317.jpg,publico/train,0
 dataset/val_camara/plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.30.jpeg,11,dataset/publico/train/papel_carton/companero_001084_dl_azul_01177.jpg,publico/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.55.jpeg,8,dataset/publico/train/organico/companero_000056_dl_marron_00075.jpg,publico/train,0
-dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (1).jpeg,13,dataset/publico/train/generales/companero_000212_dl_negro_00319.jpg,publico/train,0
+dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (1).jpeg,10,dataset/externo/train/metales/realwaste_metal_metal-63.jpg,externo/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (2).jpeg,14,dataset/publico/train/metales/companero_000830_dl_amarillo_00891.jpg,publico/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (3).jpeg,11,dataset/publico/train/papel_carton/companero_001240_dl_azul_01342.jpg,publico/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56.jpeg,12,dataset/publico/train/metales/companero_000558_dl_amarillo_00601.jpg,publico/train,0
-dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57 (1).jpeg,10,dataset/publico/train/generales/companero_000119_dl_negro_00177.jpg,publico/train,0
+dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57 (1).jpeg,8,dataset/externo/train/metales/trashnet_metal_metal23.jpg,externo/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57 (2).jpeg,13,dataset/publico/train/papel_carton/companero_001003_dl_azul_01088.jpg,publico/train,0
-dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57.jpeg,10,dataset/publico/val/generales/companero_000054_dl_negro_00080.jpg,publico/val,0
-dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.58 (1).jpeg,14,dataset/publico/train/peligrosos/companero_001137_dl_rojo_01218.jpg,publico/train,0
+dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57.jpeg,8,dataset/externo/train/metales/trashnet_metal_metal364.jpg,externo/train,0
+dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.58 (1).jpeg,13,dataset/externo/train/vidrio/trashnet_glass_glass390.jpg,externo/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.58.jpeg,10,dataset/publico/val/papel_carton/companero_000028_dl_azul_00029.jpg,publico/val,0
-dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59 (1).jpeg,14,dataset/publico/train/papel_carton/companero_000548_dl_azul_00593.jpg,publico/train,0
+dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59 (1).jpeg,11,dataset/externo/train/plasticos/realwaste_plastic_plastic-822.jpg,externo/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59 (2).jpeg,14,dataset/publico/train/papel_carton/companero_000301_dl_azul_00327.jpg,publico/train,0
-dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59.jpeg,13,dataset/publico/train/papel_carton/companero_000237_dl_azul_00258.jpg,publico/train,0
+dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59.jpeg,10,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-425.jpg,externo/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.00 (1).jpeg,9,dataset/publico/train/papel_carton/companero_000493_dl_azul_00534.jpg,publico/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.00.jpeg,9,dataset/publico/train/generales/companero_000621_dl_negro_00946.jpg,publico/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.01 (1).jpeg,11,dataset/publico/train/plasticos/companero_000529_dl_blanco_00599.jpg,publico/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.01.jpeg,9,dataset/publico/val/papel_carton/companero_000181_dl_azul_00192.jpg,publico/val,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.02 (1).jpeg,14,dataset/publico/train/peligrosos/companero_000420_dl_rojo_00446.jpg,publico/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.02.jpeg,12,dataset/publico/train/papel_carton/companero_000107_dl_azul_00117.jpg,publico/train,0
-dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.03 (1).jpeg,9,dataset/publico/train/vidrio/companero_001186_dl_gris_01390.jpg,publico/train,0
+dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.03 (1).jpeg,7,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-35.jpg,externo/train,0
 dataset/val_camara/plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.03.jpeg,9,dataset/publico/train/vidrio/companero_000551_dl_gris_00641.jpg,publico/train,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.03 (2).jpeg,14,dataset/publico/train/metales/companero_001081_dl_amarillo_01165.jpg,publico/train,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.04 (1).jpeg,15,dataset/publico/val/generales/companero_000072_dl_negro_00102.jpg,publico/val,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.04.jpeg,17,dataset/juliaca/train/organico/obj034_cascara_platano_1/WhatsApp Image 2026-10-24 at 14.50.24.jpeg,juliaca/train,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.05.jpeg,15,dataset/publico/val/peligrosos/companero_000065_dl_rojo_00066.jpg,publico/val,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06 (1).jpeg,12,dataset/publico/train/metales/companero_001229_dl_amarillo_01326.jpg,publico/train,0
-dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06 (2).jpeg,7,dataset/publico/train/papel_carton/companero_000503_dl_azul_00545.jpg,publico/train,0
+dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06 (2).jpeg,6,dataset/externo/train/peligrosos/realwaste_metal_metal-748.jpg,externo/train,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06.jpeg,10,dataset/publico/train/peligrosos/companero_000891_dl_rojo_00958.jpg,publico/train,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07 (1).jpeg,11,dataset/publico/val/generales/companero_000159_dl_negro_00234.jpg,publico/val,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07 (2).jpeg,11,dataset/publico/train/organico/companero_000171_dl_marron_00230.jpg,publico/train,0
@@ -246,11 +246,11 @@ dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-1
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07.jpeg,13,dataset/publico/test/peligrosos/companero_000269_dl_rojo_00269.jpg,publico/test,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.08.jpeg,17,dataset/publico/train/metales/companero_001206_dl_amarillo_01302.jpg,publico/train,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (1).jpeg,14,dataset/publico/train/papel_carton/companero_001237_dl_azul_01339.jpg,publico/train,0
-dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (2).jpeg,7,dataset/publico/train/generales/companero_000456_dl_negro_00695.jpg,publico/train,0
-dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (3).jpeg,11,dataset/publico/train/metales/companero_001191_dl_amarillo_01284.jpg,publico/train,0
-dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09.jpeg,11,dataset/publico/train/plasticos/companero_000110_dl_blanco_00128.jpg,publico/train,0
-dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.10.jpeg,7,dataset/publico/train/organico/companero_000430_dl_marron_00576.jpg,publico/train,0
-dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.11 (1).jpeg,15,dataset/publico/train/papel_carton/companero_000435_dl_azul_00470.jpg,publico/train,0
+dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (2).jpeg,6,dataset/externo/train/metales/realwaste_metal_metal-276.jpg,externo/train,0
+dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (3).jpeg,8,dataset/externo/train/metales/realwaste_metal_metal-588.jpg,externo/train,0
+dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09.jpeg,9,dataset/externo/train/vidrio/tacox_839_2605.jpg,externo/train,0
+dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.10.jpeg,6,dataset/externo/train/metales/realwaste_metal_metal-90.jpg,externo/train,0
+dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.11 (1).jpeg,14,dataset/externo/train/vidrio/tacox_598_1852.jpg,externo/train,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.11.jpeg,16,dataset/publico/train/generales/companero_000551_dl_negro_00850.jpg,publico/train,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12 (1).jpeg,12,dataset/publico/test/vidrio/companero_000200_dl_gris_00200.jpg,publico/test,0
 dataset/val_camara/plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12 (2).jpeg,14,dataset/publico/train/papel_carton/companero_000392_dl_azul_00424.jpg,publico/train,0
@@ -263,15 +263,15 @@ dataset/val_camara/plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10
 dataset/val_camara/plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.16 (1).jpeg,10,dataset/publico/test/metales/companero_000249_dl_amarillo_00249.jpg,publico/test,0
 dataset/val_camara/plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.16 (2).jpeg,12,dataset/publico/train/organico/companero_000910_dl_marron_01193.jpg,publico/train,0
 dataset/val_camara/plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.16.jpeg,12,dataset/publico/val/metales/companero_000172_dl_amarillo_00179.jpg,publico/val,0
-dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.49.jpeg,11,dataset/publico/train/peligrosos/companero_000865_dl_rojo_00932.jpg,publico/train,0
+dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.49.jpeg,10,dataset/externo/train/metales/tacox_1123_3448.jpg,externo/train,0
 dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50 (1).jpeg,12,dataset/publico/test/organico/companero_000189_dl_marron_00189.jpg,publico/test,0
 dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50 (2).jpeg,12,dataset/publico/val/vidrio/companero_000188_dl_gris_00211.jpg,publico/val,0
-dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50.jpeg,12,dataset/publico/train/peligrosos/companero_000075_dl_rojo_00080.jpg,publico/train,0
+dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50.jpeg,10,dataset/externo/train/metales/tacox_478_1655.jpg,externo/train,0
 dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.51.jpeg,12,dataset/publico/train/organico/companero_000191_dl_marron_00262.jpg,publico/train,0
-dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.52.jpeg,15,dataset/publico/train/generales/companero_000257_dl_negro_00390.jpg,publico/train,0
-dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53 (1).jpeg,12,dataset/publico/train/papel_carton/companero_000352_dl_azul_00382.jpg,publico/train,0
+dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.52.jpeg,13,dataset/externo/train/metales/trashnet_metal_metal228.jpg,externo/train,0
+dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53 (1).jpeg,9,dataset/externo/train/vidrio/trashnet_glass_glass369.jpg,externo/train,0
 dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53 (2).jpeg,14,dataset/publico/train/peligrosos/companero_000794_dl_rojo_00853.jpg,publico/train,0
-dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53.jpeg,19,dataset/publico/train/papel_carton/companero_000386_dl_azul_00416.jpg,publico/train,0
+dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53.jpeg,16,dataset/externo/train/papel_carton/realwaste_paper_paper-132.jpg,externo/train,0
 dataset/val_camara/plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.54.jpeg,13,dataset/publico/train/metales/companero_000699_dl_amarillo_00751.jpg,publico/train,0
 dataset/val_camara/plasticos/obj129_cinta_peligro_obras/WhatsApp Image 2026-10-26 at 13.53.47 (1).jpeg,16,dataset/publico/train/generales/companero_000159_dl_negro_00243.jpg,publico/train,0
 dataset/val_camara/plasticos/obj129_cinta_peligro_obras/WhatsApp Image 2026-10-26 at 13.53.47.jpeg,16,dataset/publico/train/papel_carton/companero_000573_dl_azul_00619.jpg,publico/train,0
@@ -279,7 +279,7 @@ dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26
 dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33 (2).jpeg,15,dataset/publico/train/papel_carton/companero_000215_dl_azul_00234.jpg,publico/train,0
 dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33.jpeg,15,dataset/publico/test/papel_carton/companero_000226_dl_azul_00226.jpg,publico/test,0
 dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.34.jpeg,16,dataset/externo/train/generales/taco_568_1799.jpg,externo/train,0
-dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.35 (1).jpeg,12,dataset/publico/val/vidrio/companero_000042_dl_gris_00045.jpg,publico/val,0
+dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.35 (1).jpeg,11,dataset/externo/train/plasticos/realwaste_plastic_plastic-124.jpg,externo/train,0
 dataset/val_camara/vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.35.jpeg,5,dataset/publico/train/papel_carton/companero_000398_dl_azul_00431.jpg,publico/train,0
 dataset/val_camara/vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.41.jpeg,13,dataset/publico/train/generales/companero_000828_dl_negro_01226.jpg,publico/train,0
 dataset/val_camara/vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.42 (1).jpeg,10,dataset/publico/train/metales/companero_000306_dl_amarillo_00329.jpg,publico/train,0

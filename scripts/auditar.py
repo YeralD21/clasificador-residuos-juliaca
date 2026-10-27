@@ -157,10 +157,19 @@ def revisar_val_camara(mj, mp, errores, avisos):
     if not fotos:
         return conteo
 
-    # referencias: (grupo, es_train, ruta). En externo solo train/ se entrena; _fuentes, _descartados... no.
+    # referencias: (grupo, es_train, ruta). En externo solo train/ se entrena; _descartados, _revision... no.
+    # _fuentes/ (descargas crudas de importar_taco.py / importar_publicos.py, nunca se entrena) no se compara.
     refs = [(f"{n}/{s}", s == "train", p) for n, m in (("juliaca", mj), ("publico", mp)) for s in SPLITS for p in m[s]]
     refs += [("externo/" + p.relative_to(EXTERNO).parts[0], p.relative_to(EXTERNO).parts[0] == "train", p)
-             for p in imagenes(EXTERNO)]
+             for p in imagenes(EXTERNO) if p.relative_to(EXTERNO).parts[0] != "_fuentes"]
+    legibles = []
+    for r in refs:
+        try:
+            dhash(r[2])
+            legibles.append(r)
+        except Exception as e:  # noqa: BLE001
+            avisos.append(f"[val_camara] referencia ilegible (se omite): {r[2].relative_to(RAIZ)} ({e})")
+    refs = legibles
     ya = {p: h for m in (mj, mp) for d in m.values() for p, h in d.items()}  # md5 ya calculados
     md5_ref = {}
     for g, _, q in refs:

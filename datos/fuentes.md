@@ -86,6 +86,46 @@ RealWaste > TACO extra > TrashNet. Dentro de cada fuente y clase se toma una mue
   **Descartada:** trash (mezcla).
 - **Prioridad:** la última dentro del tope (fotos de estudio, lo menos parecido al uso real).
 
+## Resultado de la importación (2026-10-26)
+
+`python scripts/importar_publicos.py`, con la revisión de RealWaste Metal aplicada (68 aerosoles → peligrosos,
+30 descartadas). Números copiados de `reportes/externo_publicos_conteos.csv`. Candidatas = imágenes del mapeo;
+tras dedup = tras quitar las de dHash ≤ 4 contra publico, juliaca, val_camara, el externo previo y entre fuentes;
+elegidas = tras el tope de 1.200 nuevas por clase.
+
+| clase | fuente | candidatas | tras dedup | elegidas |
+|---|---|---|---|---|
+| generales | taco_extra | 125 | 125 | 125 |
+| metales | realwaste | 722 | 574 | 574 |
+| metales | taco_extra | 304 | 304 | 304 |
+| metales | trashnet | 410 | 315 | 315 |
+| organico | realwaste | 847 | 832 | 832 |
+| organico | taco_extra | 5 | 4 | 4 |
+| papel_carton | realwaste | 961 | 927 | 927 |
+| papel_carton | taco_extra | 251 | 251 | 251 |
+| papel_carton | trashnet | 997 | 791 | 22 |
+| peligrosos | realwaste | 68 | 68 | 68 |
+| peligrosos | taco_extra | 12 | 12 | 12 |
+| plasticos | realwaste | 921 | 886 | 886 |
+| plasticos | taco_extra | 1109 | 1103 | 314 |
+| plasticos | trashnet | 482 | 395 | 0 |
+| vidrio | realwaste | 420 | 402 | 402 |
+| vidrio | taco_extra | 95 | 94 | 94 |
+| vidrio | trashnet | 501 | 375 | 375 |
+| **total** | | **8.230** | **7.458** | **5.505** |
+
+RealWaste Metal: 790 originales → 672 tras dedup → 574 metales + 68 peligrosos + 30 descartadas por el usuario. La
+clase se asigna después de deduplicar, así que los 68 aerosoles aparecen como candidatas de peligrosos y no de metales.
+
+Eliminadas por dedup (742): casi iguales a publico 598, a val_camara 4, a juliaca 3; duplicados entre o dentro de
+fuentes 137 (RealWaste 94, TrashNet 39, TACO 4). Las 598 de publico son sobre todo TrashNet: `companero` ya contenía
+buena parte de TrashNet. Las de juliaca y val_camara eran falsos positivos a la vista (fotos distintas de objetos
+distintos), pero se eliminaron por la regla.
+
+`dataset/externo/train` final, contando lo de `importar_taco.py` (`python scripts/auditar.py`, 0 ERRORES):
+generales 264, metales 1.233, organico 836, papel_carton 1.200, peligrosos 80, plasticos 1.200, vidrio 871,
+sin_residuo 0.
+
 ## Evaluados y no aprobados
 - **Recyclable and Household Waste Classification**, Kaggle `alistairking`
   (https://www.kaggle.com/datasets/alistairking/recyclable-and-household-waste-classification; MIT según Kaggle).

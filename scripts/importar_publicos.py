@@ -20,7 +20,7 @@ NUNCA se sobrescribe. El usuario anota ahí los números de los aerosoles (-> pe
 Pasos:
   1. Prepara cada fuente en dataset/externo/_fuentes/<fuente>/ (descarga + descompresión; datos no confiables:
      solo se leen como imágenes, nunca se ejecutan; se rechazan rutas que salgan de la carpeta).
-  2. Anti-leakage (regla 1d): dHash de cada candidata contra TODOS los splits de publico y juliaca y contra lo que
+  2. Anti-leakage (regla 1d): dHash de cada candidata contra TODOS los splits de publico y juliaca, val_camara y lo que
      ya hay en externo/train (TACO previo). <= 4 -> eliminada. Luego, en orden de prioridad, contra las ya
      aceptadas (duplicados dentro de cada fuente y entre fuentes): la de mayor prioridad se queda.
   3. Tope: como máximo --tope (1200) imágenes NUEVAS por clase, llenando por prioridad; dentro de cada fuente,
@@ -48,7 +48,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comun import CLASES, EXTERNO, JULIACA, PUBLICO, RAIZ, SPLITS, dhash, imagenes
+from comun import CLASES, EXTERNO, JULIACA, PUBLICO, RAIZ, SPLITS, VAL_CAMARA, dhash, imagenes
 import importar_taco as taco
 
 FUENTES = EXTERNO / "_fuentes"
@@ -360,11 +360,14 @@ def main():
     if (rep := [n for n, k in nombres.items() if k > 1]):
         raise SystemExit(f"Nombres de destino repetidos: {rep[:5]}")
 
-    # --- anti-leakage: publico y juliaca (todos los splits) + externo/train que no es de este script ---
+    # --- anti-leakage: publico y juliaca (todos los splits), val_camara (nunca se entrena: auditar.py da ERROR si
+    # algo de train se le parece) y externo/train que no es de este script ---
     propios = tuple(f"{p}_" for p in PREFIJO.values())
     refs = [p for base in (PUBLICO, JULIACA) for s in SPLITS for p in imagenes(base / s)]
+    refs += imagenes(VAL_CAMARA)
     refs += [p for p in imagenes(TRAIN) if not p.name.startswith(propios)]
-    print(f"\ndHash de {len(refs)} referencias (publico + juliaca, todos los splits, + externo/train previo)...", flush=True)
+    print(f"\ndHash de {len(refs)} referencias (publico + juliaca, todos los splits, + val_camara + externo/train "
+          "previo)...", flush=True)
     ref_h = np.array([dhash(p) for p in refs], dtype=np.uint64)
     orden = {f: i for i, f in enumerate(PRIORIDAD)}
     candidatas.sort(key=lambda c: (orden[c["fuente"]], c["nombre"]))

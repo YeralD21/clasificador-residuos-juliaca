@@ -1,14 +1,32 @@
-# Revisión manual de RealWaste Metal (672 imágenes, mosaicos en reportes/revision_realwaste_metal/).
-# El número de cada imagen está en su esquina; indice.csv dice qué archivo es cada número.
-# - aerosoles: números separados por coma o espacio; pasan a peligrosos.
-# - otras correcciones: una por línea, "número clase" (una de: generales, metales, organico, papel_carton, peligrosos, plasticos, sin_residuo, vidrio) o "número descartar".
-# - cuando termines, cambia "terminado: no" por "terminado: si". Sin eso no se importa nada.
-# Las líneas que empiezan con # se ignoran. Este archivo no lo sobrescribe ningún script.
-
-terminado: no
-
-aerosoles:
-
-# otras correcciones (ejemplos, borra el # para usarlos):
-# 123 generales
-# 456 descartar
+terminado: si
+aerosoles: 4, 5, 7, 16, 28, 29, 31, 33, 43, 79, 84, 93, 99, 101, 102, 112, 115, 134, 135, 136, 137, 138, 140, 141, 142, 145, 193, 194, 195, 201, 210, 211, 254, 272, 280, 290, 511, 512, 513, 517, 530, 531, 532, 539, 546, 547, 549, 550, 551, 552, 556, 557, 560, 562, 566, 570, 571, 572, 579, 582, 583, 585, 586, 587, 590, 615, 616, 617
+3 descartar
+6 descartar
+30 descartar
+78 descartar
+81 descartar
+82 descartar
+110 descartar
+111 descartar
+113 descartar
+144 descartar
+146 descartar
+147 descartar
+154 descartar
+155 descartar
+167 descartar
+190 descartar
+222 descartar
+375 descartar
+435 descartar
+436 descartar
+437 descartar
+519 descartar
+521 descartar
+529 descartar
+545 descartar
+581 descartar
+584 descartar
+589 descartar
+624 descartar
+651 descartar
