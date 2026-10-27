@@ -1,13 +1,13 @@
 """Sesión de fotos con la cámara de la laptop (MX Brio): guarda cada foto TAL CUAL, a resolución completa.
 
-  python scripts/capturar_sesion.py                 # cámara auto, D:\\Proyecto-Residuos-ML\\fotos_laptop\\<fecha>\\
-  python scripts/capturar_sesion.py --camara 1
+  python scripts/capturar_sesion.py                 # cámara auto, <repo>/fotos_laptop/<fecha>/
+  python scripts/capturar_sesion.py --camara 1 --salida E:/fotos
 
-Las fotos van FUERA del repo y de dataset/: <destino>/<AAAA-MM-DD>/objNNN/<hora>.jpg (JPG calidad 95, el frame
+Las fotos van FUERA de dataset/ (y fuera de git): <salida>/<AAAA-MM-DD>/objNNN/<hora>.jpg (JPG calidad 95, el frame
 de la cámara sin recortar ni redimensionar). La clase y el split los decides TÚ después, a mano.
 Cada vez que se abre empieza un objeto nuevo (el siguiente objNNN libre de ese día).
 
-Teclas: ESPACIO o clic = foto | N = nuevo objeto | F = pantalla completa | Q = salir
+Teclas (con la VENTANA de la cámara activa, no la terminal): ESPACIO o clic = foto | N = nuevo objeto | F = pantalla completa | Q = salir
 """
 import argparse
 import re
@@ -17,9 +17,8 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from comun import RAIZ, abrir_camara, crear_ventana, teclas_ventana
+from comun import FOTOS_LAPTOP, abrir_camara, crear_ventana, teclas_ventana
 
-DESTINO = RAIZ.parent / "fotos_laptop"   # D:\Proyecto-Residuos-ML\fotos_laptop (fuera del repo)
 VENTANA = "Captura - ESPACIO/clic foto | N nuevo objeto | Q salir"
 
 
@@ -36,12 +35,13 @@ def texto(img, t, y, escala, color=(255, 255, 255)):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--camara", default="auto", help="índice de OpenCV, o auto (MX Brio si está, si no la integrada)")
-    ap.add_argument("--destino", default=str(DESTINO))
+    ap.add_argument("--salida", "--destino", default=str(FOTOS_LAPTOP),
+                    help="carpeta de las sesiones (por defecto <repo>/fotos_laptop); dentro se crea <AAAA-MM-DD>/")
     ap.add_argument("--ancho", type=int, default=3840, help="resolución pedida; la cámara da la mayor que soporte")
     ap.add_argument("--alto", type=int, default=2160)
     args = ap.parse_args()
 
-    dia = Path(args.destino) / time.strftime("%Y-%m-%d")
+    dia = Path(args.salida).resolve() / time.strftime("%Y-%m-%d")
     cap = abrir_camara(args.camara, args.ancho, args.alto)
     dia.mkdir(parents=True, exist_ok=True)  # después de abrir la cámara: si falla no deja carpetas vacías
     obj, n_obj, total = siguiente_objeto(dia), 0, 0
@@ -53,13 +53,20 @@ def main():
 
     crear_ventana(VENTANA)
     cv2.setMouseCallback(VENTANA, raton)
-    destello = 0.0
-    print(f"Guardando en {dia}  (objeto actual obj{obj:03d})")
+    destello, fallos = 0.0, 0
+    print(f"Guardando en {dia}  (objeto actual obj{obj:03d})\n"
+          "Haz clic en la ventana de la cámara antes de usar ESPACIO / N / Q (en la terminal no hacen nada).", flush=True)
 
     while True:
         ok, frame = cap.read()
-        if not ok:
+        if not ok:  # sin waitKey la ventana se congela y no recibe teclas
+            fallos += 1
+            if fallos in (30, 300):
+                print(f"[AVISO] la cámara no da frames ({fallos} seguidos). ¿La usa otra app? Prueba --camara N.", flush=True)
+            if teclas_ventana(VENTANA, 30) == "q":
+                break
             continue
+        fallos = 0
         h, w = frame.shape[:2]
         k = teclas_ventana(VENTANA)
         if k == "q":
@@ -67,9 +74,9 @@ def main():
         if k == "n":
             if n_obj:
                 obj, n_obj = obj + 1, 0
-                print(f"Nuevo objeto: obj{obj:03d}")
+                print(f"Nuevo objeto: obj{obj:03d}", flush=True)
             else:  # un objeto sin fotos no avanza: así no quedan números saltados
-                print(f"obj{obj:03d} todavía no tiene fotos: sigue siendo el objeto actual")
+                print(f"obj{obj:03d} todavía no tiene fotos: sigue siendo el objeto actual", flush=True)
         if k == " " or clic["foto"]:
             clic["foto"] = False
             carpeta = dia / f"obj{obj:03d}"
@@ -77,9 +84,9 @@ def main():
             f = carpeta / f"{time.strftime('%H%M%S')}_{int(time.time() * 1000) % 1000:03d}.jpg"
             if cv2.imwrite(str(f), frame, [cv2.IMWRITE_JPEG_QUALITY, 95]):  # el frame tal cual, sin dibujos
                 n_obj, total, destello = n_obj + 1, total + 1, time.time()
-                print(f"[OK] {f}  ({w}x{h})")
+                print(f"[OK] {f}  ({w}x{h})", flush=True)
             else:
-                print(f"[ERROR] no se pudo guardar {f}")
+                print(f"[ERROR] no se pudo guardar {f}", flush=True)
 
         e = 1280 / w  # la vista previa se achica; lo guardado es el frame completo
         vista = cv2.resize(frame, (1280, int(h * e)), interpolation=cv2.INTER_AREA)

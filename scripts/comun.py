@@ -12,6 +12,10 @@ ETAPA2 = DATASET / "_etapa2"          # generado automáticamente, no editar
 ETAPA1 = DATASET / "_etapa1"          # generado con --externo (publico + externo), no editar
 EXTERNO = DATASET / "externo"         # datos externos reales: SOLO train (regla 1 de CLAUDE.md)
 VAL_CAMARA = DATASET / "val_camara"   # evaluación aparte con la cámara de la laptop: <clase>/<objeto>/, nunca se entrena
+# Sesiones de capturar_sesion.py: <repo>/fotos_laptop/<AAAA-MM-DD>/objNNN/ (fuera de dataset/, en .gitignore).
+# Antes era la carpeta hermana del repo (RAIZ.parent / "fotos_laptop"); etiquetar e importar la siguen mirando.
+FOTOS_LAPTOP = RAIZ / "fotos_laptop"
+FOTOS_LAPTOP_ANTES = RAIZ.parent / "fotos_laptop"
 SPLITS = ("train", "val", "test")
 EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 

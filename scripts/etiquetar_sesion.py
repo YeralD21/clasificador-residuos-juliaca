@@ -1,6 +1,6 @@
 """Etiqueta A MANO cada objeto de una sesión de capturar_sesion.py: clase y split, por objeto. No toca dataset/.
 
-  python scripts/etiquetar_sesion.py                    # la fecha más reciente de D:\\Proyecto-Residuos-ML\\fotos_laptop
+  python scripts/etiquetar_sesion.py                    # la fecha más reciente de <repo>/fotos_laptop
   python scripts/etiquetar_sesion.py --fecha 2026-10-26
 
 Por cada fotos_laptop/<fecha>/objNNN/ muestra un mosaico de sus fotos. Eliges la CLASE con su tecla y luego el
@@ -21,17 +21,35 @@ import cv2
 import numpy as np
 
 from capturar_fotos import TECLAS
-from comun import CLASES, EXT, RAIZ, crear_ventana, teclas_ventana
+from comun import CLASES, EXT, FOTOS_LAPTOP, FOTOS_LAPTOP_ANTES, crear_ventana, teclas_ventana
 
-FOTOS = RAIZ.parent / "fotos_laptop"   # D:\Proyecto-Residuos-ML\fotos_laptop (fuera del repo)
 CAMPOS = ["objeto", "clase", "split", "n_fotos", "nota"]
 CLASE_DE = {chr(k): v for k, v in TECLAS.items()}
 SPLIT_DE = {"t": "train", "v": "val"}
 VENTANA = "Etiquetar sesion - clase 0-7, split T/V | S saltar D descartar Z deshacer Q salir"
 
 
+def fechas_en(raiz):
+    if not raiz.is_dir():
+        return []
+    return sorted(d.name for d in raiz.iterdir() if d.is_dir() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.name))
+
+
+def carpeta_sesiones(raiz=None, fecha=None):
+    """--raiz si se pasa; si no <repo>/fotos_laptop, o la ubicación anterior (carpeta hermana del repo) si solo
+    ahí están las sesiones (o la --fecha pedida)."""
+    if raiz:
+        return Path(raiz)
+    for r in (FOTOS_LAPTOP, FOTOS_LAPTOP_ANTES):
+        if (fecha in fechas_en(r)) if fecha else fechas_en(r):
+            if r != FOTOS_LAPTOP:
+                print(f"[AVISO] sesiones en la ubicación anterior: {r}", flush=True)
+            return r
+    return FOTOS_LAPTOP
+
+
 def ultima_fecha(raiz):
-    fechas = sorted(d.name for d in raiz.iterdir() if d.is_dir() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.name))
+    fechas = fechas_en(raiz)
     if not fechas:
         raise SystemExit(f"No hay sesiones (carpetas AAAA-MM-DD) en {raiz}")
     return fechas[-1]
@@ -84,11 +102,11 @@ def cabecera(ancho, lineas):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--raiz", default=str(FOTOS), help="carpeta con las sesiones AAAA-MM-DD")
+    ap.add_argument("--raiz", "--salida", help="carpeta con las sesiones AAAA-MM-DD (por defecto <repo>/fotos_laptop)")
     ap.add_argument("--fecha", help="AAAA-MM-DD (por defecto la más reciente)")
     args = ap.parse_args()
 
-    raiz = Path(args.raiz)
+    raiz = carpeta_sesiones(args.raiz, args.fecha)
     dia = raiz / (args.fecha or ultima_fecha(raiz))
     objetos = sorted(d for d in dia.glob("obj*") if d.is_dir() and fotos_de(d))
     csv_path = dia / "etiquetas.csv"

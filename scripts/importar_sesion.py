@@ -1,7 +1,7 @@
 """Copia a dataset/juliaca las fotos de una sesión YA etiquetada a mano con etiquetar_sesion.py.
 
   python scripts/importar_sesion.py --dry-run           # solo muestra qué haría; no escribe nada
-  python scripts/importar_sesion.py                     # la fecha más reciente de D:\\Proyecto-Residuos-ML\\fotos_laptop
+  python scripts/importar_sesion.py                     # la fecha más reciente de <repo>/fotos_laptop
   python scripts/importar_sesion.py --fecha 2026-10-26 --recorte roi
 
 La clase y el split los decidiste TÚ por objeto en etiquetas.csv; este script no decide nada (CLAUDE.md, reglas
@@ -21,7 +21,7 @@ from pathlib import Path
 import cv2
 
 from comun import CLASES, JULIACA, imagenes, roi_cuadrado
-from etiquetar_sesion import FOTOS, fotos_de, leer, ultima_fecha
+from etiquetar_sesion import carpeta_sesiones, fotos_de, leer, ultima_fecha
 
 SPLITS_OK = ("train", "val")
 TODOS = ("train", "val", "test")
@@ -61,7 +61,7 @@ def preparar(p, recorte, lado_max):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--raiz", default=str(FOTOS), help="carpeta con las sesiones AAAA-MM-DD")
+    ap.add_argument("--raiz", "--salida", help="carpeta con las sesiones AAAA-MM-DD (por defecto <repo>/fotos_laptop)")
     ap.add_argument("--fecha", help="AAAA-MM-DD (por defecto la más reciente)")
     ap.add_argument("--dataset", default=str(JULIACA), help="destino (por defecto dataset/juliaca)")
     ap.add_argument("--recorte", choices=("ninguno", "roi"), default="ninguno")
@@ -69,7 +69,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="solo muestra lo que haría, no escribe nada")
     args = ap.parse_args()
 
-    raiz, base = Path(args.raiz), Path(args.dataset)
+    raiz, base = carpeta_sesiones(args.raiz, args.fecha), Path(args.dataset)
     fecha = args.fecha or ultima_fecha(raiz)
     dia, fc = raiz / fecha, fecha.replace("-", "")
     filas = leer(dia / "etiquetas.csv")
