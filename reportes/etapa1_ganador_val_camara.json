@@ -1,5 +1,5 @@
 {
-  "modelo": "modelos\\etapa1_ganador.pt",
+  "modelo": "modelos/etapa1_ganador.pt",
   "datos": "val_camara",
   "accuracy_top1": 0.3515,
   "accuracy_top5": 0.8976,

@@ -187,6 +187,75 @@ F1 por clase en val_camara (de `reportes/*_val_camara.json`):
 > final. La medida final será `dataset/juliaca/test`, evaluado UNA sola vez con este modelo
 > (`python scripts/evaluar.py --split test`, cuando el usuario lo pida). juliaca/test NO se ha usado.
 
+## Datos externos nuevos (`e1_ext2` → `e2_ext2_full`, 2026-10-26)
+**Un solo factor:** `dataset/externo/train` pasa de 179 imágenes (TACO: generales 139, metales 40) a 5.684
+(+ RealWaste, TACO extra y TrashNet; ver `datos/fuentes.md`). La receta es la misma que `e1_ext` → `e2_ext_full`:
+- etapa 1: yolo26s-cls, 224 px, 60 épocas, paciencia 15, semilla 42, `--externo`;
+- etapa 2: desde la etapa 1, AdamW lr 1e-4, freeze 6, replay 2, `--externo`, 30 épocas, paciencia 10, semilla 42.
+
+`juliaca` y `publico` no cambiaron desde el 25-10 18:51 (ningún archivo más nuevo que el modelo de `e2_ext_full`);
+`auditar.py` sin errores. Por la receta, en la etapa 2 el externo se suma completo: en train quedan 5.684 externas
+frente a 145 fotos de juliaca y 250 de replay.
+
+| | e1_ext | **e1_ext2** | e2_ext_full (actual) | **e2_ext2_full** |
+|---|---|---|---|---|
+| externo/train | 179 | 5.684 | 179 | 5.684 |
+| épocas (mejor\*) | 60 (52) | 60 (59) | 17 (7) | 11 (5) |
+| minutos | 15.3 | 20.1 | 1.0 | 2.3 |
+| F1 macro publico/val | 0.9153 | 0.9071 | 0.8849 | 0.8837 |
+| F1 macro juliaca/val (28 fotos) | 0.4274 | 0.3912 | 0.8186 | 0.8057 |
+| top-1 juliaca/val | 0.5000 | 0.5000 | 0.7500 (21/28) | 0.7500 (21/28) |
+| **F1 macro val_camara (293 fotos)** | 0.3510 | **0.4147** | **0.5183** | **0.4301** |
+| top-1 val_camara | 0.3481 | 0.3652 | 0.5529 | 0.4300 |
+
+\* Mejor época según `reportes/experimentos.csv` (primera con el máximo top-1). En `e2_ext2_full`, Ultralytics guardó
+`best.pt` en la época 1 (criterio (top1+top5)/2; log: "Best results observed at epoch 1").
+
+**val_camara, F1 por clase (aciertos/n)**, que es donde va el peso principal:
+
+| clase | n | e1_ext | e1_ext2 | e2_ext_full | e2_ext2_full |
+|---|---|---|---|---|---|
+| generales | 122 | 0.293 (22) | 0.165 (11) | **0.691 (75)** | 0.494 (44) |
+| metales | 13 | 0.065 (1) | 0.095 (2) | **0.298 (7)** | 0.050 (1) |
+| organico | 20 | 0.552 (8) | 0.889 (16) | 0.769 (15) | 0.800 (14) |
+| papel_carton | 26 | 0.412 (20) | 0.358 (24) | 0.475 (14) | 0.396 (20) |
+| peligrosos | 22 | 0.319 (15) | 0.438 (14) | 0.429 (12) | 0.413 (13) |
+| plasticos | 73 | 0.371 (26) | 0.424 (28) | 0.467 (28) | 0.390 (23) |
+| vidrio | 17 | 0.444 (10) | 0.533 (12) | 0.500 (11) | 0.468 (11) |
+
+Confusiones principales en val_camara (real → predicho):
+- e2_ext_full: plasticos → metales 12, generales → papel_carton 12, plasticos → vidrio 11, generales → plasticos 11,
+  generales → peligrosos 10.
+- e2_ext2_full: **generales → papel_carton 41**, generales → peligrosos 17, plasticos → vidrio 16,
+  generales → plasticos 12, plasticos → metales 10.
+
+En juliaca/val, `e2_ext2_full` y `e2_ext_full` aciertan lo mismo en todas las clases (21/28; metales 4/9,
+generales 2/3, peligrosos 2/2). El F1 por clase cambia por los falsos positivos de otras clases, no por aciertos.
+En publico/val la etapa 1 baja en plasticos (0.851 → 0.828), vidrio (0.909 → 0.894) y peligrosos (aciertos 260 → 249);
+la etapa 2 queda igual (0.8849 vs 0.8837).
+
+Informes: `reportes/etapa1_e1_ext2_20261026_2019_{publico_val,juliaca_val,val_camara}.json`,
+`reportes/etapa2_e2_ext2_full_20261026_2021_{publico_val,juliaca_val,val_camara}.json`,
+`reportes/etapa2_ext_full_publico_val.json`, `reportes/etapa1_e1_ext_20261025_1657_val_camara.json`,
+`reportes/val_camara_por_foto.csv` (7 modelos). Modelos en `modelos/experimentos/` (no se suben).
+
+**Conclusión: EMPEORA.** El peso principal va a val_camara (293 fotos de 29 objetos), porque juliaca/val tiene solo
+28 fotos y ahí los dos modelos aciertan exactamente lo mismo (empate). En val_camara, el modelo final `e2_ext2_full`
+baja de F1 0.5183 a 0.4301 (top-1 0.5529 → 0.4300), sobre todo en las clases que importaban:
+- **generales:** 75 → 44 aciertos; los envoltorios pasan a papel_carton (41 fotos);
+- **metales:** 7 → 1;
+- **peligrosos:** se queda igual (12 → 13).
+
+Mejora un poco papel_carton (14 → 20 aciertos) y organico se mantiene.
+La etapa 1 sola sí mejora en val_camara (e1_ext2 0.4147 frente a e1_ext 0.3510; organico 8 → 16), pero empeora en
+publico/val (0.9071 frente a 0.9153; una diferencia de 0.008, mayor que el umbral de 0.005).
+Hipótesis, no probada: en la etapa 2 el externo domina el train (5.684 frente a 145 fotos de juliaca; papel_carton
+1.209 frente a generales 357), y el mejor modelo sale en la época 1, así que casi no se adapta a juliaca.
+Siguiente experimento de un factor, si se quiere: `e2` desde `e1_ext2` **sin** `--externo` en la etapa 2.
+El modelo actual sigue siendo `etapa2_ext_full` (no cambia el defecto de demo ni de inferencia). juliaca/test NO se usó.
+val_camara ya sirvió para elegir `etapa2_ext_full`, así que sus números tienen sesgo de selección, aunque la
+comparación entre los dos modelos sigue siendo válida.
+
 ## Pendientes
 - ~~tetra/multicapa en papel_carton de publico (revision\tetra\), decisión diferida.~~ CERRADO
   (2026-10-26): los envases tetra/multicapa de cartón se clasifican como `papel_carton` y se

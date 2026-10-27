@@ -31,6 +31,7 @@ EXPERIMENTOS = {
         "e1_s320":    ("igual a base con imágenes de 320 px", ["--imgsz", "320"]),
         "e1_m224":    ("modelo más grande yolo26m-cls", ["--pesos", "yolo26m-cls.pt"]),
         "e1_ext":     ("igual a base + datos externos en train (dataset/externo/train)", ["--externo"]),
+        "e1_ext2":    ("igual a e1_ext con externo/train del 26-10 (+RealWaste, TACO extra, TrashNet)", ["--externo"]),
     },
     2: {
         "e2_base":     ("lr 1e-4, 6 capas congeladas, replay 1 (referencia)", []),
@@ -45,6 +46,8 @@ EXPERIMENTOS = {
         "e2_ext":      ("igual a e2_replay2 + datos externos en train", ["--replay", "2", "--externo"]),
         "e2_ext_full": ("igual a e2_ext partiendo del modelo de e1_ext (externo en ambas etapas)",
                         ["--pesos", "@e1_ext", "--replay", "2", "--externo"]),
+        "e2_ext2_full": ("igual a e2_ext_full con externo/train del 26-10, partiendo de e1_ext2",
+                         ["--pesos", "@e1_ext2", "--replay", "2", "--externo"]),
         "e2_solo_jul": ("SIN etapa 1: desde ImageNet solo con fotos de Juliaca",
                         ["--pesos", "yolo26s-cls.pt", "--replay", "0", "--freeze", "0", "--lr", "1e-3"]),
     },

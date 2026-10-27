@@ -2,10 +2,12 @@ experimento,etapa,val_datos,val_f1_macro,val_top1,modelo_base,imgsz,optimizer,lr
 e1_base,1,publico/val,0.9129,0.9116,yolo26s-cls.pt,224,AdamW,0.000833,,0.0,,0,60,56,9.5,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_base_20261024_1453.pt
 e1_drop02,1,publico/val,0.9086,0.9073,yolo26s-cls.pt,224,AdamW,0.000833,,0.2,,0,60,54,9.6,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_drop02_20261024_1503.pt
 e1_ext,1,publico/val,0.9153,0.9143,yolo26s-cls.pt,224,AdamW,0.000833,,0.0,,179,60,52,15.3,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_ext_20261025_1657.pt
+e1_ext2,1,publico/val,0.9071,0.9062,yolo26s-cls.pt,224,MuSGD,0.01,,0.0,,5684,60,59,20.1,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_ext2_20261026_2019.pt
 e1_m224,1,publico/val,0.9139,0.9126,yolo26m-cls.pt,224,AdamW,0.000833,,0.0,,0,60,58,16.9,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_m224_20261024_1536.pt
 e1_s320,1,publico/val,0.9113,0.911,yolo26s-cls.pt,320,AdamW,0.000833,,0.0,,0,60,47,15.8,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_s320_20261024_1519.pt
 e2_base,2,juliaca/val,0.6982,0.6429,etapa1_ganador.pt,224,AdamW,0.0001,6,0.0,1.0,0,20,7,0.8,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_base_20261024_2056.pt
 e2_ext,2,juliaca/val,0.7074,0.7857,etapa1_ganador.pt,224,AdamW,0.0001,6,0.0,2.0,179,26,14,1.7,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_ext_20261025_1850.pt
+e2_ext2_full,2,juliaca/val,0.8057,0.75,etapa1_e1_ext2_20261026_2019.pt,224,AdamW,0.0001,6,0.0,2.0,5684,11,5,2.3,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_ext2_full_20261026_2021.pt
 e2_ext_full,2,juliaca/val,0.8186,0.75,etapa1_e1_ext_20261025_1657.pt,224,AdamW,0.0001,6,0.0,2.0,179,17,7,1.0,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_ext_full_20261025_1851.pt
 e2_freeze0,2,juliaca/val,0.6846,0.6429,etapa1_ganador.pt,224,AdamW,0.0001,0,0.0,1.0,0,22,11,1.2,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_freeze0_20261024_2059.pt
 e2_freeze9,2,juliaca/val,0.7228,0.6786,etapa1_ganador.pt,224,AdamW,0.0001,9,0.0,1.0,0,20,10,0.8,D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_freeze9_20261024_2100.pt

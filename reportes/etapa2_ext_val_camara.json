@@ -1,5 +1,5 @@
 {
-  "modelo": "modelos\\etapa2_ext.pt",
+  "modelo": "modelos/etapa2_ext.pt",
   "datos": "val_camara",
   "accuracy_top1": 0.4881,
   "accuracy_top5": 0.9693,
