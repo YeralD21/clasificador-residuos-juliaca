@@ -1,0 +1,6313 @@
+{
+  "modelo": "modelos/experimentos/etapa2_e2_ext2_taco_20261026_2041.pt",
+  "datos": "val_camara",
+  "accuracy_top1": 0.5324,
+  "accuracy_top5": 0.9829,
+  "f1_macro": 0.5031,
+  "clases_con_datos": 7,
+  "por_clase": [
+    {
+      "clase": "generales",
+      "n": 122,
+      "precision": 0.7315,
+      "recall": 0.6475,
+      "f1": 0.687
+    },
+    {
+      "clase": "metales",
+      "n": 13,
+      "precision": 0.1613,
+      "recall": 0.3846,
+      "f1": 0.2273
+    },
+    {
+      "clase": "organico",
+      "n": 20,
+      "precision": 0.8889,
+      "recall": 0.8,
+      "f1": 0.8421
+    },
+    {
+      "clase": "papel_carton",
+      "n": 26,
+      "precision": 0.4571,
+      "recall": 0.6154,
+      "f1": 0.5246
+    },
+    {
+      "clase": "peligrosos",
+      "n": 22,
+      "precision": 0.5,
+      "recall": 0.5455,
+      "f1": 0.5217
+    },
+    {
+      "clase": "plasticos",
+      "n": 73,
+      "precision": 0.5556,
+      "recall": 0.2055,
+      "f1": 0.3
+    },
+    {
+      "clase": "sin_residuo",
+      "n": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "clase": "vidrio",
+      "n": 17,
+      "precision": 0.2889,
+      "recall": 0.7647,
+      "f1": 0.4194
+    }
+  ],
+  "matriz_real_x_predicho": [
+    [
+      79,
+      7,
+      1,
+      18,
+      5,
+      7,
+      1,
+      4
+    ],
+    [
+      5,
+      5,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0
+    ],
+    [
+      3,
+      1,
+      16,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      5,
+      1,
+      0,
+      16,
+      3,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      6,
+      0,
+      1,
+      12,
+      0,
+      0,
+      2
+    ],
+    [
+      15,
+      10,
+      1,
+      0,
+      2,
+      15,
+      4,
+      26
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      1,
+      2,
+      0,
+      13
+    ]
+  ],
+  "clases": [
+    "generales",
+    "metales",
+    "organico",
+    "papel_carton",
+    "peligrosos",
+    "plasticos",
+    "sin_residuo",
+    "vidrio"
+  ],
+  "por_foto": [
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "peligrosos",
+      "prob": 0.3734,
+      "top3": [
+        [
+          "peligrosos",
+          0.3734
+        ],
+        [
+          "generales",
+          0.3159
+        ],
+        [
+          "plasticos",
+          0.1045
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "generales",
+      "prob": 0.983,
+      "top3": [
+        [
+          "generales",
+          0.983
+        ],
+        [
+          "papel_carton",
+          0.0165
+        ],
+        [
+          "plasticos",
+          0.0004
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "generales",
+      "prob": 0.7217,
+      "top3": [
+        [
+          "generales",
+          0.7217
+        ],
+        [
+          "metales",
+          0.1012
+        ],
+        [
+          "papel_carton",
+          0.0861
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.29.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "generales",
+      "prob": 0.9979,
+      "top3": [
+        [
+          "generales",
+          0.9979
+        ],
+        [
+          "papel_carton",
+          0.002
+        ],
+        [
+          "metales",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.30 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "papel_carton",
+      "prob": 0.8773,
+      "top3": [
+        [
+          "papel_carton",
+          0.8773
+        ],
+        [
+          "peligrosos",
+          0.1076
+        ],
+        [
+          "metales",
+          0.0135
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.30.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "generales",
+      "prob": 0.9035,
+      "top3": [
+        [
+          "generales",
+          0.9035
+        ],
+        [
+          "papel_carton",
+          0.0853
+        ],
+        [
+          "peligrosos",
+          0.0057
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.31 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "generales",
+      "prob": 0.9808,
+      "top3": [
+        [
+          "generales",
+          0.9808
+        ],
+        [
+          "papel_carton",
+          0.0177
+        ],
+        [
+          "plasticos",
+          0.0012
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.31.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "papel_carton",
+      "prob": 0.6023,
+      "top3": [
+        [
+          "papel_carton",
+          0.6023
+        ],
+        [
+          "generales",
+          0.3383
+        ],
+        [
+          "plasticos",
+          0.0317
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.54 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "generales",
+      "prob": 0.9751,
+      "top3": [
+        [
+          "generales",
+          0.9751
+        ],
+        [
+          "papel_carton",
+          0.0119
+        ],
+        [
+          "plasticos",
+          0.0049
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.55.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "papel_carton",
+      "prob": 0.5438,
+      "top3": [
+        [
+          "papel_carton",
+          0.5438
+        ],
+        [
+          "generales",
+          0.3989
+        ],
+        [
+          "metales",
+          0.0498
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.56 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "generales",
+      "prob": 0.9433,
+      "top3": [
+        [
+          "generales",
+          0.9433
+        ],
+        [
+          "plasticos",
+          0.0228
+        ],
+        [
+          "peligrosos",
+          0.0141
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.56 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "generales",
+      "prob": 0.6186,
+      "top3": [
+        [
+          "generales",
+          0.6186
+        ],
+        [
+          "peligrosos",
+          0.2014
+        ],
+        [
+          "papel_carton",
+          0.0827
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.56.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj101_envoltorio_chocman",
+      "prediccion": "papel_carton",
+      "prob": 0.9576,
+      "top3": [
+        [
+          "papel_carton",
+          0.9576
+        ],
+        [
+          "generales",
+          0.0227
+        ],
+        [
+          "plasticos",
+          0.014
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.31 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.8493,
+      "top3": [
+        [
+          "generales",
+          0.8493
+        ],
+        [
+          "papel_carton",
+          0.1494
+        ],
+        [
+          "peligrosos",
+          0.0005
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.33 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.4946,
+      "top3": [
+        [
+          "generales",
+          0.4946
+        ],
+        [
+          "papel_carton",
+          0.4918
+        ],
+        [
+          "peligrosos",
+          0.0075
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.33.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.4409,
+      "top3": [
+        [
+          "generales",
+          0.4409
+        ],
+        [
+          "papel_carton",
+          0.3997
+        ],
+        [
+          "metales",
+          0.1009
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "sin_residuo",
+      "prob": 0.2834,
+      "top3": [
+        [
+          "sin_residuo",
+          0.2834
+        ],
+        [
+          "papel_carton",
+          0.2151
+        ],
+        [
+          "metales",
+          0.196
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.7695,
+      "top3": [
+        [
+          "generales",
+          0.7695
+        ],
+        [
+          "papel_carton",
+          0.1257
+        ],
+        [
+          "plasticos",
+          0.0686
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "papel_carton",
+      "prob": 0.3115,
+      "top3": [
+        [
+          "papel_carton",
+          0.3115
+        ],
+        [
+          "plasticos",
+          0.2851
+        ],
+        [
+          "generales",
+          0.219
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.35 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.9947,
+      "top3": [
+        [
+          "generales",
+          0.9947
+        ],
+        [
+          "papel_carton",
+          0.0049
+        ],
+        [
+          "plasticos",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.35.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.847,
+      "top3": [
+        [
+          "generales",
+          0.847
+        ],
+        [
+          "papel_carton",
+          0.1526
+        ],
+        [
+          "plasticos",
+          0.0004
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.36.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "papel_carton",
+      "prob": 0.7734,
+      "top3": [
+        [
+          "papel_carton",
+          0.7734
+        ],
+        [
+          "generales",
+          0.1942
+        ],
+        [
+          "plasticos",
+          0.0292
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "papel_carton",
+      "prob": 0.991,
+      "top3": [
+        [
+          "papel_carton",
+          0.991
+        ],
+        [
+          "generales",
+          0.0067
+        ],
+        [
+          "metales",
+          0.0019
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "papel_carton",
+      "prob": 0.6584,
+      "top3": [
+        [
+          "papel_carton",
+          0.6584
+        ],
+        [
+          "generales",
+          0.3128
+        ],
+        [
+          "metales",
+          0.0166
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37 (3).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "papel_carton",
+      "prob": 0.9013,
+      "top3": [
+        [
+          "papel_carton",
+          0.9013
+        ],
+        [
+          "metales",
+          0.0779
+        ],
+        [
+          "generales",
+          0.0152
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "papel_carton",
+      "prob": 0.6235,
+      "top3": [
+        [
+          "papel_carton",
+          0.6235
+        ],
+        [
+          "generales",
+          0.3664
+        ],
+        [
+          "metales",
+          0.0041
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.38.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.6783,
+      "top3": [
+        [
+          "generales",
+          0.6783
+        ],
+        [
+          "sin_residuo",
+          0.1001
+        ],
+        [
+          "papel_carton",
+          0.08
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.39 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "vidrio",
+      "prob": 0.62,
+      "top3": [
+        [
+          "vidrio",
+          0.62
+        ],
+        [
+          "papel_carton",
+          0.147
+        ],
+        [
+          "generales",
+          0.1017
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.39.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.9681,
+      "top3": [
+        [
+          "generales",
+          0.9681
+        ],
+        [
+          "sin_residuo",
+          0.0119
+        ],
+        [
+          "peligrosos",
+          0.0068
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.40.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.8947,
+      "top3": [
+        [
+          "generales",
+          0.8947
+        ],
+        [
+          "papel_carton",
+          0.032
+        ],
+        [
+          "metales",
+          0.0311
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.37 (3).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 1.0,
+      "top3": [
+        [
+          "generales",
+          1.0
+        ],
+        [
+          "metales",
+          0.0
+        ],
+        [
+          "plasticos",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.37 (4).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.9999,
+      "top3": [
+        [
+          "generales",
+          0.9999
+        ],
+        [
+          "papel_carton",
+          0.0001
+        ],
+        [
+          "plasticos",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.9823,
+      "top3": [
+        [
+          "generales",
+          0.9823
+        ],
+        [
+          "papel_carton",
+          0.0116
+        ],
+        [
+          "metales",
+          0.0057
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "metales",
+      "prob": 0.6552,
+      "top3": [
+        [
+          "metales",
+          0.6552
+        ],
+        [
+          "papel_carton",
+          0.1318
+        ],
+        [
+          "generales",
+          0.1048
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (3).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.5785,
+      "top3": [
+        [
+          "generales",
+          0.5785
+        ],
+        [
+          "metales",
+          0.4208
+        ],
+        [
+          "papel_carton",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj102_envoltorio_casino",
+      "prediccion": "generales",
+      "prob": 0.9964,
+      "top3": [
+        [
+          "generales",
+          0.9964
+        ],
+        [
+          "plasticos",
+          0.0022
+        ],
+        [
+          "vidrio",
+          0.0009
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.40 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "generales",
+      "prob": 0.5192,
+      "top3": [
+        [
+          "generales",
+          0.5192
+        ],
+        [
+          "papel_carton",
+          0.4666
+        ],
+        [
+          "metales",
+          0.0132
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.41 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "generales",
+      "prob": 0.8929,
+      "top3": [
+        [
+          "generales",
+          0.8929
+        ],
+        [
+          "papel_carton",
+          0.0651
+        ],
+        [
+          "metales",
+          0.0179
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.41.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "metales",
+      "prob": 0.7221,
+      "top3": [
+        [
+          "metales",
+          0.7221
+        ],
+        [
+          "papel_carton",
+          0.2612
+        ],
+        [
+          "generales",
+          0.0111
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.44 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "generales",
+      "prob": 0.8737,
+      "top3": [
+        [
+          "generales",
+          0.8737
+        ],
+        [
+          "papel_carton",
+          0.0555
+        ],
+        [
+          "vidrio",
+          0.0341
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.44 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "metales",
+      "prob": 0.4203,
+      "top3": [
+        [
+          "metales",
+          0.4203
+        ],
+        [
+          "generales",
+          0.2539
+        ],
+        [
+          "peligrosos",
+          0.2438
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.44.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "papel_carton",
+      "prob": 0.4331,
+      "top3": [
+        [
+          "papel_carton",
+          0.4331
+        ],
+        [
+          "vidrio",
+          0.2012
+        ],
+        [
+          "metales",
+          0.1488
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "generales",
+      "prob": 0.8345,
+      "top3": [
+        [
+          "generales",
+          0.8345
+        ],
+        [
+          "papel_carton",
+          0.1638
+        ],
+        [
+          "plasticos",
+          0.0012
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "papel_carton",
+      "prob": 0.8143,
+      "top3": [
+        [
+          "papel_carton",
+          0.8143
+        ],
+        [
+          "vidrio",
+          0.0617
+        ],
+        [
+          "metales",
+          0.0504
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "generales",
+      "prob": 0.9937,
+      "top3": [
+        [
+          "generales",
+          0.9937
+        ],
+        [
+          "papel_carton",
+          0.0061
+        ],
+        [
+          "metales",
+          0.0001
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "papel_carton",
+      "prob": 0.7173,
+      "top3": [
+        [
+          "papel_carton",
+          0.7173
+        ],
+        [
+          "generales",
+          0.232
+        ],
+        [
+          "vidrio",
+          0.0432
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "vidrio",
+      "prob": 0.7927,
+      "top3": [
+        [
+          "vidrio",
+          0.7927
+        ],
+        [
+          "plasticos",
+          0.0888
+        ],
+        [
+          "generales",
+          0.067
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46 (3).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "generales",
+      "prob": 0.8799,
+      "top3": [
+        [
+          "generales",
+          0.8799
+        ],
+        [
+          "papel_carton",
+          0.059
+        ],
+        [
+          "metales",
+          0.0344
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "papel_carton",
+      "prob": 0.514,
+      "top3": [
+        [
+          "papel_carton",
+          0.514
+        ],
+        [
+          "generales",
+          0.2826
+        ],
+        [
+          "metales",
+          0.1125
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.47 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "vidrio",
+      "prob": 0.8036,
+      "top3": [
+        [
+          "vidrio",
+          0.8036
+        ],
+        [
+          "generales",
+          0.1582
+        ],
+        [
+          "metales",
+          0.0159
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.47 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "vidrio",
+      "prob": 0.9549,
+      "top3": [
+        [
+          "vidrio",
+          0.9549
+        ],
+        [
+          "plasticos",
+          0.0427
+        ],
+        [
+          "generales",
+          0.002
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.47.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj103_envoltorio_tentacion",
+      "prediccion": "papel_carton",
+      "prob": 0.6049,
+      "top3": [
+        [
+          "papel_carton",
+          0.6049
+        ],
+        [
+          "metales",
+          0.2087
+        ],
+        [
+          "generales",
+          0.1455
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.57 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj105_servilleta_usada",
+      "prediccion": "organico",
+      "prob": 0.4991,
+      "top3": [
+        [
+          "organico",
+          0.4991
+        ],
+        [
+          "generales",
+          0.2486
+        ],
+        [
+          "vidrio",
+          0.2407
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.57.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj105_servilleta_usada",
+      "prediccion": "generales",
+      "prob": 0.9836,
+      "top3": [
+        [
+          "generales",
+          0.9836
+        ],
+        [
+          "papel_carton",
+          0.0141
+        ],
+        [
+          "sin_residuo",
+          0.0009
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.58 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj105_servilleta_usada",
+      "prediccion": "papel_carton",
+      "prob": 0.789,
+      "top3": [
+        [
+          "papel_carton",
+          0.789
+        ],
+        [
+          "generales",
+          0.2104
+        ],
+        [
+          "plasticos",
+          0.0006
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.58.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj105_servilleta_usada",
+      "prediccion": "generales",
+      "prob": 0.7196,
+      "top3": [
+        [
+          "generales",
+          0.7196
+        ],
+        [
+          "organico",
+          0.1358
+        ],
+        [
+          "vidrio",
+          0.0645
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.59.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj105_servilleta_usada",
+      "prediccion": "generales",
+      "prob": 0.7525,
+      "top3": [
+        [
+          "generales",
+          0.7525
+        ],
+        [
+          "sin_residuo",
+          0.086
+        ],
+        [
+          "papel_carton",
+          0.0821
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.04 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9701,
+      "top3": [
+        [
+          "generales",
+          0.9701
+        ],
+        [
+          "papel_carton",
+          0.0295
+        ],
+        [
+          "vidrio",
+          0.0002
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.04.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9994,
+      "top3": [
+        [
+          "generales",
+          0.9994
+        ],
+        [
+          "papel_carton",
+          0.0006
+        ],
+        [
+          "plasticos",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.05 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "papel_carton",
+      "prob": 0.6704,
+      "top3": [
+        [
+          "papel_carton",
+          0.6704
+        ],
+        [
+          "generales",
+          0.3273
+        ],
+        [
+          "vidrio",
+          0.0007
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.05.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9531,
+      "top3": [
+        [
+          "generales",
+          0.9531
+        ],
+        [
+          "papel_carton",
+          0.0446
+        ],
+        [
+          "metales",
+          0.0021
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.06 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9996,
+      "top3": [
+        [
+          "generales",
+          0.9996
+        ],
+        [
+          "papel_carton",
+          0.0003
+        ],
+        [
+          "vidrio",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.06.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9998,
+      "top3": [
+        [
+          "generales",
+          0.9998
+        ],
+        [
+          "papel_carton",
+          0.0002
+        ],
+        [
+          "metales",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.07 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9956,
+      "top3": [
+        [
+          "generales",
+          0.9956
+        ],
+        [
+          "papel_carton",
+          0.0021
+        ],
+        [
+          "peligrosos",
+          0.0012
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.07 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9831,
+      "top3": [
+        [
+          "generales",
+          0.9831
+        ],
+        [
+          "plasticos",
+          0.0065
+        ],
+        [
+          "vidrio",
+          0.0049
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.07.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9987,
+      "top3": [
+        [
+          "generales",
+          0.9987
+        ],
+        [
+          "papel_carton",
+          0.0011
+        ],
+        [
+          "metales",
+          0.0002
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.08.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj107_sachet_aji_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9814,
+      "top3": [
+        [
+          "generales",
+          0.9814
+        ],
+        [
+          "plasticos",
+          0.0099
+        ],
+        [
+          "vidrio",
+          0.0029
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.09 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.867,
+      "top3": [
+        [
+          "generales",
+          0.867
+        ],
+        [
+          "papel_carton",
+          0.1184
+        ],
+        [
+          "plasticos",
+          0.0146
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.09 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.5183,
+      "top3": [
+        [
+          "generales",
+          0.5183
+        ],
+        [
+          "plasticos",
+          0.4791
+        ],
+        [
+          "peligrosos",
+          0.0024
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.09.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "papel_carton",
+      "prob": 0.9387,
+      "top3": [
+        [
+          "papel_carton",
+          0.9387
+        ],
+        [
+          "plasticos",
+          0.0466
+        ],
+        [
+          "generales",
+          0.0146
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.10.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "plasticos",
+      "prob": 0.7198,
+      "top3": [
+        [
+          "plasticos",
+          0.7198
+        ],
+        [
+          "generales",
+          0.27
+        ],
+        [
+          "peligrosos",
+          0.0051
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9841,
+      "top3": [
+        [
+          "generales",
+          0.9841
+        ],
+        [
+          "plasticos",
+          0.0088
+        ],
+        [
+          "papel_carton",
+          0.0056
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.9833,
+      "top3": [
+        [
+          "generales",
+          0.9833
+        ],
+        [
+          "papel_carton",
+          0.0164
+        ],
+        [
+          "plasticos",
+          0.0001
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.5336,
+      "top3": [
+        [
+          "generales",
+          0.5336
+        ],
+        [
+          "papel_carton",
+          0.3438
+        ],
+        [
+          "plasticos",
+          0.116
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.12 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "plasticos",
+      "prob": 0.496,
+      "top3": [
+        [
+          "plasticos",
+          0.496
+        ],
+        [
+          "papel_carton",
+          0.4944
+        ],
+        [
+          "generales",
+          0.0037
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.12.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "generales",
+      "prob": 0.999,
+      "top3": [
+        [
+          "generales",
+          0.999
+        ],
+        [
+          "papel_carton",
+          0.0009
+        ],
+        [
+          "plasticos",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.13.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj108_sachet_oregano_pizza_hut",
+      "prediccion": "plasticos",
+      "prob": 0.9951,
+      "top3": [
+        [
+          "plasticos",
+          0.9951
+        ],
+        [
+          "vidrio",
+          0.0037
+        ],
+        [
+          "papel_carton",
+          0.0006
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "generales",
+      "prob": 0.9923,
+      "top3": [
+        [
+          "generales",
+          0.9923
+        ],
+        [
+          "plasticos",
+          0.0061
+        ],
+        [
+          "peligrosos",
+          0.0014
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "generales",
+      "prob": 0.8713,
+      "top3": [
+        [
+          "generales",
+          0.8713
+        ],
+        [
+          "metales",
+          0.1112
+        ],
+        [
+          "peligrosos",
+          0.0118
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.50 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "generales",
+      "prob": 0.893,
+      "top3": [
+        [
+          "generales",
+          0.893
+        ],
+        [
+          "peligrosos",
+          0.0302
+        ],
+        [
+          "plasticos",
+          0.029
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.50.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "plasticos",
+      "prob": 0.9676,
+      "top3": [
+        [
+          "plasticos",
+          0.9676
+        ],
+        [
+          "peligrosos",
+          0.0137
+        ],
+        [
+          "metales",
+          0.0106
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.51 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "generales",
+      "prob": 1.0,
+      "top3": [
+        [
+          "generales",
+          1.0
+        ],
+        [
+          "plasticos",
+          0.0
+        ],
+        [
+          "organico",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.51.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "generales",
+      "prob": 1.0,
+      "top3": [
+        [
+          "generales",
+          1.0
+        ],
+        [
+          "plasticos",
+          0.0
+        ],
+        [
+          "metales",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.52 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "generales",
+      "prob": 0.9773,
+      "top3": [
+        [
+          "generales",
+          0.9773
+        ],
+        [
+          "plasticos",
+          0.0143
+        ],
+        [
+          "peligrosos",
+          0.0045
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.52.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "generales",
+      "prob": 0.9914,
+      "top3": [
+        [
+          "generales",
+          0.9914
+        ],
+        [
+          "plasticos",
+          0.0055
+        ],
+        [
+          "peligrosos",
+          0.002
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.53 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "generales",
+      "prob": 0.9931,
+      "top3": [
+        [
+          "generales",
+          0.9931
+        ],
+        [
+          "plasticos",
+          0.0051
+        ],
+        [
+          "metales",
+          0.0014
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.53.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj116_envoltorio_morochas",
+      "prediccion": "generales",
+      "prob": 0.6043,
+      "top3": [
+        [
+          "generales",
+          0.6043
+        ],
+        [
+          "plasticos",
+          0.3344
+        ],
+        [
+          "vidrio",
+          0.0417
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.17.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "plasticos",
+      "prob": 0.8078,
+      "top3": [
+        [
+          "plasticos",
+          0.8078
+        ],
+        [
+          "generales",
+          0.15
+        ],
+        [
+          "metales",
+          0.0225
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.18 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "metales",
+      "prob": 0.4019,
+      "top3": [
+        [
+          "metales",
+          0.4019
+        ],
+        [
+          "organico",
+          0.1425
+        ],
+        [
+          "peligrosos",
+          0.1411
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.18.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "plasticos",
+      "prob": 0.8448,
+      "top3": [
+        [
+          "plasticos",
+          0.8448
+        ],
+        [
+          "generales",
+          0.1519
+        ],
+        [
+          "peligrosos",
+          0.0012
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.19 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "peligrosos",
+      "prob": 0.5656,
+      "top3": [
+        [
+          "peligrosos",
+          0.5656
+        ],
+        [
+          "generales",
+          0.3378
+        ],
+        [
+          "plasticos",
+          0.0318
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.19.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.9035,
+      "top3": [
+        [
+          "generales",
+          0.9035
+        ],
+        [
+          "sin_residuo",
+          0.0234
+        ],
+        [
+          "metales",
+          0.0212
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.9999,
+      "top3": [
+        [
+          "generales",
+          0.9999
+        ],
+        [
+          "plasticos",
+          0.0001
+        ],
+        [
+          "papel_carton",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.9958,
+      "top3": [
+        [
+          "generales",
+          0.9958
+        ],
+        [
+          "plasticos",
+          0.0032
+        ],
+        [
+          "papel_carton",
+          0.0005
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.9735,
+      "top3": [
+        [
+          "generales",
+          0.9735
+        ],
+        [
+          "plasticos",
+          0.022
+        ],
+        [
+          "peligrosos",
+          0.0033
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.21 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.892,
+      "top3": [
+        [
+          "generales",
+          0.892
+        ],
+        [
+          "plasticos",
+          0.1033
+        ],
+        [
+          "papel_carton",
+          0.0029
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.21.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.9288,
+      "top3": [
+        [
+          "generales",
+          0.9288
+        ],
+        [
+          "metales",
+          0.0339
+        ],
+        [
+          "plasticos",
+          0.0171
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.22.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.9711,
+      "top3": [
+        [
+          "generales",
+          0.9711
+        ],
+        [
+          "plasticos",
+          0.0163
+        ],
+        [
+          "papel_carton",
+          0.009
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.23 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.5318,
+      "top3": [
+        [
+          "generales",
+          0.5318
+        ],
+        [
+          "peligrosos",
+          0.1735
+        ],
+        [
+          "sin_residuo",
+          0.159
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.23.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 1.0,
+      "top3": [
+        [
+          "generales",
+          1.0
+        ],
+        [
+          "peligrosos",
+          0.0
+        ],
+        [
+          "plasticos",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.24 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "peligrosos",
+      "prob": 0.3618,
+      "top3": [
+        [
+          "peligrosos",
+          0.3618
+        ],
+        [
+          "plasticos",
+          0.2263
+        ],
+        [
+          "vidrio",
+          0.2244
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.24.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.8751,
+      "top3": [
+        [
+          "generales",
+          0.8751
+        ],
+        [
+          "metales",
+          0.1104
+        ],
+        [
+          "peligrosos",
+          0.008
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.25 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.9097,
+      "top3": [
+        [
+          "generales",
+          0.9097
+        ],
+        [
+          "peligrosos",
+          0.0541
+        ],
+        [
+          "metales",
+          0.0247
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.25.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.9789,
+      "top3": [
+        [
+          "generales",
+          0.9789
+        ],
+        [
+          "metales",
+          0.0208
+        ],
+        [
+          "papel_carton",
+          0.0002
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.26 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "generales",
+      "prob": 0.9999,
+      "top3": [
+        [
+          "generales",
+          0.9999
+        ],
+        [
+          "metales",
+          0.0
+        ],
+        [
+          "plasticos",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.26.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj120_envoltorio_triangulo",
+      "prediccion": "metales",
+      "prob": 0.6964,
+      "top3": [
+        [
+          "metales",
+          0.6964
+        ],
+        [
+          "generales",
+          0.1431
+        ],
+        [
+          "peligrosos",
+          0.0913
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.28 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.5338,
+      "top3": [
+        [
+          "generales",
+          0.5338
+        ],
+        [
+          "plasticos",
+          0.2702
+        ],
+        [
+          "metales",
+          0.1946
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.28.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.9904,
+      "top3": [
+        [
+          "generales",
+          0.9904
+        ],
+        [
+          "plasticos",
+          0.008
+        ],
+        [
+          "metales",
+          0.0015
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.29 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.9989,
+      "top3": [
+        [
+          "generales",
+          0.9989
+        ],
+        [
+          "papel_carton",
+          0.0006
+        ],
+        [
+          "plasticos",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.29.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.3606,
+      "top3": [
+        [
+          "generales",
+          0.3606
+        ],
+        [
+          "papel_carton",
+          0.3032
+        ],
+        [
+          "metales",
+          0.1321
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.30.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.3367,
+      "top3": [
+        [
+          "generales",
+          0.3367
+        ],
+        [
+          "peligrosos",
+          0.3015
+        ],
+        [
+          "papel_carton",
+          0.1864
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.31 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "plasticos",
+      "prob": 0.8326,
+      "top3": [
+        [
+          "plasticos",
+          0.8326
+        ],
+        [
+          "peligrosos",
+          0.0879
+        ],
+        [
+          "metales",
+          0.0717
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.31.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.9009,
+      "top3": [
+        [
+          "generales",
+          0.9009
+        ],
+        [
+          "plasticos",
+          0.0893
+        ],
+        [
+          "metales",
+          0.0055
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.8923,
+      "top3": [
+        [
+          "generales",
+          0.8923
+        ],
+        [
+          "plasticos",
+          0.0466
+        ],
+        [
+          "peligrosos",
+          0.0371
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "peligrosos",
+      "prob": 0.4918,
+      "top3": [
+        [
+          "peligrosos",
+          0.4918
+        ],
+        [
+          "generales",
+          0.2891
+        ],
+        [
+          "plasticos",
+          0.1316
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "peligrosos",
+      "prob": 0.8524,
+      "top3": [
+        [
+          "peligrosos",
+          0.8524
+        ],
+        [
+          "generales",
+          0.1002
+        ],
+        [
+          "plasticos",
+          0.0388
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.33 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "metales",
+      "prob": 0.7522,
+      "top3": [
+        [
+          "metales",
+          0.7522
+        ],
+        [
+          "generales",
+          0.2437
+        ],
+        [
+          "vidrio",
+          0.0025
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.33 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.9974,
+      "top3": [
+        [
+          "generales",
+          0.9974
+        ],
+        [
+          "metales",
+          0.0017
+        ],
+        [
+          "plasticos",
+          0.0007
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.33.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.8462,
+      "top3": [
+        [
+          "generales",
+          0.8462
+        ],
+        [
+          "metales",
+          0.138
+        ],
+        [
+          "vidrio",
+          0.0121
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37 (1).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.9943,
+      "top3": [
+        [
+          "generales",
+          0.9943
+        ],
+        [
+          "plasticos",
+          0.0038
+        ],
+        [
+          "papel_carton",
+          0.0017
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37 (2).jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "generales",
+      "prob": 0.6298,
+      "top3": [
+        [
+          "generales",
+          0.6298
+        ],
+        [
+          "metales",
+          0.2434
+        ],
+        [
+          "peligrosos",
+          0.1084
+        ]
+      ]
+    },
+    {
+      "foto": "generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37.jpeg",
+      "clase_real": "generales",
+      "objeto": "obj121_envoltorio_sublime",
+      "prediccion": "metales",
+      "prob": 1.0,
+      "top3": [
+        [
+          "metales",
+          1.0
+        ],
+        [
+          "generales",
+          0.0
+        ],
+        [
+          "papel_carton",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.39 (1).jpeg",
+      "clase_real": "metales",
+      "objeto": "obj114_lata_hey_fit_summer",
+      "prediccion": "metales",
+      "prob": 0.4392,
+      "top3": [
+        [
+          "metales",
+          0.4392
+        ],
+        [
+          "plasticos",
+          0.3557
+        ],
+        [
+          "generales",
+          0.1214
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40 (1).jpeg",
+      "clase_real": "metales",
+      "objeto": "obj114_lata_hey_fit_summer",
+      "prediccion": "metales",
+      "prob": 0.5083,
+      "top3": [
+        [
+          "metales",
+          0.5083
+        ],
+        [
+          "generales",
+          0.4527
+        ],
+        [
+          "plasticos",
+          0.0285
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40 (2).jpeg",
+      "clase_real": "metales",
+      "objeto": "obj114_lata_hey_fit_summer",
+      "prediccion": "plasticos",
+      "prob": 0.7568,
+      "top3": [
+        [
+          "plasticos",
+          0.7568
+        ],
+        [
+          "generales",
+          0.1384
+        ],
+        [
+          "metales",
+          0.0923
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40.jpeg",
+      "clase_real": "metales",
+      "objeto": "obj114_lata_hey_fit_summer",
+      "prediccion": "plasticos",
+      "prob": 0.8962,
+      "top3": [
+        [
+          "plasticos",
+          0.8962
+        ],
+        [
+          "metales",
+          0.1036
+        ],
+        [
+          "peligrosos",
+          0.0002
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.41 (1).jpeg",
+      "clase_real": "metales",
+      "objeto": "obj114_lata_hey_fit_summer",
+      "prediccion": "generales",
+      "prob": 0.4161,
+      "top3": [
+        [
+          "generales",
+          0.4161
+        ],
+        [
+          "plasticos",
+          0.387
+        ],
+        [
+          "metales",
+          0.1664
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.41.jpeg",
+      "clase_real": "metales",
+      "objeto": "obj114_lata_hey_fit_summer",
+      "prediccion": "generales",
+      "prob": 0.5191,
+      "top3": [
+        [
+          "generales",
+          0.5191
+        ],
+        [
+          "metales",
+          0.3275
+        ],
+        [
+          "plasticos",
+          0.1302
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.41 (2).jpeg",
+      "clase_real": "metales",
+      "objeto": "obj115_lata_hey_fit_golden",
+      "prediccion": "generales",
+      "prob": 0.6856,
+      "top3": [
+        [
+          "generales",
+          0.6856
+        ],
+        [
+          "plasticos",
+          0.2247
+        ],
+        [
+          "papel_carton",
+          0.0624
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.42.jpeg",
+      "clase_real": "metales",
+      "objeto": "obj115_lata_hey_fit_golden",
+      "prediccion": "generales",
+      "prob": 0.7722,
+      "top3": [
+        [
+          "generales",
+          0.7722
+        ],
+        [
+          "plasticos",
+          0.1226
+        ],
+        [
+          "sin_residuo",
+          0.0541
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.43 (1).jpeg",
+      "clase_real": "metales",
+      "objeto": "obj115_lata_hey_fit_golden",
+      "prediccion": "metales",
+      "prob": 0.6353,
+      "top3": [
+        [
+          "metales",
+          0.6353
+        ],
+        [
+          "peligrosos",
+          0.1241
+        ],
+        [
+          "generales",
+          0.1232
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.43 (2).jpeg",
+      "clase_real": "metales",
+      "objeto": "obj115_lata_hey_fit_golden",
+      "prediccion": "metales",
+      "prob": 1.0,
+      "top3": [
+        [
+          "metales",
+          1.0
+        ],
+        [
+          "peligrosos",
+          0.0
+        ],
+        [
+          "plasticos",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.43.jpeg",
+      "clase_real": "metales",
+      "objeto": "obj115_lata_hey_fit_golden",
+      "prediccion": "peligrosos",
+      "prob": 0.4817,
+      "top3": [
+        [
+          "peligrosos",
+          0.4817
+        ],
+        [
+          "metales",
+          0.4201
+        ],
+        [
+          "plasticos",
+          0.0969
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.45 (1).jpeg",
+      "clase_real": "metales",
+      "objeto": "obj115_lata_hey_fit_golden",
+      "prediccion": "generales",
+      "prob": 0.7091,
+      "top3": [
+        [
+          "generales",
+          0.7091
+        ],
+        [
+          "metales",
+          0.1911
+        ],
+        [
+          "peligrosos",
+          0.07
+        ]
+      ]
+    },
+    {
+      "foto": "metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.45.jpeg",
+      "clase_real": "metales",
+      "objeto": "obj115_lata_hey_fit_golden",
+      "prediccion": "metales",
+      "prob": 0.9537,
+      "top3": [
+        [
+          "metales",
+          0.9537
+        ],
+        [
+          "generales",
+          0.0241
+        ],
+        [
+          "plasticos",
+          0.0172
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.48.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.999,
+      "top3": [
+        [
+          "organico",
+          0.999
+        ],
+        [
+          "plasticos",
+          0.001
+        ],
+        [
+          "sin_residuo",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.49 (1).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.9922,
+      "top3": [
+        [
+          "organico",
+          0.9922
+        ],
+        [
+          "plasticos",
+          0.0076
+        ],
+        [
+          "sin_residuo",
+          0.0001
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.49 (2).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 1.0,
+      "top3": [
+        [
+          "organico",
+          1.0
+        ],
+        [
+          "papel_carton",
+          0.0
+        ],
+        [
+          "sin_residuo",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.49.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.9987,
+      "top3": [
+        [
+          "organico",
+          0.9987
+        ],
+        [
+          "plasticos",
+          0.001
+        ],
+        [
+          "sin_residuo",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.50.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.9974,
+      "top3": [
+        [
+          "organico",
+          0.9974
+        ],
+        [
+          "plasticos",
+          0.0024
+        ],
+        [
+          "sin_residuo",
+          0.0002
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.51 (1).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.936,
+      "top3": [
+        [
+          "organico",
+          0.936
+        ],
+        [
+          "plasticos",
+          0.0339
+        ],
+        [
+          "sin_residuo",
+          0.0293
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.51 (2).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.9976,
+      "top3": [
+        [
+          "organico",
+          0.9976
+        ],
+        [
+          "plasticos",
+          0.0014
+        ],
+        [
+          "sin_residuo",
+          0.0009
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.51.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 1.0,
+      "top3": [
+        [
+          "organico",
+          1.0
+        ],
+        [
+          "plasticos",
+          0.0
+        ],
+        [
+          "sin_residuo",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.52 (1).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.9996,
+      "top3": [
+        [
+          "organico",
+          0.9996
+        ],
+        [
+          "sin_residuo",
+          0.0002
+        ],
+        [
+          "plasticos",
+          0.0002
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.52 (2).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.9999,
+      "top3": [
+        [
+          "organico",
+          0.9999
+        ],
+        [
+          "plasticos",
+          0.0001
+        ],
+        [
+          "sin_residuo",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.52.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.9966,
+      "top3": [
+        [
+          "organico",
+          0.9966
+        ],
+        [
+          "sin_residuo",
+          0.0021
+        ],
+        [
+          "plasticos",
+          0.0012
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.53.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.9986,
+      "top3": [
+        [
+          "organico",
+          0.9986
+        ],
+        [
+          "sin_residuo",
+          0.001
+        ],
+        [
+          "plasticos",
+          0.0004
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.54.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj104_manzana_verde",
+      "prediccion": "organico",
+      "prob": 0.9952,
+      "top3": [
+        [
+          "organico",
+          0.9952
+        ],
+        [
+          "plasticos",
+          0.0024
+        ],
+        [
+          "papel_carton",
+          0.0015
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.54 (1).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj126_cascara_platano_negra",
+      "prediccion": "generales",
+      "prob": 0.9712,
+      "top3": [
+        [
+          "generales",
+          0.9712
+        ],
+        [
+          "peligrosos",
+          0.0102
+        ],
+        [
+          "organico",
+          0.0069
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.54 (2).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj126_cascara_platano_negra",
+      "prediccion": "metales",
+      "prob": 0.8449,
+      "top3": [
+        [
+          "metales",
+          0.8449
+        ],
+        [
+          "generales",
+          0.0991
+        ],
+        [
+          "organico",
+          0.0397
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.55 (1).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj126_cascara_platano_negra",
+      "prediccion": "generales",
+      "prob": 0.9068,
+      "top3": [
+        [
+          "generales",
+          0.9068
+        ],
+        [
+          "plasticos",
+          0.0403
+        ],
+        [
+          "vidrio",
+          0.0154
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.55.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj126_cascara_platano_negra",
+      "prediccion": "generales",
+      "prob": 0.6171,
+      "top3": [
+        [
+          "generales",
+          0.6171
+        ],
+        [
+          "plasticos",
+          0.1876
+        ],
+        [
+          "vidrio",
+          0.0587
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.56 (1).jpeg",
+      "clase_real": "organico",
+      "objeto": "obj126_cascara_platano_negra",
+      "prediccion": "organico",
+      "prob": 0.7354,
+      "top3": [
+        [
+          "organico",
+          0.7354
+        ],
+        [
+          "generales",
+          0.2002
+        ],
+        [
+          "sin_residuo",
+          0.0548
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.56.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj126_cascara_platano_negra",
+      "prediccion": "organico",
+      "prob": 0.9855,
+      "top3": [
+        [
+          "organico",
+          0.9855
+        ],
+        [
+          "metales",
+          0.0075
+        ],
+        [
+          "generales",
+          0.0058
+        ]
+      ]
+    },
+    {
+      "foto": "organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.57.jpeg",
+      "clase_real": "organico",
+      "objeto": "obj126_cascara_platano_negra",
+      "prediccion": "organico",
+      "prob": 0.4908,
+      "top3": [
+        [
+          "organico",
+          0.4908
+        ],
+        [
+          "sin_residuo",
+          0.3403
+        ],
+        [
+          "generales",
+          0.0829
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.35 (2).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj113_caja_cereal_union",
+      "prediccion": "papel_carton",
+      "prob": 0.6639,
+      "top3": [
+        [
+          "papel_carton",
+          0.6639
+        ],
+        [
+          "generales",
+          0.3333
+        ],
+        [
+          "plasticos",
+          0.0019
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.36.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj113_caja_cereal_union",
+      "prediccion": "papel_carton",
+      "prob": 0.7869,
+      "top3": [
+        [
+          "papel_carton",
+          0.7869
+        ],
+        [
+          "generales",
+          0.2107
+        ],
+        [
+          "peligrosos",
+          0.0012
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.37.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj113_caja_cereal_union",
+      "prediccion": "generales",
+      "prob": 0.6889,
+      "top3": [
+        [
+          "generales",
+          0.6889
+        ],
+        [
+          "papel_carton",
+          0.2559
+        ],
+        [
+          "plasticos",
+          0.0507
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.38 (1).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj113_caja_cereal_union",
+      "prediccion": "papel_carton",
+      "prob": 0.7749,
+      "top3": [
+        [
+          "papel_carton",
+          0.7749
+        ],
+        [
+          "metales",
+          0.1198
+        ],
+        [
+          "generales",
+          0.0777
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.38.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj113_caja_cereal_union",
+      "prediccion": "papel_carton",
+      "prob": 0.9333,
+      "top3": [
+        [
+          "papel_carton",
+          0.9333
+        ],
+        [
+          "generales",
+          0.057
+        ],
+        [
+          "plasticos",
+          0.0094
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.39.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj113_caja_cereal_union",
+      "prediccion": "papel_carton",
+      "prob": 0.6565,
+      "top3": [
+        [
+          "papel_carton",
+          0.6565
+        ],
+        [
+          "generales",
+          0.315
+        ],
+        [
+          "peligrosos",
+          0.0138
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.45 (2).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj113_caja_cereal_union",
+      "prediccion": "papel_carton",
+      "prob": 0.7717,
+      "top3": [
+        [
+          "papel_carton",
+          0.7717
+        ],
+        [
+          "generales",
+          0.2277
+        ],
+        [
+          "plasticos",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.46.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj113_caja_cereal_union",
+      "prediccion": "papel_carton",
+      "prob": 0.5207,
+      "top3": [
+        [
+          "papel_carton",
+          0.5207
+        ],
+        [
+          "generales",
+          0.4121
+        ],
+        [
+          "vidrio",
+          0.0194
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.54.58.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "papel_carton",
+      "prob": 0.8025,
+      "top3": [
+        [
+          "papel_carton",
+          0.8025
+        ],
+        [
+          "generales",
+          0.1802
+        ],
+        [
+          "peligrosos",
+          0.012
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.54.59.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "papel_carton",
+      "prob": 0.8316,
+      "top3": [
+        [
+          "papel_carton",
+          0.8316
+        ],
+        [
+          "peligrosos",
+          0.0845
+        ],
+        [
+          "generales",
+          0.0735
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.00 (1).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "generales",
+      "prob": 0.98,
+      "top3": [
+        [
+          "generales",
+          0.98
+        ],
+        [
+          "papel_carton",
+          0.0166
+        ],
+        [
+          "sin_residuo",
+          0.0018
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.00.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "papel_carton",
+      "prob": 0.9963,
+      "top3": [
+        [
+          "papel_carton",
+          0.9963
+        ],
+        [
+          "peligrosos",
+          0.0019
+        ],
+        [
+          "generales",
+          0.0015
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02 (1).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "papel_carton",
+      "prob": 0.9426,
+      "top3": [
+        [
+          "papel_carton",
+          0.9426
+        ],
+        [
+          "plasticos",
+          0.0517
+        ],
+        [
+          "metales",
+          0.0023
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02 (2).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "papel_carton",
+      "prob": 0.807,
+      "top3": [
+        [
+          "papel_carton",
+          0.807
+        ],
+        [
+          "peligrosos",
+          0.0813
+        ],
+        [
+          "generales",
+          0.044
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "papel_carton",
+      "prob": 0.9983,
+      "top3": [
+        [
+          "papel_carton",
+          0.9983
+        ],
+        [
+          "plasticos",
+          0.001
+        ],
+        [
+          "peligrosos",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03 (1).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "generales",
+      "prob": 0.6428,
+      "top3": [
+        [
+          "generales",
+          0.6428
+        ],
+        [
+          "papel_carton",
+          0.2683
+        ],
+        [
+          "plasticos",
+          0.0846
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03 (2).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "plasticos",
+      "prob": 0.734,
+      "top3": [
+        [
+          "plasticos",
+          0.734
+        ],
+        [
+          "papel_carton",
+          0.2111
+        ],
+        [
+          "generales",
+          0.0494
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj127_caja_bon_o_bon",
+      "prediccion": "papel_carton",
+      "prob": 0.9742,
+      "top3": [
+        [
+          "papel_carton",
+          0.9742
+        ],
+        [
+          "generales",
+          0.0208
+        ],
+        [
+          "peligrosos",
+          0.0025
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (1).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj128_caja_tetra_bonle",
+      "prediccion": "papel_carton",
+      "prob": 0.4871,
+      "top3": [
+        [
+          "papel_carton",
+          0.4871
+        ],
+        [
+          "sin_residuo",
+          0.3377
+        ],
+        [
+          "metales",
+          0.0638
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (2).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj128_caja_tetra_bonle",
+      "prediccion": "peligrosos",
+      "prob": 0.3529,
+      "top3": [
+        [
+          "peligrosos",
+          0.3529
+        ],
+        [
+          "generales",
+          0.319
+        ],
+        [
+          "papel_carton",
+          0.1731
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (3).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj128_caja_tetra_bonle",
+      "prediccion": "peligrosos",
+      "prob": 0.9824,
+      "top3": [
+        [
+          "peligrosos",
+          0.9824
+        ],
+        [
+          "metales",
+          0.0055
+        ],
+        [
+          "vidrio",
+          0.0053
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj128_caja_tetra_bonle",
+      "prediccion": "peligrosos",
+      "prob": 0.7308,
+      "top3": [
+        [
+          "peligrosos",
+          0.7308
+        ],
+        [
+          "metales",
+          0.1536
+        ],
+        [
+          "papel_carton",
+          0.0831
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40 (1).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj128_caja_tetra_bonle",
+      "prediccion": "generales",
+      "prob": 0.7474,
+      "top3": [
+        [
+          "generales",
+          0.7474
+        ],
+        [
+          "metales",
+          0.1538
+        ],
+        [
+          "papel_carton",
+          0.074
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40 (2).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj128_caja_tetra_bonle",
+      "prediccion": "generales",
+      "prob": 0.6568,
+      "top3": [
+        [
+          "generales",
+          0.6568
+        ],
+        [
+          "papel_carton",
+          0.2774
+        ],
+        [
+          "sin_residuo",
+          0.0247
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40 (3).jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj128_caja_tetra_bonle",
+      "prediccion": "papel_carton",
+      "prob": 0.8609,
+      "top3": [
+        [
+          "papel_carton",
+          0.8609
+        ],
+        [
+          "generales",
+          0.0975
+        ],
+        [
+          "sin_residuo",
+          0.0252
+        ]
+      ]
+    },
+    {
+      "foto": "papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40.jpeg",
+      "clase_real": "papel_carton",
+      "objeto": "obj128_caja_tetra_bonle",
+      "prediccion": "metales",
+      "prob": 0.4839,
+      "top3": [
+        [
+          "metales",
+          0.4839
+        ],
+        [
+          "peligrosos",
+          0.2304
+        ],
+        [
+          "papel_carton",
+          0.1856
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.52.59 (1).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj106_estuche_audifonos",
+      "prediccion": "metales",
+      "prob": 0.5832,
+      "top3": [
+        [
+          "metales",
+          0.5832
+        ],
+        [
+          "peligrosos",
+          0.331
+        ],
+        [
+          "plasticos",
+          0.0336
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.00 (1).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj106_estuche_audifonos",
+      "prediccion": "metales",
+      "prob": 0.9248,
+      "top3": [
+        [
+          "metales",
+          0.9248
+        ],
+        [
+          "vidrio",
+          0.0422
+        ],
+        [
+          "peligrosos",
+          0.0273
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.00.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj106_estuche_audifonos",
+      "prediccion": "metales",
+      "prob": 0.9839,
+      "top3": [
+        [
+          "metales",
+          0.9839
+        ],
+        [
+          "vidrio",
+          0.0074
+        ],
+        [
+          "peligrosos",
+          0.0042
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.01.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj106_estuche_audifonos",
+      "prediccion": "metales",
+      "prob": 0.7991,
+      "top3": [
+        [
+          "metales",
+          0.7991
+        ],
+        [
+          "peligrosos",
+          0.1062
+        ],
+        [
+          "vidrio",
+          0.0607
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02 (1).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj106_estuche_audifonos",
+      "prediccion": "vidrio",
+      "prob": 0.9343,
+      "top3": [
+        [
+          "vidrio",
+          0.9343
+        ],
+        [
+          "plasticos",
+          0.0445
+        ],
+        [
+          "metales",
+          0.021
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02 (2).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj106_estuche_audifonos",
+      "prediccion": "vidrio",
+      "prob": 0.9407,
+      "top3": [
+        [
+          "vidrio",
+          0.9407
+        ],
+        [
+          "peligrosos",
+          0.0577
+        ],
+        [
+          "plasticos",
+          0.0008
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj106_estuche_audifonos",
+      "prediccion": "peligrosos",
+      "prob": 0.9275,
+      "top3": [
+        [
+          "peligrosos",
+          0.9275
+        ],
+        [
+          "metales",
+          0.0622
+        ],
+        [
+          "vidrio",
+          0.0057
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.03.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj106_estuche_audifonos",
+      "prediccion": "metales",
+      "prob": 0.8784,
+      "top3": [
+        [
+          "metales",
+          0.8784
+        ],
+        [
+          "peligrosos",
+          0.0617
+        ],
+        [
+          "generales",
+          0.0411
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.14 (1).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj109_mouse_blanco",
+      "prediccion": "peligrosos",
+      "prob": 0.9693,
+      "top3": [
+        [
+          "peligrosos",
+          0.9693
+        ],
+        [
+          "generales",
+          0.0163
+        ],
+        [
+          "metales",
+          0.0143
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.14.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj109_mouse_blanco",
+      "prediccion": "metales",
+      "prob": 0.5593,
+      "top3": [
+        [
+          "metales",
+          0.5593
+        ],
+        [
+          "peligrosos",
+          0.3713
+        ],
+        [
+          "generales",
+          0.061
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.15 (1).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj109_mouse_blanco",
+      "prediccion": "papel_carton",
+      "prob": 0.4857,
+      "top3": [
+        [
+          "papel_carton",
+          0.4857
+        ],
+        [
+          "peligrosos",
+          0.451
+        ],
+        [
+          "generales",
+          0.043
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.15.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj109_mouse_blanco",
+      "prediccion": "peligrosos",
+      "prob": 0.9601,
+      "top3": [
+        [
+          "peligrosos",
+          0.9601
+        ],
+        [
+          "generales",
+          0.0262
+        ],
+        [
+          "metales",
+          0.0116
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.16 (1).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj109_mouse_blanco",
+      "prediccion": "peligrosos",
+      "prob": 0.989,
+      "top3": [
+        [
+          "peligrosos",
+          0.989
+        ],
+        [
+          "generales",
+          0.0089
+        ],
+        [
+          "metales",
+          0.002
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.16.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj109_mouse_blanco",
+      "prediccion": "generales",
+      "prob": 0.547,
+      "top3": [
+        [
+          "generales",
+          0.547
+        ],
+        [
+          "metales",
+          0.2971
+        ],
+        [
+          "peligrosos",
+          0.1364
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.17 (1).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj109_mouse_blanco",
+      "prediccion": "peligrosos",
+      "prob": 0.9178,
+      "top3": [
+        [
+          "peligrosos",
+          0.9178
+        ],
+        [
+          "metales",
+          0.0306
+        ],
+        [
+          "generales",
+          0.0187
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.17.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj109_mouse_blanco",
+      "prediccion": "peligrosos",
+      "prob": 0.9881,
+      "top3": [
+        [
+          "peligrosos",
+          0.9881
+        ],
+        [
+          "metales",
+          0.0102
+        ],
+        [
+          "generales",
+          0.0009
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.23.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj109_mouse_blanco",
+      "prediccion": "peligrosos",
+      "prob": 0.4048,
+      "top3": [
+        [
+          "peligrosos",
+          0.4048
+        ],
+        [
+          "generales",
+          0.2782
+        ],
+        [
+          "papel_carton",
+          0.1185
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.46 (2).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj124_cable",
+      "prediccion": "peligrosos",
+      "prob": 1.0,
+      "top3": [
+        [
+          "peligrosos",
+          1.0
+        ],
+        [
+          "vidrio",
+          0.0
+        ],
+        [
+          "metales",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47 (1).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj124_cable",
+      "prediccion": "peligrosos",
+      "prob": 0.9997,
+      "top3": [
+        [
+          "peligrosos",
+          0.9997
+        ],
+        [
+          "metales",
+          0.0002
+        ],
+        [
+          "organico",
+          0.0001
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47 (2).jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj124_cable",
+      "prediccion": "peligrosos",
+      "prob": 0.9999,
+      "top3": [
+        [
+          "peligrosos",
+          0.9999
+        ],
+        [
+          "metales",
+          0.0001
+        ],
+        [
+          "organico",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj124_cable",
+      "prediccion": "peligrosos",
+      "prob": 0.9904,
+      "top3": [
+        [
+          "peligrosos",
+          0.9904
+        ],
+        [
+          "generales",
+          0.003
+        ],
+        [
+          "vidrio",
+          0.0018
+        ]
+      ]
+    },
+    {
+      "foto": "peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.48.jpeg",
+      "clase_real": "peligrosos",
+      "objeto": "obj124_cable",
+      "prediccion": "peligrosos",
+      "prob": 0.9857,
+      "top3": [
+        [
+          "peligrosos",
+          0.9857
+        ],
+        [
+          "metales",
+          0.0118
+        ],
+        [
+          "organico",
+          0.002
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.25.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj110_vaso_descartable",
+      "prediccion": "vidrio",
+      "prob": 0.7194,
+      "top3": [
+        [
+          "vidrio",
+          0.7194
+        ],
+        [
+          "generales",
+          0.1673
+        ],
+        [
+          "plasticos",
+          0.0889
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj110_vaso_descartable",
+      "prediccion": "vidrio",
+      "prob": 0.8635,
+      "top3": [
+        [
+          "vidrio",
+          0.8635
+        ],
+        [
+          "plasticos",
+          0.1222
+        ],
+        [
+          "metales",
+          0.0105
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj110_vaso_descartable",
+      "prediccion": "vidrio",
+      "prob": 0.6605,
+      "top3": [
+        [
+          "vidrio",
+          0.6605
+        ],
+        [
+          "plasticos",
+          0.2941
+        ],
+        [
+          "metales",
+          0.0198
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj110_vaso_descartable",
+      "prediccion": "vidrio",
+      "prob": 0.5693,
+      "top3": [
+        [
+          "vidrio",
+          0.5693
+        ],
+        [
+          "plasticos",
+          0.4272
+        ],
+        [
+          "generales",
+          0.0017
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.27.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj111_cuchara_descartable_1",
+      "prediccion": "plasticos",
+      "prob": 0.4763,
+      "top3": [
+        [
+          "plasticos",
+          0.4763
+        ],
+        [
+          "generales",
+          0.3986
+        ],
+        [
+          "papel_carton",
+          0.0744
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj111_cuchara_descartable_1",
+      "prediccion": "generales",
+      "prob": 0.7262,
+      "top3": [
+        [
+          "generales",
+          0.7262
+        ],
+        [
+          "plasticos",
+          0.1309
+        ],
+        [
+          "papel_carton",
+          0.1208
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj111_cuchara_descartable_1",
+      "prediccion": "peligrosos",
+      "prob": 0.7548,
+      "top3": [
+        [
+          "peligrosos",
+          0.7548
+        ],
+        [
+          "sin_residuo",
+          0.1152
+        ],
+        [
+          "generales",
+          0.0628
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj111_cuchara_descartable_1",
+      "prediccion": "generales",
+      "prob": 0.4829,
+      "top3": [
+        [
+          "generales",
+          0.4829
+        ],
+        [
+          "papel_carton",
+          0.3834
+        ],
+        [
+          "plasticos",
+          0.0928
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.30 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj111_cuchara_descartable_1",
+      "prediccion": "sin_residuo",
+      "prob": 0.7009,
+      "top3": [
+        [
+          "sin_residuo",
+          0.7009
+        ],
+        [
+          "peligrosos",
+          0.1271
+        ],
+        [
+          "generales",
+          0.0687
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.30.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj111_cuchara_descartable_1",
+      "prediccion": "vidrio",
+      "prob": 0.6659,
+      "top3": [
+        [
+          "vidrio",
+          0.6659
+        ],
+        [
+          "plasticos",
+          0.2641
+        ],
+        [
+          "sin_residuo",
+          0.0349
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.55.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.6069,
+      "top3": [
+        [
+          "vidrio",
+          0.6069
+        ],
+        [
+          "plasticos",
+          0.2465
+        ],
+        [
+          "metales",
+          0.1076
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.7994,
+      "top3": [
+        [
+          "vidrio",
+          0.7994
+        ],
+        [
+          "plasticos",
+          0.1991
+        ],
+        [
+          "peligrosos",
+          0.0009
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "plasticos",
+      "prob": 0.9694,
+      "top3": [
+        [
+          "plasticos",
+          0.9694
+        ],
+        [
+          "vidrio",
+          0.0184
+        ],
+        [
+          "metales",
+          0.0059
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (3).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "plasticos",
+      "prob": 0.6141,
+      "top3": [
+        [
+          "plasticos",
+          0.6141
+        ],
+        [
+          "vidrio",
+          0.3683
+        ],
+        [
+          "sin_residuo",
+          0.0062
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.2381,
+      "top3": [
+        [
+          "vidrio",
+          0.2381
+        ],
+        [
+          "generales",
+          0.2314
+        ],
+        [
+          "plasticos",
+          0.2166
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "metales",
+      "prob": 0.596,
+      "top3": [
+        [
+          "metales",
+          0.596
+        ],
+        [
+          "plasticos",
+          0.3366
+        ],
+        [
+          "generales",
+          0.0415
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "metales",
+      "prob": 0.6423,
+      "top3": [
+        [
+          "metales",
+          0.6423
+        ],
+        [
+          "vidrio",
+          0.2261
+        ],
+        [
+          "peligrosos",
+          0.0614
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.8495,
+      "top3": [
+        [
+          "vidrio",
+          0.8495
+        ],
+        [
+          "generales",
+          0.1463
+        ],
+        [
+          "plasticos",
+          0.0027
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.58 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.928,
+      "top3": [
+        [
+          "vidrio",
+          0.928
+        ],
+        [
+          "plasticos",
+          0.0705
+        ],
+        [
+          "papel_carton",
+          0.0005
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.58.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "plasticos",
+      "prob": 0.5468,
+      "top3": [
+        [
+          "plasticos",
+          0.5468
+        ],
+        [
+          "papel_carton",
+          0.32
+        ],
+        [
+          "vidrio",
+          0.0529
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.9611,
+      "top3": [
+        [
+          "vidrio",
+          0.9611
+        ],
+        [
+          "metales",
+          0.0248
+        ],
+        [
+          "generales",
+          0.0084
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.4837,
+      "top3": [
+        [
+          "vidrio",
+          0.4837
+        ],
+        [
+          "generales",
+          0.4645
+        ],
+        [
+          "plasticos",
+          0.0432
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.998,
+      "top3": [
+        [
+          "vidrio",
+          0.998
+        ],
+        [
+          "generales",
+          0.0014
+        ],
+        [
+          "organico",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.00 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "generales",
+      "prob": 0.9325,
+      "top3": [
+        [
+          "generales",
+          0.9325
+        ],
+        [
+          "vidrio",
+          0.0366
+        ],
+        [
+          "plasticos",
+          0.0297
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.00.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "generales",
+      "prob": 0.9675,
+      "top3": [
+        [
+          "generales",
+          0.9675
+        ],
+        [
+          "plasticos",
+          0.0297
+        ],
+        [
+          "metales",
+          0.0028
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.01 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.9191,
+      "top3": [
+        [
+          "vidrio",
+          0.9191
+        ],
+        [
+          "plasticos",
+          0.0801
+        ],
+        [
+          "sin_residuo",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.01.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "vidrio",
+      "prob": 0.9941,
+      "top3": [
+        [
+          "vidrio",
+          0.9941
+        ],
+        [
+          "plasticos",
+          0.0057
+        ],
+        [
+          "generales",
+          0.0001
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.02 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "metales",
+      "prob": 0.8005,
+      "top3": [
+        [
+          "metales",
+          0.8005
+        ],
+        [
+          "generales",
+          0.1274
+        ],
+        [
+          "plasticos",
+          0.0435
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.02.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "generales",
+      "prob": 0.7943,
+      "top3": [
+        [
+          "generales",
+          0.7943
+        ],
+        [
+          "metales",
+          0.1
+        ],
+        [
+          "vidrio",
+          0.0754
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.03 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "generales",
+      "prob": 0.9756,
+      "top3": [
+        [
+          "generales",
+          0.9756
+        ],
+        [
+          "plasticos",
+          0.0177
+        ],
+        [
+          "vidrio",
+          0.0063
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.03.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj117_bolsa_chicha",
+      "prediccion": "generales",
+      "prob": 0.8849,
+      "top3": [
+        [
+          "generales",
+          0.8849
+        ],
+        [
+          "vidrio",
+          0.0867
+        ],
+        [
+          "plasticos",
+          0.027
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.03 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "vidrio",
+      "prob": 0.6437,
+      "top3": [
+        [
+          "vidrio",
+          0.6437
+        ],
+        [
+          "plasticos",
+          0.3265
+        ],
+        [
+          "organico",
+          0.027
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.04 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "vidrio",
+      "prob": 0.6242,
+      "top3": [
+        [
+          "vidrio",
+          0.6242
+        ],
+        [
+          "plasticos",
+          0.358
+        ],
+        [
+          "generales",
+          0.0099
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.04.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "organico",
+      "prob": 0.7569,
+      "top3": [
+        [
+          "organico",
+          0.7569
+        ],
+        [
+          "generales",
+          0.1245
+        ],
+        [
+          "vidrio",
+          0.0548
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.05.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "plasticos",
+      "prob": 0.6369,
+      "top3": [
+        [
+          "plasticos",
+          0.6369
+        ],
+        [
+          "vidrio",
+          0.2272
+        ],
+        [
+          "generales",
+          0.1333
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "peligrosos",
+      "prob": 0.637,
+      "top3": [
+        [
+          "peligrosos",
+          0.637
+        ],
+        [
+          "plasticos",
+          0.1259
+        ],
+        [
+          "vidrio",
+          0.0966
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "generales",
+      "prob": 0.8197,
+      "top3": [
+        [
+          "generales",
+          0.8197
+        ],
+        [
+          "plasticos",
+          0.0983
+        ],
+        [
+          "vidrio",
+          0.0548
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "vidrio",
+      "prob": 0.3679,
+      "top3": [
+        [
+          "vidrio",
+          0.3679
+        ],
+        [
+          "organico",
+          0.1857
+        ],
+        [
+          "sin_residuo",
+          0.1769
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "vidrio",
+      "prob": 0.9691,
+      "top3": [
+        [
+          "vidrio",
+          0.9691
+        ],
+        [
+          "organico",
+          0.0141
+        ],
+        [
+          "plasticos",
+          0.0088
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "generales",
+      "prob": 0.4694,
+      "top3": [
+        [
+          "generales",
+          0.4694
+        ],
+        [
+          "sin_residuo",
+          0.1906
+        ],
+        [
+          "peligrosos",
+          0.1611
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07 (3).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "plasticos",
+      "prob": 0.5296,
+      "top3": [
+        [
+          "plasticos",
+          0.5296
+        ],
+        [
+          "organico",
+          0.4054
+        ],
+        [
+          "vidrio",
+          0.0594
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "plasticos",
+      "prob": 0.5497,
+      "top3": [
+        [
+          "plasticos",
+          0.5497
+        ],
+        [
+          "vidrio",
+          0.1422
+        ],
+        [
+          "organico",
+          0.1299
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.08.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "vidrio",
+      "prob": 0.7121,
+      "top3": [
+        [
+          "vidrio",
+          0.7121
+        ],
+        [
+          "organico",
+          0.2724
+        ],
+        [
+          "plasticos",
+          0.0081
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "generales",
+      "prob": 0.2698,
+      "top3": [
+        [
+          "generales",
+          0.2698
+        ],
+        [
+          "organico",
+          0.2683
+        ],
+        [
+          "plasticos",
+          0.1316
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "generales",
+      "prob": 0.9965,
+      "top3": [
+        [
+          "generales",
+          0.9965
+        ],
+        [
+          "plasticos",
+          0.0032
+        ],
+        [
+          "organico",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (3).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "plasticos",
+      "prob": 0.9104,
+      "top3": [
+        [
+          "plasticos",
+          0.9104
+        ],
+        [
+          "vidrio",
+          0.0877
+        ],
+        [
+          "organico",
+          0.0015
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "generales",
+      "prob": 0.9757,
+      "top3": [
+        [
+          "generales",
+          0.9757
+        ],
+        [
+          "plasticos",
+          0.0239
+        ],
+        [
+          "organico",
+          0.0002
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.10.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "generales",
+      "prob": 0.863,
+      "top3": [
+        [
+          "generales",
+          0.863
+        ],
+        [
+          "plasticos",
+          0.1318
+        ],
+        [
+          "vidrio",
+          0.0017
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.11 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "sin_residuo",
+      "prob": 0.5079,
+      "top3": [
+        [
+          "sin_residuo",
+          0.5079
+        ],
+        [
+          "plasticos",
+          0.2003
+        ],
+        [
+          "organico",
+          0.1085
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.11.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "metales",
+      "prob": 0.4863,
+      "top3": [
+        [
+          "metales",
+          0.4863
+        ],
+        [
+          "vidrio",
+          0.3211
+        ],
+        [
+          "generales",
+          0.13
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "sin_residuo",
+      "prob": 0.3831,
+      "top3": [
+        [
+          "sin_residuo",
+          0.3831
+        ],
+        [
+          "plasticos",
+          0.3052
+        ],
+        [
+          "organico",
+          0.1463
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "vidrio",
+      "prob": 0.6073,
+      "top3": [
+        [
+          "vidrio",
+          0.6073
+        ],
+        [
+          "plasticos",
+          0.2557
+        ],
+        [
+          "generales",
+          0.0961
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12 (3).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "vidrio",
+      "prob": 0.5748,
+      "top3": [
+        [
+          "vidrio",
+          0.5748
+        ],
+        [
+          "generales",
+          0.1356
+        ],
+        [
+          "sin_residuo",
+          0.1005
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj118_bolsa_refresco_naranja",
+      "prediccion": "plasticos",
+      "prob": 0.9365,
+      "top3": [
+        [
+          "plasticos",
+          0.9365
+        ],
+        [
+          "vidrio",
+          0.0622
+        ],
+        [
+          "organico",
+          0.001
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.14 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj119_cuchara_descartable_2",
+      "prediccion": "vidrio",
+      "prob": 0.4378,
+      "top3": [
+        [
+          "vidrio",
+          0.4378
+        ],
+        [
+          "plasticos",
+          0.1824
+        ],
+        [
+          "organico",
+          0.1515
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.14 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj119_cuchara_descartable_2",
+      "prediccion": "generales",
+      "prob": 0.6479,
+      "top3": [
+        [
+          "generales",
+          0.6479
+        ],
+        [
+          "sin_residuo",
+          0.1394
+        ],
+        [
+          "peligrosos",
+          0.104
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.14.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj119_cuchara_descartable_2",
+      "prediccion": "vidrio",
+      "prob": 0.9435,
+      "top3": [
+        [
+          "vidrio",
+          0.9435
+        ],
+        [
+          "plasticos",
+          0.045
+        ],
+        [
+          "peligrosos",
+          0.0082
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.15.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj119_cuchara_descartable_2",
+      "prediccion": "sin_residuo",
+      "prob": 0.32,
+      "top3": [
+        [
+          "sin_residuo",
+          0.32
+        ],
+        [
+          "generales",
+          0.2274
+        ],
+        [
+          "peligrosos",
+          0.2031
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.16 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj119_cuchara_descartable_2",
+      "prediccion": "vidrio",
+      "prob": 0.7181,
+      "top3": [
+        [
+          "vidrio",
+          0.7181
+        ],
+        [
+          "plasticos",
+          0.1439
+        ],
+        [
+          "organico",
+          0.0978
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.16 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj119_cuchara_descartable_2",
+      "prediccion": "plasticos",
+      "prob": 0.3451,
+      "top3": [
+        [
+          "plasticos",
+          0.3451
+        ],
+        [
+          "peligrosos",
+          0.3367
+        ],
+        [
+          "sin_residuo",
+          0.2569
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.16.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj119_cuchara_descartable_2",
+      "prediccion": "vidrio",
+      "prob": 0.756,
+      "top3": [
+        [
+          "vidrio",
+          0.756
+        ],
+        [
+          "plasticos",
+          0.2276
+        ],
+        [
+          "peligrosos",
+          0.0071
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.49.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "plasticos",
+      "prob": 0.9999,
+      "top3": [
+        [
+          "plasticos",
+          0.9999
+        ],
+        [
+          "organico",
+          0.0001
+        ],
+        [
+          "vidrio",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "plasticos",
+      "prob": 0.9995,
+      "top3": [
+        [
+          "plasticos",
+          0.9995
+        ],
+        [
+          "metales",
+          0.0002
+        ],
+        [
+          "generales",
+          0.0002
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "plasticos",
+      "prob": 0.9979,
+      "top3": [
+        [
+          "plasticos",
+          0.9979
+        ],
+        [
+          "organico",
+          0.0013
+        ],
+        [
+          "sin_residuo",
+          0.0003
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "metales",
+      "prob": 0.9046,
+      "top3": [
+        [
+          "metales",
+          0.9046
+        ],
+        [
+          "vidrio",
+          0.0935
+        ],
+        [
+          "plasticos",
+          0.0019
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.51.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "metales",
+      "prob": 0.88,
+      "top3": [
+        [
+          "metales",
+          0.88
+        ],
+        [
+          "generales",
+          0.0538
+        ],
+        [
+          "plasticos",
+          0.0465
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.52.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "plasticos",
+      "prob": 0.6217,
+      "top3": [
+        [
+          "plasticos",
+          0.6217
+        ],
+        [
+          "metales",
+          0.187
+        ],
+        [
+          "vidrio",
+          0.1806
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "metales",
+      "prob": 0.9391,
+      "top3": [
+        [
+          "metales",
+          0.9391
+        ],
+        [
+          "plasticos",
+          0.0458
+        ],
+        [
+          "vidrio",
+          0.0146
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53 (2).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "metales",
+      "prob": 0.6681,
+      "top3": [
+        [
+          "metales",
+          0.6681
+        ],
+        [
+          "plasticos",
+          0.2162
+        ],
+        [
+          "vidrio",
+          0.1153
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "plasticos",
+      "prob": 0.4327,
+      "top3": [
+        [
+          "plasticos",
+          0.4327
+        ],
+        [
+          "metales",
+          0.2923
+        ],
+        [
+          "vidrio",
+          0.2163
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.54.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj125_taper_comida",
+      "prediccion": "metales",
+      "prob": 0.9036,
+      "top3": [
+        [
+          "metales",
+          0.9036
+        ],
+        [
+          "plasticos",
+          0.0955
+        ],
+        [
+          "generales",
+          0.0006
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj129_cinta_peligro_obras/WhatsApp Image 2026-10-26 at 13.53.47 (1).jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj129_cinta_peligro_obras",
+      "prediccion": "metales",
+      "prob": 0.5606,
+      "top3": [
+        [
+          "metales",
+          0.5606
+        ],
+        [
+          "generales",
+          0.2977
+        ],
+        [
+          "plasticos",
+          0.0982
+        ]
+      ]
+    },
+    {
+      "foto": "plasticos/obj129_cinta_peligro_obras/WhatsApp Image 2026-10-26 at 13.53.47.jpeg",
+      "clase_real": "plasticos",
+      "objeto": "obj129_cinta_peligro_obras",
+      "prediccion": "generales",
+      "prob": 0.8329,
+      "top3": [
+        [
+          "generales",
+          0.8329
+        ],
+        [
+          "metales",
+          0.1437
+        ],
+        [
+          "papel_carton",
+          0.0185
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33 (1).jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj112_frasco_almendra_union",
+      "prediccion": "metales",
+      "prob": 0.7001,
+      "top3": [
+        [
+          "metales",
+          0.7001
+        ],
+        [
+          "vidrio",
+          0.2069
+        ],
+        [
+          "plasticos",
+          0.0884
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33 (2).jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj112_frasco_almendra_union",
+      "prediccion": "plasticos",
+      "prob": 0.8728,
+      "top3": [
+        [
+          "plasticos",
+          0.8728
+        ],
+        [
+          "vidrio",
+          0.0679
+        ],
+        [
+          "metales",
+          0.0303
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33.jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj112_frasco_almendra_union",
+      "prediccion": "vidrio",
+      "prob": 0.6105,
+      "top3": [
+        [
+          "vidrio",
+          0.6105
+        ],
+        [
+          "plasticos",
+          0.2107
+        ],
+        [
+          "metales",
+          0.127
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.34.jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj112_frasco_almendra_union",
+      "prediccion": "plasticos",
+      "prob": 0.8462,
+      "top3": [
+        [
+          "plasticos",
+          0.8462
+        ],
+        [
+          "metales",
+          0.1087
+        ],
+        [
+          "peligrosos",
+          0.0185
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.35 (1).jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj112_frasco_almendra_union",
+      "prediccion": "vidrio",
+      "prob": 0.8143,
+      "top3": [
+        [
+          "vidrio",
+          0.8143
+        ],
+        [
+          "plasticos",
+          0.1797
+        ],
+        [
+          "metales",
+          0.006
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.35.jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj112_frasco_almendra_union",
+      "prediccion": "vidrio",
+      "prob": 0.829,
+      "top3": [
+        [
+          "vidrio",
+          0.829
+        ],
+        [
+          "metales",
+          0.1268
+        ],
+        [
+          "plasticos",
+          0.0427
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.41.jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj122_botella_bacardi",
+      "prediccion": "peligrosos",
+      "prob": 0.6705,
+      "top3": [
+        [
+          "peligrosos",
+          0.6705
+        ],
+        [
+          "vidrio",
+          0.3001
+        ],
+        [
+          "metales",
+          0.029
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.42 (1).jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj122_botella_bacardi",
+      "prediccion": "vidrio",
+      "prob": 0.4298,
+      "top3": [
+        [
+          "vidrio",
+          0.4298
+        ],
+        [
+          "peligrosos",
+          0.361
+        ],
+        [
+          "generales",
+          0.0963
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.42.jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj122_botella_bacardi",
+      "prediccion": "vidrio",
+      "prob": 0.9955,
+      "top3": [
+        [
+          "vidrio",
+          0.9955
+        ],
+        [
+          "peligrosos",
+          0.0026
+        ],
+        [
+          "plasticos",
+          0.0017
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.43 (1).jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj122_botella_bacardi",
+      "prediccion": "vidrio",
+      "prob": 0.7051,
+      "top3": [
+        [
+          "vidrio",
+          0.7051
+        ],
+        [
+          "metales",
+          0.1896
+        ],
+        [
+          "plasticos",
+          0.0714
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.43.jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj122_botella_bacardi",
+      "prediccion": "vidrio",
+      "prob": 0.9884,
+      "top3": [
+        [
+          "vidrio",
+          0.9884
+        ],
+        [
+          "peligrosos",
+          0.004
+        ],
+        [
+          "plasticos",
+          0.0029
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.44.jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj122_botella_bacardi",
+      "prediccion": "vidrio",
+      "prob": 0.9778,
+      "top3": [
+        [
+          "vidrio",
+          0.9778
+        ],
+        [
+          "peligrosos",
+          0.0188
+        ],
+        [
+          "plasticos",
+          0.0012
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.44 (1).jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj123_jarra_vidrio",
+      "prediccion": "vidrio",
+      "prob": 0.9977,
+      "top3": [
+        [
+          "vidrio",
+          0.9977
+        ],
+        [
+          "plasticos",
+          0.0021
+        ],
+        [
+          "metales",
+          0.0001
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.45 (1).jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj123_jarra_vidrio",
+      "prediccion": "vidrio",
+      "prob": 0.9973,
+      "top3": [
+        [
+          "vidrio",
+          0.9973
+        ],
+        [
+          "plasticos",
+          0.0022
+        ],
+        [
+          "metales",
+          0.0005
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.45.jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj123_jarra_vidrio",
+      "prediccion": "vidrio",
+      "prob": 0.7495,
+      "top3": [
+        [
+          "vidrio",
+          0.7495
+        ],
+        [
+          "plasticos",
+          0.2503
+        ],
+        [
+          "metales",
+          0.0002
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.46 (1).jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj123_jarra_vidrio",
+      "prediccion": "vidrio",
+      "prob": 0.9956,
+      "top3": [
+        [
+          "vidrio",
+          0.9956
+        ],
+        [
+          "plasticos",
+          0.0043
+        ],
+        [
+          "peligrosos",
+          0.0
+        ]
+      ]
+    },
+    {
+      "foto": "vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.46.jpeg",
+      "clase_real": "vidrio",
+      "objeto": "obj123_jarra_vidrio",
+      "prediccion": "vidrio",
+      "prob": 0.5848,
+      "top3": [
+        [
+          "vidrio",
+          0.5848
+        ],
+        [
+          "metales",
+          0.4025
+        ],
+        [
+          "plasticos",
+          0.0123
+        ]
+      ]
+    }
+  ]
+}

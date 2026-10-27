@@ -256,6 +256,70 @@ El modelo actual sigue siendo `etapa2_ext_full` (no cambia el defecto de demo ni
 val_camara ya sirvió para elegir `etapa2_ext_full`, así que sus números tienen sesgo de selección, aunque la
 comparación entre los dos modelos sigue siendo válida.
 
+### Etapa 2 desde `e1_ext2` con menos externo (`e2_ext2_taco`, `e2_ext2_sinext`, 2026-10-26)
+Los dos parten de `e1_ext2`, con la misma receta de etapa 2 (AdamW lr 1e-4, freeze 6, replay 2, 30 épocas,
+paciencia 10, semilla 42). En train quedan las mismas 145 fotos de juliaca y el mismo replay de 250.
+- **A `e2_ext2_taco`:** en la etapa 2 solo el externo original (`--externo-fuentes taco`: los `taco_*` de
+  `importar_taco.py`, generales 139 + metales 40), igual que `e2_ext_full`. Frente a `e2_ext_full` lo único que
+  cambia es el punto de partida (`e1_ext2` en vez de `e1_ext`). La opción `--externo-fuentes` filtra por prefijo
+  de archivo (`entrenar.py`, `PREFIJO_FUENTE`), sin mover nada.
+- **B `e2_ext2_sinext`:** etapa 2 sin `--externo`.
+
+| | e2_ext_full (actual) | e2_ext2_full | **A e2_ext2_taco** | **B e2_ext2_sinext** |
+|---|---|---|---|---|
+| parte de | e1_ext | e1_ext2 | e1_ext2 | e1_ext2 |
+| externo en etapa 2 | 179 (taco) | 5.684 (todo) | 179 (taco) | 0 |
+| épocas corridas | 17 | 11 | 18 | 26 |
+| época de `best.pt` (Ultralytics, (top1+top5)/2) | 7 | **1** | 8 | 16 |
+| época con el máximo top-1 (`experimentos.csv`) | 7 | 5 | 8 | 16 |
+| minutos | 1.0 | 2.3 | 1.1 | 1.5 |
+| F1 macro publico/val | **0.8849** | 0.8837 | 0.8691 | 0.8764 |
+| F1 macro juliaca/val (28 fotos) | 0.8186 | 0.8057 | 0.8037 | 0.8037 |
+| aciertos juliaca/val | 21/28 | 21/28 | 21/28 | 21/28 |
+| **F1 macro val_camara (293 fotos)** | **0.5183** | 0.4301 | 0.5031 | 0.4646 |
+| top-1 val_camara | **0.5529** (162) | 0.4300 (126) | 0.5324 (156) | 0.5051 (148) |
+
+**val_camara, F1 por clase (aciertos/n):**
+
+| clase | n | e2_ext_full | e2_ext2_full | A taco | B sinext |
+|---|---|---|---|---|---|
+| generales | 122 | 0.691 (75) | 0.494 (44) | 0.687 (79) | 0.667 (76) |
+| metales | 13 | **0.298 (7)** | 0.050 (1) | 0.227 (5) | 0.186 (4) |
+| organico | 20 | 0.769 (15) | 0.800 (14) | 0.842 (16) | 0.718 (14) |
+| papel_carton | 26 | 0.475 (14) | 0.396 (20) | 0.525 (16) | 0.385 (10) |
+| peligrosos | 22 | 0.429 (12) | 0.413 (13) | 0.522 (12) | **0.600 (15)** |
+| plasticos | 73 | **0.467 (28)** | 0.390 (23) | 0.300 (15) | 0.304 (17) |
+| vidrio | 17 | 0.500 (11) | 0.468 (11) | 0.419 (13) | 0.393 (12) |
+
+Confusiones principales en val_camara (real → predicho):
+- e2_ext_full: plasticos → metales 12, generales → papel_carton 12, plasticos → vidrio 11, generales → plasticos 11.
+- e2_ext2_full: generales → papel_carton 41, generales → peligrosos 17, plasticos → vidrio 16.
+- A taco: **plasticos → vidrio 26**, generales → papel_carton 18, plasticos → generales 15, plasticos → metales 10.
+- B sinext: **plasticos → vidrio 25**, generales → papel_carton 16, plasticos → generales 14, papel_carton → generales 10.
+
+En juliaca/val, A y B aciertan lo mismo que e2_ext_full salvo 1 foto de generales (3/3 frente a 2/3) y 1 de metales
+(3/9 frente a 4/9; el error extra va a generales). Es el mismo total, 21/28, y no es significativo. En publico/val
+A y B quedan por debajo (0.8691 y 0.8764 frente a 0.8849); en A sube la confusión hacia generales
+(papel_carton → generales 26, plasticos → generales 23).
+
+Informes: `reportes/etapa2_e2_ext2_{taco_20261026_2041,sinext_20261026_2043}_{publico_val,juliaca_val,val_camara}.json`,
+`reportes/experimentos/e2_ext2_{taco,sinext}.json`, `reportes/val_camara_por_foto.csv` (9 modelos).
+
+**Conclusión: ninguno mejora al modelo actual; `e2_ext_full` sigue siendo el mejor en val_camara** (peso principal,
+293 fotos frente a las 28 de juliaca/val, donde los cuatro empatan en 21/28).
+- **El daño de `e2_ext2_full` venía de meter todo el externo nuevo en la etapa 2:** con el mismo punto de partida,
+  quitarlo sube val_camara de 0.4301 a 0.5031 (A) o 0.4646 (B), y generales vuelve de 44 a 76-79 aciertos. Además,
+  `best.pt` deja de salir en la época 1 (A: época 8, B: época 16). La hipótesis anterior se confirma.
+- **El externo TACO en la etapa 2 ayuda algo:** A supera a B (0.5031 frente a 0.4646), sobre todo en papel_carton
+  (16 frente a 10 aciertos) y organico.
+- **Partir de `e1_ext2` en vez de `e1_ext` no mejora el modelo final:** A frente a e2_ext_full da 0.5031 frente a
+  0.5183 (6 aciertos menos de 293). Es una diferencia pequeña, pero con un patrón claro: plasticos cae de 28 a 15
+  aciertos (plasticos → vidrio 26), y no lo compensan las mejoras en peligrosos (F1 0.429 → 0.522), papel_carton
+  (14 → 16), organico (15 → 16) y generales (75 → 79). metales baja de 7 a 5.
+- B tiene el mejor peligrosos (15/22, F1 0.600) pero el F1 macro más bajo de los tres sin todo el externo.
+No cambia el modelo por defecto (decisión del usuario). juliaca/test NO se usó. Recordatorio: val_camara ya se usó
+para elegir `etapa2_ext_full`, así que su número es algo optimista para ese modelo.
+
 ## Pendientes
 - ~~tetra/multicapa en papel_carton de publico (revision\tetra\), decisión diferida.~~ CERRADO
   (2026-10-26): los envases tetra/multicapa de cartón se clasifican como `papel_carton` y se
