@@ -281,8 +281,8 @@ def barra(ancho, objetos, nota=""):
 
 def crear_parser():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--modelo", default=str(RAIZ / "modelos" / "etapa2_ext_full.pt"),
-                    help="clasificador (modelo actual, ver EXPERIMENTOS.md); también modelos/etapa1_ganador.pt")
+    ap.add_argument("--modelo", default=str(RAIZ / "modelos" / "etapa2_j1028_s43.pt"),
+                    help="clasificador (modelo actual, ver EXPERIMENTOS.md); alternativa: modelos/etapa2_ext_full.pt")
     ap.add_argument("--detector", default="yoloe-26s-seg.pt",
                     help="yoloe-26{n,s,m,l,x}-seg.pt (texto), yoloe-26?-seg-pf.pt (prompt-free), yolov8s-worldv2.pt")
     ap.add_argument("--camara", default="auto", help="índice de OpenCV, o auto (MX Brio si está, si no la integrada)")

@@ -1,6 +1,6 @@
 """Clasificación en vivo con la Logitech MX Brio (pensado para la laptop RTX 3050).
 
-  python scripts/inferencia_webcam.py                                     # modelo actual: modelos/etapa2_ext_full.pt
+  python scripts/inferencia_webcam.py                                     # modelo actual: modelos/etapa2_j1028_s43.pt
   python scripts/inferencia_webcam.py --modelo modelos/etapa2_....pt --camara 1 --umbral 0.7
   python scripts/inferencia_webcam.py --recuadro 1.0   # cuadrado de alto completo
 
@@ -38,8 +38,8 @@ def revisar_versiones(modelo: Path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--modelo", default=str(RAIZ / "modelos" / "etapa2_ext_full.pt"),
-                    help="clasificador (modelo actual, ver EXPERIMENTOS.md)")
+    ap.add_argument("--modelo", default=str(RAIZ / "modelos" / "etapa2_j1028_s43.pt"),
+                    help="clasificador (modelo actual, ver EXPERIMENTOS.md); alternativa: modelos/etapa2_ext_full.pt")
     ap.add_argument("--camara", default="auto", help="índice de OpenCV, o auto (MX Brio si está, si no la integrada)")
     ap.add_argument("--imgsz", type=int, default=224)
     ap.add_argument("--umbral", type=float, default=0.6)

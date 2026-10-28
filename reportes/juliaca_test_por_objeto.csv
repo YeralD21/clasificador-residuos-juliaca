@@ -1,0 +1,19 @@
+clase,objeto,n,aciertos_s43,errores_s43,aciertos_ext_full,errores_ext_full
+generales,obj007_pasta_dental_oral_b,4,1,plasticos 1; papel_carton 1; vidrio 1,2,plasticos 1; vidrio 1
+generales,obj077_20261028-obj035,6,6,,4,metales 1; papel_carton 1
+generales,obj081_20261028-obj039,7,6,papel_carton 1,3,papel_carton 3; peligrosos 1
+generales,obj092_20261028-obj050,6,6,,3,plasticos 2; vidrio 1
+metales,obj026_lata_atun,16,9,peligrosos 4; plasticos 2; papel_carton 1,8,peligrosos 5; generales 2; papel_carton 1
+metales,obj074_20261028-obj032,8,5,plasticos 2; generales 1,8,
+organico,obj104_20261028-obj062,6,1,plasticos 3; vidrio 1; generales 1,2,vidrio 2; plasticos 1; sin_residuo 1
+papel_carton,obj059_20261028-obj017,6,0,generales 6,3,generales 2; plasticos 1
+peligrosos,obj030_pila_toshiba,4,2,generales 2,0,generales 3; sin_residuo 1
+plasticos,obj016_botella_agua_cielo,2,2,,2,
+plasticos,obj018_botella_alcohol_gel_facil,2,1,peligrosos 1,2,
+plasticos,obj068_20261028-obj026,5,5,,3,generales 1; peligrosos 1
+plasticos,obj085_20261028-obj043,6,2,peligrosos 1; vidrio 1; metales 1; generales 1,1,peligrosos 2; generales 2; vidrio 1
+plasticos,obj108_20261028-obj066,6,0,metales 2; vidrio 2; generales 1; peligrosos 1,4,peligrosos 2
+sin_residuo,esc05_mesa_oscura_horizontal,3,2,plasticos 1,3,
+sin_residuo,esc07_manta_negra,4,2,papel_carton 2,3,papel_carton 1
+vidrio,obj020_vaso_rosado,3,2,plasticos 1,1,plasticos 1; metales 1
+vidrio,obj065_20261028-obj023,4,1,plasticos 3,2,metales 1; plasticos 1

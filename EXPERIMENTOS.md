@@ -160,6 +160,9 @@ F1 por clase: `reportes/*_val_camara.json`. Por foto: `reportes/val_camara_por_f
 por objeto (% de fotos acertadas): `reportes/val_camara_por_objeto.csv`. Sin ganador elegido.
 
 ## Modelo actual
+> **Reemplazado el 2026-10-28** por `modelos/etapa2_j1028_s43.pt` (ver "Evaluación final en test", al final).
+> `etapa2_ext_full.pt` queda como alternativa documentada en el README.
+
 **`modelos/etapa2_ext_full.pt` (e2_ext_full)**, decisión del usuario (2026-10-26): máximo F1 macro en
 val_camara (0.5183). Es el `--modelo` por defecto de `inferencia_webcam.py` e `inferencia_deteccion.py`.
 
@@ -671,6 +674,110 @@ Se propone como modelo por defecto; **no se cambia hasta que el usuario lo aprue
 Informes: `reportes/etapa2_e2_ext_full_j1028_s43_20261028_1701_*.json`,
 `reportes/etapa2_e2_ext_full_j1028_s44_20261028_1704_*.json`, `reportes/experimentos/e2_ext_full_j1028_s4{3,4}.json`,
 `reportes/val_camara_por_foto.csv`. Modelos en `modelos/experimentos/` (no se suben). juliaca/test NO se usó.
+
+## Evaluación final en test (2026-10-28)
+**Modelo final (decisión del usuario, por validación, antes de mirar test): `modelos/etapa2_j1028_s43.pt`**, copia
+idéntica (mismo SHA-1) de `modelos/experimentos/etapa2_e2_ext_full_j1028_s43_20261028_1701.pt`. Es el modelo por
+defecto de `inferencia_deteccion.py`, `inferencia_webcam.py` y `demo.bat`. `etapa2_ext_full.pt` queda como alternativa.
+
+`python scripts/evaluar.py --pesos modelos/etapa2_j1028_s43.pt modelos/etapa2_ext_full.pt --datos juliaca --split test`,
+**una sola ejecución** (registro en `reportes/registro_test.csv`: 2026-10-28 17:08 y 17:09). `etapa2_ext_full` se evaluó
+solo como referencia. **La elección ya estaba hecha y no cambia por este resultado.**
+
+juliaca/test: 98 fotos de 18 objetos. 10 objetos (60 fotos) son de Plaza Vea (28-10) y 8 objetos (38 fotos) son de
+antes. Ningún objeto de test está en train ni en val: la partición es manual y por objeto.
+
+| | **etapa2_j1028_s43 (final)** | etapa2_ext_full (referencia) |
+|---|---|---|
+| F1 macro (8 clases) | **0.4452** | 0.4972 |
+| top-1 | 0.5408 (53/98) | 0.5510 (54/98) |
+| top-5 | 0.9796 | 0.9694 |
+| aciertos en los 10 objetos de Plaza Vea (60 fotos) | 32 | 33 |
+| aciertos en los 8 objetos anteriores (38 fotos) | 21 | 21 |
+
+**F1 por clase (aciertos/n):**
+
+| clase | n | etapa2_j1028_s43 | etapa2_ext_full |
+|---|---|---|---|
+| generales | 23 | **0.704 (19)** | 0.533 (12) |
+| metales | 24 | 0.683 (14) | **0.744 (16)** |
+| organico | 6 | 0.286 (1) | **0.500 (2)** |
+| papel_carton | 6 | 0.000 (0) | **0.400 (3)** |
+| peligrosos | 4 | **0.308 (2)** | 0.000 (0) |
+| plasticos | 21 | 0.455 (10) | **0.600 (12)** |
+| sin_residuo | 7 | 0.727 (4) | **0.800 (6)** |
+| vidrio | 7 | 0.400 (3) | 0.400 (3) |
+
+**Matriz de confusión de etapa2_j1028_s43** (filas = real, columnas = predicho):
+
+| | gen | met | org | pap | pel | pla | sin | vid |
+|---|---|---|---|---|---|---|---|---|
+| generales | **19** | 0 | 0 | 2 | 0 | 1 | 0 | 1 |
+| metales | 1 | **14** | 0 | 1 | 4 | 4 | 0 | 0 |
+| organico | 1 | 0 | **1** | 0 | 0 | 3 | 0 | 1 |
+| papel_carton | 6 | 0 | 0 | **0** | 0 | 0 | 0 | 0 |
+| peligrosos | 2 | 0 | 0 | 0 | **2** | 0 | 0 | 0 |
+| plasticos | 2 | 3 | 0 | 0 | 3 | **10** | 0 | 3 |
+| sin_residuo | 0 | 0 | 0 | 2 | 0 | 1 | **4** | 0 |
+| vidrio | 0 | 0 | 0 | 0 | 0 | 4 | 0 | **3** |
+
+**Matriz de confusión de etapa2_ext_full** (referencia):
+
+| | gen | met | org | pap | pel | pla | sin | vid |
+|---|---|---|---|---|---|---|---|---|
+| generales | **12** | 1 | 0 | 4 | 1 | 3 | 0 | 2 |
+| metales | 2 | **16** | 0 | 1 | 5 | 0 | 0 | 0 |
+| organico | 0 | 0 | **2** | 0 | 0 | 1 | 1 | 2 |
+| papel_carton | 2 | 0 | 0 | **3** | 0 | 1 | 0 | 0 |
+| peligrosos | 3 | 0 | 0 | 0 | **0** | 0 | 1 | 0 |
+| plasticos | 3 | 0 | 0 | 0 | 5 | **12** | 0 | 1 |
+| sin_residuo | 0 | 0 | 0 | 1 | 0 | 0 | **6** | 0 |
+| vidrio | 0 | 2 | 0 | 0 | 0 | 2 | 0 | **3** |
+
+**Aciertos por objeto** (`reportes/juliaca_test_por_objeto.csv`; los totales coinciden con los informes, 53 y 54):
+
+| clase | objeto | n | s43 | errores s43 | ext_full | errores ext_full |
+|---|---|---|---|---|---|---|
+| generales | obj007 pasta dental Oral-B | 4 | 1 | pla 1, pap 1, vid 1 | 2 | pla 1, vid 1 |
+| generales | obj077 doypack mostaza B&D (PV) | 6 | **6** | – | 4 | met 1, pap 1 |
+| generales | obj081 bolsa Shin Ramyun (PV) | 7 | **6** | pap 1 | 3 | pap 3, pel 1 |
+| generales | obj092 bolsa frutos secos Bell's (PV) | 6 | **6** | – | 3 | pla 2, vid 1 |
+| metales | obj026 lata de atún | 16 | 9 | pel 4, pla 2, pap 1 | 8 | pel 5, gen 2, pap 1 |
+| metales | obj074 lata de café Kirma (PV) | 8 | 5 | pla 2, gen 1 | **8** | – |
+| organico | obj104 ajo (PV) | 6 | 1 | pla 3, vid 1, gen 1 | 2 | vid 2, pla 1, sin 1 |
+| papel_carton | obj059 caja de Zucaritas (PV) | 6 | **0** | gen 6 | 3 | gen 2, pla 1 |
+| peligrosos | obj030 pila Toshiba | 4 | 2 | gen 2 | 0 | gen 3, sin 1 |
+| plasticos | obj016 botella agua Cielo | 2 | 2 | – | 2 | – |
+| plasticos | obj018 botella alcohol en gel | 2 | 1 | pel 1 | 2 | – |
+| plasticos | obj068 pote aceitunas negras (PV) | 5 | **5** | – | 3 | gen 1, pel 1 |
+| plasticos | obj085 pote orégano Bell's (PV) | 6 | 2 | pel 1, vid 1, met 1, gen 1 | 1 | pel 2, gen 2, vid 1 |
+| plasticos | obj108 pote de gel Ego, negro (PV) | 6 | **0** | met 2, vid 2, gen 1, pel 1 | 4 | pel 2 |
+| sin_residuo | esc05 mesa oscura horizontal | 3 | 2 | pla 1 | 3 | – |
+| sin_residuo | esc07 manta negra | 4 | 2 | pap 2 | 3 | pap 1 |
+| vidrio | obj020 vaso rosado | 3 | 2 | pla 1 | 1 | pla 1, met 1 |
+| vidrio | obj065 frasco encurtido Selection (PV) | 4 | 1 | pla 3 | 2 | met 1, pla 1 |
+
+(PV = Plaza Vea, 28-10.) El desglose por objeto se calculó prediciendo foto a foto con los dos mismos modelos, en la
+misma evaluación; no es un uso nuevo de test.
+
+**Lectura:**
+- **El modelo final queda por debajo de la referencia en test** (F1 macro 0.4452 frente a 0.4972; 53 frente a 54
+  aciertos). La diferencia en aciertos es de 1 foto. La diferencia en F1 macro se debe sobre todo a clases con 4–7
+  fotos y 1–2 objetos (papel_carton 0/6, organico 1/6, sin_residuo 4/7), así que el número es muy inestable.
+- **Lo que se ve en validación se repite en test:**
+  - las bolsas y doypacks impresos de generales mejoran mucho: 18/19 frente a 10/19 en los tres de Plaza Vea;
+  - el sesgo hacia lo impreso se invierte: la caja de Zucaritas se va entera a generales (0/6; la referencia 3/6). Con
+    un solo objeto de papel_carton en test, el F1 de esa clase es 0;
+  - **envase negro**: el pote de gel Ego (negro con tapa naranja), que no tenía equivalente en val, falla 6/6
+    (metales, vidrio, generales, peligrosos); la referencia acierta 4/6.
+- Es un set pequeño (98 fotos, 18 objetos): un solo objeto mueve el F1 de su clase entre 0 y 1.
+
+**juliaca/test ya está usado: no se vuelve a usar para elegir modelos, épocas ni hiperparámetros** (reglas 5 y 9 de
+CLAUDE.md). Cualquier modelo futuro se compara solo en validación. Si se quiere otra medida final honesta, hace falta un
+test nuevo con objetos que ningún modelo haya visto.
+
+Informes: `reportes/etapa2_j1028_s43_juliaca_test.json`, `reportes/etapa2_ext_full_juliaca_test.json`,
+`reportes/juliaca_test_por_objeto.csv`, `reportes/registro_test.csv`.
 
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:

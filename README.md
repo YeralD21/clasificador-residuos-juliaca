@@ -11,7 +11,7 @@ Lanzadores en la raíz del repo. Se abren con **doble clic**, o escribiendo su n
 
 | Lanzador | Qué hace | Script |
 |---|---|---|
-| `demo.bat` | Demo en vivo: detección + clasificación con los valores por defecto (cámara `auto`, detector `yoloe-26s-seg.pt`, modelo `modelos/etapa2_ext_full.pt`). Q sale, F pantalla completa, S guarda recortes. | `scripts/inferencia_deteccion.py` (sección 6.1) |
+| `demo.bat` | Demo en vivo: detección + clasificación con los valores por defecto (cámara `auto`, detector `yoloe-26s-seg.pt`, modelo `modelos/etapa2_j1028_s43.pt`; alternativa `demo --modelo modelos\etapa2_ext_full.pt`). Q sale, F pantalla completa, S guarda recortes. | `scripts/inferencia_deteccion.py` (sección 6.1) |
 | `capturar.bat` | Sesión de fotos: **ESPACIO o clic** = foto JPG calidad 95, sin modificar y a la resolución completa de la cámara; **N** = nuevo objeto (`objNNN` automático); **Q** = salir. Muestra el objeto actual, cuántas fotos lleva y un destello al capturar. Las teclas van a la **ventana de la cámara** (haz clic en ella primero; en la terminal no hacen nada). Guarda en `<repo>\fotos_laptop\<AAAA-MM-DD>\objNNN\` (otra carpeta: `capturar --salida E:\fotos`), **fuera de `dataset\` y de git** (`.gitignore`): la clase y el split los decides tú después. `etiquetar` e `importar` buscan ahí y, si no hay sesiones, en la ubicación anterior (`..\fotos_laptop`, carpeta hermana del repo); ambos aceptan `--salida`/`--raiz`. | `scripts/capturar_sesion.py` |
 | `etiquetar.bat` | Etiquetas **a mano** cada objeto de la última sesión de `capturar.bat`: ves un mosaico de sus fotos, eliges la **clase** (1 papel_carton, 2 metales, 3 plasticos, 4 vidrio, 5 organico, 6 peligrosos, 7 generales, 0 sin_residuo) y el **split** (T train, V val). S salta el objeto (vuelve a salir la próxima vez), D lo descarta, Z deshace, Q sale. Guarda en `fotos_laptop\<fecha>\etiquetas.csv` (objeto, clase, split, n_fotos, nota) tras cada decisión y retoma donde te quedaste. | `scripts/etiquetar_sesion.py` |
 | `importar.bat` | Con doble clic **solo muestra** qué haría (`--dry-run`): a qué split/clase va cada objeto y la tabla de fotos/objetos antes y después. `importar --importar` copia de verdad a `dataset\juliaca\<split>\<clase>\objNNN_<fecha>-objMMM\` (siguiente número libre de juliaca, archivos `20261026_obj003_01.jpg`) y luego corre `auditar.py`. | `scripts/importar_sesion.py` |
@@ -154,13 +154,15 @@ Con `S` guardas un recorte en `capturas_revisar/`. Tú decides su clase y lo mue
 
 ## 6. Usar el modelo en la laptop
 
-> **Modelo actual:** `modelos/etapa2_ext_full.pt` (e2_ext_full), es el `--modelo` por defecto de `inferencia_webcam.py` e `inferencia_deteccion.py`. Se eligió por el máximo F1 macro en `val_camara` (0.5183), así que ese número es optimista (ver `EXPERIMENTOS.md`, "Modelo actual"). La medida final será `dataset/juliaca/test`, una sola vez; aún **no** se ha evaluado.
+> **Modelo actual:** `modelos/etapa2_j1028_s43.pt` (`e2_ext_full_j1028_s43`, elegido el 2026-10-28), es el `--modelo` por defecto de `inferencia_webcam.py`, `inferencia_deteccion.py` y `demo.bat`. Misma receta que `etapa2_ext_full` con juliaca del 28-10 (Plaza Vea) y semilla 43. Se eligió por validación: media de F1 macro en `val_camara` de 3 semillas 0.5437 frente a 0.5183, y la semilla 43 fue la mejor (0.5610, número optimista porque se eligió mirando ese set). Evaluación final en `dataset/juliaca/test`, una sola vez (2026-10-28): F1 macro **0.4452**, top-1 0.5408 (53/98). `etapa2_ext_full`, evaluado como referencia: 0.4972 y 54/98. test no se vuelve a usar para elegir modelos (ver `EXPERIMENTOS.md`, "Evaluación final en test").
+>
+> **Alternativa:** `modelos/etapa2_ext_full.pt`, el modelo anterior. Falla menos con envolturas impresas (val_camara: generales → papel_carton 12 frente a 27) y con cajas de cartón impresas en test. Úsalo con `--modelo modelos/etapa2_ext_full.pt` (también `demo --modelo modelos\etapa2_ext_full.pt`).
 
 ```bash
 git pull
 .venv\Scripts\activate
 python scripts/verificar_entorno.py --comparar entorno_referencia.json      # debe decir "Todo coincide."
-python scripts/inferencia_webcam.py --imgsz 224                             # cámara auto, --modelo modelos/etapa2_ext_full.pt
+python scripts/inferencia_webcam.py --imgsz 224                             # cámara auto, modelo modelos/etapa2_j1028_s43.pt
 ```
 
 - Si `.venv` no existe en la laptop, créalo como en la sección 4, paso 4: `py -3.13 -m venv .venv`, actívalo y `pip install -r requirements-lock.txt --extra-index-url https://download.pytorch.org/whl/cu130`.

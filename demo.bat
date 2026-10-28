@@ -1,5 +1,6 @@
 @echo off
 rem Demo en vivo: deteccion + clasificacion con los valores por defecto (camara auto, modelo actual).
+rem Modelo actual: modelos\etapa2_j1028_s43.pt. Alternativa: demo --modelo modelos\etapa2_ext_full.pt
 rem Doble clic, o "demo" en cmd desde la raiz del repo (".\demo" en PowerShell). Acepta argumentos: demo --debug
 cd /d "%~dp0"
 if not exist ".venv\Scripts\activate.bat" (
