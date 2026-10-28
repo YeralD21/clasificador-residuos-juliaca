@@ -55,6 +55,8 @@ EXPERIMENTOS = {
         "e2_ext2_taco": ("igual a e2_ext_full (externo solo taco_*, 179) partiendo de e1_ext2",
                          ["--pesos", "@e1_ext2", "--replay", "2", "--externo", "--externo-fuentes", "taco"]),
         "e2_ext2_sinext": ("desde e1_ext2, etapa 2 sin externo (replay 2)", ["--pesos", "@e1_ext2", "--replay", "2"]),
+        "e2_ext_full_j1027": ("e2_ext_full re-corrido con juliaca del 27-10 (+4 objetos de la sesión de la laptop)",
+                              ["--pesos", "@e1_ext", "--replay", "2", "--externo", "--externo-fuentes", "taco"]),
         "e2_solo_jul": ("SIN etapa 1: desde ImageNet solo con fotos de Juliaca",
                         ["--pesos", "yolo26s-cls.pt", "--replay", "0", "--freeze", "0", "--lr", "1e-3"]),
     },

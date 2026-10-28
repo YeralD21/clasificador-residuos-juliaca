@@ -335,6 +335,78 @@ para elegir `etapa2_ext_full`, así que su número es algo optimista para ese mo
   Por eso `e1_ext`, `e2_ext` y `e2_ext_full` de `experimentar.py` ahora llevan `--externo-fuentes taco`:
   `--repetir` reproduce lo que se corrió y no los datos del 26-10. Sus resultados registrados no cambian.
 
+## Reentrenamiento con juliaca del 27-10 (`e2_ext_full_j1027`, 2026-10-27)
+**Un solo factor: los datos de juliaca.** Se importó la sesión de la laptop del 27-10 (`importar_sesion.py`, 4 objetos
+etiquetados a mano por el usuario): train + generales 8 fotos (servilleta) y + papel_carton 18 (hoja bond, hoja
+impresa); val + papel_carton 8 (hoja cuadriculada, 1 objeto). juliaca/train pasa de 145 a 171 fotos y juliaca/val
+de 28 a 36. Receta recomendada, la misma que `e2_ext_full`: desde `e1_ext`, AdamW lr 1e-4, freeze 6, replay 2,
+`--externo --externo-fuentes taco` (179), 30 épocas, paciencia 10, semilla 42. Como el replay es 2× juliaca por clase,
+también crece (papel_carton 6 → 42, generales 62 → 78): train 652 imágenes. `auditar.py` sin errores.
+
+Como juliaca/val cambió, `etapa2_ext_full` se reevaluó en el val nuevo (`reportes/etapa2_ext_full_juliaca_val.json`).
+publico/val y val_camara no cambiaron (al reevaluarlo salen los mismos informes, byte a byte).
+
+| | etapa2_ext_full (actual) | **e2_ext_full_j1027** |
+|---|---|---|
+| juliaca/train | 145 | 171 |
+| épocas corridas (época de `best.pt`) | 17 (7) | 21 (11) |
+| minutos | 1.0 | 1.5 |
+| F1 macro publico/val (1.866 fotos) | **0.8849** | 0.8807 |
+| aciertos publico/val | **1651** | 1643 |
+| F1 macro juliaca/val **nuevo** (36 fotos) | 0.6428 | **0.8421** |
+| aciertos juliaca/val nuevo | 21/36 | **30/36** |
+| aciertos en las 28 fotos de juliaca/val anteriores | 21/28 | 22/28 |
+| **F1 macro val_camara (293 fotos)** | **0.5183** | 0.4647 |
+| top-1 val_camara | **0.5529** (162) | 0.4949 (145) |
+
+**F1 por clase (aciertos/n):**
+
+| clase | publico/val A | publico/val B | juliaca/val A | juliaca/val B | val_camara A | val_camara B |
+|---|---|---|---|---|---|---|
+| generales | 0.867 (195/208) | 0.850 (187) | 0.364 (2/3) | 0.750 (3/3) | **0.691 (75/122)** | 0.609 (63) |
+| metales | 0.900 (266/289) | 0.890 (263) | 0.571 (4/9) | 0.615 (4/9) | 0.298 (7/13) | 0.245 (6) |
+| organico | 0.964 (251/254) | 0.971 (250) | 1.000 (1/1) | 1.000 (1/1) | 0.769 (15/20) | 0.789 (15) |
+| papel_carton | 0.901 (245/286) | 0.899 (257) | **0.000 (0/8)** | **1.000 (8/8)** | 0.475 (14/26) | 0.400 (13) |
+| peligrosos | 0.854 (239/288) | 0.844 (235) | 1.000 (2/2) | 0.800 (2/2) | 0.429 (12/22) | 0.393 (11) |
+| plasticos | 0.828 (223/275) | 0.831 (226) | 0.750 (6/6) | 0.857 (6/6) | 0.467 (28/73) | 0.458 (30) |
+| sin_residuo | – (0) | – | 0.857 (3/4) | 0.857 (3/4) | – (0) | – |
+| vidrio | 0.882 (232/266) | 0.881 (225) | 0.600 (3/3) | 0.857 (3/3) | 0.500 (11/17) | 0.359 (7) |
+
+A = etapa2_ext_full, B = e2_ext_full_j1027.
+
+Confusiones principales (real → predicho):
+- juliaca/val: A papel_carton → vidrio 4, metales → generales 4, papel_carton → plasticos 2, papel_carton → generales 2;
+  B metales → generales 2, y 1 cada una: sin_residuo → plasticos, metales → vidrio/plasticos/peligrosos.
+- val_camara: A plasticos → metales 12, generales → papel_carton 12, plasticos → vidrio 11, generales → plasticos 11,
+  generales → peligrosos 10; B **generales → papel_carton 17**, generales → peligrosos 14, generales → plasticos 13,
+  plasticos → generales 12, generales → metales 12, plasticos → vidrio 11.
+
+Informes: `reportes/etapa2_e2_ext_full_j1027_20261027_1957_{publico_val,juliaca_val,val_camara}.json`,
+`reportes/etapa2_ext_full_juliaca_val.json`, `reportes/experimentos/e2_ext_full_j1027.json`,
+`reportes/val_camara_por_foto.csv` (10 modelos: los 9 anteriores + éste). Modelo en `modelos/experimentos/` (no se sube).
+
+**Conclusión: juliaca/val mejora mucho, pero val_camara empeora; no hay ganador claro y el modelo por defecto no cambia
+(decide el usuario).**
+- **La subida en juliaca/val (21 → 30 de 36) viene casi entera de un solo objeto:** la hoja cuadriculada de val
+  (papel_carton 0/8 → 8/8). En las 28 fotos de antes, B acierta 22 frente a 21. Ese objeto se fotografió en la misma
+  sesión, persona, fondo y cámara que las hojas de train (obj002, obj003), así que el 8/8 es probablemente optimista:
+  las fotos se parecen en todo menos en el objeto. Una sola hoja no basta para decir que papel_carton mejoró.
+- **En val_camara (peso principal: 293 fotos de 29 objetos) B baja de 0.5183 a 0.4647** (162 → 145 aciertos):
+  - **generales: 75 → 63.** Los errores generales → papel_carton suben de 12 a 17 (envoltorios), y también suben los
+    que van a peligrosos (10 → 14) y a metales (9 → 12). Añadir 18 fotos de hojas de papel y 8 de una servilleta no
+    ayuda con los envoltorios multicapa;
+  - **papel_carton: 14 → 13 (F1 0.475 → 0.400).** Las hojas lisas no se parecen a los papel_carton de val_camara;
+  - **vidrio: 11 → 7**, metales 7 → 6, peligrosos 12 → 11; plasticos sube un poco (28 → 30) y organico se queda en 15.
+- **publico/val baja un poco** (0.8849 → 0.8807, 8 aciertos menos), dentro de lo esperable.
+- Hipótesis, no probada: con replay 2, papel_carton pasa de 9 a 63 imágenes en train (juliaca + replay) y todas las de
+  juliaca son hojas blancas de una sola sesión. Eso inclina las decisiones dudosas hacia papel_carton y generales sin
+  aportar variedad. Parte de la diferencia en val_camara puede ser también ruido de la semilla, porque es un solo run.
+- `reportes/experimentos.csv` mezcla experimentos evaluados en juliaca/val de 28 fotos (los anteriores) y de 36 (éste):
+  su F1_val no se compara entre ellos. La comparación válida es la de esta tabla.
+
+juliaca/test NO se usó. val_camara ya sirvió para elegir `etapa2_ext_full`, así que su número es algo optimista para
+ese modelo.
+
 ## Pendientes
 - **Siguiente paso: aumentar las fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   1. **plasticos y vidrio**: la confusión plasticos → vidrio es la principal en val_camara (11 con `e2_ext_full`;
@@ -344,8 +416,9 @@ para elegir `etapa2_ext_full`, así que su número es algo optimista para ese mo
   3. **peligrosos**: F1 0.429 en val_camara (12/22); ninguna fuente externa con licencia clara lo refuerza
      (solo 80 externas);
   4. **generales**: generales → papel_carton 12 y → plasticos 11 en val_camara (envoltorios multicapa).
-  Para referencia, juliaca/train tiene hoy plasticos 28, vidrio 19, metales 26, peligrosos 16, generales 31
-  fotos; organico (2) y papel_carton (3) también son muy pocas, y no tienen fotos en test (aviso de `auditar.py`).
+  Para referencia, juliaca/train tiene hoy (27-10) plasticos 28, vidrio 19, metales 26, peligrosos 16, generales 39
+  y papel_carton 21 fotos (solo hojas de papel de una sesión: faltan cartón, cajas y papel de otros fondos);
+  organico (2) sigue con muy pocas. organico y papel_carton no tienen fotos en test (aviso de `auditar.py`).
   Al reentrenar se compara con `etapa2_ext_full` solo en validación (regla 9).
 - ~~tetra/multicapa en papel_carton de publico (revision\tetra\), decisión diferida.~~ CERRADO
   (2026-10-26): los envases tetra/multicapa de cartón se clasifican como `papel_carton` y se
