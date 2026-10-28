@@ -46,7 +46,7 @@ Para que el modelo **no aprenda "blanco = plástico"**: toma fotos de varios col
 **Casos dudosos (reglas de etiquetado ya decididas):**
 - **Regla general:** se clasifica el **material principal del objeto entero**; la tapa no cuenta (una botella PET con tapa metálica sigue siendo `plasticos`).
 - **Envases Tetra Pak / multicapa de cartón** (cajitas de leche o jugo, p. ej. `obj128_caja_tetra_bonle`) → `papel_carton` (aprovechable), porque son ~75 % fibra de cartón (el resto, polietileno y aluminio). Se asume **envase vacío y enjuagado**; con restos de leche o jugo, el material sigue siendo el mismo pero en la práctica no se recicla. Decisión del 2026-10-26, también en `EXPERIMENTOS.md` ("Pendientes", cerrado).
-- **Empaques flexibles** (bolsas de galleta, snack o fideos, sachets, doypacks, envolturas de golosinas), **metalizados o no** → `generales`: no se separan sus capas.
+- **Empaques flexibles** (bolsas de galleta, snack o fideos, sachets, doypacks, envolturas de golosinas), **metalizados o no** → `generales`: no se separan sus capas. Excepción: bolsas de compra simples de un solo material (tipo camiseta, de mercado, transparentes sin impresión densa) → `plasticos`. La regla aplica a empaques de alimentos impresos o multicapa.
 - **Envases rígidos de plástico** (botellas, frascos, potes, tapers) de **cualquier color** → `plasticos`.
 - **Vasos y potes de cartón con recubrimiento para comida** (Ajinomen, vaso de café, tubo de Pringles) → `generales`.
 - **Cartón limpio** → `papel_carton`; **cartón con grasa** o restos de comida → `generales`.
