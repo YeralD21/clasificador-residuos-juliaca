@@ -1,0 +1,53 @@
+{
+  "etapa": 2,
+  "pesos_iniciales": "D:\\Proyecto-Residuos-ML\\clasificador-residuos-juliaca\\modelos\\experimentos\\etapa1_e1_ext_20261025_1657.pt",
+  "entorno": {
+    "python": "3.13.15",
+    "torch": "2.14.1+cu130",
+    "cuda_torch": "13.0",
+    "ultralytics": "8.4.184",
+    "gpu": "NVIDIA GeForce RTX 3060"
+  },
+  "parametros": {
+    "model": "D:\\Proyecto-Residuos-ML\\clasificador-residuos-juliaca\\modelos\\experimentos\\etapa1_e1_ext_20261025_1657.pt",
+    "data": "D:\\Proyecto-Residuos-ML\\clasificador-residuos-juliaca\\dataset\\_etapa2",
+    "epochs": 30,
+    "patience": 10,
+    "imgsz": 224,
+    "batch": 64,
+    "optimizer": "AdamW",
+    "lr0": 0.0001,
+    "lrf": 0.1,
+    "warmup_epochs": 1,
+    "freeze": 6,
+    "dropout": 0.0,
+    "cos_lr": true,
+    "seed": 43,
+    "hsv_h": 0.03,
+    "hsv_s": 0.5,
+    "hsv_v": 0.4,
+    "fliplr": 0.5,
+    "flipud": 0.2,
+    "erasing": 0.3,
+    "auto_augment": "randaugment",
+    "replay": 2.0,
+    "externo": {
+      "generales": 139,
+      "metales": 40,
+      "organico": 0,
+      "papel_carton": 0,
+      "peligrosos": 0,
+      "plasticos": 0,
+      "sin_residuo": 0,
+      "vidrio": 0
+    },
+    "externo_fuentes": [
+      "taco"
+    ]
+  },
+  "historial": {
+    "epocas_corridas": 19,
+    "mejor_epoca": 9,
+    "mejor_top1_val": 0.73494
+  }
+}
