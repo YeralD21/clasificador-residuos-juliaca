@@ -18,7 +18,7 @@ Lanzadores en la raíz del repo. Se abren con **doble clic**, o escribiendo su n
 | `evaluar.bat` | Evalúa todos los `modelos\*.pt` en `dataset\val_camara` (nunca en `juliaca\test`) y deja una pausa para leer la tabla. | `scripts/evaluar.py --datos val_camara` |
 
 **Flujo de fotos nuevas:** `capturar` → `etiquetar` → `importar` (revisar) → `importar --importar`. La clase y el split los decides tú por objeto en `etiquetar` (reglas 2 y 3 de CLAUDE.md: la partición de juliaca es manual y por objeto); `importar` no decide nada, solo copia lo que dice `etiquetas.csv`. Garantías de `importar_sesion.py`:
-- cada objeto va **entero a un solo split**, en su propia carpeta; solo `train` y `val` (`test` se arma aparte, y el CSV con `test` se rechaza);
+- cada objeto va **entero a un solo split**, en su propia carpeta; por defecto solo `train` y `val` (un CSV con `test` se rechaza). Con `--permitir-test` acepta `test` para objetos que tú elegiste uno por uno: `importar --permitir-test` (revisar) → `importar --importar --permitir-test`. `test` sigue siendo solo para la evaluación final (reglas 5 y 9);
 - valida todo el CSV antes de escribir (clase, split, objeto repetido o sin fotos) y, si hay un error, no copia nada;
 - nunca sobrescribe; un objeto ya importado (misma fecha y objeto) se salta, así que repetirlo no duplica;
 - no toca las fotos originales de `fotos_laptop`;

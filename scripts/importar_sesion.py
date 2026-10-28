@@ -7,7 +7,7 @@
 La clase y el split los decidiste TÚ por objeto en etiquetas.csv; este script no decide nada (CLAUDE.md, reglas
 2 y 3). Cada objeto va entero a UN split, en su propia carpeta, con el siguiente número libre de juliaca:
   dataset/juliaca/<split>/<clase>/obj046_20261026-obj003/20261026_obj003_01.jpg
-Solo train y val (test se arma aparte). Las fotos originales de fotos_laptop no se tocan.
+Solo train y val; test solo con --permitir-test. Las fotos originales de fotos_laptop no se tocan.
 Imagen: por defecto el frame completo, escalado para que el lado mayor sea --lado-max (1600, como las fotos de
 juliaca: 1200x1600 / 1600x1200), JPG 95. --recorte roi aplica antes el cuadrado central de capturar_fotos.py
 (roi_cuadrado, 75 % del lado menor). Nunca sobrescribe; un objeto ya importado (misma fecha y objNNN) se salta.
@@ -67,7 +67,10 @@ def main():
     ap.add_argument("--recorte", choices=("ninguno", "roi"), default="ninguno")
     ap.add_argument("--lado-max", type=int, default=1600, help="lado mayor final en px (0 = sin redimensionar)")
     ap.add_argument("--dry-run", action="store_true", help="solo muestra lo que haría, no escribe nada")
+    ap.add_argument("--permitir-test", action="store_true",
+                    help="acepta split test en etiquetas.csv (lo decide el usuario objeto por objeto; CLAUDE.md regla 2)")
     args = ap.parse_args()
+    splits_ok = SPLITS_OK + ("test",) if args.permitir_test else SPLITS_OK
 
     raiz, base = carpeta_sesiones(args.raiz, args.fecha), Path(args.dataset)
     fecha = args.fecha or ultima_fecha(raiz)
@@ -87,8 +90,9 @@ def main():
             continue
         if f["clase"] not in CLASES:
             errores.append(f"{o}: clase desconocida '{f['clase']}'")
-        if f["split"] not in SPLITS_OK:
-            errores.append(f"{o}: split '{f['split']}' no permitido (solo {', '.join(SPLITS_OK)}; test se arma aparte)")
+        if f["split"] not in splits_ok:
+            errores.append(f"{o}: split '{f['split']}' no permitido (solo {', '.join(SPLITS_OK)}; "
+                           "test requiere --permitir-test)")
         if not (dia / o).is_dir() or not fotos_de(dia / o):
             errores.append(f"{o}: no existe {dia / o} o no tiene fotos")
     if errores:
@@ -120,6 +124,8 @@ def main():
     modo = "DRY-RUN (no se escribe nada)" if args.dry_run else "IMPORTANDO"
     print(f"{modo}: sesión {dia} -> {base}")
     print(f"recorte={args.recorte}, lado mayor <= {args.lado_max or 'sin límite'} px, JPG 95")
+    if (n_test := sum(f["split"] == "test" for f, _ in plan)):
+        print(f"[AVISO] --permitir-test: {n_test} objetos irán a juliaca/test (solo evaluación final, reglas 5 y 9)")
     for f, dest in plan:
         fotos = fotos_de(dia / f["objeto"])
         h, w = preparar(fotos[0], args.recorte, args.lado_max).shape[:2]

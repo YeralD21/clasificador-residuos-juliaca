@@ -16,7 +16,7 @@ El modelo clasifica MATERIAL; el color es el tacho donde va (ver tabla en README
    (d) antes de usarlas se eliminan duplicados y casi duplicados (dHash <= 4) contra
        TODOS los splits de publico y juliaca, y el informe de eso se guarda en reportes/.
 2. NUNCA muevas, copies, renombres ni borres archivos dentro de `dataset/juliaca/`. La clase y el split de cada foto los decide el usuario a mano. Si detectas un problema (leakage, foto en clase dudosa), repórtalo y detente.
-   Excepción: importar_sesion.py puede copiar a carpetas NUEVAS de dataset/juliaca lo que el usuario etiquetó a mano en etiquetas.csv, y solo cuando el usuario lo ejecuta con --importar. Nunca mueve, renombra, borra ni sobrescribe nada existente. Claude no lo ejecuta con --importar.
+   Excepción: importar_sesion.py puede copiar a carpetas NUEVAS de dataset/juliaca lo que el usuario etiquetó a mano en etiquetas.csv, y solo cuando el usuario lo ejecuta con --importar. Por defecto solo acepta train y val. Objetos con split test solo con --permitir-test, que decide el usuario objeto por objeto (regla 3); Claude puede usar --permitir-test únicamente junto con --dry-run para mostrar conteos, nunca para importar. Nunca mueve, renombra, borra ni sobrescribe nada existente. Claude no lo ejecuta con --importar.
 3. La partición de `dataset/juliaca` es MANUAL y por objeto (`<split>/<clase>/<objeto>/`). Nunca propongas ni ejecutes un split aleatorio sobre ella.
 4. En `class_mapping.csv` la columna `aprobado` la cambia SOLO el usuario. No la edites.
 5. `dataset/juliaca/test` solo se usa en la evaluación final. No lo uses para entrenar, elegir épocas ni ajustar hiperparámetros.
