@@ -1,0 +1,158 @@
+{
+  "modelo": "D:\\Proyecto-Residuos-ML\\clasificador-residuos-juliaca\\modelos\\experimentos\\etapa2_e2_ext_full_j1028_s44_20261028_1704.pt",
+  "datos": "juliaca/val",
+  "accuracy_top1": 0.759,
+  "accuracy_top5": 0.988,
+  "f1_macro": 0.7626,
+  "clases_con_datos": 8,
+  "por_clase": [
+    {
+      "clase": "generales",
+      "n": 16,
+      "precision": 0.7,
+      "recall": 0.875,
+      "f1": 0.7778
+    },
+    {
+      "clase": "metales",
+      "n": 13,
+      "precision": 0.75,
+      "recall": 0.4615,
+      "f1": 0.5714
+    },
+    {
+      "clase": "organico",
+      "n": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "clase": "papel_carton",
+      "n": 13,
+      "precision": 1.0,
+      "recall": 0.6923,
+      "f1": 0.8182
+    },
+    {
+      "clase": "peligrosos",
+      "n": 2,
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8
+    },
+    {
+      "clase": "plasticos",
+      "n": 27,
+      "precision": 0.7812,
+      "recall": 0.9259,
+      "f1": 0.8475
+    },
+    {
+      "clase": "sin_residuo",
+      "n": 4,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571
+    },
+    {
+      "clase": "vidrio",
+      "n": 7,
+      "precision": 0.4286,
+      "recall": 0.4286,
+      "f1": 0.4286
+    }
+  ],
+  "matriz_real_x_predicho": [
+    [
+      14,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      4,
+      6,
+      0,
+      0,
+      0,
+      2,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      0,
+      9,
+      0,
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      25,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      3
+    ]
+  ],
+  "clases": [
+    "generales",
+    "metales",
+    "organico",
+    "papel_carton",
+    "peligrosos",
+    "plasticos",
+    "sin_residuo",
+    "vidrio"
+  ]
+}

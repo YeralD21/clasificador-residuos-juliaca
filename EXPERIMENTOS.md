@@ -622,6 +622,56 @@ se calculó prediciendo foto a foto con los dos modelos; sus totales coinciden c
 
 juliaca/test NO se usó. val_camara ya sirvió para elegir `etapa2_ext_full`, así que su número es algo optimista para A.
 
+### Variación entre semillas de `e2_ext_full_j1028` (42, 43, 44; 2026-10-28)
+La misma receta con `--seed 43` y `--seed 44` (`e2_ext_full_j1028_s43`, `e2_ext_full_j1028_s44`). La semilla cambia
+el entrenamiento y también la muestra de replay de publico (`armar_etapa2` baraja con esa semilla); los conteos por clase
+son los mismos (1.468 imágenes). Épocas (época de `best.pt`): 42 → 17 (7), 43 → 19 (9), 44 → 22 (12).
+
+**Contexto (usuario):** val_camara se tomó con el celular del usuario, igual que Plaza Vea, y la app móvil será la demo
+principal. **Regla de decisión fijada antes de ver los resultados:** si la media de F1 macro en val_camara de las 3
+semillas supera a `etapa2_ext_full`, se propone como modelo por defecto el de la mejor semilla; si no, se queda
+`etapa2_ext_full`.
+
+| | etapa2_ext_full | s42 | s43 | s44 | **media (mín–máx)** |
+|---|---|---|---|---|---|
+| F1 macro val_camara (293) | 0.5183 | 0.5301 | **0.5610** | 0.5401 | **0.5437 (0.5301–0.5610)** |
+| aciertos val_camara | 162 | 156 | **166** | 160 | 160.7 (156–166) |
+| F1 macro juliaca/val (83) | 0.5566 | 0.6619 | 0.6160 | **0.7626** | 0.6802 (0.6160–0.7626) |
+| aciertos juliaca/val | 40 | 62 | 61 | **63** | 62.0 (61–63) |
+| F1 macro publico/val (1.866) | **0.8849** | 0.8710 | 0.8739 | 0.8735 | 0.8728 (0.8710–0.8739) |
+| aciertos publico/val | **1651** | 1625 | 1631 | 1629 | 1628.3 (1625–1631) |
+
+**F1 por clase en val_camara** (etapa2_ext_full frente a la media de las 3 semillas; aciertos s42/s43/s44):
+
+| clase | n | etapa2_ext_full | media semillas (mín–máx) | aciertos |
+|---|---|---|---|---|
+| generales | 122 | **0.691** (75) | 0.624 (0.610–0.645) | 65 / 71 / 64 |
+| metales | 13 | 0.298 (7) | **0.351** (0.327–0.364) | 8 / 8 / 8 |
+| organico | 20 | 0.769 (15) | **0.788** (0.722–0.842) | 13 / 14 / 16 |
+| papel_carton | 26 | **0.475** (14) | 0.456 (0.442–0.479) | 17 / 17 / 17 |
+| peligrosos | 22 | 0.429 (12) | **0.493** (0.440–0.558) | 12 / 12 / 11 |
+| plasticos | 73 | 0.467 (28) | **0.490** (0.463–0.512) | 28 / 31 / 33 |
+| vidrio | 17 | 0.500 (11) | **0.604** (0.550–0.684) | 13 / 13 / 11 |
+
+generales → papel_carton en val_camara: etapa2_ext_full 12; semillas 26 / 27 / 23.
+
+**Resultado según la regla: la media en val_camara (0.5437) supera a `etapa2_ext_full` (0.5183); incluso la peor
+semilla (0.5301) la supera.** La mejor semilla en val_camara es la **43** (`modelos/experimentos/
+etapa2_e2_ext_full_j1028_s43_20261028_1701.pt`: F1 0.5610, 166/293, la única con más aciertos que `etapa2_ext_full`).
+Se propone como modelo por defecto; **no se cambia hasta que el usuario lo apruebe.**
+- Ventaja estable en las 3 semillas: metales, peligrosos, plasticos y vidrio suben en val_camara, y juliaca/val
+  sube mucho (aunque es optimista, ver arriba).
+- **Lo que empeora de forma estable: generales** (F1 0.691 → 0.61–0.65), porque generales → papel_carton se duplica
+  (12 → 23–27) en las 3 semillas. No es ruido: las envolturas impresas pequeñas se van a papel_carton. publico/val
+  baja en las 3 (−20 a −26 aciertos).
+- Elegir la semilla 43 por val_camara hace que su 0.5610 sea optimista (se eligió entre 3 mirando ese set). El número
+  sin ese sesgo es la media, 0.5437. val_camara también fue el set con el que se eligió `etapa2_ext_full`.
+- En juliaca/val la semilla 43 es la peor de las tres (0.6160), aunque sigue por encima de `etapa2_ext_full` (0.5566).
+
+Informes: `reportes/etapa2_e2_ext_full_j1028_s43_20261028_1701_*.json`,
+`reportes/etapa2_e2_ext_full_j1028_s44_20261028_1704_*.json`, `reportes/experimentos/e2_ext_full_j1028_s4{3,4}.json`,
+`reportes/val_camara_por_foto.csv`. Modelos en `modelos/experimentos/` (no se suben). juliaca/test NO se usó.
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo
