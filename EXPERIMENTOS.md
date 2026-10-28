@@ -496,8 +496,32 @@ modelo sin selección).** El modelo por defecto no cambia.
 juliaca/test NO se usó. El modelo por defecto sigue siendo `etapa2_ext_full`. val_camara se tomó con celular (fotos de
 WhatsApp, no con la cámara de la laptop) y ya sirvió para elegir `etapa2_ext_full`, así que su número es optimista para A.
 
+## Cierre definitivo de la línea de datos públicos (decisión del usuario, 2026-10-27)
+Tres intentos de mejorar el modelo final con datos públicos o con más replay; **ninguno supera a `etapa2_ext_full` en
+val_camara** (F1 macro 0.5183, 162/293):
+
+| intento | experimento | F1 val_camara | aciertos |
+|---|---|---|---|
+| externo completo en la etapa 2 (5.684 imágenes) | `e2_ext2_full` | 0.4301 | 126 |
+| replay con la sesión del 27-10 (receta recomendada, juliaca 145 → 171) | `e2_ext_full_j1027` | 0.4647 | 145 |
+| selección curada (100 papel_carton + 100 generales) | `e2_ext_full_sel100` | 0.4150 | 126 |
+
+(Las variantes del 26-10 desde `e1_ext2`, `e2_ext2_taco` 0.5031 y `e2_ext2_sinext` 0.4646, tampoco lo superan.)
+
+- **La selección curada mejora papel_carton pero hunde generales.** papel_carton sube de 13 a 20 aciertos (Tetra Pak y
+  cajas impresas), pero generales → papel_carton pasa de 17 a 37 y generales baja de 63 a 50: los sachets y envolturas
+  impresas se van a papel_carton. Las fuentes públicas casi no tienen sachets ni envolturas impresas (en la selección,
+  12 de 100 de generales; el resto, tecnopor), así que lo impreso queda del lado de papel_carton.
+- **Modelo por defecto: `modelos/etapa2_ext_full.pt`, sin cambios.** `dataset/externo/train`, la selección curada
+  (`reportes/seleccion_curada/`) y `entrenar.py --seleccion` se quedan disponibles, pero no se usan en la receta.
+- No se harán más experimentos con datos públicos. juliaca/test sigue sin usarse.
+
 ## Pendientes
-- **Siguiente paso: aumentar las fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
+- **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
+  0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo
+     impreso de cartón (papel_carton), que es lo que los datos públicos no resolvieron: sachets de salsa y condimentos,
+     envolturas de golosina y snack (cerradas y abiertas), cajas de cereal, galletas o medicinas, y cajitas de leche y
+     jugo. Varios objetos de cada tipo, con distintos fondos y sesiones, y algunos en val (por objeto);
   1. **plasticos y vidrio**: la confusión plasticos → vidrio es la principal en val_camara (11 con `e2_ext_full`;
      25-26 al partir de `e1_ext2`). Hacen falta plásticos transparentes y vidrios lado a lado: botellas PET
      transparentes, vasos y tapers frente a frascos y botellas de vidrio;
