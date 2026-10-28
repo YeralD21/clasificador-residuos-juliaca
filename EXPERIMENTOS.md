@@ -407,6 +407,95 @@ Informes: `reportes/etapa2_e2_ext_full_j1027_20261027_1957_{publico_val,juliaca_
 juliaca/test NO se usó. val_camara ya sirvió para elegir `etapa2_ext_full`, así que su número es algo optimista para
 ese modelo.
 
+## Selección curada de datos públicos en la etapa 2 (`e2_ext_full_sel100`, 2026-10-27)
+**Pregunta:** ¿una selección pequeña y curada de publico/train y externo/train, parecida al uso real, ayuda en la etapa 2,
+a diferencia de meter todo el externo (`e2_ext2_full`)?
+
+**Selección (fase A, `scripts/seleccionar_curados.py`):** solo de imágenes ya aprobadas para train (publico/train y
+externo/train: TACO extra, RealWaste, TrashNet), nunca val ni test. Fuera los `taco_*` (ya en la receta) y la muestra de
+replay (semilla 42, replay 2), para no duplicar. Filtro automático: detector YOLOE con prompts por tipo (caja, corrugado,
+periódico, revista, Tetra Pak...; envoltura, sachet, tecnopor, servilleta...), prompts negativos (ropa, zapatos, vasos
+de papel, pañales...), como mucho 2 objetos, caja principal >= 6 % de la imagen, y en publico fuera el fondo liso de
+estudio y las texturas a pantalla completa; en TACO extra el tipo sale de su categoría. Anti-leakage: ninguna candidata a
+dHash <= 4 de juliaca (todos los splits), val_camara o publico val/test (`reportes/seleccion_curada/dedup.csv`: 0 casos;
+solo casi duplicados entre candidatas). Para elegir **no** se miraron val_camara ni juliaca/val.
+494 candidatas (papel_carton 300, generales 194); el usuario descartó 164 a mano (`reportes/seleccion_curada.txt`):
+aprobadas papel_carton 228, generales 102.
+
+**Lista final (`seleccionar_curados.py --final 100`, `reportes/seleccion_curada/seleccion_final.csv`):** el mismo número
+en las dos clases, con tope 100 (decisión del usuario). Round-robin por tipo y, dentro de cada tipo, por fuente; en
+generales entran primero todas las envolturas, sachets y servilletas aprobadas (28) y el tecnopor completa (72).
+- papel_carton 100: TACO extra 35, RealWaste 32, publico 33; caja 12, periódico 11, papel de color 11, hoja 11,
+  Tetra Pak 11, bolsa de papel 12, corrugado 12, revista 11, cartón de huevos 6, tubo de papel higiénico 3.
+- generales 100: tecnopor (pieza, vaso, envase) 72, servilleta 16, snack 8, golosina 2, sachet 2.
+`entrenar.py --seleccion <csv>` las copia a `_etapa2/train/<clase>/seleccion` sin mover nada (solo acepta rutas de
+publico/train o externo/train de su clase; 0 saltadas por duplicadas). Se comprobó que el replay es idéntico (302).
+
+**Experimento de un factor:** misma receta que `e2_ext_full_j1027` (desde `e1_ext`, AdamW lr 1e-4, freeze 6, replay 2,
+`--externo --externo-fuentes taco`, 30 épocas, paciencia 10, semilla 42, juliaca del 27-10) **+ la selección**. Train:
+852 imágenes (652 + 200). `auditar.py` sin errores.
+
+| | etapa2_ext_full (actual) | e2_ext_full_j1027 | **e2_ext_full_sel100** |
+|---|---|---|---|
+| juliaca/train | 145 | 171 | 171 |
+| selección curada | – | – | 100 + 100 |
+| épocas corridas (época de `best.pt`) | 17 (7) | 21 (11) | 21 (11) |
+| minutos | 1.0 | 1.5 | 1.6 |
+| F1 macro publico/val | 0.8849 (1651) | 0.8807 (1643) | **0.8888 (1659)** |
+| F1 macro juliaca/val (36 fotos) | 0.6428 (21/36) | **0.8421 (30/36)** | 0.6597 (27/36) |
+| **F1 macro val_camara (293 fotos)** | **0.5183** (162) | 0.4647 (145) | 0.4150 (126) |
+| top-1 val_camara | **0.5529** | 0.4949 | 0.4300 |
+
+**F1 por clase (aciertos/n):**
+
+| clase | publico/val A | B | C | juliaca/val A | B | C | val_camara A | B | C |
+|---|---|---|---|---|---|---|---|---|---|
+| generales | 0.867 (195/208) | 0.850 (187) | 0.866 (190) | 0.364 (2/3) | 0.750 (3) | 0.444 (2) | **0.691 (75/122)** | 0.609 (63) | 0.500 (50) |
+| metales | 0.900 (266/289) | 0.890 (263) | 0.893 (268) | 0.571 (4/9) | 0.615 (4) | 0.462 (3) | 0.298 (7/13) | 0.245 (6) | 0.222 (5) |
+| organico | 0.964 (251/254) | 0.971 (250) | 0.963 (245) | 1.000 (1/1) | 1.000 (1) | 0.000 (0) | 0.769 (15/20) | 0.789 (15) | 0.625 (10) |
+| papel_carton | 0.901 (245/286) | 0.899 (257) | **0.914 (267)** | 0.000 (0/8) | 1.000 (8) | 1.000 (8) | 0.475 (14/26) | 0.400 (13) | 0.430 (**20**) |
+| peligrosos | 0.854 (239/288) | 0.844 (235) | 0.855 (238) | 1.000 (2/2) | 0.800 (2) | 0.800 (2) | 0.429 (12/22) | 0.393 (11) | 0.386 (11) |
+| plasticos | 0.828 (223/275) | 0.831 (226) | 0.847 (221) | 0.750 (6/6) | 0.857 (6) | 0.857 (6) | 0.467 (28/73) | 0.458 (30) | 0.386 (22) |
+| sin_residuo | – | – | – | 0.857 (3/4) | 0.857 (3) | 0.857 (3) | – | – | – |
+| vidrio | 0.882 (232/266) | 0.881 (225) | 0.885 (230) | 0.600 (3/3) | 0.857 (3) | 0.857 (3) | 0.500 (11/17) | 0.359 (7) | 0.356 (8) |
+
+A = etapa2_ext_full, B = e2_ext_full_j1027, C = e2_ext_full_sel100.
+
+Confusiones principales en val_camara (real → predicho):
+- A: plasticos → metales 12, generales → papel_carton 12, plasticos → vidrio 11, generales → plasticos 11.
+- B: generales → papel_carton 17, generales → peligrosos 14, generales → plasticos 13, plasticos → generales 12.
+- C: **generales → papel_carton 37**, plasticos → generales 17, plasticos → vidrio 13, generales → peligrosos 13.
+  C predice papel_carton 67 veces (A 33, B 39) y papel_carton → generales baja a 2 (A 8, B 6).
+
+val_camara por objeto (aciertos / predichas papel_carton), A | B | C:
+- sachets de Pizza Hut: ají 10/0 | 10/0 | **4/5**; orégano 4/0 | 2/1 | 1/6;
+- envolturas: casino 18/4 | 15/3 | 12/9; tentación 8/5 | 5/7 | 3/9; chocman 10/1 | 7/3 | 7/4; morochas, triángulo y
+  sublime casi sin cambio;
+- papel_carton: caja cereal 6 | 6 | 7 de 8; caja bon o bon 6 | 6 | 8 de 10; **tetra bonle 2 | 1 | 5 de 8**.
+
+Informes: `reportes/etapa2_e2_ext_full_sel100_20261027_2026_{publico_val,juliaca_val,val_camara}.json`,
+`reportes/experimentos/e2_ext_full_sel100.json`, `reportes/val_camara_por_foto.csv` (11 modelos),
+`reportes/seleccion_curada/` (candidatas.csv, dedup.csv, indice.csv, seleccion_final.csv; los mosaicos no se suben).
+
+**Conclusión: la selección curada NO ayuda al modelo final; empeora val_camara (0.4647 → 0.4150 frente a B, el mismo
+modelo sin selección).** El modelo por defecto no cambia.
+- **papel_carton mejora donde se buscaba:** val_camara 13 → 20 aciertos (Tetra Pak 1 → 5 de 8, cajas impresas 12 → 15
+  de 18), y publico/val papel_carton 257 → 267. publico/val sube en total (0.8807 → 0.8888).
+- **Pero generales se hunde:** 63 → 50 aciertos en val_camara, porque generales → papel_carton pasa de 17 a 37. Caen sobre
+  todo los sachets y envolturas impresas (sachet de ají 10/10 → 4/10). El modelo aprendió "superficie impresa = papel"
+  y ahora la aplica también a los multicapa. plasticos también baja (30 → 22) y organico (15 → 10).
+- **juliaca/val:** 30 → 27 de 36 frente a B (pierde 1 foto de organico, la única de la clase, 1 de metales y 1 de
+  generales); papel_carton se queda en 8/8.
+- Hipótesis, no probada: el desequilibrio está en el contenido, no en el número. papel_carton recibió 100 imágenes muy
+  variadas de superficies impresas (cajas, revistas, Tetra Pak); generales, aunque también 100, recibió 72 de tecnopor
+  (blanco y liso) y solo 12 envolturas o sachets impresos, porque publico/externo casi no tienen. Así, lo impreso queda
+  del lado de papel_carton. Para generales harían falta envolturas y sachets reales (fotos propias), no más tecnopor.
+- Es un solo run (semilla 42); la diferencia en val_camara (19 aciertos de 293 frente a B) es mayor que la que se vio
+  entre variantes parecidas, pero no se repitió con otra semilla.
+
+juliaca/test NO se usó. El modelo por defecto sigue siendo `etapa2_ext_full`. val_camara se tomó con celular (fotos de
+WhatsApp, no con la cámara de la laptop) y ya sirvió para elegir `etapa2_ext_full`, así que su número es optimista para A.
+
 ## Pendientes
 - **Siguiente paso: aumentar las fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   1. **plasticos y vidrio**: la confusión plasticos → vidrio es la principal en val_camara (11 con `e2_ext_full`;

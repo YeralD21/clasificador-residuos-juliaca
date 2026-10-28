@@ -21,6 +21,8 @@ SOLO al train: etapa 1 -> dataset/_etapa1 (publico/train + externo, val = copia 
 etapa 2 -> dataset/_etapa2/train/<clase>/externo (completo, aparte del replay). Nunca a val ni test.
 Sin --externo la etapa 1 entrena directo sobre dataset/publico, como siempre.
 --externo-fuentes taco realwaste ... usa solo esas fuentes, por prefijo de archivo (PREFIJO_FUENTE), sin mover nada.
+Con --seleccion <csv> (solo etapa 2) se suma una lista curada y aprobada de rutas de publico/train o externo/train
+(scripts/seleccionar_curados.py --final) a dataset/_etapa2/train/<clase>/seleccion, sin mover nada.
 
 Con --experimento NOMBRE el modelo va a modelos/experimentos/ (no se sube a git) y el
 resumen a reportes/experimentos/NOMBRE.json (lo usa scripts/experimentar.py).
@@ -125,7 +127,7 @@ def armar_etapa1_externo(fuentes=None):
     return n
 
 
-def armar_etapa2(replay, seed, externo=False, fuentes=None):
+def armar_etapa2(replay, seed, externo=False, fuentes=None, seleccion=None):
     """Copia juliaca train y val (sin tocar el original) + replay de publico en dataset/_etapa2.
     juliaca/test NO se copia: así Ultralytics nunca puede usarlo, ni siquiera como respaldo de val."""
     rng = random.Random(seed)
@@ -151,11 +153,42 @@ def armar_etapa2(replay, seed, externo=False, fuentes=None):
             shutil.copy2(p, dst / p.name)
         resumen[c] = (n_jul, k)
     n_ext = copiar_externo(ETAPA2 / "train", fuentes) if externo else None
+    n_sel = copiar_seleccion(seleccion) if seleccion else None
     print("\nEtapa 2 - train = juliaca + replay público"
-          + ((" + externo" + (f" ({', '.join(fuentes)})" if fuentes else "") + ":") if externo else ":"))
+          + ((" + externo" + (f" ({', '.join(fuentes)})" if fuentes else "")) if externo else "")
+          + (f" + selección ({Path(seleccion).name})" if seleccion else "") + ":")
     for c, (a, b) in resumen.items():
-        print(f"  {c:14s} juliaca={a:4d}  replay={b:4d}" + (f"  externo={n_ext[c]:4d}" if externo else ""))
-    return n_ext
+        print(f"  {c:14s} juliaca={a:4d}  replay={b:4d}" + (f"  externo={n_ext[c]:4d}" if externo else "")
+              + (f"  seleccion={n_sel['por_clase'][c]:4d}" if seleccion else ""))
+    if seleccion and n_sel["saltadas"]:
+        print(f"  (selección: {len(n_sel['saltadas'])} ya estaban en train por replay o externo; no se duplican)")
+    return n_ext, n_sel
+
+
+def copiar_seleccion(lista):
+    """Copia a _etapa2/train/<clase>/seleccion las rutas de una lista curada y aprobada (seleccionar_curados.py
+    --final). Solo acepta archivos de dataset/publico/train/<clase> o dataset/externo/train/<clase> (nunca val, test
+    ni juliaca); no mueve nada. Salta los que ya están en el train armado (replay o externo) para no duplicarlos."""
+    with open(lista, newline="", encoding="utf-8") as f:
+        filas = list(csv.DictReader(f))
+    ya = {p.name for c in CLASES for p in imagenes(ETAPA2 / "train" / c) if p.parent.name != "juliaca"}
+    por_clase, saltadas = {c: 0 for c in CLASES}, []
+    for r in filas:
+        c, p = r["clase"], (RAIZ / r["ruta"]).resolve()
+        if c not in CLASES or not p.is_file() or not any(
+                b.resolve() in p.parents for b in (PUBLICO / "train" / c, EXTERNO / "train" / c)):
+            raise SystemExit(f"--seleccion: ruta no permitida o inexistente para {c}: {r['ruta']} "
+                             "(solo publico/train o externo/train de su clase)")
+        if p.name in ya:
+            saltadas.append(r["ruta"])
+            continue
+        dst = ETAPA2 / "train" / c / "seleccion"
+        dst.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(p, dst / p.name)
+        ya.add(p.name)
+        por_clase[c] += 1
+    return {"archivo": Path(lista).resolve().relative_to(RAIZ).as_posix(), "por_clase": por_clase,
+            "saltadas": saltadas}
 
 
 def main():
@@ -174,6 +207,9 @@ def main():
                     help="suma dataset/externo/train al train (etapa 1 y 2); nunca a val ni test")
     ap.add_argument("--externo-fuentes", nargs="+", choices=sorted(PREFIJO_FUENTE), default=None,
                     help="con --externo: solo estas fuentes (por prefijo de archivo); por defecto todas")
+    ap.add_argument("--seleccion", default=None,
+                    help="solo etapa 2: CSV de rutas curadas y aprobadas (seleccionar_curados.py --final) que se "
+                         "suman al train; solo de publico/train o externo/train")
     ap.add_argument("--dropout", type=float, default=0.0, help="dropout de la cabeza de clasificación")
     ap.add_argument("--experimento", default=None, help="nombre del experimento (ver experimentar.py)")
     ap.add_argument("--evaluar-test", action="store_true",
@@ -194,6 +230,9 @@ def main():
                    fliplr=0.5, flipud=0.2, erasing=0.3, auto_augment="randaugment",
                    project=str(RAIZ / "runs"))
 
+    n_sel = None
+    if args.seleccion and args.etapa != 2:
+        raise SystemExit("--seleccion solo se usa en la etapa 2.")
     if args.etapa == 1:
         if sum(contar(PUBLICO, "train").values()) == 0:
             raise SystemExit("dataset/publico/train está vacío. Ejecuta: python scripts/preparar_publico.py")
@@ -204,7 +243,7 @@ def main():
         tr, va = contar(JULIACA, "train"), contar(JULIACA, "val")
         if sum(tr.values()) == 0 or sum(va.values()) == 0:
             raise SystemExit("dataset/juliaca/train o val está vacío. Coloca tus fotos (ver README).")
-        n_externo = armar_etapa2(args.replay, args.seed, args.externo, args.externo_fuentes)
+        n_externo, n_sel = armar_etapa2(args.replay, args.seed, args.externo, args.externo_fuentes, args.seleccion)
         datos = ETAPA2
         params = dict(data=str(datos), epochs=args.epochs or 30, patience=10, optimizer="AdamW",
                       lr0=args.lr, lrf=0.1, warmup_epochs=1, freeze=args.freeze, **comunes)
@@ -233,6 +272,8 @@ def main():
     usados["externo"] = n_externo  # None = apagado; si no, n imágenes externas por clase en train
     if args.externo_fuentes:
         usados["externo_fuentes"] = args.externo_fuentes
+    if n_sel:
+        usados["seleccion"] = n_sel  # lista curada: archivo, n por clase y las saltadas por duplicadas
     filas = list(csv.DictReader(open(save_dir / "results.csv", encoding="utf-8")))
     filas = [{k.strip(): v for k, v in f.items()} for f in filas]
     mejor = max(filas, key=lambda f: float(f.get("metrics/accuracy_top1", 0) or 0)) if filas else {}

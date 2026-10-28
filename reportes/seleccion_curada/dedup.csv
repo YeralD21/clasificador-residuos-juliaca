@@ -1,0 +1,16 @@
+candidata,parecida_a,dhash
+dataset/publico/train/papel_carton/companero_000904_dl_azul_00982.jpg,dataset/publico/train/papel_carton/companero_000545_dl_azul_00589.jpg,1
+dataset/publico/train/papel_carton/companero_000208_dl_azul_00226.jpg,dataset/publico/train/papel_carton/companero_000436_dl_azul_00471.jpg,1
+dataset/publico/train/papel_carton/companero_001054_dl_azul_01143.jpg,dataset/publico/train/papel_carton/companero_000515_dl_azul_00558.jpg,0
+dataset/publico/train/papel_carton/companero_000417_dl_azul_00451.jpg,dataset/publico/train/papel_carton/companero_000477_dl_azul_00517.jpg,0
+dataset/publico/train/papel_carton/companero_000834_dl_azul_00902.jpg,dataset/publico/train/papel_carton/companero_000385_dl_azul_00415.jpg,1
+dataset/publico/train/papel_carton/companero_000980_dl_azul_01064.jpg,dataset/publico/train/papel_carton/companero_000669_dl_azul_00726.jpg,4
+dataset/publico/train/papel_carton/companero_000989_dl_azul_01073.jpg,dataset/publico/train/papel_carton/companero_000546_dl_azul_00590.jpg,4
+dataset/publico/train/papel_carton/companero_000726_dl_azul_00787.jpg,dataset/publico/train/papel_carton/companero_000662_dl_azul_00718.jpg,0
+dataset/publico/train/papel_carton/companero_000800_dl_azul_00866.jpg,dataset/publico/train/papel_carton/companero_001263_dl_azul_01365.jpg,0
+dataset/publico/train/papel_carton/companero_000903_dl_azul_00981.jpg,dataset/publico/train/papel_carton/companero_000534_dl_azul_00578.jpg,3
+dataset/publico/train/papel_carton/companero_000344_dl_azul_00374.jpg,dataset/publico/train/papel_carton/companero_000536_dl_azul_00580.jpg,2
+dataset/publico/train/generales/companero_000209_dl_negro_00316.jpg,dataset/publico/train/generales/companero_000886_dl_negro_01307.jpg,0
+dataset/publico/train/generales/companero_000923_dl_negro_01368.jpg,dataset/publico/train/generales/companero_000214_dl_negro_00321.jpg,0
+dataset/publico/train/generales/companero_000707_dl_negro_01060.jpg,dataset/publico/train/generales/companero_000165_dl_negro_00250.jpg,1
+dataset/publico/train/generales/companero_000267_dl_negro_00405.jpg,dataset/publico/train/generales/companero_000411_dl_negro_00634.jpg,4

@@ -1,0 +1,201 @@
+numero,clase,fuente,tipo,categoria,ruta
+1,papel_carton,tacox,bolsa papel,Paper bag,dataset/externo/train/papel_carton/tacox_58_142.jpg
+3,papel_carton,tacox,carton huevos,Egg carton,dataset/externo/train/papel_carton/tacox_47_130.jpg
+122,papel_carton,realwaste,caja,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-453.jpg
+4,papel_carton,tacox,corrugado,Corrugated carton,dataset/externo/train/papel_carton/tacox_820_2563.jpg
+5,papel_carton,tacox,hoja,Normal paper,dataset/externo/train/papel_carton/tacox_381_1332.jpg
+7,papel_carton,tacox,revista,Magazine paper,dataset/externo/train/papel_carton/tacox_1184_3657.jpg
+125,papel_carton,realwaste,papel color,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-398.jpg
+8,papel_carton,tacox,tetra pak,Drink carton,dataset/externo/train/papel_carton/tacox_1203_3707.jpg
+126,papel_carton,realwaste,periodico,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-393.jpg
+9,papel_carton,tacox,tubo higienico,Toilet tube,dataset/externo/train/papel_carton/tacox_84_215.jpg
+121,papel_carton,realwaste,bolsa papel,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-194.jpg
+213,papel_carton,publico,carton huevos,,dataset/publico/train/papel_carton/companero_000105_dl_azul_00114.jpg
+11,papel_carton,tacox,caja,Other carton,dataset/externo/train/papel_carton/tacox_232_769.jpg
+123,papel_carton,realwaste,corrugado,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-460.jpg
+124,papel_carton,realwaste,hoja,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-335.jpg
+127,papel_carton,realwaste,revista,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-207.jpg
+216,papel_carton,publico,papel color,,dataset/publico/train/papel_carton/companero_000266_dl_azul_00289.jpg
+219,papel_carton,publico,tetra jugo,,dataset/publico/train/papel_carton/companero_000441_dl_azul_00477.jpg
+217,papel_carton,publico,periodico,,dataset/publico/train/papel_carton/companero_001242_dl_azul_01344.jpg
+18,papel_carton,tacox,tubo higienico,Toilet tube,dataset/externo/train/papel_carton/tacox_84_214.jpg
+211,papel_carton,publico,bolsa papel,,dataset/publico/train/papel_carton/companero_000515_dl_azul_00558.jpg
+12,papel_carton,tacox,carton huevos,Egg carton,dataset/externo/train/papel_carton/tacox_47_129.jpg
+131,papel_carton,realwaste,caja,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-330.jpg
+214,papel_carton,publico,corrugado,,dataset/publico/train/papel_carton/companero_000897_dl_azul_00974.jpg
+215,papel_carton,publico,hoja,,dataset/publico/train/papel_carton/companero_001285_dl_azul_01388.jpg
+218,papel_carton,publico,revista,,dataset/publico/train/papel_carton/companero_000618_dl_azul_00668.jpg
+134,papel_carton,realwaste,papel color,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-93.jpg
+220,papel_carton,publico,tetra pak,,dataset/publico/train/papel_carton/companero_000960_dl_azul_01042.jpg
+135,papel_carton,realwaste,periodico,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-148.jpg
+36,papel_carton,tacox,tubo higienico,Toilet tube,dataset/externo/train/papel_carton/tacox_84_216.jpg
+10,papel_carton,tacox,bolsa papel,Paper bag,dataset/externo/train/papel_carton/tacox_611_1917.jpg
+21,papel_carton,tacox,carton huevos,Egg carton,dataset/externo/train/papel_carton/tacox_49_132.jpg
+20,papel_carton,tacox,caja,Other carton,dataset/externo/train/papel_carton/tacox_697_2227.jpg
+132,papel_carton,realwaste,corrugado,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-144.jpg
+14,papel_carton,tacox,hoja,Normal paper,dataset/externo/train/papel_carton/tacox_873_2717.jpg
+228,papel_carton,publico,revista,,dataset/publico/train/papel_carton/companero_000526_dl_azul_00570.jpg
+226,papel_carton,publico,papel color,,dataset/publico/train/papel_carton/companero_000009_dl_azul_00009.jpg
+136,papel_carton,realwaste,tetra jugo,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-346.jpg
+227,papel_carton,publico,periodico,,dataset/publico/train/papel_carton/companero_001096_dl_azul_01191.jpg
+130,papel_carton,realwaste,bolsa papel,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-153.jpg
+30,papel_carton,tacox,carton huevos,Egg carton,dataset/externo/train/papel_carton/tacox_48_131.jpg
+139,papel_carton,realwaste,caja,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-456.jpg
+224,papel_carton,publico,corrugado,,dataset/publico/train/papel_carton/companero_000467_dl_azul_00506.jpg
+225,papel_carton,publico,hoja,,dataset/publico/train/papel_carton/companero_000331_dl_azul_00361.jpg
+25,papel_carton,tacox,revista,Magazine paper,dataset/externo/train/papel_carton/tacox_874_2725.jpg
+141,papel_carton,realwaste,papel color,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-228.jpg
+137,papel_carton,realwaste,tetra pak,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-187.jpg
+142,papel_carton,realwaste,periodico,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-391.jpg
+19,papel_carton,tacox,bolsa papel,Paper bag,dataset/externo/train/papel_carton/tacox_1111_3395.jpg
+39,papel_carton,tacox,carton huevos,Egg carton,dataset/externo/train/papel_carton/tacox_100_280.jpg
+29,papel_carton,tacox,caja,Other carton,dataset/externo/train/papel_carton/tacox_1239_3844.jpg
+140,papel_carton,realwaste,corrugado,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-50.jpg
+23,papel_carton,tacox,hoja,Normal paper,dataset/externo/train/papel_carton/tacox_998_2984.jpg
+237,papel_carton,publico,revista,,dataset/publico/train/papel_carton/companero_000827_dl_azul_00895.jpg
+235,papel_carton,publico,papel color,,dataset/publico/train/papel_carton/companero_000690_dl_azul_00750.jpg
+229,papel_carton,publico,tetra jugo,,dataset/publico/train/papel_carton/companero_000335_dl_azul_00365.jpg
+236,papel_carton,publico,periodico,,dataset/publico/train/papel_carton/companero_000311_dl_azul_00339.jpg
+138,papel_carton,realwaste,bolsa papel,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-403.jpg
+146,papel_carton,realwaste,caja,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-106.jpg
+233,papel_carton,publico,corrugado,,dataset/publico/train/papel_carton/companero_000908_dl_azul_00986.jpg
+234,papel_carton,publico,hoja,,dataset/publico/train/papel_carton/companero_000709_dl_azul_00769.jpg
+43,papel_carton,tacox,revista,Magazine paper,dataset/externo/train/papel_carton/tacox_874_2719.jpg
+148,papel_carton,realwaste,papel color,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-366.jpg
+230,papel_carton,publico,tetra pak,,dataset/publico/train/papel_carton/companero_000840_dl_azul_00910.jpg
+149,papel_carton,realwaste,periodico,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-120.jpg
+231,papel_carton,publico,bolsa papel,,dataset/publico/train/papel_carton/companero_000375_dl_azul_00405.jpg
+38,papel_carton,tacox,caja,Other carton,dataset/externo/train/papel_carton/tacox_692_2214.jpg
+31,papel_carton,tacox,corrugado,Corrugated carton,dataset/externo/train/papel_carton/tacox_1119_3418.jpg
+32,papel_carton,tacox,hoja,Normal paper,dataset/externo/train/papel_carton/tacox_363_1263.jpg
+246,papel_carton,publico,revista,,dataset/publico/train/papel_carton/companero_000807_dl_azul_00874.jpg
+244,papel_carton,publico,papel color,,dataset/publico/train/papel_carton/companero_001241_dl_azul_01343.jpg
+144,papel_carton,realwaste,tetra pak,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-160.jpg
+245,papel_carton,publico,periodico,,dataset/publico/train/papel_carton/companero_001059_dl_azul_01148.jpg
+28,papel_carton,tacox,bolsa papel,Paper bag,dataset/externo/train/papel_carton/tacox_59_143.jpg
+152,papel_carton,realwaste,caja,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-165.jpg
+40,papel_carton,tacox,corrugado,Corrugated carton,dataset/externo/train/papel_carton/tacox_1064_3159.jpg
+243,papel_carton,publico,hoja,,dataset/publico/train/papel_carton/companero_000663_dl_azul_00719.jpg
+52,papel_carton,tacox,revista,Magazine paper,dataset/externo/train/papel_carton/tacox_881_2779.jpg
+154,papel_carton,realwaste,papel color,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-124.jpg
+35,papel_carton,tacox,tetra pak,Drink carton,dataset/externo/train/papel_carton/tacox_414_1463.jpg
+155,papel_carton,realwaste,periodico,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-472.jpg
+145,papel_carton,realwaste,bolsa papel,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-195.jpg
+158,papel_carton,realwaste,caja,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-41.jpg
+153,papel_carton,realwaste,corrugado,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-47.jpg
+50,papel_carton,tacox,hoja,Normal paper,dataset/externo/train/papel_carton/tacox_608_1899.jpg
+255,papel_carton,publico,revista,,dataset/publico/train/papel_carton/companero_001214_dl_azul_01313.jpg
+51,papel_carton,tacox,papel color,Wrapping paper,dataset/externo/train/papel_carton/tacox_523_1738.jpg
+238,papel_carton,publico,tetra jugo,,dataset/publico/train/papel_carton/companero_000928_dl_azul_01006.jpg
+254,papel_carton,publico,periodico,,dataset/publico/train/papel_carton/companero_000867_dl_azul_00940.jpg
+37,papel_carton,tacox,bolsa papel,Paper bag,dataset/externo/train/papel_carton/tacox_754_2344.jpg
+55,papel_carton,tacox,caja,Other carton,dataset/externo/train/papel_carton/tacox_870_2709.jpg
+49,papel_carton,tacox,corrugado,Corrugated carton,dataset/externo/train/papel_carton/tacox_821_2564.jpg
+252,papel_carton,publico,hoja,,dataset/publico/train/papel_carton/companero_000067_dl_azul_00073.jpg
+59,papel_carton,tacox,revista,Magazine paper,dataset/externo/train/papel_carton/tacox_874_2720.jpg
+253,papel_carton,publico,papel color,,dataset/publico/train/papel_carton/companero_000220_dl_azul_00241.jpg
+239,papel_carton,publico,tetra pak,,dataset/publico/train/papel_carton/companero_000868_dl_azul_00941.jpg
+161,papel_carton,realwaste,periodico,Paper,dataset/externo/train/papel_carton/realwaste_paper_paper-316.jpg
+240,papel_carton,publico,bolsa papel,,dataset/publico/train/papel_carton/companero_001072_dl_azul_01163.jpg
+163,papel_carton,realwaste,caja,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-233.jpg
+159,papel_carton,realwaste,corrugado,Cardboard,dataset/externo/train/papel_carton/realwaste_cardboard_cardboard-459.jpg
+302,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_864_2684.jpg
+428,generales,publico,snack,,dataset/publico/train/generales/companero_000447_dl_negro_00685.jpg
+431,generales,publico,golosina,,dataset/publico/train/generales/companero_000165_dl_negro_00250.jpg
+432,generales,publico,sachet,,dataset/publico/train/generales/companero_000886_dl_negro_01307.jpg
+427,generales,publico,servilleta,,dataset/publico/train/generales/companero_000167_dl_negro_00252.jpg
+434,generales,publico,snack,,dataset/publico/train/generales/companero_000517_dl_negro_00791.jpg
+437,generales,publico,golosina,,dataset/publico/train/generales/companero_000089_dl_negro_00130.jpg
+466,generales,publico,sachet,,dataset/publico/train/generales/companero_000410_dl_negro_00633.jpg
+306,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_864_2685.jpg
+444,generales,publico,snack,,dataset/publico/train/generales/companero_000782_dl_negro_01162.jpg
+310,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_1193_3682.jpg
+448,generales,publico,snack,,dataset/publico/train/generales/companero_000883_dl_negro_01304.jpg
+314,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_789_2507.jpg
+452,generales,publico,snack,,dataset/publico/train/generales/companero_000315_dl_negro_00487.jpg
+322,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_1197_3695.jpg
+456,generales,publico,snack,,dataset/publico/train/generales/companero_000833_dl_negro_01234.jpg
+330,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_310_939.jpg
+464,generales,publico,snack,,dataset/publico/train/generales/companero_000885_dl_negro_01306.jpg
+334,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_1213_3754.jpg
+467,generales,publico,snack,,dataset/publico/train/generales/companero_000901_dl_negro_01337.jpg
+338,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_652_2105.jpg
+346,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_234_771.jpg
+354,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_35_95.jpg
+359,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_517_1724.jpg
+361,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_608_1902.jpg
+365,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_642_2086.jpg
+367,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_67_161.jpg
+371,generales,tacox,servilleta,Tissues,dataset/externo/train/generales/tacox_712_2264.jpg
+303,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1192_3670.jpg
+429,generales,publico,tecnopor,,dataset/publico/train/generales/companero_000188_dl_negro_00285.jpg
+304,generales,tacox,vaso tecnopor,Foam cup,dataset/externo/train/generales/tacox_599_1877.jpg
+445,generales,publico,tecnopor,,dataset/publico/train/generales/companero_000623_dl_negro_00948.jpg
+305,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_1068_3169.jpg
+465,generales,publico,tecnopor,,dataset/publico/train/generales/companero_000292_dl_negro_00450.jpg
+307,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_279_860.jpg
+476,generales,publico,tecnopor,,dataset/publico/train/generales/companero_000304_dl_negro_00470.jpg
+308,generales,tacox,vaso tecnopor,Foam cup,dataset/externo/train/generales/tacox_1017_3028.jpg
+479,generales,publico,tecnopor,,dataset/publico/train/generales/companero_000185_dl_negro_00282.jpg
+309,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_1206_3718.jpg
+487,generales,publico,tecnopor,,dataset/publico/train/generales/companero_000161_dl_negro_00245.jpg
+311,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_277_856.jpg
+489,generales,publico,tecnopor,,dataset/publico/train/generales/companero_000119_dl_negro_00177.jpg
+312,generales,tacox,vaso tecnopor,Foam cup,dataset/externo/train/generales/tacox_460_1627.jpg
+315,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_11_26.jpg
+317,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_844_2616.jpg
+319,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_275_842.jpg
+320,generales,tacox,vaso tecnopor,Foam cup,dataset/externo/train/generales/tacox_633_2055.jpg
+321,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_1124_3456.jpg
+323,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1006_3002.jpg
+324,generales,tacox,vaso tecnopor,Foam cup,dataset/externo/train/generales/tacox_460_1628.jpg
+325,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_1135_3471.jpg
+327,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1281_3962.jpg
+328,generales,tacox,vaso tecnopor,Foam cup,dataset/externo/train/generales/tacox_601_1880.jpg
+331,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_982_2954.jpg
+332,generales,tacox,vaso tecnopor,Foam cup,dataset/externo/train/generales/tacox_601_1881.jpg
+333,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_389_1379.jpg
+335,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_276_851.jpg
+336,generales,tacox,vaso tecnopor,Foam cup,dataset/externo/train/generales/tacox_1228_3814.jpg
+337,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_396_1418.jpg
+343,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_646_2091.jpg
+345,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_665_2136.jpg
+349,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_712_2263.jpg
+351,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1274_3946.jpg
+353,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_763_2364.jpg
+355,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_263_816.jpg
+356,generales,tacox,envase tecnopor,Foam food container,dataset/externo/train/generales/tacox_844_2617.jpg
+358,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_97_250.jpg
+360,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_282_872.jpg
+362,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_269_827.jpg
+366,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_454_1593.jpg
+374,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1285_3970.jpg
+375,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_553_1783.jpg
+377,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_940_2856.jpg
+378,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_623_1973.jpg
+379,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_954_2879.jpg
+383,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_236_773.jpg
+385,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_985_2963.jpg
+386,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_976_2946.jpg
+387,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1191_3669.jpg
+388,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_954_2878.jpg
+389,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1054_3130.jpg
+390,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1189_3663.jpg
+391,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1189_3665.jpg
+392,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_11_27.jpg
+393,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1275_3947.jpg
+394,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1283_3966.jpg
+395,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_1299_4002.jpg
+397,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_220_744.jpg
+399,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_270_829.jpg
+400,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_272_834.jpg
+402,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_278_858.jpg
+409,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_450_1585.jpg
+410,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_450_1586.jpg
+411,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_454_1595.jpg
+412,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_464_1641.jpg
+413,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_553_1782.jpg
+414,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_559_1789.jpg
+415,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_575_1810.jpg
+416,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_622_1968.jpg
+417,generales,tacox,tecnopor,Styrofoam piece,dataset/externo/train/generales/tacox_622_1969.jpg
