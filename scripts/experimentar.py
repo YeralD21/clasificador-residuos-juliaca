@@ -57,6 +57,8 @@ EXPERIMENTOS = {
         "e2_ext2_sinext": ("desde e1_ext2, etapa 2 sin externo (replay 2)", ["--pesos", "@e1_ext2", "--replay", "2"]),
         "e2_ext_full_j1027": ("e2_ext_full re-corrido con juliaca del 27-10 (+4 objetos de la sesión de la laptop)",
                               ["--pesos", "@e1_ext", "--replay", "2", "--externo", "--externo-fuentes", "taco"]),
+        "e2_ext_full_j1028": ("e2_ext_full re-corrido con juliaca del 28-10 (+67 objetos de Plaza Vea, train 171 -> 443)",
+                              ["--pesos", "@e1_ext", "--replay", "2", "--externo", "--externo-fuentes", "taco"]),
         "e2_ext_full_sel100": ("e2_ext_full_j1027 + selección curada y aprobada (100 papel_carton + 100 generales)",
                                ["--pesos", "@e1_ext", "--replay", "2", "--externo", "--externo-fuentes", "taco",
                                 "--seleccion", "reportes/seleccion_curada/seleccion_final.csv"]),

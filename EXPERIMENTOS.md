@@ -516,6 +516,112 @@ val_camara** (F1 macro 0.5183, 162/293):
   (`reportes/seleccion_curada/`) y `entrenar.py --seleccion` se quedan disponibles, pero no se usan en la receta.
 - No se harán más experimentos con datos públicos. juliaca/test sigue sin usarse.
 
+## Reentrenamiento con juliaca del 28-10, Plaza Vea (`e2_ext_full_j1028`, 2026-10-28)
+**Un solo factor: los datos de juliaca.** Se importó la sesión del 28-10 (fotos de celular en Plaza Vea, 67 objetos,
+379 fotos; objeto, clase y split decididos a mano por el usuario, `importar_sesion.py --permitir-test`). juliaca pasa a
+train 443 fotos / 80 objetos (antes 171/32), val 83/18 (antes 36/9) y test 98/18 (antes 38/8; test no se usó).
+`auditar.py` sin errores. Receta recomendada, la misma que `e2_ext_full`: desde `e1_ext`, AdamW lr 1e-4, freeze 6,
+replay 2, `--externo --externo-fuentes taco`, 30 épocas, paciencia 10, semilla 42.
+
+**Replay:** sigue en la proporción de la receta, 2× juliaca/train por clase, y ninguna clase llega al tope de publico/train.
+sin_residuo no tiene replay porque publico no tiene esa clase. El externo TACO es fijo (179), así que su peso baja: 27 % del train
+con juliaca del 27-10 (179/652), 12 % ahora (179/1.468).
+
+| clase | juliaca | replay publico | externo taco | total |
+|---|---|---|---|---|
+| generales | 119 | 238 | 139 | 496 |
+| metales | 72 | 144 | 40 | 256 |
+| organico | 5 | 10 | 0 | 15 |
+| papel_carton | 52 | 104 | 0 | 156 |
+| peligrosos | 16 | 32 | 0 | 48 |
+| plasticos | 102 | 204 | 0 | 306 |
+| sin_residuo | 20 | 0 | 0 | 20 |
+| vidrio | 57 | 114 | 0 | 171 |
+| **total** | **443** | **846** | **179** | **1.468** |
+
+Como juliaca/val cambió, `etapa2_ext_full` se reevaluó en el val nuevo (`reportes/etapa2_ext_full_juliaca_val.json`;
+el informe de 36 fotos queda en el historial de git, commit 61034a3). publico/val y val_camara no cambiaron.
+
+| | etapa2_ext_full (actual) | **e2_ext_full_j1028** |
+|---|---|---|
+| juliaca/train | 145 | 443 |
+| épocas corridas (época de `best.pt`) | 17 (7) | 17 (7) |
+| minutos | 1.0 | 1.8 |
+| F1 macro publico/val (1.866 fotos) | **0.8849** (1651) | 0.8710 (1625) |
+| F1 macro juliaca/val **nuevo** (83 fotos, 18 objetos) | 0.5566 (40/83) | **0.6619 (62/83)** |
+| aciertos en las 36 fotos de juliaca/val anteriores | 21/36 | **28/36** |
+| aciertos en las 47 fotos de val de Plaza Vea (9 objetos) | 19/47 | **34/47** |
+| **F1 macro val_camara (293 fotos)** | 0.5183 | **0.5301** |
+| top-1 val_camara | **0.5529 (162)** | 0.5324 (156) |
+
+**F1 por clase (aciertos/n):**
+
+| clase | publico/val A | B | juliaca/val A | B | val_camara A | B |
+|---|---|---|---|---|---|---|
+| generales | 0.867 (195/208) | 0.836 (193) | 0.438 (7/16) | 0.686 (12) | **0.691 (75/122)** | 0.616 (65) |
+| metales | 0.900 (266/289) | 0.866 (261) | 0.480 (6/13) | 0.522 (6) | 0.298 (7/13) | 0.327 (8) |
+| organico | 0.964 (251/254) | 0.978 (249) | 1.000 (1/1) | 0.000 (0) | 0.769 (15/20) | 0.722 (13) |
+| papel_carton | 0.901 (245/286) | 0.903 (260) | 0.316 (3/13) | **0.889 (12)** | 0.475 (14/26) | 0.447 (17) |
+| peligrosos | 0.854 (239/288) | 0.840 (220) | 0.500 (2/2) | 1.000 (2) | 0.429 (12/22) | **0.558** (12) |
+| plasticos | 0.828 (223/275) | 0.792 (215) | 0.577 (15/27) | **0.842 (24)** | 0.467 (28/73) | 0.463 (28) |
+| sin_residuo | – | – | 0.857 (3/4) | 0.857 (3) | – | – |
+| vidrio | 0.882 (232/266) | 0.883 (227) | 0.286 (3/7) | 0.500 (3) | 0.500 (11/17) | 0.578 (13) |
+
+A = etapa2_ext_full, B = e2_ext_full_j1028.
+
+**Confusiones buscadas (real → predicho, A | B):**
+
+| confusión | publico/val | juliaca/val | val_camara |
+|---|---|---|---|
+| generales → papel_carton | 5 \| 5 | 3 \| 1 | **12 \| 26** |
+| papel_carton → generales | 9 \| 7 | 4 \| 1 | 8 \| 8 |
+| plasticos → vidrio | 16 \| 10 | **6 \| 1** | 11 \| 10 |
+| vidrio → plasticos | 11 \| 15 | 3 \| 4 | 2 \| 3 |
+| metales → generales | 3 \| 5 | 4 \| 4 | 1 \| 5 |
+| generales → metales | 0 \| 2 | 4 \| 3 | 9 \| 7 |
+| plasticos → peligrosos | 5 \| 5 | 4 \| 0 | 4 \| 3 |
+| generales → peligrosos | 3 \| 1 | 0 \| 0 | 10 \| 5 |
+| peligrosos → generales / plasticos / metales | 11/13/14 \| 18/16/22 | 0 \| 0 | 1/1/5 \| 0/1/6 |
+
+Por objeto (aciertos A → B / n):
+- **Empaques flexibles frente a papel_carton.** En juliaca/val mejora: avena Santa Catalina 1 → 3/3, doypack
+  ketchup 4 → 5/6, Tetra Pak Vio 3 → 4/5 y la hoja cuadriculada 0 → 8/8. En val_camara empeora: casino 18 → 13/23
+  (→ papel_carton 4 → 7), tentación 8 → 4/16 (5 → 9) y sachet de ají 10 → 7/10 (0 → 3). B predice papel_carton 50
+  veces, frente a 33 de A. Las cajas mejoran (cereal 6 → 8/8, bon o bon 6 → 7/10), pero el Tetra Pak bonle sigue en 2/8
+  y ahora se va a generales (5).
+- **Botellas de plástico frente a vidrio.** La salsa rosada pasa de 0 a 6/8 (A predecía vidrio 6) y la bolsa de refresco de
+  val_camara de 8 a 12/23. Pero la botella de vidrio esmerilado (val) sigue en 0/4, ahora con las 4 a plasticos; el
+  frasco de almendras se queda en 3/6 y en publico/val vidrio → plasticos sube de 11 a 15.
+- **Latas frente a envolturas cilíndricas.** Sin mejora: la lata Maniak se queda en 4/9 (→ generales 4 en los dos), el tubo
+  de Pringles pasa de 0 a 2/4 (→ metales 3 → 2), las latas Hey Fit se van ahora a generales (val_camara metales →
+  generales 1 → 5) y la lata Monster de val se queda en 2/4.
+- **Envases negros frente a peligrosos.** No se puede medir directamente, porque en los sets de validación no hay
+  ningún envase negro (el único, el shampoo The Barberia, está en train). Lo que se ve: plasticos → peligrosos baja en
+  juliaca/val (4 → 0: Gloria Pro, morada y gris, 3 → 5/6) y generales → peligrosos baja en val_camara (10 → 5). Pero en
+  publico/val peligrosos pierde 19 aciertos (239 → 220) y se va más a metales, generales y plasticos.
+
+Informes: `reportes/etapa2_e2_ext_full_j1028_20261028_1643_{publico_val,juliaca_val,val_camara}.json`,
+`reportes/etapa2_ext_full_juliaca_val.json` (val nuevo), `reportes/experimentos/e2_ext_full_j1028.json`,
+`reportes/val_camara_por_foto.csv`. Modelo en `modelos/experimentos/` (no se sube). El desglose por objeto de juliaca/val
+se calculó prediciendo foto a foto con los dos modelos; sus totales coinciden con los informes (40 y 62 de 83).
+
+**Conclusión: no hay ganador claro y el modelo por defecto no cambia (lo decide el usuario).**
+- juliaca/val mejora mucho (F1 0.5566 → 0.6619; 40 → 62 de 83), pero es optimista. 34 de los 62 aciertos son de las
+  47 fotos de val de Plaza Vea, tomadas el mismo día, en la misma tienda, con el mismo celular y por las mismas personas
+  que los 52 objetos de train. En las 36 fotos de val de antes la mejora es menor (21 → 28) y sale entera de la hoja
+  cuadriculada (0 → 8/8; sesión del 27-10, con el mismo sesgo). En los otros 8 objetos de antes B pierde 1 acierto
+  (organico, la única foto de la clase).
+- val_camara, el set más independiente, queda mezclado: F1 macro sube (0.5183 → 0.5301; peligrosos, vidrio, metales),
+  pero los aciertos bajan (162 → 156), porque generales cae de 75 a 65. **La confusión principal que se buscaba
+  corregir, generales → papel_carton, se duplica (12 → 26)**, sobre todo en las envolturas impresas (casino, tentación).
+  Los doypacks y bolsas de alimentos de Plaza Vea no se parecen lo suficiente a las envolturas pequeñas de golosina de
+  val_camara.
+- publico/val baja (0.8849 → 0.8710, 26 aciertos menos; peligrosos 239 → 220).
+- Es un solo run (semilla 42). La diferencia en val_camara (6 aciertos) está dentro de lo que se ha visto entre
+  variantes parecidas.
+
+juliaca/test NO se usó. val_camara ya sirvió para elegir `etapa2_ext_full`, así que su número es algo optimista para A.
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo
