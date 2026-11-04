@@ -1,49 +1,59 @@
-=====================================================================
-  CLASIFICADOR DE RESIDUOS - JULIACA
-  Guia rapida para ejecutarlo en Raspberry Pi 4
-=====================================================================
+CLASIFICADOR DE RESIDUOS - JULIACA
+Guia rapida para ejecutarlo en Raspberry Pi 4
+
 
 ANTES DE EMPEZAR, NECESITAS:
-  - Raspberry Pi 4 con "Raspberry Pi OS (64-bit)"
-      (para comprobarlo, en la terminal escribe:  uname -m
-       debe responder: aarch64)
-  - Una camara web USB conectada (o el modulo de camara de la Raspberry)
-  - Internet (solo la primera vez)
-  - Monitor, teclado y mouse conectados a la Raspberry
+  - Raspberry Pi 4 con "Raspberry Pi OS (64-bit)".
+    Para comprobarlo, en la terminal escribe:  uname -m
+    Debe responder: aarch64
+  - Una camara web USB conectada (o el modulo de camara de la Raspberry).
+  - Internet (solo la primera vez).
+  - Monitor, teclado y mouse conectados a la Raspberry.
 
 
-PASO 1 - Copiar esta carpeta a la Raspberry
-  Con una memoria USB, o con:
-     git clone https://github.com/USUARIO/clasificador-residuos-juliaca.git
+PASO 1 - Copiar la carpeta "raspberry_guide" a la Raspberry
+  Cualquiera de estas formas sirve (elige una):
+
+  a) Memoria USB: copiar la carpeta y pegarla en la Raspberry
+     (por ejemplo en el Escritorio o en /home/pi).
+
+  b) Descargar el ZIP desde GitHub, en el navegador de la Raspberry:
+     https://github.com/YeralD21/clasificador-residuos-juliaca
+     Boton verde "Code" > "Download ZIP" > descomprimir.
+
+  c) Con git, en la terminal:
+     git clone https://github.com/YeralD21/clasificador-residuos-juliaca.git
+
 
 PASO 2 - Abrir una terminal dentro de la carpeta
-  En el administrador de archivos, entra a la carpeta "raspberry_guide",
-  presiona F4 (o clic derecho > "Abrir en terminal").
+  En el administrador de archivos, entra a la carpeta "raspberry_guide"
+  y presiona F4 (o clic derecho > "Abrir en terminal").
+  Si usaste git, escribe:  cd clasificador-residuos-juliaca/raspberry_guide
 
-PASO 3 - Ejecutar el programa (UN SOLO COMANDO)
+
+PASO 3 - Ejecutar el programa (un solo comando)
 
      bash INICIAR.sh
 
-  - La PRIMERA vez instala todo (10-20 minutos) y luego abre la camara.
-  - Las SIGUIENTES veces abre la camara directamente.
+  - La primera vez instala todo (10-20 minutos) y luego abre la camara.
+  - Las siguientes veces abre la camara directamente.
 
 
 MIENTRAS FUNCIONA:
   - En la ventana se ve la camara, el tipo de residuo y el % de confianza.
-  - Tecla  s        -> guarda una foto
-  - Tecla  q / ESC  -> salir
+  - Tecla s: guarda una foto.
+  - Tecla q o ESC: salir.
 
 
 SI VA LENTO:
      bash INICIAR.sh --rapido
-  (convierte el modelo a un formato mas rapido; solo tarda la primera vez)
+
+  Convierte el modelo a un formato mas rapido. Solo tarda la primera vez.
 
 
 SI ALGO FALLA:
   - "No se encontro ninguna camara": conecta la camara en otro puerto USB.
-  - "el sistema es de 32 bits": se necesita Raspberry Pi OS de 64 bits.
-  - Fallo la instalacion: revisa el internet y vuelve a ejecutar
+  - "El sistema es de 32 bits": se necesita Raspberry Pi OS de 64 bits.
+  - Fallo la instalacion: revisa el internet y vuelve a ejecutar:
         bash INICIAR.sh
   - Mas detalles en README.md
-
-=====================================================================
