@@ -24,6 +24,7 @@ from pathlib import Path
 VERSION_ULTRALYTICS = "8.4.184"   # version con la que se entreno el modelo
 IMGSZ = 224                       # tamano con el que se entreno
 BASE = Path(__file__).resolve().parent
+os.environ.setdefault("OPENCV_LOG_LEVEL", "ERROR")   # oculta avisos al buscar camaras
 
 # Clase -> (texto, color del tacho en BGR). Sin tildes: OpenCV solo dibuja ASCII.
 TACHOS = {

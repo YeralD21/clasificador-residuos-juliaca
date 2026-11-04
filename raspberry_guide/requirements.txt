@@ -2,3 +2,6 @@
 ultralytics==8.4.184
 torch>=2.6
 torchvision
+# Para el modo --rapido (conversion a NCNN)
+ncnn
+pnnx==20260526
