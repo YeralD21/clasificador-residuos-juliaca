@@ -7,7 +7,7 @@
 #                                     --sin-ventana, --umbral 0.7)
 # =====================================================================
 cd "$(dirname "$0")"
-VERSION="8.3.209"   # version de ultralytics con la que se entreno el modelo
+VERSION="8.4.184"   # version de ultralytics con la que se entreno el modelo
 
 pausa() { echo ""; read -r -p "Presiona Enter para cerrar..." _; }
 fallo() { echo ""; echo "[ERROR] $1"; pausa; exit 1; }

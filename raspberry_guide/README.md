@@ -9,7 +9,8 @@ entrenado en el proyecto *clasificador-residuos-juliaca*.
 | Parámetros | 5.4 M |
 | Cómputo | 12.1 GFLOPs |
 | Peso del archivo | ~11 MB |
-| Entrenado con | ultralytics 8.3.209 |
+| Entrenado con | ultralytics 8.4.184, torch 2.14.1, Python 3.13 |
+| Tamaño de entrada | 224 px |
 
 ## Requisitos
 
@@ -23,7 +24,7 @@ entrenado en el proyecto *clasificador-residuos-juliaca*.
 
 **Opción A — desde GitHub (recomendada):**
 ```bash
-git clone https://github.com/USUARIO/clasificador-residuos-juliaca.git
+git clone https://github.com/YeralD21/clasificador-residuos-juliaca.git
 cd clasificador-residuos-juliaca/raspberry_guide
 ```
 
@@ -52,7 +53,7 @@ bash INICIAR.sh
   ultralytics que necesita el modelo (10–20 minutos) y después abre la cámara.
 - **Siguientes veces:** abre la cámara directamente.
 
-Se abre una ventana con la imagen de la cámara, la clase detectada y el porcentaje de confianza.
+Se abre una ventana con la imagen de la cámara y un recuadro central: el residuo se coloca dentro y arriba aparece el **tacho que le corresponde** (NTP 900.058:2019) con su color y el porcentaje de confianza.
 
 - `q` o `ESC`: salir
 - `s`: guardar una captura
@@ -64,7 +65,8 @@ Se abre una ventana con la imagen de la cámara, la clase detectada y el porcent
 | `bash INICIAR.sh --rapido` | Convierte el modelo a NCNN la primera vez (más FPS en la Raspberry). El `.pt` original no se modifica. |
 | `bash INICIAR.sh --camara 1` | Usar otra cámara si hay varias conectadas |
 | `bash INICIAR.sh --sin-ventana` | Sin pantalla (por ejemplo, por SSH); el resultado sale en la terminal |
-| `bash INICIAR.sh --umbral 0.7` | Exigir más confianza antes de mostrar una clase |
+| `bash INICIAR.sh --umbral 0.7` | Confianza mínima (defecto 0.6); por debajo muestra NO SEGURO |
+| `bash INICIAR.sh --recuadro 1.0` | Tamaño del recuadro central (defecto 0.75 del alto) |
 
 ## Solución de problemas
 

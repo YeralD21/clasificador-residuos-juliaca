@@ -40,7 +40,8 @@ PASO 3 - Ejecutar el programa (un solo comando)
 
 
 MIENTRAS FUNCIONA:
-  - En la ventana se ve la camara, el tipo de residuo y el % de confianza.
+  - En la ventana se ve la camara, el tacho que corresponde y el % de confianza.
+    Coloca el residuo dentro del recuadro del centro.
   - Tecla s: guarda una foto.
   - Tecla q o ESC: salir.
 

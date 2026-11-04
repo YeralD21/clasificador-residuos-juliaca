@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
 Clasificador de residuos en tiempo real - Raspberry Pi 4 + camara.
-Proyecto: clasificador-residuos-juliaca (YOLO26s-cls).
+Proyecto: clasificador-residuos-juliaca (YOLO26s-cls, NTP 900.058:2019).
 
-Uso:
-    python clasificar_camara.py              # detecta camara y modelo solos
-    python clasificar_camara.py --rapido     # convierte a NCNN (mas FPS en la Pi)
-    python clasificar_camara.py --camara 1   # forzar una camara concreta
-    python clasificar_camara.py --sin-ventana  # sin pantalla (resultado en terminal)
+Mismo comportamiento que scripts/inferencia_webcam.py del proyecto:
+recuadro central, imgsz 224, umbral 0.6, promedio de 8 frames y color del tacho.
+
+Uso (normalmente a traves de INICIAR.sh):
+    python clasificar_camara.py                 # detecta camara y modelo solos
+    python clasificar_camara.py --rapido        # convierte a NCNN (mas FPS en la Pi)
+    python clasificar_camara.py --camara 1      # forzar una camara concreta
+    python clasificar_camara.py --sin-ventana   # sin pantalla (resultado en terminal)
 
 Teclas (con ventana):  q / ESC = salir    s = guardar captura
 """
@@ -15,10 +18,25 @@ import argparse
 import os
 import sys
 import time
+from collections import deque
 from pathlib import Path
 
-VERSION_ULTRALYTICS = "8.3.209"   # version con la que se entreno el modelo
+VERSION_ULTRALYTICS = "8.4.184"   # version con la que se entreno el modelo
+IMGSZ = 224                       # tamano con el que se entreno
 BASE = Path(__file__).resolve().parent
+
+# Clase -> (texto, color del tacho en BGR). Sin tildes: OpenCV solo dibuja ASCII.
+TACHOS = {
+    "papel_carton": ("TACHO AZUL - Papel y carton", (200, 90, 0)),
+    "metales":      ("TACHO AMARILLO - Metales",    (0, 220, 255)),
+    "plasticos":    ("TACHO BLANCO - Plasticos",    (255, 255, 255)),
+    "vidrio":       ("TACHO GRIS - Vidrio",         (140, 140, 140)),
+    "organico":     ("TACHO MARRON - Organicos",    (30, 75, 140)),
+    "peligrosos":   ("TACHO ROJO - Peligrosos",     (0, 0, 220)),
+    "generales":    ("TACHO NEGRO - Generales",     (25, 25, 25)),
+    "sin_residuo":  ("Sin residuo",                 (80, 80, 80)),
+}
+MORADO = (160, 40, 150)   # NO SEGURO (morado porque el gris es el tacho de vidrio)
 
 
 def verificar_entorno():
@@ -26,7 +44,7 @@ def verificar_entorno():
     try:
         v = version("ultralytics")
     except PackageNotFoundError:
-        sys.exit("[ERROR] Falta ultralytics. Ejecuta primero:  bash INICIAR.sh")
+        sys.exit("[ERROR] Falta ultralytics. Ejecuta:  bash INICIAR.sh")
     if v != VERSION_ULTRALYTICS:
         print(f"[AVISO] ultralytics {v} instalado; el modelo se entreno con {VERSION_ULTRALYTICS}.")
         print("        Si hay errores al cargar el modelo, ejecuta:  bash INICIAR.sh")
@@ -117,7 +135,7 @@ def cargar_modelo(ruta_pt, rapido):
         try:
             if not ncnn_dir.exists():
                 print("[...] Convirtiendo a NCNN (solo la primera vez, ~1-3 min)...")
-                YOLO(str(ruta_pt)).export(format="ncnn")
+                YOLO(str(ruta_pt)).export(format="ncnn", imgsz=IMGSZ)
             modelo = YOLO(str(ncnn_dir), task="classify")
             print(f"[OK] Modelo NCNN: {ncnn_dir.name}")
             return modelo
@@ -128,17 +146,42 @@ def cargar_modelo(ruta_pt, rapido):
     return modelo
 
 
-def dibujar(frame, texto, top3, fps, color):
+def recuadro_central(frame, fraccion):
+    """Cuadrado centrado de lado = fraccion x alto del frame (igual que la demo)."""
+    h, w = frame.shape[:2]
+    lado = max(16, min(int(h * fraccion), h, w))
+    x0, y0 = (w - lado) // 2, (h - lado) // 2
+    return x0, y0, lado
+
+
+def texto_tacho(nombre, conf, umbral):
+    if nombre == "sin_residuo":
+        return TACHOS["sin_residuo"][0], TACHOS["sin_residuo"][1]
+    if conf < umbral:
+        return f"NO SEGURO ({conf:.0%})", MORADO
+    etiqueta, color = TACHOS.get(nombre, (nombre.upper(), (0, 160, 0)))
+    return f"{etiqueta} ({conf:.0%})", color
+
+
+def color_texto(fondo):
+    b, g, r = fondo
+    return (0, 0, 0) if (0.114 * b + 0.587 * g + 0.299 * r) > 140 else (255, 255, 255)
+
+
+def dibujar(frame, caja, texto, color, top3, fps):
     import cv2
-    cv2.rectangle(frame, (0, 0), (frame.shape[1], 44), (0, 0, 0), -1)
-    cv2.putText(frame, texto, (10, 31), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
-    y = 70
+    x0, y0, lado = caja
+    cv2.rectangle(frame, (x0, y0), (x0 + lado, y0 + lado), color, 3)
+    cv2.rectangle(frame, (0, 0), (frame.shape[1], 46), color, -1)
+    cv2.putText(frame, texto, (10, 32), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
+                color_texto(color), 2)
+    y = 72
     for nombre, p in top3:
         cv2.putText(frame, f"{nombre}: {p:.0%}", (10, y),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-        y += 24
-    cv2.putText(frame, f"{fps:.1f} FPS", (frame.shape[1] - 120, 31),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.55, (255, 255, 255), 2)
+        y += 22
+    cv2.putText(frame, f"{fps:.1f} FPS", (10, frame.shape[0] - 12),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
 
 
 def main():
@@ -147,8 +190,12 @@ def main():
     ap.add_argument("--camara", type=int, help="indice de camara (por defecto: autodetecta)")
     ap.add_argument("--ancho", type=int, default=640)
     ap.add_argument("--alto", type=int, default=480)
-    ap.add_argument("--umbral", type=float, default=0.50,
-                    help="confianza minima para mostrar la clase (0-1)")
+    ap.add_argument("--umbral", type=float, default=0.6,
+                    help="confianza minima; por debajo muestra NO SEGURO (defecto 0.6)")
+    ap.add_argument("--suavizado", type=int, default=8,
+                    help="frames que se promedian (defecto 8)")
+    ap.add_argument("--recuadro", type=float, default=0.75,
+                    help="lado del recuadro como fraccion del alto (defecto 0.75; 1.0 = alto completo)")
     ap.add_argument("--rapido", action="store_true",
                     help="convierte a NCNN para mas velocidad en la Raspberry")
     ap.add_argument("--sin-ventana", action="store_true",
@@ -157,6 +204,7 @@ def main():
 
     verificar_entorno()
     import cv2
+    import numpy as np
 
     ruta_pt = buscar_modelo(args.modelo)
     modelo = cargar_modelo(ruta_pt, args.rapido)
@@ -170,9 +218,10 @@ def main():
         print("[AVISO] No hay pantalla (SSH?). Resultados solo en la terminal.")
 
     cam = abrir_camara(args.camara, args.ancho, args.alto)
-    print("Clasificando... (q o ESC para salir, s para guardar captura)"
+    print("Coloca el residuo dentro del recuadro. (q o ESC = salir, s = guardar captura)"
           if not sin_ventana else "Clasificando... (Ctrl+C para salir)")
 
+    historial = deque(maxlen=max(1, args.suavizado))
     fps, t_prev, t_print = 0.0, time.time(), 0.0
     try:
         while True:
@@ -181,27 +230,28 @@ def main():
                 print("[ERROR] La camara dejo de enviar imagen.")
                 break
 
-            r = modelo.predict(frame, verbose=False)[0]
-            probs = r.probs
-            top1, conf = int(probs.top1), float(probs.top1conf)
-            top3 = [(nombres[int(i)], float(probs.data[int(i)])) for i in probs.top5[:3]]
+            x0, y0, lado = recuadro_central(frame, args.recuadro)
+            recorte = frame[y0:y0 + lado, x0:x0 + lado]
+            r = modelo.predict(recorte, imgsz=IMGSZ, verbose=False)[0]
+            historial.append(r.probs.data.cpu().numpy())
+            prom = np.mean(historial, axis=0)
+
+            orden = np.argsort(prom)[::-1]
+            top1, conf = int(orden[0]), float(prom[orden[0]])
+            top3 = [(nombres[int(i)], float(prom[i])) for i in orden[:3]]
+            texto, color = texto_tacho(nombres[top1], conf, args.umbral)
 
             ahora = time.time()
             fps = 0.9 * fps + 0.1 * (1.0 / max(ahora - t_prev, 1e-6))
             t_prev = ahora
 
-            if conf >= args.umbral:
-                texto, color = f"{nombres[top1]} ({conf:.0%})", (0, 255, 0)
-            else:
-                texto, color = "Incierto - acerca el objeto", (0, 200, 255)
-
             if sin_ventana:
                 if ahora - t_print >= 1.0:
-                    print(f"{texto:40s} | {fps:4.1f} FPS")
+                    print(f"{texto:45s} | {fps:4.1f} FPS")
                     t_print = ahora
                 continue
 
-            dibujar(frame, texto, top3, fps, color)
+            dibujar(frame, (x0, y0, lado), texto, color, top3, fps)
             cv2.imshow("Clasificador de residuos - Juliaca", frame)
             k = cv2.waitKey(1) & 0xFF
             if k in (ord("q"), 27):
