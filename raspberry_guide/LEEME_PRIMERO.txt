@@ -1,0 +1,49 @@
+=====================================================================
+  CLASIFICADOR DE RESIDUOS - JULIACA
+  Guia rapida para ejecutarlo en Raspberry Pi 4
+=====================================================================
+
+ANTES DE EMPEZAR, NECESITAS:
+  - Raspberry Pi 4 con "Raspberry Pi OS (64-bit)"
+      (para comprobarlo, en la terminal escribe:  uname -m
+       debe responder: aarch64)
+  - Una camara web USB conectada (o el modulo de camara de la Raspberry)
+  - Internet (solo la primera vez)
+  - Monitor, teclado y mouse conectados a la Raspberry
+
+
+PASO 1 - Copiar esta carpeta a la Raspberry
+  Con una memoria USB, o con:
+     git clone https://github.com/USUARIO/clasificador-residuos-juliaca.git
+
+PASO 2 - Abrir una terminal dentro de la carpeta
+  En el administrador de archivos, entra a la carpeta "raspberry_guide",
+  presiona F4 (o clic derecho > "Abrir en terminal").
+
+PASO 3 - Ejecutar el programa (UN SOLO COMANDO)
+
+     bash INICIAR.sh
+
+  - La PRIMERA vez instala todo (10-20 minutos) y luego abre la camara.
+  - Las SIGUIENTES veces abre la camara directamente.
+
+
+MIENTRAS FUNCIONA:
+  - En la ventana se ve la camara, el tipo de residuo y el % de confianza.
+  - Tecla  s        -> guarda una foto
+  - Tecla  q / ESC  -> salir
+
+
+SI VA LENTO:
+     bash INICIAR.sh --rapido
+  (convierte el modelo a un formato mas rapido; solo tarda la primera vez)
+
+
+SI ALGO FALLA:
+  - "No se encontro ninguna camara": conecta la camara en otro puerto USB.
+  - "el sistema es de 32 bits": se necesita Raspberry Pi OS de 64 bits.
+  - Fallo la instalacion: revisa el internet y vuelve a ejecutar
+        bash INICIAR.sh
+  - Mas detalles en README.md
+
+=====================================================================

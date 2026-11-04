@@ -1,0 +1,4 @@
+.venv/
+*_ncnn_model/
+captura_*.jpg
+__pycache__/
