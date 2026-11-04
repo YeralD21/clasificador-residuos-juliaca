@@ -28,3 +28,5 @@ Thumbs.db
 desktop.ini
 reportes/revision_realwaste_metal/*.jpg
 reportes/seleccion_curada/*/*.jpg
+
+*.bat
