@@ -1,0 +1,80 @@
+{
+  "ajuste_libre": {
+    "pts_bal/bal_acc": [
+      8.0,
+      8.0,
+      8.0,
+      8.0,
+      8.0,
+      8.0,
+      8.0,
+      8.0,
+      8.0,
+      8.0,
+      8.0
+    ],
+    "pts_mf1/macroF1": [
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      4.0
+    ],
+    "pts_ntp*7/n_colores": [
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0
+    ],
+    "pts_rob = a + b*gris_caida + c*sin_det": [
+      2.9999999999999987,
+      -0.05000000000000006,
+      -0.015000000000000083
+    ],
+    "pts_rob residuo max": 4.440892098500626e-15,
+    "pts_seg = a*organico + b*rojo_f1": [
+      2.9999999999999987,
+      3.1111111111111107
+    ],
+    "pts_seg residuo max": 6.661338147750939e-16
+  },
+  "error_max_pts": {
+    "pts_bal": 0,
+    "pts_mf1": 0,
+    "pts_ntp": 4.440892098500626e-16,
+    "pts_rob": 4.440892098500626e-16,
+    "pts_seg": 2.220446049250313e-16,
+    "nota_20": 0
+  },
+  "error_max_metricas": {
+    "bal_acc": 1.1102230246251565e-16,
+    "acc_global": 0,
+    "macroF1": 5.551115123125783e-17,
+    "v1i": 0,
+    "v4": 0,
+    "organico": 0,
+    "rojo_rec": 0,
+    "rojo_prec": 0,
+    "rojo_f1": 0,
+    "sin_det": 4.440892098500626e-16,
+    "grupos": 0,
+    "filas_correcto_distinto": 0,
+    "gris_caida": 0.0,
+    "v1i_vs_acc_color_ablacion": 0.0
+  },
+  "tolerancia": 0.1,
+  "coincide": true
+}

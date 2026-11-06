@@ -1,0 +1,138 @@
+grupo,test,train_fuente,train,dist,fuentes_con_coincidencia
+No-Rojo (médico general),depositphotos_68423525-stock-photo-a-pile-of-food-waste_jpg.rf.289ae560ddcf8eb90097478e4628ddcd.jpg,zip,test/Marron/dl_marron_00018.jpg,4,zip
+No-Rojo (médico general),paper231_jpg.rf.acd18e5f3c319b00b859ac1e195963a5.jpg,zip,train/Azul/dl_azul_01053.jpg,0,zip
+No-Rojo (médico general),paper2_jpg.rf.cb61eb2c83ef266148a4264fd4da8a6e.jpg,zip,train/Azul/dl_azul_01349.jpg,2,zip
+No-Rojo (médico general),paper356_jpg.rf.86296c7218f6a289afc64b12065f6a8d.jpg,zip,train/Azul/dl_azul_01144.jpg,1,zip
+No-Rojo (médico general),paper392_jpg.rf.82d873eb026d165f3e9c4714badcecaa.jpg,zip,train/Azul/dl_azul_00631.jpg,3,zip
+No-Rojo (médico general),paper427_jpg.rf.5a7ee55480aff1ef0e83ed03fccc4a77.jpg,zip,train/Azul/dl_azul_00648.jpg,2,zip
+No-Rojo (médico general),paper444_jpg.rf.27006308699b39c0cd4516d5453fadb4.jpg,zip,train/Azul/dl_azul_00590.jpg,3,zip
+No-Rojo (médico general),paper453_jpg.rf.9c09e2a50984cbddf137be73c2f83ed2.jpg,zip,train/Azul/dl_azul_00561.jpg,1,zip
+No-Rojo (médico general),paper529_jpg.rf.5c5f710da3aa3e5c1882fd530ac97207.jpg,zip,val/Azul/dl_azul_00152.jpg,2,zip
+No-Rojo (médico general),paper579_jpg.rf.267c6a09365272881f9872fa165fca85.jpg,zip,train/Azul/dl_azul_00965.jpg,0,zip
+No-Rojo (médico general),paper57_jpg.rf.f5bee992009099f7ce2833b7f7f112c2.jpg,zip,test/Azul/dl_azul_00294.jpg,0,zip
+No-Rojo (médico general),paper6_jpg.rf.90eae71994ced1e3a8d13a40fe38f48c.jpg,zip,val/Azul/dl_azul_00054.jpg,1,zip
+No-Rojo (médico general),plastic163_jpg.rf.5c3eb22f59bc614405fa38a5b1884018.jpg,zip,train/Rojo/dl_rojo_00569.jpg,4,zip
+No-Rojo (médico general),plastic214_jpg.rf.bf5672bcba48a23b231ab8104aca803c.jpg,zip,val/Blanco/dl_blanco_00205.jpg,0,zip
+No-Rojo (médico general),plastic241_jpg.rf.4fbc1912ded77676a2ee197643083426.jpg,zip,train/Blanco/dl_blanco_00142.jpg,1,zip
+No-Rojo (médico general),plastic242_jpg.rf.d296a917ae538b516c05eca7c0db2f2f.jpg,zip,train/Blanco/dl_blanco_00952.jpg,0,zip
+No-Rojo (médico general),plastic260_jpg.rf.dd5d85655c2d33b781ec350d29221961.jpg,zip,test/Azul/dl_azul_00035.jpg,2,zip
+No-Rojo (médico general),plastic304_jpg.rf.4b07d83c851693a39265af5aa52f232d.jpg,zip,train/Blanco/dl_blanco_01328.jpg,0,zip
+No-Rojo (médico general),plastic336_jpg.rf.1d0d701cdd49ceec3fd8fad5294f1f14.jpg,zip,train/Amarillo/dl_amarillo_01114.jpg,4,zip
+No-Rojo (médico general),plastic357_jpg.rf.6c9a8e7b3f1934cde5678fe9483ccf3f.jpg,zip,train/Gris/dl_gris_00499.jpg,4,zip
+No-Rojo (médico general),plastic391_jpg.rf.b27acaa983933d37e5b663cacb4b496c.jpg,zip,train/Blanco/dl_blanco_00966.jpg,0,zip
+No-Rojo (médico general),plastic404_jpg.rf.c315a01e977d49fa0c67d2caa366d79c.jpg,zip,train/Blanco/dl_blanco_00905.jpg,0,zip
+No-Rojo (médico general),plastic445_jpg.rf.64f55470dee6f1b8a3f160633f9d8058.jpg,zip,train/Blanco/dl_blanco_00218.jpg,0,zip
+No-Rojo (médico general),plastic82_jpg.rf.2a5dff42d722ffce746c63109b149e88.jpg,zip,train/Blanco/dl_blanco_00806.jpg,2,zip
+Rojo (biocontaminado),1671099302359_l_png.rf.fa7519470e8144c0ea3b7a84bbe4973c.jpg,zip,train/Gris/dl_gris_00383.jpg,4,zip
+Rojo (biocontaminado),1671099336112_r_png.rf.ac943223501a101ee71172428c8eee18.jpg,zip,train/Amarillo/dl_amarillo_00541.jpg,3,zip
+Rojo (biocontaminado),1671099343749_r_png.rf.4f4eb3a835dd7d46df0049582a12a40a.jpg,zip,train/Marron/dl_marron_00447.jpg,4,zip
+Rojo (biocontaminado),1671099355089_r_png.rf.f3a5c08f6d1d610d903bbacb9a39f86a.jpg,zip,train/Marron/dl_marron_00447.jpg,3,zip
+Rojo (biocontaminado),1671099488895_r_png.rf.6e0321991a7d4b814cf599fcf2399ed2.jpg,zip,train/Amarillo/dl_amarillo_00541.jpg,4,zip
+Rojo (biocontaminado),1671099500036_r_png.rf.cd6e70cde57ecdda06c2fd137f9e7130.jpg,zip,train/Marron/dl_marron_00447.jpg,4,zip
+Rojo (biocontaminado),1671099585917_r_png.rf.858349ceef940adbad1be2c0568a9cae.jpg,zip,train/Marron/dl_marron_00447.jpg,2,zip
+Rojo (biocontaminado),1671099592921_r_png.rf.10e564828d38001a20663e6a78fb0eb4.jpg,zip,train/Marron/dl_marron_00447.jpg,1,zip
+Rojo (biocontaminado),1671099601592_r_png.rf.db62dcd31f40aed7047b73eb4ca0a9de.jpg,zip,val/Gris/dl_gris_00287.jpg,4,zip
+Rojo (biocontaminado),1671099606728_l_png.rf.f490a228692783ead9351a7a643e368e.jpg,zip,val/Azul/dl_azul_00117.jpg,4,zip
+Rojo (biocontaminado),1671099686305_r_png.rf.1ad108e09ff7b20924cc6efd5f88c055.jpg,zip,val/Gris/dl_gris_00287.jpg,3,zip
+Rojo (biocontaminado),1671099768084_r_png.rf.f27ede1f9037a18964b928f285fa4932.jpg,zip,train/Marron/dl_marron_00447.jpg,3,zip
+Rojo (biocontaminado),1671099781758_r_png.rf.80445fc50e8beea6326eff628a66908a.jpg,zip,train/Marron/dl_marron_00447.jpg,2,zip
+Rojo (biocontaminado),1671099802969_l_png.rf.561efd0d54ff60f196fd57ff6fe9fcdd.jpg,zip,val/Azul/dl_azul_00117.jpg,4,zip
+Rojo (biocontaminado),1671099802969_r_png.rf.f7724f20626e51cb591284a335f35fa9.jpg,zip,train/Marron/dl_marron_00447.jpg,2,zip
+Rojo (biocontaminado),LINE_ALBUM_-_-_64_jpg.rf.b49afbf6dc08ac399205e4629c718366.jpg,zip,train/Gris/dl_gris_00868.jpg,4,zip
+Inorg. reciclable (Anorganik),an-106-_jpg.rf.46b431595719a23e402a53c38c4299f3.jpg,zip,val/Blanco/dl_blanco_00019.jpg,3,zip
+Inorg. reciclable (Anorganik),recyclable_004356_photo_jpg.rf.ea1506b428a079239f78b243bbfa02fc.jpg,zip,train/Gris/dl_gris_01354.jpg,0,zip
+Inorg. reciclable (Anorganik),recyclable_004422_photo_jpg.rf.0145b6d51805f20152a1d8788e06cc20.jpg,zip,train/Amarillo/dl_amarillo_00696.jpg,4,zip
+Inorg. reciclable (Anorganik),recyclable_004428_photo_jpg.rf.1bb10ccb42933f8ffcad9e0640561aae.jpg,zip,train/Negro/dl_negro_00198.jpg,3,zip
+Inorg. reciclable (Anorganik),R_1903_jpg.rf.44515fc96506a8ed0a060c62d2f41c77.jpg,zip,val/Azul/dl_azul_00052.jpg,1,zip
+Inorg. reciclable (Anorganik),R_2088_jpg.rf.cba6b6728d891ba24f4eed2e601c9300.jpg,zip,train/Blanco/dl_blanco_01034.jpg,1,zip
+Inorg. reciclable (Anorganik),R_2115_jpg.rf.df16419d6859ea3dcf7597c14af1fdf4.jpg,zip,train/Gris/dl_gris_00388.jpg,3,zip
+Inorg. reciclable (Anorganik),R_2205_jpg.rf.e066f72a96dad67cbfa9b4ddcafd7d15.jpg,zip,val/Azul/dl_azul_00131.jpg,4,zip
+Inorg. reciclable (Anorganik),R_3677_jpg.rf.5cefd2971cfddba3472284f88275ba46.jpg,zip,train/Blanco/dl_blanco_00512.jpg,0,zip
+Inorg. reciclable (Anorganik),R_4421_jpg.rf.1e865f0d89990405897ded80d04e23f0.jpg,zip,val/Azul/dl_azul_00131.jpg,4,zip
+Inorg. reciclable (Anorganik),R_8431_jpg.rf.96ee5ed07235701fd2b16f99fc8991f9.jpg,zip,train/Amarillo/dl_amarillo_01041.jpg,4,zip
+Inorg. reciclable (Anorganik),R_8436_jpg.rf.ef7ff1780b4bd806992bbad052212184.jpg,zip,test/Negro/dl_negro_00105.jpg,4,zip
+Inorg. reciclable (Anorganik),R_8477_jpg.rf.801ff40eaa924b22f7de3123f20fdfab.jpg,zip,val/Gris/dl_gris_00057.jpg,0,zip
+Inorg. reciclable (Anorganik),R_8499_jpg.rf.d926be56068dda537b2e2cf9e6a00152.jpg,zip,test/Negro/dl_negro_00038.jpg,4,zip
+Inorg. reciclable (Anorganik),R_8500_jpg.rf.7f99371ae145fcded1114cb85fae237f.jpg,zip,val/Gris/dl_gris_00252.jpg,0,zip
+Inorg. reciclable (Anorganik),R_8552_jpg.rf.34ce09aaa37f72d6e445f4279d57ca61.jpg,zip,test/Amarillo/dl_amarillo_00154.jpg,0,zip
+Inorg. reciclable (Anorganik),R_8587_jpg.rf.3d65caed2fa4aabadde7bb7f769a5196.jpg,zip,train/Blanco/dl_blanco_01034.jpg,0,zip
+Inorg. reciclable (Anorganik),R_8633_jpg.rf.c780f7001b263598b10313b0fc045416.jpg,zip,val/Amarillo/dl_amarillo_00280.jpg,2,zip
+Inorg. reciclable (Anorganik),R_8656_jpg.rf.0ac28e98ada19181716513733b4093f6.jpg,zip,train/Gris/dl_gris_00434.jpg,4,zip
+Inorg. reciclable (Anorganik),R_8739_jpg.rf.d3e2a9b68d3993a27000e1aef6ac5bc5.jpg,zip,test/Blanco/dl_blanco_00247.jpg,2,zip
+Inorg. reciclable (Anorganik),R_8765_jpg.rf.36cada7d63123cf10cb71b2fb967b0ba.jpg,zip,val/Gris/dl_gris_00252.jpg,3,zip
+Inorg. reciclable (Anorganik),R_8781_jpg.rf.62f1199edb7f196284bc0694f20e84d8.jpg,zip,train/Gris/dl_gris_00403.jpg,3,zip
+Inorg. reciclable (Anorganik),R_8808_jpg.rf.ea4c83a034d62b66f2eaeffdd3d7d8d2.jpg,zip,val/Gris/dl_gris_00252.jpg,0,zip
+Inorg. reciclable (Anorganik),sedotan-167-_png.rf.21df347c508025a81f653262ed18df4e.jpg,zip,val/Gris/dl_gris_00208.jpg,3,zip
+"Marrón (Organik, grises)",O-11059-_jpg.rf.0ace5ad25d5be533f3ac3684671b4f72.jpg,zip,val/Azul/dl_azul_00052.jpg,1,zip
+"Marrón (Organik, grises)",O-5297-_jpg.rf.575bde0507489c9822832384b25ef245.jpg,zip,test/Negro/dl_negro_00201.jpg,4,zip
+"Marrón (Organik, grises)",O-5443-_jpg.rf.975058eabc7b90af3dd688dc6bb81a4d.jpg,zip,test/Amarillo/dl_amarillo_00272.jpg,4,zip
+"Marrón (Organik, grises)",O-6563-_jpg.rf.c6082481dd136f60badca783da96f43c.jpg,zip,train/Azul/dl_azul_00811.jpg,4,zip
+"Marrón (Organik, grises)",O-6607-_jpg.rf.62e6c5cccda5f9759ce1607b87ae2c41.jpg,zip,val/Azul/dl_azul_00131.jpg,3,zip
+"Marrón (Organik, grises)",O-6655-_jpg.rf.c4809914339e1f94b0b3984944f0f109.jpg,zip,train/Azul/dl_azul_00314.jpg,3,zip
+"Marrón (Organik, grises)",org-161-_jpg.rf.e2899056fc645fb89b1596a56c042c7b.jpg,zip,val/Gris/dl_gris_00216.jpg,4,zip
+Negro/Rojo (Residu),Residu-1041-_jpg.rf.bd175f35a8fe14fe39240ef58cfd879a.jpg,zip,test/Azul/dl_azul_00207.jpg,4,zip
+Negro/Rojo (Residu),Residu-1138-_jpg.rf.32fd2726dc0f629d3808fa7a2d7cf6a5.jpg,zip,train/Blanco/dl_blanco_00569.jpg,1,zip
+Negro/Rojo (Residu),Residu-1464-_jpg.rf.a17aac888c181e6d81ab7c271f34e43c.jpg,zip,val/Azul/dl_azul_00086.jpg,2,zip
+Negro/Rojo (Residu),Residu-1535-_jpg.rf.ecc4219f7988c09401f3a3fd14bf7cf4.jpg,zip,train/Negro/dl_negro_00504.jpg,0,zip
+Negro/Rojo (Residu),Residu-1667-_jpg.rf.7224c2cf031e5bacc4d15e386d8673e5.jpg,zip,val/Blanco/dl_blanco_00019.jpg,2,zip
+Negro/Rojo (Residu),Residu-1671-_jpg.rf.98ad0f9e2043d44daee9844499b012f4.jpg,zip,train/Azul/dl_azul_00326.jpg,3,zip
+Negro/Rojo (Residu),Residu-1719-_jpg.rf.9a5ba3c36477ce1d67bdf2db94995c75.jpg,zip,train/Azul/dl_azul_00326.jpg,3,zip
+Negro/Rojo (Residu),Residu-1745-_jpg.rf.9b1b95b8d53101e013c6ac7df563b583.jpg,zip,train/Negro/dl_negro_00198.jpg,1,zip
+Negro/Rojo (Residu),Residu-189-_png.rf.99ac6ab941e33bdc7fb28d2f022a8c0d.jpg,zip,train/Azul/dl_azul_00326.jpg,0,zip
+Negro/Rojo (Residu),Residu-2389-_jpg.rf.d01621fc6588f08f21c01f359b95753b.jpg,zip,train/Rojo/dl_rojo_00907.jpg,4,zip
+Negro/Rojo (Residu),Residu-2595-_jpg.rf.d12544f99d77576b137d72b269913e46.jpg,zip,test/Gris/dl_gris_00066.jpg,2,zip
+Negro/Rojo (Residu),Residu-2724-_jpg.rf.a2196752aa519537bddb34447bffef71.jpg,zip,val/Gris/dl_gris_00252.jpg,0,zip
+Negro/Rojo (Residu),Residu-2757-_jpg.rf.fd10d40c49d3a2648fd10810a31f5f9d.jpg,zip,val/Blanco/dl_blanco_00193.jpg,0,zip
+Negro/Rojo (Residu),Residu-2777-_jpg.rf.1936e57fba2644f459c89952afcf9783.jpg,zip,train/Negro/dl_negro_00040.jpg,2,zip
+Negro/Rojo (Residu),Residu-2788-_jpg.rf.d20210f1f9dd7f79b276e392cf6c1bf7.jpg,zip,val/Azul/dl_azul_00277.jpg,2,zip
+Negro/Rojo (Residu),Residu-2805-_jpg.rf.5b46784b0d2dacf059b96b87a586cdba.jpg,zip,train/Azul/dl_azul_01065.jpg,4,zip
+Negro/Rojo (Residu),Residu-2845-_jpg.rf.5513fcdade64c33689ae47b86250da0a.jpg,zip,train/Rojo/dl_rojo_01148.jpg,4,zip
+Negro/Rojo (Residu),Residu-2846-_jpg.rf.6dbefd2a130d830ee672a599e0f5802c.jpg,zip,val/Gris/dl_gris_00252.jpg,0,zip
+Negro/Rojo (Residu),Residu-2855-_jpg.rf.19fc867e84c62a70b5e7738c5db73134.jpg,zip,val/Gris/dl_gris_00252.jpg,0,zip
+Negro/Rojo (Residu),Residu-2884-_jpg.rf.85529e38b5fe78a6118e7eaebc6a9a62.jpg,zip,train/Amarillo/dl_amarillo_00963.jpg,4,zip
+Negro/Rojo (Residu),Residu-2914-_jpg.rf.cb824cba16a0e99e5a80dc8fb1782c9f.jpg,zip,val/Blanco/dl_blanco_00193.jpg,0,zip
+Negro/Rojo (Residu),Residu-2922-_jpg.rf.3e662897703f2aa805825b3f1fc3432d.jpg,zip,val/Gris/dl_gris_00007.jpg,0,zip
+Negro/Rojo (Residu),Residu-64-_png.rf.cd50fc224b5130a958116771a67a9c0b.jpg,zip,test/Negro/dl_negro_00022.jpg,3,zip
+Negro/Rojo (Residu),Residu-92-_png.rf.b4e2f57ab4da34722019211a26281c56.jpg,zip,train/Negro/dl_negro_00198.jpg,4,zip
+[gris] Azul (papel/cartón),cardboard209_jpg.rf.a469aefaae160139e7e6454c408be2d0.jpg,zip,val/Azul/dl_azul_00191.jpg,2,zip
+[gris] Azul (papel/cartón),cardboard263_jpg.rf.ba90e3f6d1ee30e18bed003f6c53da0f.jpg,zip,val/Azul/dl_azul_00127.jpg,2,zip
+[gris] Azul (papel/cartón),cardboard271_jpg.rf.851ca2876352710b278e6fb564e99568.jpg,zip,train/Azul/dl_azul_00167.jpg,1,zip
+[gris] Azul (papel/cartón),cardboard348_jpg.rf.252d4c10b998e7ad7d50b82a38032b77.jpg,zip,train/Azul/dl_azul_01283.jpg,3,zip
+[gris] Azul (papel/cartón),cardboard58_jpg.rf.42672d3c0c44c4ae66507cd00f0aaa6c.jpg,zip,train/Azul/dl_azul_01236.jpg,4,zip
+[gris] Azul (papel/cartón),cardboard81_jpg.rf.3ab9fbace8c34a71b07dc42f470718ec.jpg,zip,train/Azul/dl_azul_01067.jpg,3,zip
+[gris] Gris (vidrio),glass100_jpg.rf.612f49d19436222ace35dda7060549da.jpg,zip,train/Gris/dl_gris_00495.jpg,0,zip
+[gris] Gris (vidrio),glass115_jpg.rf.a9a60da3f6450bebdbd5a8fcc68cb3a1.jpg,zip,train/Gris/dl_gris_00700.jpg,3,zip
+[gris] Gris (vidrio),glass269_jpg.rf.4ac8a79304f3d07d56f65889f3a1516b.jpg,zip,train/Gris/dl_gris_01065.jpg,1,zip
+[gris] Gris (vidrio),glass383_jpg.rf.7d86a61a17257d728ec54b9f6f1ae894.jpg,zip,train/Gris/dl_gris_00117.jpg,0,zip
+[gris] Gris (vidrio),glass412_jpg.rf.1fae793c747d8c6b2b69681f94a6c5e7.jpg,zip,train/Gris/dl_gris_00059.jpg,2,zip
+[gris] Gris (vidrio),glass489_jpg.rf.13f3b3537f3a41d89985dd72f8c914c8.jpg,zip,train/Gris/dl_gris_01139.jpg,1,zip
+[gris] Gris (vidrio),glass69_jpg.rf.8712686a84746e772dd0cebf5f40e4de.jpg,zip,train/Gris/dl_gris_00894.jpg,0,zip
+[gris] Gris (vidrio),glass72_jpg.rf.d65cdf96f174b03517df53e4de81238a.jpg,zip,train/Gris/dl_gris_00232.jpg,3,zip
+[gris] Gris (vidrio),glass89_jpg.rf.2d3a6b533f4e4b6c989086f400cc1847.jpg,zip,test/Gris/dl_gris_00226.jpg,0,zip
+[gris] Amarillo (metal),metal11_jpg.rf.efea39c5419f3fb798e56e0464228cc4.jpg,zip,train/Amarillo/dl_amarillo_00170.jpg,4,zip
+[gris] Amarillo (metal),metal206_jpg.rf.51e6e1be83731f696cd1105d5a9808b8.jpg,zip,train/Amarillo/dl_amarillo_01114.jpg,0,zip
+[gris] Amarillo (metal),metal30_jpg.rf.19dfb0ab43cf9a5a90d4f2fdcb71d133.jpg,zip,val/Gris/dl_gris_00290.jpg,2,zip
+[gris] Amarillo (metal),metal313_jpg.rf.d6e1a4ed11cd9977bd2ff570dfc7fde6.jpg,zip,train/Amarillo/dl_amarillo_00879.jpg,0,zip
+[gris] Amarillo (metal),metal321_jpg.rf.9efab2ab6a93da18ca680dbe2b97147c.jpg,zip,train/Amarillo/dl_amarillo_00749.jpg,0,zip
+[gris] Amarillo (metal),metal326_jpg.rf.2ca775bac9b684727206055eaf427cbb.jpg,zip,train/Amarillo/dl_amarillo_01211.jpg,1,zip
+[gris] Amarillo (metal),metal50_jpg.rf.a8f7d77e5edf801342e5bb2d7eca3215.jpg,zip,train/Amarillo/dl_amarillo_00387.jpg,3,zip
+[gris] Amarillo (metal),metal66_jpg.rf.fab9bad31dd81bc30807f6905aeef57b.jpg,zip,train/Amarillo/dl_amarillo_00273.jpg,2,zip
+[gris] Azul (papel/cartón),paper158_jpg.rf.05e04a556103824bc7c85f2a8dded2f7.jpg,zip,train/Azul/dl_azul_01353.jpg,2,zip
+[gris] Azul (papel/cartón),paper170_jpg.rf.99b306a8903a84b4ab0fdbfb945ac76d.jpg,zip,test/Azul/dl_azul_00169.jpg,1,zip
+[gris] Azul (papel/cartón),paper204_jpg.rf.208bd4baa7f9178afee864e8aa08fd28.jpg,zip,train/Blanco/dl_blanco_00966.jpg,3,zip
+[gris] Azul (papel/cartón),paper231_jpg.rf.c38241ef939e9342a8e594c070595ed0.jpg,zip,train/Azul/dl_azul_01053.jpg,1,zip
+[gris] Azul (papel/cartón),paper249_jpg.rf.31133ac820c3f9a89b614f3a75bdfaea.jpg,zip,val/Azul/dl_azul_00086.jpg,3,zip
+[gris] Azul (papel/cartón),paper281_jpg.rf.c7476fdda843ad006cadf481445d3d1b.jpg,zip,train/Azul/dl_azul_00628.jpg,0,zip
+[gris] Azul (papel/cartón),paper322_jpg.rf.169a96f3adf363b11ed0dd9b37ed5e02.jpg,zip,val/Azul/dl_azul_00091.jpg,3,zip
+[gris] Azul (papel/cartón),paper385_jpg.rf.4f86a456a1e46f1bbbc64151e088c53a.jpg,zip,train/Azul/dl_azul_00957.jpg,1,zip
+[gris] Azul (papel/cartón),paper414_jpg.rf.521718cb4d2175a031e6e6cd022d596c.jpg,zip,train/Azul/dl_azul_00957.jpg,4,zip
+[gris] Azul (papel/cartón),paper442_jpg.rf.0a243033965b760846a691f1d3239837.jpg,zip,train/Azul/dl_azul_01222.jpg,2,zip
+[gris] Azul (papel/cartón),paper451_jpg.rf.c9391cea191dd2c4d38eae94f050dfe4.jpg,zip,train/Azul/dl_azul_00533.jpg,0,zip
+[gris] Azul (papel/cartón),paper529_jpg.rf.5165368b0e87b02b157cf0b72bdecd49.jpg,zip,val/Azul/dl_azul_00152.jpg,1,zip
+[gris] Azul (papel/cartón),paper53_jpg.rf.5875a46c1d2df970d01da013d83ac81f.jpg,zip,test/Azul/dl_azul_00198.jpg,3,zip
+[gris] Azul (papel/cartón),paper65_jpg.rf.c79922fc26d8f8b301979bfbee4f0fc0.jpg,zip,train/Azul/dl_azul_00496.jpg,0,zip
+[gris] Blanco (plástico),plastic260_jpg.rf.6014b733f065bd0c098d17c661fe4e74.jpg,zip,test/Azul/dl_azul_00035.jpg,2,zip
+[gris] Blanco (plástico),plastic361_jpg.rf.8e1559d59b5a7608064c7a45e526c80d.jpg,zip,val/Gris/dl_gris_00134.jpg,3,zip
+[gris] Blanco (plástico),plastic382_jpg.rf.f2b6aa81cd1ebf0b86d033234a21a6c2.jpg,zip,train/Blanco/dl_blanco_01213.jpg,0,zip
+[gris] Blanco (plástico),plastic418_jpg.rf.74c6a4ef8188dd2af3649399c2de67db.jpg,zip,train/Blanco/dl_blanco_00965.jpg,0,zip
+[gris] Blanco (plástico),plastic431_jpg.rf.6c8a74edeea369c61b19899001b305bc.jpg,zip,train/Blanco/dl_blanco_00768.jpg,1,zip

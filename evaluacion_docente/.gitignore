@@ -1,0 +1,8 @@
+# Imágenes de test (Roboflow, CC BY 4.0) y descargas: no se suben
+imagenes/
+# Material del docente (incluye notas y nombres de compañeros): no se sube
+datos_docente/
+# Figuras y predicciones por imagen: se regeneran con los scripts
+salidas/*.png
+salidas/pred_*.csv
+salidas/rubrica_reproducida.csv

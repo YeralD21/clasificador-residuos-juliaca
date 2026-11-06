@@ -1,0 +1,76 @@
+{
+  "umbral": 4,
+  "n_train_por_fuente": {
+    "zip": 14000,
+    "publico": 0,
+    "externo": 0,
+    "juliaca": 16
+  },
+  "n_test": 1455,
+  "n_coincidencias": 137,
+  "por_grupo": {
+    "Inorg. reciclable (Anorganik)": {
+      "n": 310,
+      "coinciden": 24,
+      "por_fuente": {
+        "zip": 24
+      }
+    },
+    "Marrón (Organik, grises)": {
+      "n": 300,
+      "coinciden": 7,
+      "por_fuente": {
+        "zip": 7
+      }
+    },
+    "Negro/Rojo (Residu)": {
+      "n": 265,
+      "coinciden": 24,
+      "por_fuente": {
+        "zip": 24
+      }
+    },
+    "No-Rojo (médico general)": {
+      "n": 134,
+      "coinciden": 24,
+      "por_fuente": {
+        "zip": 24
+      }
+    },
+    "Rojo (biocontaminado)": {
+      "n": 208,
+      "coinciden": 16,
+      "por_fuente": {
+        "zip": 16
+      }
+    },
+    "[gris] Amarillo (metal)": {
+      "n": 43,
+      "coinciden": 8,
+      "por_fuente": {
+        "zip": 8
+      }
+    },
+    "[gris] Azul (papel/cartón)": {
+      "n": 101,
+      "coinciden": 20,
+      "por_fuente": {
+        "zip": 20
+      }
+    },
+    "[gris] Blanco (plástico)": {
+      "n": 37,
+      "coinciden": 5,
+      "por_fuente": {
+        "zip": 5
+      }
+    },
+    "[gris] Gris (vidrio)": {
+      "n": 57,
+      "coinciden": 9,
+      "por_fuente": {
+        "zip": 9
+      }
+    }
+  }
+}

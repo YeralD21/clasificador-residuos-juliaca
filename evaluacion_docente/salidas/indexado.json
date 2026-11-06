@@ -1,0 +1,46 @@
+{
+  "n_esperado": 1455,
+  "n_encontrado": 1217,
+  "ambiguos": 0,
+  "por_grupo": {
+    "Azul (papel/cartón)": {
+      "encontradas": 0,
+      "esperadas": 101
+    },
+    "Amarillo (metal)": {
+      "encontradas": 0,
+      "esperadas": 43
+    },
+    "Blanco (plástico)": {
+      "encontradas": 0,
+      "esperadas": 37
+    },
+    "Gris (vidrio)": {
+      "encontradas": 0,
+      "esperadas": 57
+    },
+    "Marrón (Organik, grises)": {
+      "encontradas": 300,
+      "esperadas": 300
+    },
+    "Inorg. reciclable (Anorganik)": {
+      "encontradas": 310,
+      "esperadas": 310
+    },
+    "Negro/Rojo (Residu)": {
+      "encontradas": 265,
+      "esperadas": 265
+    },
+    "Rojo (biocontaminado)": {
+      "encontradas": 208,
+      "esperadas": 208
+    },
+    "No-Rojo (médico general)": {
+      "encontradas": 134,
+      "esperadas": 134
+    }
+  },
+  "faltan_por_dataset": {
+    "garbage.v1i.folder": 238
+  }
+}
