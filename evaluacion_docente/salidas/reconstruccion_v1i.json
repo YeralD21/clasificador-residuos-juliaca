@@ -1,0 +1,25 @@
+{
+  "n": 238,
+  "umbral_dhash": 4,
+  "umbral_ssim": 0.8,
+  "estado": {
+    "verificada": 238
+  },
+  "por_grupo": {
+    "Amarillo (metal)": {
+      "verificada": 43
+    },
+    "Azul (papel/cartón)": {
+      "verificada": 101
+    },
+    "Blanco (plástico)": {
+      "verificada": 37
+    },
+    "Gris (vidrio)": {
+      "verificada": 57
+    }
+  },
+  "orientacion": {
+    "rot0": 238
+  }
+}

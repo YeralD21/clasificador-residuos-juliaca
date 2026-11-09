@@ -1,22 +1,22 @@
 {
   "n_esperado": 1455,
-  "n_encontrado": 1217,
+  "n_encontrado": 1455,
   "ambiguos": 0,
   "por_grupo": {
     "Azul (papel/cartón)": {
-      "encontradas": 0,
+      "encontradas": 101,
       "esperadas": 101
     },
     "Amarillo (metal)": {
-      "encontradas": 0,
+      "encontradas": 43,
       "esperadas": 43
     },
     "Blanco (plástico)": {
-      "encontradas": 0,
+      "encontradas": 37,
       "esperadas": 37
     },
     "Gris (vidrio)": {
-      "encontradas": 0,
+      "encontradas": 57,
       "esperadas": 57
     },
     "Marrón (Organik, grises)": {
@@ -40,7 +40,5 @@
       "esperadas": 134
     }
   },
-  "faltan_por_dataset": {
-    "garbage.v1i.folder": 238
-  }
+  "faltan_por_dataset": {}
 }

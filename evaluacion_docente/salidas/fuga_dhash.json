@@ -1,75 +1,112 @@
 {
   "umbral": 4,
   "n_train_por_fuente": {
-    "zip": 14000,
-    "publico": 0,
-    "externo": 0,
-    "juliaca": 16
+    "zip": 0,
+    "publico": 12220,
+    "externo": 6684,
+    "juliaca": 624
   },
-  "n_test": 1455,
-  "n_coincidencias": 137,
+  "n_test": 1693,
+  "n_coincidencias": 345,
   "por_grupo": {
+    "Amarillo (metal)": {
+      "n": 43,
+      "coinciden": 43,
+      "por_fuente": {
+        "publico": 8,
+        "externo": 35
+      }
+    },
+    "Azul (papel/cartón)": {
+      "n": 101,
+      "coinciden": 25,
+      "por_fuente": {
+        "publico": 21,
+        "externo": 4
+      }
+    },
+    "Blanco (plástico)": {
+      "n": 37,
+      "coinciden": 5,
+      "por_fuente": {
+        "publico": 5
+      }
+    },
+    "Gris (vidrio)": {
+      "n": 57,
+      "coinciden": 57,
+      "por_fuente": {
+        "publico": 8,
+        "externo": 49
+      }
+    },
     "Inorg. reciclable (Anorganik)": {
       "n": 310,
-      "coinciden": 24,
+      "coinciden": 23,
       "por_fuente": {
-        "zip": 24
+        "publico": 21,
+        "externo": 2
       }
     },
     "Marrón (Organik, grises)": {
       "n": 300,
-      "coinciden": 7,
+      "coinciden": 5,
       "por_fuente": {
-        "zip": 7
+        "publico": 5
       }
     },
     "Negro/Rojo (Residu)": {
       "n": 265,
-      "coinciden": 24,
+      "coinciden": 22,
       "por_fuente": {
-        "zip": 24
+        "publico": 21,
+        "externo": 1
       }
     },
     "No-Rojo (médico general)": {
       "n": 134,
-      "coinciden": 24,
+      "coinciden": 25,
       "por_fuente": {
-        "zip": 24
+        "publico": 23,
+        "externo": 2
       }
     },
     "Rojo (biocontaminado)": {
       "n": 208,
-      "coinciden": 16,
+      "coinciden": 13,
       "por_fuente": {
-        "zip": 16
+        "publico": 13
       }
     },
     "[gris] Amarillo (metal)": {
       "n": 43,
-      "coinciden": 8,
+      "coinciden": 43,
       "por_fuente": {
-        "zip": 8
+        "publico": 8,
+        "externo": 35
       }
     },
     "[gris] Azul (papel/cartón)": {
       "n": 101,
-      "coinciden": 20,
+      "coinciden": 23,
       "por_fuente": {
-        "zip": 20
+        "publico": 19,
+        "externo": 4
       }
     },
     "[gris] Blanco (plástico)": {
       "n": 37,
       "coinciden": 5,
       "por_fuente": {
-        "zip": 5
+        "publico": 5
       }
     },
     "[gris] Gris (vidrio)": {
       "n": 57,
-      "coinciden": 9,
+      "coinciden": 56,
       "por_fuente": {
-        "zip": 9
+        "publico": 8,
+        "externo": 48
       }
     }
   }

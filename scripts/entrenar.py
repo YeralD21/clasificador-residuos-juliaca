@@ -88,7 +88,48 @@ PREFIJO_FUENTE = {  # fuente -> prefijo del nombre de archivo en dataset/externo
     "taco_extra": "tacox_",     # importar_publicos.py
     "realwaste": "realwaste_",
     "trashnet": "trashnet_",
+    "rfv4": "rfv4_",             # importar_roboflow.py: Garbage Classification v4, Organik (en gris)
+    "rfmed": "rfmed_",           # importar_roboflow.py: Smart medical waste segregation v3, Infectious
 }
+
+
+def copiar_replay_externo(destino_train, pedidos, seed):
+    """Etapa 2: muestra pequeña (con semilla) de fuentes externas, aparte de --externo-fuentes.
+    pedidos: lista 'fuente=N' -> N imágenes por clase de esa fuente (solo de las clases donde la fuente tiene fotos).
+    Va a <destino_train>/<clase>/externo_replay. Devuelve {fuente: {clase: n}}."""
+    rng = random.Random(seed)
+    res = {}
+    for pedido in pedidos:
+        fuente, n = pedido.split("=")
+        pref, n = PREFIJO_FUENTE[fuente], int(n)
+        res[fuente] = {}
+        for c in CLASES:
+            fotos = [p for p in imagenes(EXTERNO / "train" / c) if p.name.startswith(pref)]
+            if not fotos:
+                continue
+            rng.shuffle(fotos)
+            dst = destino_train / c / "externo_replay"
+            dst.mkdir(parents=True, exist_ok=True)
+            for p in fotos[:n]:
+                shutil.copy2(p, dst / p.name)
+            res[fuente][c] = min(n, len(fotos))
+    return res
+
+
+def activar_gris(p):
+    """Añade T.RandomGrayscale(p) a las transformaciones de TRAIN de Ultralytics (antes de ToTensor), en todas las
+    clases. Se parchea la función que construye el pipeline, así que el cambio va dentro del dataset que se envía a los
+    workers. La validación (classify_transforms) no cambia."""
+    import torchvision.transforms as T
+    import ultralytics.data.dataset as uds
+    original = uds.classify_augmentations
+
+    def con_gris(*a, **k):
+        comp = original(*a, **k)
+        i = next(j for j, t in enumerate(comp.transforms) if isinstance(t, T.ToTensor))
+        comp.transforms.insert(i, T.RandomGrayscale(p=p))
+        return comp
+    uds.classify_augmentations = con_gris
 
 
 def copiar_externo(destino_train, fuentes=None):
@@ -127,7 +168,7 @@ def armar_etapa1_externo(fuentes=None):
     return n
 
 
-def armar_etapa2(replay, seed, externo=False, fuentes=None, seleccion=None):
+def armar_etapa2(replay, seed, externo=False, fuentes=None, seleccion=None, externo_replay=None):
     """Copia juliaca train y val (sin tocar el original) + replay de publico en dataset/_etapa2.
     juliaca/test NO se copia: así Ultralytics nunca puede usarlo, ni siquiera como respaldo de val."""
     rng = random.Random(seed)
@@ -154,6 +195,10 @@ def armar_etapa2(replay, seed, externo=False, fuentes=None, seleccion=None):
         resumen[c] = (n_jul, k)
     n_ext = copiar_externo(ETAPA2 / "train", fuentes) if externo else None
     n_sel = copiar_seleccion(seleccion) if seleccion else None
+    n_rep = copiar_replay_externo(ETAPA2 / "train", externo_replay, seed) if externo_replay else None
+    if n_rep:
+        print(f"\nReplay de fuentes externas (etapa 2): {n_rep}")
+        n_ext = dict(n_ext or {}, replay_externo=n_rep)
     print("\nEtapa 2 - train = juliaca + replay público"
           + ((" + externo" + (f" ({', '.join(fuentes)})" if fuentes else "")) if externo else "")
           + (f" + selección ({Path(seleccion).name})" if seleccion else "") + ":")
@@ -210,6 +255,10 @@ def main():
     ap.add_argument("--seleccion", default=None,
                     help="solo etapa 2: CSV de rutas curadas y aprobadas (seleccionar_curados.py --final) que se "
                          "suman al train; solo de publico/train o externo/train")
+    ap.add_argument("--externo-replay", nargs="+", default=None, metavar="FUENTE=N",
+                    help="solo etapa 2: N imágenes por clase de esa fuente externa (p. ej. rfv4=50 rfmed=50), con semilla")
+    ap.add_argument("--gris", type=float, default=0.0,
+                    help="probabilidad de RandomGrayscale en train (todas las clases); 0 = apagado (receta anterior)")
     ap.add_argument("--dropout", type=float, default=0.0, help="dropout de la cabeza de clasificación")
     ap.add_argument("--experimento", default=None, help="nombre del experimento (ver experimentar.py)")
     ap.add_argument("--evaluar-test", action="store_true",
@@ -219,6 +268,13 @@ def main():
 
     if args.device != "cpu" and not torch.cuda.is_available():
         raise SystemExit("PyTorch no ve la GPU. Ejecuta: python scripts/verificar_entorno.py")
+    if args.externo_replay and args.etapa != 2:
+        raise SystemExit("--externo-replay solo se usa en la etapa 2.")
+    for pedido in args.externo_replay or []:
+        if "=" not in pedido or pedido.split("=")[0] not in PREFIJO_FUENTE or pedido.split("=")[0] == "trashnet":
+            raise SystemExit(f"--externo-replay: '{pedido}' no válido (fuente=N; trashnet no se permite)")
+    if args.gris > 0:
+        activar_gris(args.gris)
     _t["t0"] = time.time()
     perfil = PERFIL[args.equipo]
     batch = args.batch or perfil["batch"]
@@ -243,7 +299,8 @@ def main():
         tr, va = contar(JULIACA, "train"), contar(JULIACA, "val")
         if sum(tr.values()) == 0 or sum(va.values()) == 0:
             raise SystemExit("dataset/juliaca/train o val está vacío. Coloca tus fotos (ver README).")
-        n_externo, n_sel = armar_etapa2(args.replay, args.seed, args.externo, args.externo_fuentes, args.seleccion)
+        n_externo, n_sel = armar_etapa2(args.replay, args.seed, args.externo, args.externo_fuentes, args.seleccion,
+                                    args.externo_replay)
         datos = ETAPA2
         params = dict(data=str(datos), epochs=args.epochs or 30, patience=10, optimizer="AdamW",
                       lr0=args.lr, lrf=0.1, warmup_epochs=1, freeze=args.freeze, **comunes)
@@ -272,6 +329,7 @@ def main():
     usados["externo"] = n_externo  # None = apagado; si no, n imágenes externas por clase en train
     if args.externo_fuentes:
         usados["externo_fuentes"] = args.externo_fuentes
+    usados["gris"] = args.gris  # p de RandomGrayscale en train (0 = apagado)
     if n_sel:
         usados["seleccion"] = n_sel  # lista curada: archivo, n por clase y las saltadas por duplicadas
     filas = list(csv.DictReader(open(save_dir / "results.csv", encoding="utf-8")))

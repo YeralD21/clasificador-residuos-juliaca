@@ -1,0 +1,346 @@
+grupo,test,train_fuente,train,dist,fuentes_con_coincidencia,ssim,auto,manual
+No-Rojo (médico general),depositphotos_68423525-stock-photo-a-pile-of-food-waste_jpg.rf.289ae560ddcf8eb90097478e4628ddcd.jpg,publico,test/organico/companero_000018_dl_marron_00018.jpg,4,publico,0.9493,misma,si
+No-Rojo (médico general),paper231_jpg.rf.acd18e5f3c319b00b859ac1e195963a5.jpg,publico,train/papel_carton/companero_000970_dl_azul_01053.jpg,0,publico,0.9681,misma,si
+No-Rojo (médico general),paper260_jpg.rf.8793cf3cb21aae93d9587767cc080b18.jpg,externo,train/papel_carton/trashnet_paper_paper260.jpg,0,externo,0.9761,misma,
+No-Rojo (médico general),paper2_jpg.rf.cb61eb2c83ef266148a4264fd4da8a6e.jpg,publico,train/papel_carton/companero_001247_dl_azul_01349.jpg,2,publico,0.8582,misma,si
+No-Rojo (médico general),paper356_jpg.rf.86296c7218f6a289afc64b12065f6a8d.jpg,publico,train/papel_carton/companero_001055_dl_azul_01144.jpg,1,publico,0.9683,misma,si
+No-Rojo (médico general),paper392_jpg.rf.82d873eb026d165f3e9c4714badcecaa.jpg,publico,train/papel_carton/companero_000584_dl_azul_00631.jpg,3,publico,0.8603,misma,si
+No-Rojo (médico general),paper427_jpg.rf.5a7ee55480aff1ef0e83ed03fccc4a77.jpg,publico,train/papel_carton/companero_000599_dl_azul_00648.jpg,2,publico,0.6002,dudosa,no
+No-Rojo (médico general),paper444_jpg.rf.27006308699b39c0cd4516d5453fadb4.jpg,publico,train/papel_carton/companero_000375_dl_azul_00405.jpg,3,publico,0.8107,misma,no
+No-Rojo (médico general),paper453_jpg.rf.9c09e2a50984cbddf137be73c2f83ed2.jpg,publico,train/papel_carton/companero_000518_dl_azul_00561.jpg,1,publico,0.9795,misma,si
+No-Rojo (médico general),paper529_jpg.rf.5c5f710da3aa3e5c1882fd530ac97207.jpg,publico,val/papel_carton/companero_000141_dl_azul_00152.jpg,2,publico,0.9739,misma,si
+No-Rojo (médico general),paper579_jpg.rf.267c6a09365272881f9872fa165fca85.jpg,publico,train/papel_carton/companero_000889_dl_azul_00965.jpg,0,publico,0.9722,misma,si
+No-Rojo (médico general),paper57_jpg.rf.f5bee992009099f7ce2833b7f7f112c2.jpg,publico,test/papel_carton/companero_000294_dl_azul_00294.jpg,0,publico,0.9752,misma,si
+No-Rojo (médico general),paper6_jpg.rf.90eae71994ced1e3a8d13a40fe38f48c.jpg,publico,val/papel_carton/companero_000051_dl_azul_00054.jpg,1,publico,0.9689,misma,si
+No-Rojo (médico general),plastic163_jpg.rf.5c3eb22f59bc614405fa38a5b1884018.jpg,publico,train/peligrosos/companero_000533_dl_rojo_00569.jpg,4,publico,0.6898,dudosa,no
+No-Rojo (médico general),plastic214_jpg.rf.bf5672bcba48a23b231ab8104aca803c.jpg,publico,val/plasticos/companero_000188_dl_blanco_00205.jpg,0,publico,0.9699,misma,si
+No-Rojo (médico general),plastic241_jpg.rf.4fbc1912ded77676a2ee197643083426.jpg,publico,train/plasticos/companero_000124_dl_blanco_00142.jpg,1,publico,0.9722,misma,si
+No-Rojo (médico general),plastic242_jpg.rf.d296a917ae538b516c05eca7c0db2f2f.jpg,publico,train/plasticos/companero_000851_dl_blanco_00952.jpg,0,publico,0.9721,misma,si
+No-Rojo (médico general),plastic260_jpg.rf.dd5d85655c2d33b781ec350d29221961.jpg,publico,test/papel_carton/companero_000035_dl_azul_00035.jpg,2,publico,0.4988,distinta,no
+No-Rojo (médico general),plastic304_jpg.rf.4b07d83c851693a39265af5aa52f232d.jpg,publico,train/plasticos/companero_001185_dl_blanco_01328.jpg,0,publico,0.9833,misma,si
+No-Rojo (médico general),plastic336_jpg.rf.1d0d701cdd49ceec3fd8fad5294f1f14.jpg,externo,train/papel_carton/realwaste_cardboard_cardboard-291.jpg,3,externo|publico,0.7699,dudosa,no
+No-Rojo (médico general),plastic357_jpg.rf.6c9a8e7b3f1934cde5678fe9483ccf3f.jpg,publico,train/vidrio/companero_000424_dl_gris_00499.jpg,4,publico,0.6664,dudosa,no
+No-Rojo (médico general),plastic391_jpg.rf.b27acaa983933d37e5b663cacb4b496c.jpg,publico,train/plasticos/companero_000864_dl_blanco_00966.jpg,0,publico,0.9769,misma,si
+No-Rojo (médico general),plastic404_jpg.rf.c315a01e977d49fa0c67d2caa366d79c.jpg,publico,train/plasticos/companero_000810_dl_blanco_00905.jpg,0,publico,0.9734,misma,si
+No-Rojo (médico general),plastic445_jpg.rf.64f55470dee6f1b8a3f160633f9d8058.jpg,publico,train/plasticos/companero_000191_dl_blanco_00218.jpg,0,publico,0.981,misma,si
+No-Rojo (médico general),plastic82_jpg.rf.2a5dff42d722ffce746c63109b149e88.jpg,publico,train/plasticos/companero_000721_dl_blanco_00806.jpg,2,publico,0.9815,misma,si
+Rojo (biocontaminado),1671099336112_r_png.rf.ac943223501a101ee71172428c8eee18.jpg,publico,train/metales/companero_000502_dl_amarillo_00541.jpg,3,publico,0.1064,distinta,no
+Rojo (biocontaminado),1671099355089_r_png.rf.f3a5c08f6d1d610d903bbacb9a39f86a.jpg,publico,train/plasticos/companero_000683_dl_blanco_00767.jpg,3,publico,0.3853,distinta,no
+Rojo (biocontaminado),1671099488895_r_png.rf.6e0321991a7d4b814cf599fcf2399ed2.jpg,publico,train/metales/companero_000502_dl_amarillo_00541.jpg,4,publico,0.103,distinta,no
+Rojo (biocontaminado),1671099500036_r_png.rf.cd6e70cde57ecdda06c2fd137f9e7130.jpg,publico,train/metales/companero_000502_dl_amarillo_00541.jpg,4,publico,0.1035,distinta,no
+Rojo (biocontaminado),1671099585917_r_png.rf.858349ceef940adbad1be2c0568a9cae.jpg,publico,train/metales/companero_000502_dl_amarillo_00541.jpg,2,publico,0.1041,distinta,no
+Rojo (biocontaminado),1671099592921_r_png.rf.10e564828d38001a20663e6a78fb0eb4.jpg,publico,test/plasticos/companero_000080_dl_blanco_00080.jpg,2,publico,0.3352,distinta,no
+Rojo (biocontaminado),1671099606728_l_png.rf.f490a228692783ead9351a7a643e368e.jpg,publico,val/papel_carton/companero_000109_dl_azul_00117.jpg,4,publico,0.6745,dudosa,no
+Rojo (biocontaminado),1671099686305_r_png.rf.1ad108e09ff7b20924cc6efd5f88c055.jpg,publico,test/plasticos/companero_000080_dl_blanco_00080.jpg,4,publico,0.3168,distinta,no
+Rojo (biocontaminado),1671099768084_r_png.rf.f27ede1f9037a18964b928f285fa4932.jpg,publico,test/plasticos/companero_000080_dl_blanco_00080.jpg,4,publico,0.3279,distinta,no
+Rojo (biocontaminado),1671099781758_r_png.rf.80445fc50e8beea6326eff628a66908a.jpg,publico,test/plasticos/companero_000080_dl_blanco_00080.jpg,3,publico,0.3169,distinta,no
+Rojo (biocontaminado),1671099802969_l_png.rf.561efd0d54ff60f196fd57ff6fe9fcdd.jpg,publico,val/papel_carton/companero_000109_dl_azul_00117.jpg,4,publico,0.6769,dudosa,no
+Rojo (biocontaminado),1671099802969_r_png.rf.f7724f20626e51cb591284a335f35fa9.jpg,publico,train/plasticos/companero_000683_dl_blanco_00767.jpg,2,publico,0.3862,distinta,no
+Rojo (biocontaminado),LINE_ALBUM_-_-_64_jpg.rf.b49afbf6dc08ac399205e4629c718366.jpg,publico,train/vidrio/companero_000740_dl_gris_00868.jpg,4,publico,0.6803,dudosa,no
+Azul (papel/cartón),cardboard101_jpg.rf.b1c2914a8b557bb78b7adbddc75474b4.jpg,publico,train/papel_carton/companero_000200_dl_azul_00217.jpg,4,publico,0.7246,dudosa,
+Azul (papel/cartón),cardboard10_jpg.rf.77ec7b8ffdebe8a2d0b30b601a7889a2.jpg,publico,val/vidrio/companero_000047_dl_gris_00052.jpg,4,publico,0.4964,distinta,
+Azul (papel/cartón),cardboard209_jpg.rf.a469aefaae160139e7e6454c408be2d0.jpg,publico,val/papel_carton/companero_000180_dl_azul_00191.jpg,0,publico,0.9972,misma,
+Azul (papel/cartón),cardboard263_jpg.rf.ba90e3f6d1ee30e18bed003f6c53da0f.jpg,publico,val/papel_carton/companero_000118_dl_azul_00127.jpg,1,publico,0.9976,misma,
+Azul (papel/cartón),cardboard271_jpg.rf.851ca2876352710b278e6fb564e99568.jpg,publico,train/papel_carton/companero_000153_dl_azul_00167.jpg,0,publico,0.9966,misma,
+Azul (papel/cartón),cardboard329_jpg.rf.a89e5053d99901d339175b4a1014edbe.jpg,externo,train/papel_carton/trashnet_cardboard_cardboard329.jpg,0,externo,0.9972,misma,
+Azul (papel/cartón),cardboard348_jpg.rf.252d4c10b998e7ad7d50b82a38032b77.jpg,publico,train/papel_carton/companero_001184_dl_azul_01283.jpg,2,publico,0.843,misma,
+Azul (papel/cartón),cardboard58_jpg.rf.42672d3c0c44c4ae66507cd00f0aaa6c.jpg,publico,train/papel_carton/companero_001140_dl_azul_01236.jpg,4,publico,0.7249,dudosa,
+Azul (papel/cartón),cardboard81_jpg.rf.3ab9fbace8c34a71b07dc42f470718ec.jpg,publico,train/papel_carton/companero_000983_dl_azul_01067.jpg,3,publico,0.5615,dudosa,
+Gris (vidrio),glass100_jpg.rf.612f49d19436222ace35dda7060549da.jpg,publico,train/vidrio/companero_000420_dl_gris_00495.jpg,0,publico,0.9981,misma,
+Gris (vidrio),glass114_jpg.rf.f167c4f79a866fcbdd7e986d6fe9bdd7.jpg,externo,train/vidrio/trashnet_glass_glass114.jpg,0,externo,0.9992,misma,
+Gris (vidrio),glass115_jpg.rf.a9a60da3f6450bebdbd5a8fcc68cb3a1.jpg,externo,train/vidrio/trashnet_glass_glass115.jpg,0,externo,0.9991,misma,
+Gris (vidrio),glass140_jpg.rf.1463048f92ba322224b1e98fb1fc5dd0.jpg,externo,train/vidrio/trashnet_glass_glass140.jpg,0,externo,0.9993,misma,
+Gris (vidrio),glass141_jpg.rf.a4129f41094deb0cc48207329be6eef6.jpg,externo,train/vidrio/trashnet_glass_glass141.jpg,0,externo,0.9992,misma,
+Gris (vidrio),glass156_jpg.rf.04438207d3836313437f118bafaf2de5.jpg,externo,train/vidrio/trashnet_glass_glass156.jpg,0,externo,0.9988,misma,
+Gris (vidrio),glass159_jpg.rf.b3453c270e8b6c8e844c96e79ced4b3f.jpg,externo,train/vidrio/trashnet_glass_glass159.jpg,0,externo,0.9992,misma,
+Gris (vidrio),glass167_jpg.rf.18e23384314162aab353a959377fedb8.jpg,externo,train/vidrio/trashnet_glass_glass167.jpg,0,externo,0.9992,misma,
+Gris (vidrio),glass178_jpg.rf.adfca73de6aae3ba4a59a0b366294705.jpg,externo,train/vidrio/trashnet_glass_glass178.jpg,1,externo,0.9979,misma,
+Gris (vidrio),glass188_jpg.rf.940eb5edb2948d8b1225f2837ce30fae.jpg,externo,train/vidrio/trashnet_glass_glass15.jpg,2,externo,0.9238,misma,
+Gris (vidrio),glass190_jpg.rf.968c00a3dd38d3d01730a61f6dd29c21.jpg,externo,train/vidrio/trashnet_glass_glass190.jpg,0,externo,0.9988,misma,
+Gris (vidrio),glass215_jpg.rf.9d7980684a535d0ca51fdedf05badff6.jpg,externo,train/vidrio/trashnet_glass_glass215.jpg,0,externo,0.9995,misma,
+Gris (vidrio),glass233_jpg.rf.7376028bdb24e4a2471f1ac1c16adb83.jpg,externo,train/vidrio/trashnet_glass_glass233.jpg,0,externo,0.9995,misma,
+Gris (vidrio),glass243_jpg.rf.8d74993611ef295856390d74374d860a.jpg,externo,train/vidrio/trashnet_glass_glass243.jpg,0,externo,0.9992,misma,
+Gris (vidrio),glass248_jpg.rf.4eddfda7c824ccddeaf9136fc75929f2.jpg,externo,train/vidrio/trashnet_glass_glass248.jpg,0,externo,0.9993,misma,
+Gris (vidrio),glass256_jpg.rf.bd6bc848c324a7fd4ddc3c6e7e7991aa.jpg,externo,train/vidrio/trashnet_glass_glass256.jpg,0,externo,0.9996,misma,
+Gris (vidrio),glass269_jpg.rf.4ac8a79304f3d07d56f65889f3a1516b.jpg,publico,train/vidrio/companero_000901_dl_gris_01065.jpg,1,publico,0.9987,misma,
+Gris (vidrio),glass277_jpg.rf.e974961574c860d1f76f6e4f09756f34.jpg,externo,train/vidrio/trashnet_glass_glass277.jpg,0,externo,0.9993,misma,
+Gris (vidrio),glass287_jpg.rf.d116495b0796df803414403751996f35.jpg,externo,train/vidrio/trashnet_glass_glass287.jpg,0,externo,0.999,misma,
+Gris (vidrio),glass288_jpg.rf.cc2bfb5b82b878379e73366046d6687a.jpg,externo,train/vidrio/trashnet_glass_glass288.jpg,0,externo,0.9985,misma,
+Gris (vidrio),glass296_jpg.rf.18ad31d83c4b91a7d429cb7e91098160.jpg,externo,train/vidrio/trashnet_glass_glass296.jpg,0,externo,0.9988,misma,
+Gris (vidrio),glass299_jpg.rf.58dec1489267cad60ce9d95d656e7f7e.jpg,externo,train/vidrio/trashnet_glass_glass299.jpg,0,externo,0.9991,misma,
+Gris (vidrio),glass30_jpg.rf.4efa1944fec1036943a6c3a2f6f5cd7c.jpg,externo,train/vidrio/trashnet_glass_glass159.jpg,3,externo|publico,0.7432,dudosa,
+Gris (vidrio),glass327_jpg.rf.a6c9c28c5243dc7a1cff5c94709e83a0.jpg,externo,train/vidrio/trashnet_glass_glass327.jpg,0,externo,0.9989,misma,
+Gris (vidrio),glass32_jpg.rf.afaa70483186a18f9bc0ad67cd05bf40.jpg,externo,train/vidrio/trashnet_glass_glass32.jpg,0,externo,0.9993,misma,
+Gris (vidrio),glass333_jpg.rf.44145f00b309f3cf78bb4a612254031e.jpg,externo,train/vidrio/trashnet_glass_glass333.jpg,0,externo,0.9995,misma,
+Gris (vidrio),glass338_jpg.rf.15790d36244c55fcd0ff5ab405b663e4.jpg,externo,train/vidrio/trashnet_glass_glass338.jpg,0,externo,0.9992,misma,
+Gris (vidrio),glass350_jpg.rf.9b9fdc567c179bd747c2fa68db8930e5.jpg,externo,train/vidrio/trashnet_glass_glass350.jpg,1,externo,0.9993,misma,
+Gris (vidrio),glass351_jpg.rf.9f0ba2c6717ec114f4fda4a62bfeeabb.jpg,externo,train/vidrio/trashnet_glass_glass351.jpg,0,externo,0.9986,misma,
+Gris (vidrio),glass354_jpg.rf.69fca8ab33f0ac6a3231a9af5f51bbcd.jpg,externo,train/vidrio/trashnet_glass_glass354.jpg,1,externo,0.9989,misma,
+Gris (vidrio),glass383_jpg.rf.7d86a61a17257d728ec54b9f6f1ae894.jpg,publico,train/vidrio/companero_000101_dl_gris_00117.jpg,0,publico,0.9907,misma,
+Gris (vidrio),glass402_jpg.rf.c8def78310b77022bf25d45c04bb81e4.jpg,externo,train/vidrio/trashnet_glass_glass402.jpg,0,externo,0.9988,misma,
+Gris (vidrio),glass406_jpg.rf.c563b232a89f6c9700d0f2820ba16928.jpg,externo,train/vidrio/trashnet_glass_glass406.jpg,0,externo,0.9988,misma,
+Gris (vidrio),glass412_jpg.rf.1fae793c747d8c6b2b69681f94a6c5e7.jpg,publico,train/vidrio/companero_000052_dl_gris_00059.jpg,0,publico,0.9981,misma,
+Gris (vidrio),glass413_jpg.rf.b02437abdd7e1d5fe224470e64285224.jpg,externo,train/vidrio/trashnet_glass_glass413.jpg,0,externo,0.9987,misma,
+Gris (vidrio),glass414_jpg.rf.143423a3295f3c6086d720772220f2c2.jpg,externo,train/vidrio/trashnet_glass_glass414.jpg,0,externo,0.9987,misma,
+Gris (vidrio),glass417_jpg.rf.bfa774e551748680f45ec459c93262bc.jpg,externo,train/vidrio/trashnet_glass_glass417.jpg,0,externo,0.9989,misma,
+Gris (vidrio),glass419_jpg.rf.4628d10cb98ac7353c7ba8f310da0f75.jpg,externo,train/vidrio/trashnet_glass_glass419.jpg,0,externo,0.9988,misma,
+Gris (vidrio),glass425_jpg.rf.6a1842807ca1d12889b3b5d3b310edb6.jpg,externo,train/vidrio/trashnet_glass_glass425.jpg,0,externo,0.9987,misma,
+Gris (vidrio),glass433_jpg.rf.3f002feddabbffb7d1f0c70cf7f15d0c.jpg,externo,train/vidrio/trashnet_glass_glass433.jpg,0,externo,0.9987,misma,
+Gris (vidrio),glass439_jpg.rf.1e0b204389ed36231e1212b05054b6ce.jpg,externo,train/vidrio/trashnet_glass_glass439.jpg,0,externo,0.9989,misma,
+Gris (vidrio),glass444_jpg.rf.247cb9aedd03de77b7c98c2237d47056.jpg,externo,train/vidrio/trashnet_glass_glass444.jpg,0,externo,0.9991,misma,
+Gris (vidrio),glass44_jpg.rf.2bf0fbd065a7c747b54c7644a1376b0b.jpg,externo,train/vidrio/trashnet_glass_glass44.jpg,0,externo,0.9986,misma,
+Gris (vidrio),glass450_jpg.rf.2c85a1b19639159bd3609e362c47fa5f.jpg,externo,train/vidrio/trashnet_glass_glass450.jpg,0,externo,0.9983,misma,
+Gris (vidrio),glass45_jpg.rf.5df0893488c758bbee191470cf960a8e.jpg,externo,train/vidrio/trashnet_glass_glass45.jpg,0,externo,0.9991,misma,
+Gris (vidrio),glass485_jpg.rf.533cba3f88d6bbbf7b117b9efaf1b503.jpg,externo,train/vidrio/trashnet_glass_glass485.jpg,0,externo,0.9988,misma,
+Gris (vidrio),glass486_jpg.rf.c02d3099297fb887bcc25435e86b3727.jpg,externo,train/vidrio/trashnet_glass_glass486.jpg,0,externo,0.9991,misma,
+Gris (vidrio),glass489_jpg.rf.13f3b3537f3a41d89985dd72f8c914c8.jpg,publico,train/vidrio/companero_000964_dl_gris_01139.jpg,0,publico,0.9969,misma,
+Gris (vidrio),glass49_jpg.rf.d248e71033025f798aceff02fd6d5184.jpg,externo,train/vidrio/trashnet_glass_glass49.jpg,0,externo,0.9987,misma,
+Gris (vidrio),glass53_jpg.rf.370ccae33af09e695fb4766be3008874.jpg,externo,train/vidrio/trashnet_glass_glass466.jpg,3,externo,0.7186,dudosa,
+Gris (vidrio),glass65_jpg.rf.8e3ec364bcdac860d44b86b784578d34.jpg,externo,train/vidrio/trashnet_glass_glass65.jpg,0,externo,0.9985,misma,
+Gris (vidrio),glass69_jpg.rf.8712686a84746e772dd0cebf5f40e4de.jpg,publico,train/vidrio/companero_000760_dl_gris_00894.jpg,0,publico,0.9989,misma,
+Gris (vidrio),glass6_jpg.rf.3a85fd1df6a332d74e261f5fadcac412.jpg,externo,train/vidrio/trashnet_glass_glass193.jpg,3,externo,0.8678,misma,
+Gris (vidrio),glass72_jpg.rf.d65cdf96f174b03517df53e4de81238a.jpg,publico,train/vidrio/companero_000202_dl_gris_00232.jpg,3,publico,0.7386,dudosa,
+Gris (vidrio),glass77_jpg.rf.9dfd585137c2f8a96dfbbee4d8197aee.jpg,externo,train/vidrio/trashnet_glass_glass77.jpg,0,externo,0.9991,misma,
+Gris (vidrio),glass89_jpg.rf.2d3a6b533f4e4b6c989086f400cc1847.jpg,publico,test/vidrio/companero_000226_dl_gris_00226.jpg,0,publico,0.9954,misma,
+Gris (vidrio),glass91_jpg.rf.bb758568eec3b9db2850408954632dc0.jpg,externo,train/vidrio/trashnet_glass_glass91.jpg,0,externo,0.9991,misma,
+Amarillo (metal),metal106_jpg.rf.b24e5972c56a0cea881271a7955b96f9.jpg,externo,train/metales/trashnet_metal_metal106.jpg,0,externo,0.9991,misma,
+Amarillo (metal),metal11_jpg.rf.efea39c5419f3fb798e56e0464228cc4.jpg,publico,train/metales/companero_000156_dl_amarillo_00170.jpg,4,publico,0.5809,dudosa,
+Amarillo (metal),metal164_jpg.rf.008e7a37cf7e830877ccf4d027df3de0.jpg,externo,train/metales/trashnet_metal_metal164.jpg,1,externo,0.998,misma,
+Amarillo (metal),metal168_jpg.rf.c4da66f6f400c329deb53f8f9dfd9e29.jpg,externo,train/metales/trashnet_metal_metal168.jpg,0,externo,0.999,misma,
+Amarillo (metal),metal174_jpg.rf.febf32846b33ab30fff29bfb93d2559e.jpg,externo,train/metales/trashnet_metal_metal174.jpg,1,externo,0.999,misma,
+Amarillo (metal),metal176_jpg.rf.e29da30a599cccbcfed54b0a584a6a97.jpg,externo,train/metales/trashnet_metal_metal176.jpg,0,externo,0.9979,misma,
+Amarillo (metal),metal187_jpg.rf.bfe47cde3481b0b4e1b2b8b8f70a46f2.jpg,externo,train/metales/trashnet_metal_metal187.jpg,0,externo,0.9991,misma,
+Amarillo (metal),metal193_jpg.rf.64ee374e0b966a47e5600d760da057b7.jpg,externo,train/metales/trashnet_metal_metal193.jpg,0,externo,0.9989,misma,
+Amarillo (metal),metal206_jpg.rf.51e6e1be83731f696cd1105d5a9808b8.jpg,publico,train/metales/companero_001036_dl_amarillo_01114.jpg,0,publico,0.9991,misma,
+Amarillo (metal),metal208_jpg.rf.a8322e1ec4fa8a04fe3992fa3906fa6f.jpg,externo,train/metales/trashnet_metal_metal208.jpg,0,externo,0.9995,misma,
+Amarillo (metal),metal212_jpg.rf.631a8bbf4a582d3fa10c13dce9da0f80.jpg,externo,train/metales/trashnet_metal_metal212.jpg,0,externo,0.9993,misma,
+Amarillo (metal),metal216_jpg.rf.27ca840bc05e43658841d8cd3dfea86a.jpg,externo,train/metales/trashnet_metal_metal216.jpg,0,externo,0.9989,misma,
+Amarillo (metal),metal219_jpg.rf.eaa78d9e75d1682ca61ed873fb652cce.jpg,externo,train/metales/trashnet_metal_metal219.jpg,0,externo,0.9989,misma,
+Amarillo (metal),metal227_jpg.rf.d2d50eab67c42d2b8b526915e3c717c3.jpg,externo,train/metales/trashnet_metal_metal227.jpg,0,externo,0.999,misma,
+Amarillo (metal),metal22_jpg.rf.6350ca0a98970494c7c0553c6401667b.jpg,externo,train/metales/trashnet_metal_metal22.jpg,0,externo,0.999,misma,
+Amarillo (metal),metal235_jpg.rf.cbce2d596077dc66ff21bbff1f2c32c9.jpg,externo,train/metales/trashnet_metal_metal235.jpg,0,externo,0.9993,misma,
+Amarillo (metal),metal236_jpg.rf.baf3cf34ba2de2d7ec63d2802f985b8d.jpg,externo,train/metales/trashnet_metal_metal236.jpg,0,externo,0.9983,misma,
+Amarillo (metal),metal250_jpg.rf.295cd912686a3f2ff0b7896c3a491c08.jpg,externo,train/metales/trashnet_metal_metal250.jpg,1,externo,0.9988,misma,
+Amarillo (metal),metal252_jpg.rf.3b33031aff460452d04bbddd034a01b0.jpg,externo,train/metales/trashnet_metal_metal252.jpg,0,externo,0.9989,misma,
+Amarillo (metal),metal269_jpg.rf.e2570fd5d2e97e48a4d592fc251c9df1.jpg,externo,train/metales/trashnet_metal_metal269.jpg,0,externo,0.9988,misma,
+Amarillo (metal),metal287_jpg.rf.633e2f65b57216cfd28ed7ac4cd10244.jpg,externo,train/metales/trashnet_metal_metal287.jpg,1,externo,0.9992,misma,
+Amarillo (metal),metal289_jpg.rf.4b3a8a14ed77eaa69ef09d3cd5353e57.jpg,externo,train/metales/trashnet_metal_metal289.jpg,0,externo,0.9977,misma,
+Amarillo (metal),metal293_jpg.rf.836f0e2ae01673229051d66f4cd85f26.jpg,externo,train/metales/trashnet_metal_metal293.jpg,0,externo,0.9989,misma,
+Amarillo (metal),metal2_jpg.rf.69baca9f839e5d7974c9ee351b8d34d4.jpg,externo,train/metales/trashnet_metal_metal2.jpg,0,externo,0.9994,misma,
+Amarillo (metal),metal303_jpg.rf.54adb0474cfcf48771b115ad782a2671.jpg,externo,train/metales/trashnet_metal_metal280.jpg,4,externo,0.7846,dudosa,
+Amarillo (metal),metal308_jpg.rf.1ddcd01b7b2f0a6dabef89cd16a26815.jpg,externo,train/metales/trashnet_metal_metal308.jpg,0,externo,0.9988,misma,
+Amarillo (metal),metal30_jpg.rf.19dfb0ab43cf9a5a90d4f2fdcb71d133.jpg,publico,val/vidrio/companero_000257_dl_gris_00290.jpg,2,publico,0.5895,dudosa,
+Amarillo (metal),metal310_jpg.rf.086ca8cbaff7a096e1101e9a71657746.jpg,externo,train/metales/trashnet_metal_metal310.jpg,1,externo,0.9983,misma,
+Amarillo (metal),metal313_jpg.rf.d6e1a4ed11cd9977bd2ff570dfc7fde6.jpg,publico,train/metales/companero_000818_dl_amarillo_00879.jpg,0,publico,0.9988,misma,
+Amarillo (metal),metal315_jpg.rf.58c95549a216b4ae25cd325bf2eab02f.jpg,externo,train/metales/trashnet_metal_metal315.jpg,1,externo,0.9986,misma,
+Amarillo (metal),metal321_jpg.rf.9efab2ab6a93da18ca680dbe2b97147c.jpg,publico,train/metales/companero_000697_dl_amarillo_00749.jpg,0,publico,0.9985,misma,
+Amarillo (metal),metal326_jpg.rf.2ca775bac9b684727206055eaf427cbb.jpg,publico,train/metales/companero_001124_dl_amarillo_01211.jpg,1,publico,0.9989,misma,
+Amarillo (metal),metal339_jpg.rf.9e265af7acd82f3d37e759fdb998c130.jpg,externo,train/metales/trashnet_metal_metal339.jpg,0,externo,0.9989,misma,
+Amarillo (metal),metal350_jpg.rf.16a5d2285f9eaab2af2075c5f07810eb.jpg,externo,train/metales/trashnet_metal_metal350.jpg,0,externo,0.999,misma,
+Amarillo (metal),metal359_jpg.rf.85b9b3c47a5f82b2fdf7fe0a0a3011c4.jpg,externo,train/metales/trashnet_metal_metal359.jpg,1,externo,0.999,misma,
+Amarillo (metal),metal36_jpg.rf.34b855dd685affb5606b8cc4af7fec1e.jpg,externo,train/metales/trashnet_metal_metal36.jpg,0,externo,0.9983,misma,
+Amarillo (metal),metal410_jpg.rf.e8268057d30fd35265f0c3089fbe8709.jpg,externo,train/metales/trashnet_metal_metal410.jpg,0,externo,0.999,misma,
+Amarillo (metal),metal50_jpg.rf.a8f7d77e5edf801342e5bb2d7eca3215.jpg,publico,train/metales/companero_000361_dl_amarillo_00387.jpg,3,publico,0.8851,misma,
+Amarillo (metal),metal63_jpg.rf.a1fb8d6bf052d3cccc0fabccadfa8ac3.jpg,externo,train/metales/trashnet_metal_metal63.jpg,0,externo,0.9991,misma,
+Amarillo (metal),metal66_jpg.rf.fab9bad31dd81bc30807f6905aeef57b.jpg,publico,train/metales/companero_000253_dl_amarillo_00273.jpg,0,publico,0.9986,misma,
+Amarillo (metal),metal73_jpg.rf.a1867f7afbd5167e5f06f089f97c14dc.jpg,externo,train/metales/trashnet_metal_metal73.jpg,0,externo,0.9992,misma,
+Amarillo (metal),metal92_jpg.rf.653fef614684bba5b19fb5b133e7d0dd.jpg,externo,train/metales/trashnet_metal_metal92.jpg,0,externo,0.9992,misma,
+Amarillo (metal),metal94_jpg.rf.cf82ca8b81e9e45f56fde4d3ece198db.jpg,externo,train/metales/trashnet_metal_metal94.jpg,0,externo,0.9981,misma,
+Azul (papel/cartón),paper154_jpg.rf.5f4974e469a800b292cd5c388add3ac2.jpg,externo,train/vidrio/trashnet_glass_glass240.jpg,4,externo,0.8071,misma,
+Azul (papel/cartón),paper158_jpg.rf.05e04a556103824bc7c85f2a8dded2f7.jpg,publico,train/papel_carton/companero_001251_dl_azul_01353.jpg,0,publico,0.9983,misma,
+Azul (papel/cartón),paper170_jpg.rf.99b306a8903a84b4ab0fdbfb945ac76d.jpg,publico,test/papel_carton/companero_000169_dl_azul_00169.jpg,0,publico,0.9979,misma,
+Azul (papel/cartón),paper204_jpg.rf.208bd4baa7f9178afee864e8aa08fd28.jpg,publico,train/plasticos/companero_000864_dl_blanco_00966.jpg,3,publico,0.5271,dudosa,
+Azul (papel/cartón),paper231_jpg.rf.c38241ef939e9342a8e594c070595ed0.jpg,publico,train/papel_carton/companero_000970_dl_azul_01053.jpg,0,publico,0.9977,misma,
+Azul (papel/cartón),paper249_jpg.rf.31133ac820c3f9a89b614f3a75bdfaea.jpg,publico,val/papel_carton/companero_000080_dl_azul_00086.jpg,4,publico,0.8332,misma,
+Azul (papel/cartón),paper281_jpg.rf.c7476fdda843ad006cadf481445d3d1b.jpg,publico,train/papel_carton/companero_000582_dl_azul_00628.jpg,0,publico,0.9978,misma,
+Azul (papel/cartón),paper322_jpg.rf.169a96f3adf363b11ed0dd9b37ed5e02.jpg,publico,val/papel_carton/companero_000084_dl_azul_00091.jpg,3,publico,0.6616,dudosa,
+Azul (papel/cartón),paper385_jpg.rf.4f86a456a1e46f1bbbc64151e088c53a.jpg,publico,test/papel_carton/companero_000165_dl_azul_00165.jpg,1,publico,0.8934,misma,
+Azul (papel/cartón),paper442_jpg.rf.0a243033965b760846a691f1d3239837.jpg,publico,train/papel_carton/companero_001126_dl_azul_01222.jpg,0,publico,0.9974,misma,
+Azul (papel/cartón),paper451_jpg.rf.c9391cea191dd2c4d38eae94f050dfe4.jpg,publico,train/papel_carton/companero_000492_dl_azul_00533.jpg,0,publico,0.9984,misma,
+Azul (papel/cartón),paper529_jpg.rf.5165368b0e87b02b157cf0b72bdecd49.jpg,publico,val/papel_carton/companero_000141_dl_azul_00152.jpg,1,publico,0.9979,misma,
+Azul (papel/cartón),paper53_jpg.rf.5875a46c1d2df970d01da013d83ac81f.jpg,publico,test/papel_carton/companero_000198_dl_azul_00198.jpg,3,publico,0.8879,misma,
+Azul (papel/cartón),paper65_jpg.rf.c79922fc26d8f8b301979bfbee4f0fc0.jpg,publico,train/papel_carton/companero_000458_dl_azul_00496.jpg,0,publico,0.9984,misma,
+Azul (papel/cartón),paper66_jpg.rf.5aa718c9894ea8d45ccded9ecc65e009.jpg,externo,train/papel_carton/trashnet_paper_paper66.jpg,0,externo,0.998,misma,
+Azul (papel/cartón),paper83_jpg.rf.706553cf15c132abcc19229473f1b663.jpg,externo,train/papel_carton/trashnet_paper_paper83.jpg,0,externo,0.9981,misma,
+Blanco (plástico),plastic260_jpg.rf.6014b733f065bd0c098d17c661fe4e74.jpg,publico,test/papel_carton/companero_000035_dl_azul_00035.jpg,2,publico,0.5024,dudosa,
+Blanco (plástico),plastic361_jpg.rf.8e1559d59b5a7608064c7a45e526c80d.jpg,publico,val/vidrio/companero_000121_dl_gris_00134.jpg,2,publico,0.7042,dudosa,
+Blanco (plástico),plastic382_jpg.rf.f2b6aa81cd1ebf0b86d033234a21a6c2.jpg,publico,train/plasticos/companero_001085_dl_blanco_01213.jpg,0,publico,0.9985,misma,
+Blanco (plástico),plastic418_jpg.rf.74c6a4ef8188dd2af3649399c2de67db.jpg,publico,train/plasticos/companero_000863_dl_blanco_00965.jpg,0,publico,0.9954,misma,
+Blanco (plástico),plastic431_jpg.rf.6c8a74edeea369c61b19899001b305bc.jpg,publico,train/plasticos/companero_000684_dl_blanco_00768.jpg,0,publico,0.9983,misma,
+Inorg. reciclable (Anorganik),an-106-_jpg.rf.46b431595719a23e402a53c38c4299f3.jpg,publico,test/plasticos/companero_000093_dl_blanco_00093.jpg,3,publico,0.5655,dudosa,no
+Inorg. reciclable (Anorganik),an-183-_jpg.rf.b4d71e7f2d07fe15b11e4bc12419f79a.jpg,externo,train/peligrosos/realwaste_metal_metal-646.jpg,4,externo,0.6045,dudosa,
+Inorg. reciclable (Anorganik),recyclable_004356_photo_jpg.rf.ea1506b428a079239f78b243bbfa02fc.jpg,publico,test/peligrosos/companero_000124_dl_rojo_00124.jpg,0,publico,0.6998,dudosa,no
+Inorg. reciclable (Anorganik),recyclable_004422_photo_jpg.rf.0145b6d51805f20152a1d8788e06cc20.jpg,publico,train/metales/companero_000646_dl_amarillo_00696.jpg,4,publico,0.3871,distinta,no
+Inorg. reciclable (Anorganik),recyclable_004428_photo_jpg.rf.1bb10ccb42933f8ffcad9e0640561aae.jpg,publico,test/plasticos/companero_000093_dl_blanco_00093.jpg,3,publico,0.4887,distinta,no
+Inorg. reciclable (Anorganik),R_1903_jpg.rf.44515fc96506a8ed0a060c62d2f41c77.jpg,publico,test/papel_carton/companero_000109_dl_azul_00109.jpg,1,publico,0.6416,dudosa,no
+Inorg. reciclable (Anorganik),R_2088_jpg.rf.cba6b6728d891ba24f4eed2e601c9300.jpg,publico,test/plasticos/companero_000031_dl_blanco_00031.jpg,1,publico,0.3176,distinta,no
+Inorg. reciclable (Anorganik),R_2115_jpg.rf.df16419d6859ea3dcf7597c14af1fdf4.jpg,publico,test/vidrio/companero_000168_dl_gris_00168.jpg,3,publico,0.3612,distinta,no
+Inorg. reciclable (Anorganik),R_2205_jpg.rf.e066f72a96dad67cbfa9b4ddcafd7d15.jpg,publico,val/papel_carton/companero_000122_dl_azul_00131.jpg,4,externo|publico,0.7181,dudosa,no
+Inorg. reciclable (Anorganik),R_3677_jpg.rf.5cefd2971cfddba3472284f88275ba46.jpg,publico,test/plasticos/companero_000023_dl_blanco_00023.jpg,2,publico,0.9042,misma,no
+Inorg. reciclable (Anorganik),R_4421_jpg.rf.1e865f0d89990405897ded80d04e23f0.jpg,externo,train/plasticos/realwaste_plastic_plastic-679.jpg,2,externo|publico,0.3369,distinta,no
+Inorg. reciclable (Anorganik),R_8436_jpg.rf.ef7ff1780b4bd806992bbad052212184.jpg,publico,test/generales/companero_000077_dl_negro_00105.jpg,4,publico,0.8271,misma,no
+Inorg. reciclable (Anorganik),R_8477_jpg.rf.801ff40eaa924b22f7de3123f20fdfab.jpg,publico,val/vidrio/companero_000052_dl_gris_00057.jpg,0,publico,0.366,distinta,no
+Inorg. reciclable (Anorganik),R_8499_jpg.rf.d926be56068dda537b2e2cf9e6a00152.jpg,publico,test/generales/companero_000027_dl_negro_00038.jpg,4,publico,0.8143,misma,no
+Inorg. reciclable (Anorganik),R_8500_jpg.rf.7f99371ae145fcded1114cb85fae237f.jpg,publico,test/plasticos/companero_000041_dl_blanco_00041.jpg,0,publico,0.8153,misma,no
+Inorg. reciclable (Anorganik),R_8552_jpg.rf.34ce09aaa37f72d6e445f4279d57ca61.jpg,publico,test/metales/companero_000154_dl_amarillo_00154.jpg,0,publico,0.3169,distinta,no
+Inorg. reciclable (Anorganik),R_8587_jpg.rf.3d65caed2fa4aabadde7bb7f769a5196.jpg,publico,test/plasticos/companero_000031_dl_blanco_00031.jpg,0,publico,0.59,dudosa,no
+Inorg. reciclable (Anorganik),R_8633_jpg.rf.c780f7001b263598b10313b0fc045416.jpg,publico,val/metales/companero_000270_dl_amarillo_00280.jpg,2,publico,0.7758,dudosa,no
+Inorg. reciclable (Anorganik),R_8656_jpg.rf.0ac28e98ada19181716513733b4093f6.jpg,publico,train/plasticos/companero_000802_dl_blanco_00896.jpg,4,publico,0.7062,dudosa,no
+Inorg. reciclable (Anorganik),R_8739_jpg.rf.d3e2a9b68d3993a27000e1aef6ac5bc5.jpg,publico,test/plasticos/companero_000247_dl_blanco_00247.jpg,2,publico,0.2711,distinta,no
+Inorg. reciclable (Anorganik),R_8765_jpg.rf.36cada7d63123cf10cb71b2fb967b0ba.jpg,publico,test/plasticos/companero_000041_dl_blanco_00041.jpg,3,publico,0.8094,misma,no
+Inorg. reciclable (Anorganik),R_8808_jpg.rf.ea4c83a034d62b66f2eaeffdd3d7d8d2.jpg,publico,test/plasticos/companero_000041_dl_blanco_00041.jpg,0,publico,0.7942,dudosa,no
+Inorg. reciclable (Anorganik),sedotan-167-_png.rf.21df347c508025a81f653262ed18df4e.jpg,publico,val/vidrio/companero_000185_dl_gris_00208.jpg,3,publico,0.2028,distinta,no
+"Marrón (Organik, grises)",O-11059-_jpg.rf.0ace5ad25d5be533f3ac3684671b4f72.jpg,publico,test/papel_carton/companero_000109_dl_azul_00109.jpg,1,publico,0.5643,dudosa,no
+"Marrón (Organik, grises)",O-5443-_jpg.rf.975058eabc7b90af3dd688dc6bb81a4d.jpg,publico,test/metales/companero_000272_dl_amarillo_00272.jpg,4,publico,0.6353,dudosa,no
+"Marrón (Organik, grises)",O-6563-_jpg.rf.c6082481dd136f60badca783da96f43c.jpg,publico,train/papel_carton/companero_000749_dl_azul_00811.jpg,4,publico,0.8692,misma,no
+"Marrón (Organik, grises)",O-6607-_jpg.rf.62e6c5cccda5f9759ce1607b87ae2c41.jpg,publico,val/papel_carton/companero_000122_dl_azul_00131.jpg,3,externo|publico,0.8434,misma,no
+"Marrón (Organik, grises)",O-6655-_jpg.rf.c4809914339e1f94b0b3984944f0f109.jpg,publico,train/metales/companero_000686_dl_amarillo_00737.jpg,3,publico,0.6496,dudosa,no
+Negro/Rojo (Residu),Residu-1041-_jpg.rf.bd175f35a8fe14fe39240ef58cfd879a.jpg,publico,test/papel_carton/companero_000207_dl_azul_00207.jpg,4,publico,0.5697,dudosa,no
+Negro/Rojo (Residu),Residu-1138-_jpg.rf.32fd2726dc0f629d3808fa7a2d7cf6a5.jpg,publico,test/metales/companero_000006_dl_amarillo_00006.jpg,2,publico,0.6572,dudosa,no
+Negro/Rojo (Residu),Residu-1464-_jpg.rf.a17aac888c181e6d81ab7c271f34e43c.jpg,publico,val/papel_carton/companero_000080_dl_azul_00086.jpg,2,publico,0.9126,misma,no
+Negro/Rojo (Residu),Residu-1535-_jpg.rf.ecc4219f7988c09401f3a3fd14bf7cf4.jpg,publico,train/metales/companero_000743_dl_amarillo_00796.jpg,2,publico,0.6474,dudosa,no
+Negro/Rojo (Residu),Residu-1667-_jpg.rf.7224c2cf031e5bacc4d15e386d8673e5.jpg,publico,test/plasticos/companero_000093_dl_blanco_00093.jpg,2,externo|publico,0.5441,dudosa,no
+Negro/Rojo (Residu),Residu-1719-_jpg.rf.9a5ba3c36477ce1d67bdf2db94995c75.jpg,publico,train/metales/companero_001049_dl_amarillo_01130.jpg,4,publico,0.5343,dudosa,no
+Negro/Rojo (Residu),Residu-1745-_jpg.rf.9b1b95b8d53101e013c6ac7df563b583.jpg,publico,test/metales/companero_000024_dl_amarillo_00024.jpg,1,publico,0.5094,dudosa,no
+Negro/Rojo (Residu),Residu-189-_png.rf.99ac6ab941e33bdc7fb28d2f022a8c0d.jpg,publico,val/vidrio/companero_000063_dl_gris_00072.jpg,2,publico,0.6733,dudosa,no
+Negro/Rojo (Residu),Residu-2389-_jpg.rf.d01621fc6588f08f21c01f359b95753b.jpg,publico,train/peligrosos/companero_000533_dl_rojo_00569.jpg,4,publico,0.7374,dudosa,no
+Negro/Rojo (Residu),Residu-2595-_jpg.rf.d12544f99d77576b137d72b269913e46.jpg,publico,test/vidrio/companero_000066_dl_gris_00066.jpg,2,publico,0.7145,dudosa,no
+Negro/Rojo (Residu),Residu-2724-_jpg.rf.a2196752aa519537bddb34447bffef71.jpg,publico,test/plasticos/companero_000041_dl_blanco_00041.jpg,0,publico,0.8049,misma,no
+Negro/Rojo (Residu),Residu-2757-_jpg.rf.fd10d40c49d3a2648fd10810a31f5f9d.jpg,publico,test/peligrosos/companero_000200_dl_rojo_00200.jpg,1,publico,0.8581,misma,no
+Negro/Rojo (Residu),Residu-2777-_jpg.rf.1936e57fba2644f459c89952afcf9783.jpg,publico,train/generales/companero_000028_dl_negro_00040.jpg,2,publico,0.8361,misma,no
+Negro/Rojo (Residu),Residu-2788-_jpg.rf.d20210f1f9dd7f79b276e392cf6c1bf7.jpg,publico,test/papel_carton/companero_000055_dl_azul_00055.jpg,3,publico,0.7302,dudosa,no
+Negro/Rojo (Residu),Residu-2805-_jpg.rf.5b46784b0d2dacf059b96b87a586cdba.jpg,publico,train/papel_carton/companero_000981_dl_azul_01065.jpg,4,publico,0.4351,distinta,no
+Negro/Rojo (Residu),Residu-2845-_jpg.rf.5513fcdade64c33689ae47b86250da0a.jpg,publico,train/peligrosos/companero_001071_dl_rojo_01148.jpg,4,publico,0.8497,misma,no
+Negro/Rojo (Residu),Residu-2846-_jpg.rf.6dbefd2a130d830ee672a599e0f5802c.jpg,publico,test/plasticos/companero_000041_dl_blanco_00041.jpg,0,publico,0.8175,misma,no
+Negro/Rojo (Residu),Residu-2855-_jpg.rf.19fc867e84c62a70b5e7738c5db73134.jpg,publico,test/plasticos/companero_000041_dl_blanco_00041.jpg,0,publico,0.8418,misma,no
+Negro/Rojo (Residu),Residu-2914-_jpg.rf.cb824cba16a0e99e5a80dc8fb1782c9f.jpg,publico,test/peligrosos/companero_000200_dl_rojo_00200.jpg,1,publico,0.8637,misma,no
+Negro/Rojo (Residu),Residu-2922-_jpg.rf.3e662897703f2aa805825b3f1fc3432d.jpg,publico,test/plasticos/companero_000227_dl_blanco_00227.jpg,0,publico,0.5872,dudosa,no
+Negro/Rojo (Residu),Residu-64-_png.rf.cd50fc224b5130a958116771a67a9c0b.jpg,externo,train/peligrosos/realwaste_metal_metal-718.jpg,4,externo,0.6417,dudosa,no
+Negro/Rojo (Residu),Residu-92-_png.rf.b4e2f57ab4da34722019211a26281c56.jpg,publico,test/metales/companero_000024_dl_amarillo_00024.jpg,4,publico,0.4265,distinta,no
+[gris] Azul (papel/cartón),cardboard209_jpg.rf.a469aefaae160139e7e6454c408be2d0.jpg,publico,val/papel_carton/companero_000180_dl_azul_00191.jpg,2,publico,0.9949,misma,
+[gris] Azul (papel/cartón),cardboard263_jpg.rf.ba90e3f6d1ee30e18bed003f6c53da0f.jpg,publico,val/papel_carton/companero_000118_dl_azul_00127.jpg,2,publico,0.9954,misma,
+[gris] Azul (papel/cartón),cardboard271_jpg.rf.851ca2876352710b278e6fb564e99568.jpg,publico,train/papel_carton/companero_000153_dl_azul_00167.jpg,1,publico,0.9945,misma,
+[gris] Azul (papel/cartón),cardboard329_jpg.rf.a89e5053d99901d339175b4a1014edbe.jpg,externo,train/papel_carton/trashnet_cardboard_cardboard329.jpg,1,externo,0.9957,misma,
+[gris] Azul (papel/cartón),cardboard348_jpg.rf.252d4c10b998e7ad7d50b82a38032b77.jpg,publico,train/papel_carton/companero_001184_dl_azul_01283.jpg,3,publico,0.8416,misma,
+[gris] Azul (papel/cartón),cardboard58_jpg.rf.42672d3c0c44c4ae66507cd00f0aaa6c.jpg,publico,train/papel_carton/companero_001140_dl_azul_01236.jpg,4,publico,0.7215,dudosa,
+[gris] Azul (papel/cartón),cardboard81_jpg.rf.3ab9fbace8c34a71b07dc42f470718ec.jpg,publico,train/papel_carton/companero_000983_dl_azul_01067.jpg,3,publico,0.5588,dudosa,
+[gris] Gris (vidrio),glass100_jpg.rf.612f49d19436222ace35dda7060549da.jpg,publico,train/vidrio/companero_000420_dl_gris_00495.jpg,0,publico,0.9966,misma,
+[gris] Gris (vidrio),glass114_jpg.rf.f167c4f79a866fcbdd7e986d6fe9bdd7.jpg,externo,train/vidrio/trashnet_glass_glass114.jpg,2,externo,0.9969,misma,
+[gris] Gris (vidrio),glass115_jpg.rf.a9a60da3f6450bebdbd5a8fcc68cb3a1.jpg,externo,train/vidrio/trashnet_glass_glass115.jpg,0,externo,0.9955,misma,
+[gris] Gris (vidrio),glass140_jpg.rf.1463048f92ba322224b1e98fb1fc5dd0.jpg,externo,train/vidrio/trashnet_glass_glass140.jpg,1,externo,0.9965,misma,
+[gris] Gris (vidrio),glass141_jpg.rf.a4129f41094deb0cc48207329be6eef6.jpg,externo,train/vidrio/trashnet_glass_glass141.jpg,0,externo,0.9967,misma,
+[gris] Gris (vidrio),glass156_jpg.rf.04438207d3836313437f118bafaf2de5.jpg,externo,train/vidrio/trashnet_glass_glass156.jpg,1,externo,0.9972,misma,
+[gris] Gris (vidrio),glass159_jpg.rf.b3453c270e8b6c8e844c96e79ced4b3f.jpg,externo,train/vidrio/trashnet_glass_glass159.jpg,0,externo,0.9975,misma,
+[gris] Gris (vidrio),glass167_jpg.rf.18e23384314162aab353a959377fedb8.jpg,externo,train/vidrio/trashnet_glass_glass167.jpg,0,externo,0.9972,misma,
+[gris] Gris (vidrio),glass178_jpg.rf.adfca73de6aae3ba4a59a0b366294705.jpg,externo,train/vidrio/trashnet_glass_glass178.jpg,3,externo,0.9948,misma,
+[gris] Gris (vidrio),glass190_jpg.rf.968c00a3dd38d3d01730a61f6dd29c21.jpg,externo,train/vidrio/trashnet_glass_glass190.jpg,2,externo,0.9962,misma,
+[gris] Gris (vidrio),glass215_jpg.rf.9d7980684a535d0ca51fdedf05badff6.jpg,externo,train/vidrio/trashnet_glass_glass215.jpg,0,externo,0.997,misma,
+[gris] Gris (vidrio),glass233_jpg.rf.7376028bdb24e4a2471f1ac1c16adb83.jpg,externo,train/vidrio/trashnet_glass_glass233.jpg,0,externo,0.9973,misma,
+[gris] Gris (vidrio),glass243_jpg.rf.8d74993611ef295856390d74374d860a.jpg,externo,train/vidrio/trashnet_glass_glass243.jpg,0,externo,0.9968,misma,
+[gris] Gris (vidrio),glass248_jpg.rf.4eddfda7c824ccddeaf9136fc75929f2.jpg,externo,train/vidrio/trashnet_glass_glass248.jpg,0,externo,0.9975,misma,
+[gris] Gris (vidrio),glass256_jpg.rf.bd6bc848c324a7fd4ddc3c6e7e7991aa.jpg,externo,train/vidrio/trashnet_glass_glass256.jpg,0,externo,0.9979,misma,
+[gris] Gris (vidrio),glass269_jpg.rf.4ac8a79304f3d07d56f65889f3a1516b.jpg,publico,train/vidrio/companero_000901_dl_gris_01065.jpg,1,publico,0.9967,misma,
+[gris] Gris (vidrio),glass277_jpg.rf.e974961574c860d1f76f6e4f09756f34.jpg,externo,train/vidrio/trashnet_glass_glass277.jpg,1,externo,0.997,misma,
+[gris] Gris (vidrio),glass287_jpg.rf.d116495b0796df803414403751996f35.jpg,externo,train/vidrio/trashnet_glass_glass287.jpg,0,externo,0.9962,misma,
+[gris] Gris (vidrio),glass288_jpg.rf.cc2bfb5b82b878379e73366046d6687a.jpg,externo,train/vidrio/trashnet_glass_glass288.jpg,2,externo,0.9952,misma,
+[gris] Gris (vidrio),glass296_jpg.rf.18ad31d83c4b91a7d429cb7e91098160.jpg,externo,train/vidrio/trashnet_glass_glass296.jpg,1,externo,0.997,misma,
+[gris] Gris (vidrio),glass299_jpg.rf.58dec1489267cad60ce9d95d656e7f7e.jpg,externo,train/vidrio/trashnet_glass_glass299.jpg,0,externo,0.9967,misma,
+[gris] Gris (vidrio),glass30_jpg.rf.4efa1944fec1036943a6c3a2f6f5cd7c.jpg,externo,train/vidrio/trashnet_glass_glass159.jpg,3,externo,0.742,dudosa,
+[gris] Gris (vidrio),glass327_jpg.rf.a6c9c28c5243dc7a1cff5c94709e83a0.jpg,externo,train/vidrio/trashnet_glass_glass327.jpg,0,externo,0.9962,misma,
+[gris] Gris (vidrio),glass32_jpg.rf.afaa70483186a18f9bc0ad67cd05bf40.jpg,externo,train/vidrio/trashnet_glass_glass32.jpg,0,externo,0.9964,misma,
+[gris] Gris (vidrio),glass333_jpg.rf.44145f00b309f3cf78bb4a612254031e.jpg,externo,train/vidrio/trashnet_glass_glass333.jpg,1,externo,0.9973,misma,
+[gris] Gris (vidrio),glass338_jpg.rf.15790d36244c55fcd0ff5ab405b663e4.jpg,externo,train/vidrio/trashnet_glass_glass338.jpg,1,externo,0.9964,misma,
+[gris] Gris (vidrio),glass350_jpg.rf.9b9fdc567c179bd747c2fa68db8930e5.jpg,externo,train/vidrio/trashnet_glass_glass350.jpg,1,externo,0.9964,misma,
+[gris] Gris (vidrio),glass351_jpg.rf.9f0ba2c6717ec114f4fda4a62bfeeabb.jpg,externo,train/vidrio/trashnet_glass_glass351.jpg,1,externo,0.9959,misma,
+[gris] Gris (vidrio),glass354_jpg.rf.69fca8ab33f0ac6a3231a9af5f51bbcd.jpg,externo,train/vidrio/trashnet_glass_glass354.jpg,2,externo,0.9961,misma,
+[gris] Gris (vidrio),glass383_jpg.rf.7d86a61a17257d728ec54b9f6f1ae894.jpg,publico,train/vidrio/companero_000101_dl_gris_00117.jpg,0,publico,0.9903,misma,
+[gris] Gris (vidrio),glass402_jpg.rf.c8def78310b77022bf25d45c04bb81e4.jpg,externo,train/vidrio/trashnet_glass_glass402.jpg,1,externo,0.9966,misma,
+[gris] Gris (vidrio),glass406_jpg.rf.c563b232a89f6c9700d0f2820ba16928.jpg,externo,train/vidrio/trashnet_glass_glass406.jpg,0,externo,0.997,misma,
+[gris] Gris (vidrio),glass412_jpg.rf.1fae793c747d8c6b2b69681f94a6c5e7.jpg,publico,train/vidrio/companero_000052_dl_gris_00059.jpg,2,publico,0.9967,misma,
+[gris] Gris (vidrio),glass413_jpg.rf.b02437abdd7e1d5fe224470e64285224.jpg,externo,train/vidrio/trashnet_glass_glass413.jpg,0,externo,0.9957,misma,
+[gris] Gris (vidrio),glass414_jpg.rf.143423a3295f3c6086d720772220f2c2.jpg,externo,train/vidrio/trashnet_glass_glass414.jpg,2,externo,0.9968,misma,
+[gris] Gris (vidrio),glass417_jpg.rf.bfa774e551748680f45ec459c93262bc.jpg,externo,train/vidrio/trashnet_glass_glass417.jpg,0,externo,0.9972,misma,
+[gris] Gris (vidrio),glass419_jpg.rf.4628d10cb98ac7353c7ba8f310da0f75.jpg,externo,train/vidrio/trashnet_glass_glass419.jpg,0,externo,0.9967,misma,
+[gris] Gris (vidrio),glass425_jpg.rf.6a1842807ca1d12889b3b5d3b310edb6.jpg,externo,train/vidrio/trashnet_glass_glass425.jpg,0,externo,0.9967,misma,
+[gris] Gris (vidrio),glass433_jpg.rf.3f002feddabbffb7d1f0c70cf7f15d0c.jpg,externo,train/vidrio/trashnet_glass_glass433.jpg,0,externo,0.997,misma,
+[gris] Gris (vidrio),glass439_jpg.rf.1e0b204389ed36231e1212b05054b6ce.jpg,externo,train/vidrio/trashnet_glass_glass439.jpg,0,externo,0.9962,misma,
+[gris] Gris (vidrio),glass444_jpg.rf.247cb9aedd03de77b7c98c2237d47056.jpg,externo,train/vidrio/trashnet_glass_glass444.jpg,1,externo,0.9955,misma,
+[gris] Gris (vidrio),glass44_jpg.rf.2bf0fbd065a7c747b54c7644a1376b0b.jpg,externo,train/vidrio/trashnet_glass_glass44.jpg,0,externo,0.9961,misma,
+[gris] Gris (vidrio),glass450_jpg.rf.2c85a1b19639159bd3609e362c47fa5f.jpg,externo,train/vidrio/trashnet_glass_glass450.jpg,2,externo,0.9965,misma,
+[gris] Gris (vidrio),glass45_jpg.rf.5df0893488c758bbee191470cf960a8e.jpg,externo,train/vidrio/trashnet_glass_glass45.jpg,1,externo,0.9962,misma,
+[gris] Gris (vidrio),glass485_jpg.rf.533cba3f88d6bbbf7b117b9efaf1b503.jpg,externo,train/vidrio/trashnet_glass_glass485.jpg,1,externo,0.9968,misma,
+[gris] Gris (vidrio),glass486_jpg.rf.c02d3099297fb887bcc25435e86b3727.jpg,externo,train/vidrio/trashnet_glass_glass486.jpg,0,externo,0.997,misma,
+[gris] Gris (vidrio),glass489_jpg.rf.13f3b3537f3a41d89985dd72f8c914c8.jpg,publico,train/vidrio/companero_000964_dl_gris_01139.jpg,1,publico,0.9965,misma,
+[gris] Gris (vidrio),glass49_jpg.rf.d248e71033025f798aceff02fd6d5184.jpg,externo,train/vidrio/trashnet_glass_glass49.jpg,1,externo,0.9962,misma,
+[gris] Gris (vidrio),glass53_jpg.rf.370ccae33af09e695fb4766be3008874.jpg,externo,train/vidrio/trashnet_glass_glass466.jpg,3,externo,0.7171,dudosa,
+[gris] Gris (vidrio),glass65_jpg.rf.8e3ec364bcdac860d44b86b784578d34.jpg,externo,train/vidrio/trashnet_glass_glass65.jpg,0,externo,0.9969,misma,
+[gris] Gris (vidrio),glass69_jpg.rf.8712686a84746e772dd0cebf5f40e4de.jpg,publico,train/vidrio/companero_000760_dl_gris_00894.jpg,0,publico,0.9966,misma,
+[gris] Gris (vidrio),glass6_jpg.rf.3a85fd1df6a332d74e261f5fadcac412.jpg,externo,train/vidrio/trashnet_glass_glass193.jpg,3,externo,0.8661,misma,
+[gris] Gris (vidrio),glass72_jpg.rf.d65cdf96f174b03517df53e4de81238a.jpg,publico,train/vidrio/companero_000202_dl_gris_00232.jpg,3,publico,0.7372,dudosa,
+[gris] Gris (vidrio),glass77_jpg.rf.9dfd585137c2f8a96dfbbee4d8197aee.jpg,externo,train/vidrio/trashnet_glass_glass77.jpg,0,externo,0.9968,misma,
+[gris] Gris (vidrio),glass89_jpg.rf.2d3a6b533f4e4b6c989086f400cc1847.jpg,publico,test/vidrio/companero_000226_dl_gris_00226.jpg,0,publico,0.9948,misma,
+[gris] Gris (vidrio),glass91_jpg.rf.bb758568eec3b9db2850408954632dc0.jpg,externo,train/vidrio/trashnet_glass_glass91.jpg,0,externo,0.9969,misma,
+[gris] Amarillo (metal),metal106_jpg.rf.b24e5972c56a0cea881271a7955b96f9.jpg,externo,train/metales/trashnet_metal_metal106.jpg,1,externo,0.9976,misma,
+[gris] Amarillo (metal),metal11_jpg.rf.efea39c5419f3fb798e56e0464228cc4.jpg,publico,train/metales/companero_000156_dl_amarillo_00170.jpg,4,publico,0.5801,dudosa,
+[gris] Amarillo (metal),metal164_jpg.rf.008e7a37cf7e830877ccf4d027df3de0.jpg,externo,train/metales/trashnet_metal_metal164.jpg,3,externo,0.9958,misma,
+[gris] Amarillo (metal),metal168_jpg.rf.c4da66f6f400c329deb53f8f9dfd9e29.jpg,externo,train/metales/trashnet_metal_metal168.jpg,0,externo,0.9974,misma,
+[gris] Amarillo (metal),metal174_jpg.rf.febf32846b33ab30fff29bfb93d2559e.jpg,externo,train/metales/trashnet_metal_metal174.jpg,2,externo,0.9976,misma,
+[gris] Amarillo (metal),metal176_jpg.rf.e29da30a599cccbcfed54b0a584a6a97.jpg,externo,train/metales/trashnet_metal_metal176.jpg,0,externo,0.9963,misma,
+[gris] Amarillo (metal),metal187_jpg.rf.bfe47cde3481b0b4e1b2b8b8f70a46f2.jpg,externo,train/metales/trashnet_metal_metal187.jpg,1,externo,0.9969,misma,
+[gris] Amarillo (metal),metal193_jpg.rf.64ee374e0b966a47e5600d760da057b7.jpg,externo,train/metales/trashnet_metal_metal193.jpg,1,externo,0.9972,misma,
+[gris] Amarillo (metal),metal206_jpg.rf.51e6e1be83731f696cd1105d5a9808b8.jpg,publico,train/metales/companero_001036_dl_amarillo_01114.jpg,0,publico,0.997,misma,
+[gris] Amarillo (metal),metal208_jpg.rf.a8322e1ec4fa8a04fe3992fa3906fa6f.jpg,externo,train/metales/trashnet_metal_metal208.jpg,0,externo,0.9973,misma,
+[gris] Amarillo (metal),metal212_jpg.rf.631a8bbf4a582d3fa10c13dce9da0f80.jpg,externo,train/metales/trashnet_metal_metal212.jpg,1,externo,0.9973,misma,
+[gris] Amarillo (metal),metal216_jpg.rf.27ca840bc05e43658841d8cd3dfea86a.jpg,externo,train/metales/trashnet_metal_metal216.jpg,0,externo,0.9965,misma,
+[gris] Amarillo (metal),metal219_jpg.rf.eaa78d9e75d1682ca61ed873fb652cce.jpg,externo,train/metales/trashnet_metal_metal219.jpg,0,externo,0.9973,misma,
+[gris] Amarillo (metal),metal227_jpg.rf.d2d50eab67c42d2b8b526915e3c717c3.jpg,externo,train/metales/trashnet_metal_metal227.jpg,1,externo,0.9966,misma,
+[gris] Amarillo (metal),metal22_jpg.rf.6350ca0a98970494c7c0553c6401667b.jpg,externo,train/metales/trashnet_metal_metal22.jpg,2,externo,0.9971,misma,
+[gris] Amarillo (metal),metal235_jpg.rf.cbce2d596077dc66ff21bbff1f2c32c9.jpg,externo,train/metales/trashnet_metal_metal235.jpg,0,externo,0.9969,misma,
+[gris] Amarillo (metal),metal236_jpg.rf.baf3cf34ba2de2d7ec63d2802f985b8d.jpg,externo,train/metales/trashnet_metal_metal236.jpg,0,externo,0.997,misma,
+[gris] Amarillo (metal),metal250_jpg.rf.295cd912686a3f2ff0b7896c3a491c08.jpg,externo,train/metales/trashnet_metal_metal250.jpg,3,externo,0.9963,misma,
+[gris] Amarillo (metal),metal252_jpg.rf.3b33031aff460452d04bbddd034a01b0.jpg,externo,train/metales/trashnet_metal_metal252.jpg,0,externo,0.9979,misma,
+[gris] Amarillo (metal),metal269_jpg.rf.e2570fd5d2e97e48a4d592fc251c9df1.jpg,externo,train/metales/trashnet_metal_metal269.jpg,2,externo,0.997,misma,
+[gris] Amarillo (metal),metal287_jpg.rf.633e2f65b57216cfd28ed7ac4cd10244.jpg,externo,train/metales/trashnet_metal_metal287.jpg,1,externo,0.9966,misma,
+[gris] Amarillo (metal),metal289_jpg.rf.4b3a8a14ed77eaa69ef09d3cd5353e57.jpg,externo,train/metales/trashnet_metal_metal289.jpg,2,externo,0.9968,misma,
+[gris] Amarillo (metal),metal293_jpg.rf.836f0e2ae01673229051d66f4cd85f26.jpg,externo,train/metales/trashnet_metal_metal293.jpg,1,externo,0.9968,misma,
+[gris] Amarillo (metal),metal2_jpg.rf.69baca9f839e5d7974c9ee351b8d34d4.jpg,externo,train/metales/trashnet_metal_metal2.jpg,0,externo,0.9979,misma,
+[gris] Amarillo (metal),metal303_jpg.rf.54adb0474cfcf48771b115ad782a2671.jpg,externo,train/metales/trashnet_metal_metal280.jpg,3,externo,0.7828,dudosa,
+[gris] Amarillo (metal),metal308_jpg.rf.1ddcd01b7b2f0a6dabef89cd16a26815.jpg,externo,train/metales/trashnet_metal_metal308.jpg,0,externo,0.9972,misma,
+[gris] Amarillo (metal),metal30_jpg.rf.19dfb0ab43cf9a5a90d4f2fdcb71d133.jpg,publico,val/vidrio/companero_000257_dl_gris_00290.jpg,2,publico,0.5883,dudosa,
+[gris] Amarillo (metal),metal310_jpg.rf.086ca8cbaff7a096e1101e9a71657746.jpg,externo,train/metales/trashnet_metal_metal310.jpg,2,externo,0.9969,misma,
+[gris] Amarillo (metal),metal313_jpg.rf.d6e1a4ed11cd9977bd2ff570dfc7fde6.jpg,publico,train/metales/companero_000818_dl_amarillo_00879.jpg,0,publico,0.9965,misma,
+[gris] Amarillo (metal),metal315_jpg.rf.58c95549a216b4ae25cd325bf2eab02f.jpg,externo,train/metales/trashnet_metal_metal315.jpg,0,externo,0.9954,misma,
+[gris] Amarillo (metal),metal321_jpg.rf.9efab2ab6a93da18ca680dbe2b97147c.jpg,publico,train/metales/companero_000697_dl_amarillo_00749.jpg,0,publico,0.9966,misma,
+[gris] Amarillo (metal),metal326_jpg.rf.2ca775bac9b684727206055eaf427cbb.jpg,publico,train/metales/companero_001124_dl_amarillo_01211.jpg,1,publico,0.9969,misma,
+[gris] Amarillo (metal),metal339_jpg.rf.9e265af7acd82f3d37e759fdb998c130.jpg,externo,train/metales/trashnet_metal_metal339.jpg,0,externo,0.9966,misma,
+[gris] Amarillo (metal),metal350_jpg.rf.16a5d2285f9eaab2af2075c5f07810eb.jpg,externo,train/metales/trashnet_metal_metal350.jpg,1,externo,0.9975,misma,
+[gris] Amarillo (metal),metal359_jpg.rf.85b9b3c47a5f82b2fdf7fe0a0a3011c4.jpg,externo,train/metales/trashnet_metal_metal359.jpg,1,externo,0.9972,misma,
+[gris] Amarillo (metal),metal36_jpg.rf.34b855dd685affb5606b8cc4af7fec1e.jpg,externo,train/metales/trashnet_metal_metal36.jpg,1,externo,0.9965,misma,
+[gris] Amarillo (metal),metal410_jpg.rf.e8268057d30fd35265f0c3089fbe8709.jpg,externo,train/metales/trashnet_metal_metal410.jpg,1,externo,0.9966,misma,
+[gris] Amarillo (metal),metal50_jpg.rf.a8f7d77e5edf801342e5bb2d7eca3215.jpg,publico,train/metales/companero_000361_dl_amarillo_00387.jpg,3,publico,0.8837,misma,
+[gris] Amarillo (metal),metal63_jpg.rf.a1fb8d6bf052d3cccc0fabccadfa8ac3.jpg,externo,train/metales/trashnet_metal_metal63.jpg,1,externo,0.9971,misma,
+[gris] Amarillo (metal),metal66_jpg.rf.fab9bad31dd81bc30807f6905aeef57b.jpg,publico,train/metales/companero_000253_dl_amarillo_00273.jpg,2,publico,0.9965,misma,
+[gris] Amarillo (metal),metal73_jpg.rf.a1867f7afbd5167e5f06f089f97c14dc.jpg,externo,train/metales/trashnet_metal_metal73.jpg,0,externo,0.9968,misma,
+[gris] Amarillo (metal),metal92_jpg.rf.653fef614684bba5b19fb5b133e7d0dd.jpg,externo,train/metales/trashnet_metal_metal92.jpg,0,externo,0.9969,misma,
+[gris] Amarillo (metal),metal94_jpg.rf.cf82ca8b81e9e45f56fde4d3ece198db.jpg,externo,train/metales/trashnet_metal_metal94.jpg,0,externo,0.9976,misma,
+[gris] Azul (papel/cartón),paper154_jpg.rf.5f4974e469a800b292cd5c388add3ac2.jpg,externo,train/vidrio/trashnet_glass_glass240.jpg,4,externo,0.8053,misma,
+[gris] Azul (papel/cartón),paper158_jpg.rf.05e04a556103824bc7c85f2a8dded2f7.jpg,publico,train/papel_carton/companero_001251_dl_azul_01353.jpg,2,publico,0.9956,misma,
+[gris] Azul (papel/cartón),paper170_jpg.rf.99b306a8903a84b4ab0fdbfb945ac76d.jpg,publico,test/papel_carton/companero_000169_dl_azul_00169.jpg,1,publico,0.9954,misma,
+[gris] Azul (papel/cartón),paper204_jpg.rf.208bd4baa7f9178afee864e8aa08fd28.jpg,publico,train/plasticos/companero_000864_dl_blanco_00966.jpg,3,publico,0.5246,dudosa,
+[gris] Azul (papel/cartón),paper231_jpg.rf.c38241ef939e9342a8e594c070595ed0.jpg,publico,train/papel_carton/companero_000970_dl_azul_01053.jpg,1,publico,0.9971,misma,
+[gris] Azul (papel/cartón),paper249_jpg.rf.31133ac820c3f9a89b614f3a75bdfaea.jpg,publico,val/papel_carton/companero_000080_dl_azul_00086.jpg,3,publico,0.8307,misma,
+[gris] Azul (papel/cartón),paper281_jpg.rf.c7476fdda843ad006cadf481445d3d1b.jpg,publico,train/papel_carton/companero_000582_dl_azul_00628.jpg,0,publico,0.9953,misma,
+[gris] Azul (papel/cartón),paper322_jpg.rf.169a96f3adf363b11ed0dd9b37ed5e02.jpg,publico,val/papel_carton/companero_000084_dl_azul_00091.jpg,3,publico,0.6599,dudosa,
+[gris] Azul (papel/cartón),paper385_jpg.rf.4f86a456a1e46f1bbbc64151e088c53a.jpg,publico,test/papel_carton/companero_000165_dl_azul_00165.jpg,1,publico,0.8922,misma,
+[gris] Azul (papel/cartón),paper442_jpg.rf.0a243033965b760846a691f1d3239837.jpg,publico,train/papel_carton/companero_001126_dl_azul_01222.jpg,2,publico,0.9948,misma,
+[gris] Azul (papel/cartón),paper451_jpg.rf.c9391cea191dd2c4d38eae94f050dfe4.jpg,publico,train/papel_carton/companero_000492_dl_azul_00533.jpg,0,publico,0.9976,misma,
+[gris] Azul (papel/cartón),paper529_jpg.rf.5165368b0e87b02b157cf0b72bdecd49.jpg,publico,val/papel_carton/companero_000141_dl_azul_00152.jpg,1,publico,0.9956,misma,
+[gris] Azul (papel/cartón),paper53_jpg.rf.5875a46c1d2df970d01da013d83ac81f.jpg,publico,test/papel_carton/companero_000198_dl_azul_00198.jpg,3,publico,0.8862,misma,
+[gris] Azul (papel/cartón),paper65_jpg.rf.c79922fc26d8f8b301979bfbee4f0fc0.jpg,publico,train/papel_carton/companero_000458_dl_azul_00496.jpg,0,publico,0.9968,misma,
+[gris] Azul (papel/cartón),paper66_jpg.rf.5aa718c9894ea8d45ccded9ecc65e009.jpg,externo,train/papel_carton/trashnet_paper_paper66.jpg,0,externo,0.9955,misma,
+[gris] Azul (papel/cartón),paper83_jpg.rf.706553cf15c132abcc19229473f1b663.jpg,externo,train/papel_carton/trashnet_paper_paper83.jpg,0,externo,0.9978,misma,
+[gris] Blanco (plástico),plastic260_jpg.rf.6014b733f065bd0c098d17c661fe4e74.jpg,publico,test/papel_carton/companero_000035_dl_azul_00035.jpg,2,publico,0.501,dudosa,
+[gris] Blanco (plástico),plastic361_jpg.rf.8e1559d59b5a7608064c7a45e526c80d.jpg,publico,val/vidrio/companero_000121_dl_gris_00134.jpg,3,publico,0.7029,dudosa,
+[gris] Blanco (plástico),plastic382_jpg.rf.f2b6aa81cd1ebf0b86d033234a21a6c2.jpg,publico,train/plasticos/companero_001085_dl_blanco_01213.jpg,0,publico,0.9962,misma,
+[gris] Blanco (plástico),plastic418_jpg.rf.74c6a4ef8188dd2af3649399c2de67db.jpg,publico,train/plasticos/companero_000863_dl_blanco_00965.jpg,0,publico,0.9943,misma,
+[gris] Blanco (plástico),plastic431_jpg.rf.6c8a74edeea369c61b19899001b305bc.jpg,publico,train/plasticos/companero_000684_dl_blanco_00768.jpg,1,publico,0.9958,misma,

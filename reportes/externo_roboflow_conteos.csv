@@ -1,0 +1,9 @@
+fuente,categoria,clase,candidatas,nombre_benchmark,dhash_benchmark,dhash_propios,copia_roboflow,dup_interno,orb_benchmark,fuera_del_tope,ok
+rfmed,Infectious,peligrosos,5103,843,2087,57,1419,87,71,39,500
+rfv4,Organik,organico,2701,11,53,18,40,9,4,2066,500
+rfv4,Anorganik (train),descartada,2141,,,,,,,,
+rfv4,Anorganik (valid),descartada,621,,,,,,,,
+rfv4,Residu (train),descartada,1905,,,,,,,,
+rfv4,Residu (valid),descartada,507,,,,,,,,
+rfmed,General (train),descartada,2562,,,,,,,,
+rfmed,General (valid),descartada,235,,,,,,,,

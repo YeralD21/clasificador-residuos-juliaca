@@ -3,7 +3,7 @@ entrenamiento? dHash 8x8 (igual que scripts/comun.py), umbral <= 4. Solo LEE, no
 
 Fuentes de entrenamiento comparadas:
   - zip:      dataset/crudo/dataset_ntp900058.zip (origen de dataset/publico; se lee en memoria)
-  - publico:  dataset/publico/**     - externo: dataset/externo/**     - juliaca: dataset/juliaca/**
+  - publico:  dataset/publico/**     - externo: dataset/externo/train/**     - juliaca: dataset/juliaca/**
 Imágenes de test: imagenes/test_docente/** (las que haya) y las 238 en gris del docente.
 
 python -I evaluacion_docente/fuga_dhash.py
@@ -47,10 +47,15 @@ def entrenamiento():
                         yield "zip", n, dhash_img(im)
     for sub in FUENTES:
         base = RAIZ / "dataset" / sub
-        for p in base.rglob("*"):
-            if p.suffix.lower() in EXT:
-                with Image.open(p) as im:
-                    yield sub, p.relative_to(base).as_posix(), dhash_img(im)
+        # externo: solo externo/train (lo que entra al entrenamiento); _fuentes, _revision y _descartados no se usan
+        raiz_sub = base / "train" if sub == "externo" else base
+        for p in raiz_sub.rglob("*"):
+            if p.suffix.lower() in EXT and not p.name.startswith("._"):
+                try:
+                    with Image.open(p) as im:
+                        yield sub, p.relative_to(base).as_posix(), dhash_img(im)
+                except OSError as e:
+                    print(f"  aviso: no se pudo leer {p} ({type(e).__name__})")
 
 
 def test():

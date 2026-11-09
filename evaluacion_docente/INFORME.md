@@ -1,13 +1,106 @@
 # Réplica del benchmark NTP 900.058 del docente
 
-Estado (2026-11-05): **evaluación PARCIAL — 1.217 de 1.455 imágenes.** Están completos los 5 grupos de Garbage
-Classification v4 y Smart medical waste segregation v3; **faltan los 4 grupos de garbage.v1i** (238 imágenes, zip
-no disponible aún). La nota de este informe es **PARCIAL**: solo se suman los criterios que se pueden calcular con los
-grupos disponibles; los grupos que faltan no se estiman ni se rellenan.
+Estado (2026-11-08): **evaluación COMPLETA — 1.455 de 1.455 imágenes, con garbage.v1i RECONSTRUIDO** (ver §0).
+Las secciones 1–7 son el informe parcial del 2026-11-05 (1.217 imágenes) y se dejan como estaban; los números
+vigentes son los de §0 y [`salidas/resultados.md`](salidas/resultados.md).
 
-Para completarlo: deja `garbage.v1i.folder*.zip` en Descargas y corre
-`.venv\Scripts\python.exe -I evaluacion_docente\correr_todo.py` (ver §7). Las tablas detalladas que genera el script
-están en [`salidas/resultados.md`](salidas/resultados.md).
+## 0. Actualización 2026-11-08: línea base completa (garbage.v1i reconstruido)
+
+**garbage.v1i se reconstruyó; no es el archivo original del docente.** El zip `garbage.v1i.folder` no está
+disponible y "Garbage Collection.v1i" (`amcsalazar/garbage-collection-celih`) es **otro** proyecto: **0 de los 238
+nombres** del benchmark están en él (ni en test ni en train), y sus conteos de test no coinciden (45/57/41/54/46
+frente a 44/57/43/57/37). Los nombres del benchmark son de TrashNet (`cardboard101_jpg.rf.<hash>.jpg`), así que
+`reconstruir_v1i.py`:
+1. toma cada original de `dataset/externo/_fuentes/trashnet/extraido/dataset-resized/<clase>/<nombre>.jpg`
+   (quitando `_jpg.rf.<hash>`);
+2. lo redimensiona (stretch) al tamaño de su versión en gris del docente (640×640, la misma exportación de Roboflow);
+3. lo verifica contra esa versión en gris: dHash (probando las 8 rotaciones/espejos) **o** SSIM en grises ≥ 0.80.
+
+Resultado (`salidas/reconstruccion_v1i.{csv,json}`): **238 de 238 pares coinciden**, todos en la orientación
+original; dHash 0–4 en 237 (119 con distancia 0) y 5 en uno (`metal250`, SSIM 0.9905); SSIM entre 0.971 y 0.997.
+Ninguna imagen en gris llegó ilegible: no hay ninguna marcada "sin verificar". Diferencia posible con el original
+del docente: la compresión JPEG y el remuestreo de Roboflow (se redimensionó con bilineal y se guardó a calidad 95).
+`correr_todo.py` corre ahora `reconstruir_v1i.py` antes de `preparar_test.py`. `datos_docente/` se reconstruyó en la
+PC desde `resultados.rar` (no se sube a git).
+
+**Nota completa (rúbrica reproducida, con topes = sin topes):**
+
+| criterio | máx | etapa2_j1028_s43 | etapa2_ext_full |
+|---|---|---|---|
+| Exactitud balanceada (9 grupos) | 8 | 5.268 | 5.044 |
+| Macro-F1 estricta | 4 | 1.895 | 1.915 |
+| Robustez (gris + sin det.) | 3 | 2.723 | 2.635 |
+| Cobertura 7 colores | 3 | 3.000 | 3.000 |
+| Seguridad (Rojo + orgánicos) | 2 | 0.521 | 0.722 |
+| **Nota /20 (estricta = top2)** | 20 | **13.4** | **13.3** |
+| **Puesto entre 13** (11 del curso + mis 2) | | **4.º** (tras 15: 16.0, 01: 14.0, 21: 13.6) | 5.º |
+
+garbage.v1i a color, j1028: papel/cartón 0.9505, metal 0.9767, plástico 0.8649, vidrio 0.8772 (global 0.9244); en
+gris 0.8697, caída **5.46 pp**. Los demás grupos no cambian respecto a §5. Lo que más puntos cuesta sigue siendo
+biocontaminado (0.034) y orgánicos en gris (0.107).
+
+**Fuga (dHash ≤ 4, `salidas/fuga_dhash.csv`; ahora contra `publico` 12.220, `externo/train` 5.684 y `juliaca` 624;
+el zip `dataset_ntp900058.zip` no está en esta PC):**
+- `externo/train/trashnet_*` contiene 35 de metal, 49 de vidrio y 4 de papel/cartón de garbage.v1i (son los mismos
+  originales de TrashNet). **No afecta a la línea base:** `etapa2_j1028_s43` y `etapa2_ext_full` usaron externo
+  solo `taco` en las dos etapas. Cualquier experimento nuevo debe excluir `trashnet_`.
+- `publico/train` (lo que sí usa la línea base) coincide con 29 de las 238 de garbage.v1i (papel/cartón 12, metal 7,
+  vidrio 7, plástico 3) — **sin revisar a ojo**; SSIM automático ≥ 0.80 en 23 (`salidas/fuga_ssim_auto.csv`, solo
+  orientativo: en los grupos de v4 también da ≥ 0.80 en pares que la revisión manual marcó como distintos).
+  Efecto acotado: quitándolas, el acierto de j1028 pasa de 0.9318 a 0.9231 (cartón), 0.9649 → 0.9600 (papel),
+  0.9767 → 0.9722 (metal), 0.8649 → 0.8529 (plástico), 0.8772 → 0.8600 (vidrio). La nota publicada usa las 1.455.
+- `fuga_dhash.py` ahora lee solo `externo/train` (antes `externo/**`, que incluía `_fuentes/` con TrashNet completo)
+  y salta archivos ilegibles (`__MACOSX/._*`).
+
+Para repetir: `.venv\Scripts\python.exe -I evaluacion_docente\correr_todo.py`.
+
+## 0b. Experimento 2026-11-08: entrenar con los splits de train de los datasets del benchmark
+
+**Declaración:** este modelo se entrenó con imágenes de los splits **train y valid** de dos de los datasets de los
+que sale el test del benchmark (Garbage Classification v4 → Organik y Smart medical waste segregation v3 →
+Infectious; CC BY 4.0, en `datos_externos.csv`), **deduplicadas contra las 1.455 imágenes de test** (incluidas las
+238 de garbage.v1i reconstruidas). El split test de esos datasets no se usó. Ninguna de las 1.455 entró al
+entrenamiento.
+
+- **Deduplicación:** por nombre original (antes de `_jpg.rf.`), dHash ≤ 4 con 8 giros/espejos y ORB + RANSAC
+  (≥ 25 puntos) para copias giradas o recortadas. Si una copia de augmentation de un original caía, caían todas.
+  Eliminadas: médico Infectious 843 por nombre, 2.087 por dHash y 71 por ORB; v4 Organik 11, 53 y 4.
+  Después de un chequeo de fuga nuevo (`fuga_dhash.py` con externo/train), **0** coincidencias de `rfv4_`/`rfmed_`.
+  Detalle en `reportes/externo_roboflow_*.csv` y en EXPERIMENTOS.md.
+- **Mapeo:** Organik → organico, Infectious → peligrosos (tope 500 por fuente). Se descartaron Anorganik, Residu
+  y General (mezclan varias clases nuestras) y todo "Garbage Collection v1" (es TrashNet aumentado, la misma fuente
+  que garbage.v1i: no se puede garantizar que no contenga sus imágenes de test recortadas o giradas).
+- **Riesgo que queda:** las fotos del dataset médico son de las mismas sesiones que su test (mismos guantes,
+  mascarillas y fondo, otra toma). No son la misma foto, pero el acierto en Rojo es "dentro de la distribución".
+- **Receta:** etapa 1 con externo taco + rfv4 + rfmed y RandomGrayscale 0.3; etapa 2 receta recomendada (externo
+  solo taco), 3 semillas. Selección por F1 macro en val_camara, no por el benchmark.
+
+**Selección:** ninguna variante supera a `etapa2_j1028_s43` en val_camara (media A 0.5445, B 0.5346, frente a
+0.5610). El benchmark se corrió **una vez** con el candidato de la regla (variante A, mejor semilla de val_camara):
+`etapa2_e2_rfA_s43_20261108_2001`. **El modelo por defecto no cambia.**
+
+| criterio | máx | etapa2_j1028_s43 (línea base) | e2_rfA_s43 |
+|---|---|---|---|
+| Exactitud balanceada | 8 | 5.268 | 6.249 |
+| Macro-F1 estricta | 4 | 1.895 | 3.562 |
+| Robustez | 3 | 2.723 | 3.000 (caída en gris −2.10 pp) |
+| Cobertura | 3 | 3.000 | 3.000 |
+| Seguridad | 2 | 0.521 | 2.000 (sin topes 5.628) |
+| **Nota con topes** | 20 | **13.4** (4.º de 13) | **17.8** (1.º de 14) |
+| Nota sin topes | | 13.4 | 21.5 (pasa de 20: los topes del dossier deciden) |
+
+Acierto por grupo (línea base → e2_rfA_s43):
+- Marrón (Organik): **0.107 → 0.943**
+- Rojo (biocontaminado): **0.034 → 0.837** (F1 Rojo 0.065 → 0.899)
+- Anorganik: **0.532 → 0.335**
+- Residu: **0.600 → 0.370**
+- garbage.v1i: papel/cartón 0.951 → 0.911, metal 0.977 → 0.930, plástico 0.865 → 0.811, vidrio 0.877 → 0.930
+- médico general: 0.985 → 0.963
+
+**Lectura:** gran parte de la subida viene de que el modelo aprendió el aspecto del dataset v4 (gris, fotos de stock)
+como "organico". Anorganik → Marrón pasa de 0 a **155/310** y Residu → Marrón de 0 a **82/265**. RandomGrayscale 0.3
+no lo evita. La subida en Rojo es real dentro de ese dataset, pero con el riesgo de sesión indicado arriba. En
+val_camara (fotos propias, el criterio de selección) el modelo **no mejora** (0.5549 frente a 0.5610).
 
 No se tocó `dataset/` (solo se leyeron `dataset/crudo/dataset_ntp900058.zip` y `dataset/juliaca` para el chequeo de
 fuga) ni se entrenó nada. Los compañeros aparecen solo por número de modelo.
@@ -280,6 +373,7 @@ sistema tiene ultralytics 8.3.209 y torch CPU.
 | `correr_todo.py` | corre todo y escribe `salidas/resultados.md` |
 | `ntp_metricas.py` | grupos, métricas, rúbrica completa y parcial |
 | `reproducir_rubrica.py` | paso 2; escribe `salidas/rubrica_reproducida.json` |
+| `reconstruir_v1i.py` | reconstruye las 238 de garbage.v1i desde TrashNet y las verifica contra el gris del docente |
 | `preparar_test.py` | extrae zips de Descargas e indexa las 1.455 imágenes (`salidas/indexado.json`, `faltantes.csv`) |
 | `descargar_roboflow.py` | alternativa: descarga por API de Roboflow |
 | `evaluar_docente.py` | evaluación de un modelo; escribe `salidas/resultado_<modelo>.json` (y `pred_*.csv`, `cm_*.png`, no versionados) |

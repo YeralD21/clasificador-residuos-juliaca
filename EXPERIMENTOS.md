@@ -779,6 +779,74 @@ test nuevo con objetos que ningún modelo haya visto.
 Informes: `reportes/etapa2_j1028_s43_juliaca_test.json`, `reportes/etapa2_ext_full_juliaca_test.json`,
 `reportes/juliaca_test_por_objeto.csv`, `reportes/registro_test.csv`.
 
+## Datos de Roboflow para el benchmark del docente (`e1_rf` → `e2_rfA` / `e2_rfB`, 2026-11-08)
+**Objetivo (usuario):** ver si los splits de train de los datasets del benchmark NTP 900.058 suben su nota sin
+fuga. Se reabre la línea de datos públicos solo para este experimento (decisión del usuario).
+
+**Fuentes nuevas** (aprobadas por el usuario, CC BY 4.0, registradas en `datos_externos.csv`; solo
+`externo/train`; script `scripts/importar_roboflow.py`): **se usaron los splits train y valid de estos datasets,
+deduplicados contra el test del benchmark; su split test se excluyó por completo.**
+
+| fuente (prefijo) | categoría → clase | candidatas | limpias | importadas (tope 500) |
+|---|---|---|---|---|
+| Garbage Classification v4 (`rfv4_`), todo en gris | Organik → organico | 2.701 | 2.570 | 500 |
+| Smart medical waste segregation v3 (`rfmed_`) | Infectious → peligrosos | 5.103 | 539 | 500 |
+| v4 Anorganik, v4 Residu, médico General | **descartadas** (mezclan varias clases nuestras) | 8.093 | — | 0 |
+| Garbage Collection v1 (`amcsalazar`) | **descartado** (es TrashNet aumentado, la fuente del garbage.v1i del benchmark) | 6.447 | — | 0 |
+
+**Deduplicación** (en orden; si una versión de un original cae, caen todas sus copias de augmentation):
+nombre original igual a alguna de las 1.455 del benchmark → dHash ≤ 4 contra las 1.455 (+ 238 en gris) con sus 8
+giros/espejos → dHash ≤ 4 contra todo publico, juliaca, val_camara y externo/train → una copia por original →
+duplicados internos → **ORB + RANSAC ≥ 25 puntos** contra las 5 vecinas del benchmark por embedding (extra:
+misma foto girada o recortada; calibrado a ojo, los 16 pares con ≥ 40 eran la misma foto). Eliminadas por el
+benchmark: médico Infectious 843 por nombre (765 train + 78 valid: el propio dataset repite originales entre train y
+test), 2.087 por dHash (1.374 directas + 713 copias del mismo original), 71 por ORB; v4 Organik 11 por nombre, 53 por
+dHash, 4 por ORB. Informes: `reportes/externo_roboflow_{dedup,conteos,benchmark}.csv`. `auditar.py` sin errores.
+**Riesgo que queda:** el médico tiene fotos de la misma sesión que su test (mismos guantes y fondo, otra pose); no
+son la misma foto y no se quitaron.
+
+**Receta** (un factor nuevo por etapa respecto a `e1_ext` → `e2_ext_full_j1028`, más RandomGrayscale):
+- `e1_rf`: igual a `e1_ext` (yolo26s-cls, 224, 60 ép., semilla 42) con externo `taco` + `rfv4` + `rfmed`
+  (nunca `trashnet_`) y **RandomGrayscale p = 0.3** en train, todas las clases (`entrenar.py --gris 0.3`).
+- `e2_rfA_s{42,43,44}`: desde `e1_rf`, receta recomendada (AdamW 1e-4, freeze 6, replay 2, externo solo `taco`),
+  gris 0.3.
+- `e2_rfB_s{42,43,44}`: A + replay de las fuentes nuevas en la etapa 2: 50 organico (`rfv4`) y 50 peligrosos
+  (`rfmed`) por semilla (`--externo-replay rfv4=50 rfmed=50`).
+
+`e1_rf` en publico/val: F1 0.9055 (top-1 0.9046), frente a 0.9153 de `e1_ext`.
+
+**Validación** (`reportes/etapa2_e2_rf*_20261108_*_{val_camara,publico_val,juliaca_val}.json`,
+`reportes/etapa2_j1028_s43_val_camara.json` reevaluado, mismo 0.5610):
+
+| modelo | F1 val_camara (293) | aciertos | F1 juliaca/val (83) | F1 publico/val |
+|---|---|---|---|---|
+| **etapa2_j1028_s43 (actual)** | **0.5610** | 166 | 0.6160 | 0.8739 |
+| e2_rfA_s42 | 0.5439 | 173 | 0.6843 | 0.8609 |
+| e2_rfA_s43 | 0.5549 | 170 | 0.7675 | 0.8676 |
+| e2_rfA_s44 | 0.5346 | 169 | 0.6255 | 0.8682 |
+| **media A** | **0.5445** | 170.7 | 0.6924 | 0.8656 |
+| e2_rfB_s42 | 0.5303 | 166 | 0.6720 | 0.8688 |
+| e2_rfB_s43 | 0.5072 | 155 | 0.6722 | 0.8641 |
+| e2_rfB_s44 | 0.5663 | 175 | 0.8190 | 0.8618 |
+| **media B** | **0.5346** | 165.3 | 0.7211 | 0.8649 |
+
+F1 por clase en val_camara (j1028_s43 → rango de A): generales 0.645 → 0.696–0.722, metales 0.364 → 0.409–0.457,
+organico 0.800 → 0.743–0.824, papel_carton 0.442 → 0.453–0.525, peligrosos 0.480 → 0.450–0.565, plasticos 0.512 →
+0.466–0.496, **vidrio 0.684 → 0.400–0.425** (plasticos → vidrio 6 → 10–15). generales → papel_carton baja de 27 a
+14–24.
+
+**Resultado según la regla (media de F1 macro en val_camara frente a `etapa2_j1028_s43`): NINGUNA variante lo
+supera** (A 0.5445, B 0.5346 frente a 0.5610). A es igual a la media de las 3 semillas de j1028 (0.5437) y acierta
+más fotos (170.7 frente a 166), pero pierde vidrio. **El modelo por defecto no cambia.**
+
+**Benchmark del docente** (una sola corrida de `correr_todo.py`, con el candidato que da la regla: variante A, la
+de mayor media, en su mejor semilla de val_camara, `e2_rfA_s43`; detalle en `evaluacion_docente/INFORME.md` §0b):
+nota **17.8** frente a 13.4 (1.º de 14; la línea base, 4.º de 13), pero con un atajo claro: el modelo manda a organico las fotos
+en gris del dataset v4 sin importar el material (Anorganik → Marrón 155/310, Residu → Marrón 82/265; esos dos grupos
+bajan de 0.53 y 0.60 a 0.34 y 0.37). **val_camara baja y el benchmark sube: no se cambia nada sin el OK del usuario.**
+
+Modelos en `modelos/experimentos/` (no se suben). juliaca/test NO se usó.
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo

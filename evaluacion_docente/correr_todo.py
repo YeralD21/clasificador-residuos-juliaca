@@ -2,6 +2,7 @@
 
   .venv\\Scripts\\python.exe -I evaluacion_docente\\correr_todo.py
 
+0. reconstruir_v1i.py : reconstruye las 238 de garbage.v1i desde TrashNet (verificadas contra el gris del docente)
 1. preparar_test.py   : extrae zips nuevos de ~/Downloads e indexa las 1.455 imágenes
 2. fuga_dhash.py      : chequeo de fuga (dHash <= 4) contra el zip de publico, publico, externo, juliaca
 3. evaluar_docente.py : etapa2_j1028_s43 y etapa2_ext_full, variantes estricta y top2
@@ -141,14 +142,23 @@ def informe():
 
 
 def main():
+    global MODELOS
     ap = argparse.ArgumentParser()
     ap.add_argument("--solo-informe", action="store_true")
+    ap.add_argument("--modelos", nargs="+", default=[],
+                    help="pesos extra a evaluar (ruta desde la raíz); las líneas base se reevalúan solo si falta su "
+                         "resultado_<modelo>.json")
     a = ap.parse_args()
+    extra = {Path(p).stem: p for p in a.modelos}
+    base = {m: f"modelos/{m}.pt" for m in MODELOS}
+    MODELOS = tuple(base) + tuple(m for m in extra if m not in base)
     if not a.solo_informe:
+        correr("reconstruir_v1i.py")
         correr("preparar_test.py")
         correr("fuga_dhash.py")
-        for m in MODELOS:
-            correr("evaluar_docente.py", "--modelo", f"modelos/{m}.pt")
+        for m, ruta in {**base, **extra}.items():
+            if m in extra or not (OUT / f"resultado_{m}.json").is_file():
+                correr("evaluar_docente.py", "--modelo", ruta)
     informe()
 
 

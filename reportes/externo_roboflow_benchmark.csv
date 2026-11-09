@@ -1,0 +1,13 @@
+fuente,categoria,split,motivo,n
+rfmed,Infectious,train,dhash_benchmark,1914
+rfmed,Infectious,train,nombre_benchmark,765
+rfmed,Infectious,train,orb_benchmark,54
+rfmed,Infectious,valid,dhash_benchmark,173
+rfmed,Infectious,valid,nombre_benchmark,78
+rfmed,Infectious,valid,orb_benchmark,17
+rfv4,Organik,train,dhash_benchmark,41
+rfv4,Organik,train,nombre_benchmark,9
+rfv4,Organik,train,orb_benchmark,3
+rfv4,Organik,valid,dhash_benchmark,12
+rfv4,Organik,valid,nombre_benchmark,2
+rfv4,Organik,valid,orb_benchmark,1
