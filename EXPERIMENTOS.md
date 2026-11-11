@@ -900,6 +900,10 @@ seguridad 2.000. Marrón (Organik) 0.107 → 0.500; Rojo 0.034 → 0.096; Anorga
 
 Modelos en `modelos/experimentos/` (no se suben). juliaca/test NO se usó.
 
+**Decisión (usuario, 2026-11-11):** `e2_nf_s43` pasa a modelo por defecto como `modelos/etapa2_nf_s43.pt` (copia de
+`etapa2_e2_nf_s43_20261110_2132.pt`, SHA-1 `0fe1ff9468055b2292ded03b707c895be8c5c17e`; sí se sube).
+`etapa2_j1028_s43` queda como alternativa. `e2_nf_s43` no se evaluó en juliaca/test.
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo

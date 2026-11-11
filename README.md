@@ -11,7 +11,7 @@ Lanzadores en la raíz del repo. Se abren con **doble clic**, o escribiendo su n
 
 | Lanzador | Qué hace | Script |
 |---|---|---|
-| `demo.bat` | Demo en vivo: detección + clasificación con los valores por defecto (cámara `auto`, detector `yoloe-26s-seg.pt`, modelo `modelos/etapa2_j1028_s43.pt`; alternativa `demo --modelo modelos\etapa2_ext_full.pt`). Q sale, F pantalla completa, S guarda recortes. | `scripts/inferencia_deteccion.py` (sección 6.1) |
+| `demo.bat` | Demo en vivo: detección + clasificación con los valores por defecto (cámara `auto`, detector `yoloe-26s-seg.pt`, modelo `modelos/etapa2_nf_s43.pt`; alternativa `demo --modelo modelos\etapa2_j1028_s43.pt`). Q sale, F pantalla completa, S guarda recortes. | `scripts/inferencia_deteccion.py` (sección 6.1) |
 | `capturar.bat` | Sesión de fotos: **ESPACIO o clic** = foto JPG calidad 95, sin modificar y a la resolución completa de la cámara; **N** = nuevo objeto (`objNNN` automático); **Q** = salir. Muestra el objeto actual, cuántas fotos lleva y un destello al capturar. Las teclas van a la **ventana de la cámara** (haz clic en ella primero; en la terminal no hacen nada). Guarda en `<repo>\fotos_laptop\<AAAA-MM-DD>\objNNN\` (otra carpeta: `capturar --salida E:\fotos`), **fuera de `dataset\` y de git** (`.gitignore`): la clase y el split los decides tú después. `etiquetar` e `importar` buscan ahí y, si no hay sesiones, en la ubicación anterior (`..\fotos_laptop`, carpeta hermana del repo); ambos aceptan `--salida`/`--raiz`. | `scripts/capturar_sesion.py` |
 | `etiquetar.bat` | Etiquetas **a mano** cada objeto de la última sesión de `capturar.bat`: ves un mosaico de sus fotos, eliges la **clase** (1 papel_carton, 2 metales, 3 plasticos, 4 vidrio, 5 organico, 6 peligrosos, 7 generales, 0 sin_residuo) y el **split** (T train, V val). S salta el objeto (vuelve a salir la próxima vez), D lo descarta, Z deshace, Q sale. Guarda en `fotos_laptop\<fecha>\etiquetas.csv` (objeto, clase, split, n_fotos, nota) tras cada decisión y retoma donde te quedaste. | `scripts/etiquetar_sesion.py` |
 | `importar.bat` | Con doble clic **solo muestra** qué haría (`--dry-run`): a qué split/clase va cada objeto y la tabla de fotos/objetos antes y después. `importar --importar` copia de verdad a `dataset\juliaca\<split>\<clase>\objNNN_<fecha>-objMMM\` (siguiente número libre de juliaca, archivos `20261026_obj003_01.jpg`) y luego corre `auditar.py`. | `scripts/importar_sesion.py` |
@@ -154,15 +154,19 @@ Con `S` guardas un recorte en `capturas_revisar/`. Tú decides su clase y lo mue
 
 ## 6. Usar el modelo en la laptop
 
-> **Modelo actual:** `modelos/etapa2_j1028_s43.pt` (`e2_ext_full_j1028_s43`, elegido el 2026-10-28), es el `--modelo` por defecto de `inferencia_webcam.py`, `inferencia_deteccion.py` y `demo.bat`. Misma receta que `etapa2_ext_full` con juliaca del 28-10 (Plaza Vea) y semilla 43. Se eligió por validación: media de F1 macro en `val_camara` de 3 semillas 0.5437 frente a 0.5183, y la semilla 43 fue la mejor (0.5610, número optimista porque se eligió mirando ese set). Evaluación final en `dataset/juliaca/test`, una sola vez (2026-10-28): F1 macro **0.4452**, top-1 0.5408 (53/98). `etapa2_ext_full`, evaluado como referencia: 0.4972 y 54/98. test no se vuelve a usar para elegir modelos (ver `EXPERIMENTOS.md`, "Evaluación final en test").
+> **Modelo actual:** `modelos/etapa2_nf_s43.pt` (`e2_nf_s43`, copia de `modelos/experimentos/etapa2_e2_nf_s43_20261110_2132.pt`, SHA-1 `0fe1ff9468055b2292ded03b707c895be8c5c17e`; elegido el 2026-11-11). Es el `--modelo` por defecto de `inferencia_webcam.py`, `inferencia_deteccion.py` y `demo.bat`.
+> - **Datos:** etapa 1 `e1_nf` = publico + externo `taco`, `fwd` (Roboflow food-waste, organico), `nx` (NexTech14: battery → peligrosos, food/garden/other-organic → organico) + **RandomGrayscale 0.3** (`--gris 0.3`); etapa 2 = receta recomendada (juliaca + replay 2.0) con externo solo `taco` y `--gris 0.3`, semilla 43. Sin `rfv4_`, `rfmed_` ni `trashnet_` ni nada derivado del benchmark del docente (deduplicado contra él). Detalle en `EXPERIMENTOS.md`, "Versión limpia sin fuentes del benchmark".
+> - **Validación:** media de F1 macro en `val_camara` de 3 semillas **0.5568** frente a 0.5437 de `j1028`; la semilla 43 fue la mejor: F1 **0.5716**, top-1 0.5768 (169/293), número optimista porque se eligió mirando ese set. juliaca/val 0.7587, publico/val 0.8711.
+> - **Benchmark NTP 900.058 del docente** (una corrida, `evaluacion_docente/salidas/resultados.md`): nota **16.0/20** frente a 13.4 de `etapa2_j1028_s43` (2.º de 14, empatado con el 1.º). Exactitud balanceada 5.482/8, macro-F1 2.521/4, cobertura 3/3, robustez 3/3 (caída en gris −0.84 pp), seguridad 2/2.
+> - **No evaluado en `dataset/juliaca/test`** (test ya se usó una vez el 2026-10-28 con `etapa2_j1028_s43`).
 >
-> **Alternativa:** `modelos/etapa2_ext_full.pt`, el modelo anterior. Falla menos con envolturas impresas (val_camara: generales → papel_carton 12 frente a 27) y con cajas de cartón impresas en test. Úsalo con `--modelo modelos/etapa2_ext_full.pt` (también `demo --modelo modelos\etapa2_ext_full.pt`).
+> **Alternativa:** `modelos/etapa2_j1028_s43.pt` (`e2_ext_full_j1028_s43`, modelo por defecto del 2026-10-28 al 2026-11-10). Misma receta que `etapa2_ext_full` con juliaca del 28-10 (Plaza Vea), externo `taco`, sin gris, semilla 43. val_camara: F1 0.5610 (media de 3 semillas 0.5437); benchmark del docente 13.4. Evaluación final en `dataset/juliaca/test`, una sola vez (2026-10-28): F1 macro **0.4452**, top-1 0.5408 (53/98); `etapa2_ext_full`, como referencia: 0.4972 y 54/98 (ver `EXPERIMENTOS.md`, "Evaluación final en test"). Úsalo con `--modelo modelos/etapa2_j1028_s43.pt` (también `demo --modelo modelos\etapa2_j1028_s43.pt`). `modelos/etapa2_ext_full.pt` sigue disponible (falla menos con envolturas impresas: val_camara generales → papel_carton 12 frente a 27).
 
 ```bash
 git pull
 .venv\Scripts\activate
 python scripts/verificar_entorno.py --comparar entorno_referencia.json      # debe decir "Todo coincide."
-python scripts/inferencia_webcam.py --imgsz 224                             # cámara auto, modelo modelos/etapa2_j1028_s43.pt
+python scripts/inferencia_webcam.py --imgsz 224                             # cámara auto, modelo modelos/etapa2_nf_s43.pt
 ```
 
 - Si `.venv` no existe en la laptop, créalo como en la sección 4, paso 4: `py -3.13 -m venv .venv`, actívalo y `pip install -r requirements-lock.txt --extra-index-url https://download.pytorch.org/whl/cu130`.
@@ -206,7 +210,7 @@ python scripts/inferencia_deteccion.py --debug                           # adem�
 
 | Argumento | Defecto | Qué hace |
 |---|---|---|
-| `--modelo` | `modelos/etapa2_ext_full.pt` | clasificador (modelo actual, ver `EXPERIMENTOS.md`); `modelos/etapa1_ganador.pt` y `modelos/etapa2_v2.pt` siguen disponibles |
+| `--modelo` | `modelos/etapa2_nf_s43.pt` | clasificador (modelo actual, ver `EXPERIMENTOS.md`); alternativa `modelos/etapa2_j1028_s43.pt`; `modelos/etapa2_ext_full.pt`, `modelos/etapa1_ganador.pt` y `modelos/etapa2_v2.pt` siguen disponibles |
 | `--detector` | `yoloe-26s-seg.pt` | detector (decisión del usuario tras la comparación de abajo; antes `yoloe-26n-seg.pt`); se descarga solo a `modelos/detectores/` (no se sube a git) |
 | `--camara` / `--fuente` | `auto` / — | índice de webcam (auto: MX Brio si está, si no la integrada), o video/imagen para pruebas |
 | `--prompts` | bottle, can, plastic bag, snack wrapper, battery, phone, charger, cable, cup, glass jar, fruit peel, food waste, tube, cardboard box, juice box, candy wrapper, chocolate bar, sachet, printed paper document, sheet of paper, newspaper, notebook, paper bag, egg carton, used tissue | qué residuos busca el detector. Sin los genéricos `box`, `paper` y `container` (marcaban mesa, hojas y fondo); si los necesitas, pásalos con `--prompts "...,box,paper,container"` |
