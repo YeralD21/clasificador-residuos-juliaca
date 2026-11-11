@@ -1,6 +1,7 @@
 """Pasos 4-6: evalúa un modelo YOLO-cls propio con el protocolo NTP 900.058 del docente.
 
 Uso (desde la raíz del repo):
+  python -I evaluacion_docente/evaluar_docente.py                                   # modelo por defecto: modelos/etapa2_nf_s43.pt
   python -I evaluacion_docente/evaluar_docente.py --modelo modelos/etapa2_j1028_s43.pt
   python -I evaluacion_docente/evaluar_docente.py --modelo modelos/etapa2_ext_full.pt
 
@@ -105,7 +106,8 @@ def guardar_png_matriz(cols, m, titulo, ruta):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--modelo", default="modelos/etapa2_j1028_s43.pt")
+    ap.add_argument("--modelo", default="modelos/etapa2_nf_s43.pt",
+                    help="por defecto el modelo actual; alternativa: modelos/etapa2_j1028_s43.pt")
     ap.add_argument("--imgsz", type=int, default=224)
     ap.add_argument("--batch", type=int, default=32)
     ap.add_argument("--test", default=str(TEST))

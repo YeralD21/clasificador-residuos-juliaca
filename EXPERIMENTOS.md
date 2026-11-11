@@ -902,7 +902,95 @@ Modelos en `modelos/experimentos/` (no se suben). juliaca/test NO se usó.
 
 **Decisión (usuario, 2026-11-11):** `e2_nf_s43` pasa a modelo por defecto como `modelos/etapa2_nf_s43.pt` (copia de
 `etapa2_e2_nf_s43_20261110_2132.pt`, SHA-1 `0fe1ff9468055b2292ded03b707c895be8c5c17e`; sí se sube).
-`etapa2_j1028_s43` queda como alternativa. `e2_nf_s43` no se evaluó en juliaca/test.
+`etapa2_j1028_s43` queda como alternativa. También es el modelo por defecto de `evaluacion_docente/evaluar_docente.py`
+y el de `raspberry_guide/modelo/`. Su evaluación en juliaca/test está en la sección siguiente.
+
+## Evaluación de `etapa2_nf_s43` en test, solo para reportar (2026-11-11)
+**El modelo ya estaba elegido por validación (`val_camara`) antes de esta corrida, y la elección no cambia por este
+resultado.** El usuario pidió explícitamente evaluar `modelos/etapa2_nf_s43.pt` en `dataset/juliaca/test` **una sola
+vez**, para el informe. Se usó la función `evaluar()` de `scripts/evaluar.py`, la misma que corre
+`python scripts/evaluar.py --pesos modelos/etapa2_nf_s43.pt --split test`, con `imgsz 224` y `batch 32`. Queda en
+`reportes/registro_test.csv` (2026-11-11 18:44). `etapa2_j1028_s43` **no** se volvió a evaluar: sus números son los
+del 2026-10-28. Un intento anterior se colgó al arrancar el DataLoader (faltaba `if __name__ == "__main__"` en el
+script auxiliar). No llegó a dar ninguna métrica ni a escribir en el registro.
+
+Es el **segundo modelo elegido que se mide en este test**: test ya se había visto el 2026-10-28. Por eso esta medida es
+menos independiente que la primera y **no** sirve para elegir entre nf y j1028. Ambas se reportan tal cual.
+
+| juliaca/test (98 fotos, 18 objetos) | etapa2_j1028_s43 (2026-10-28) | **etapa2_nf_s43 (2026-11-11)** |
+|---|---|---|
+| F1 macro (8 clases) | 0.4452 | **0.5025** |
+| top-1 | 0.5408 (53/98) | **0.6327 (62/98)** |
+| top-5 | 0.9796 | 0.9898 |
+| aciertos en los 10 objetos de Plaza Vea (60 fotos) | 32 | 38 |
+| aciertos en los 8 objetos anteriores (38 fotos) | 21 | 24 |
+
+**F1 por clase (aciertos/n)** (`reportes/etapa2_nf_s43_juliaca_test.json`):
+
+| clase | n | etapa2_j1028_s43 | etapa2_nf_s43 |
+|---|---|---|---|
+| generales | 23 | 0.704 (19) | 0.717 (19) |
+| metales | 24 | 0.683 (14) | 0.684 (13) |
+| organico | 6 | **0.286 (1)** | 0.000 (0) |
+| papel_carton | 6 | 0.000 (0) | 0.000 (0) |
+| peligrosos | 4 | 0.308 (2) | **0.400 (3)** |
+| plasticos | 21 | 0.455 (10) | **0.680 (17)** |
+| sin_residuo | 7 | 0.727 (4) | **0.923 (6)** |
+| vidrio | 7 | 0.400 (3) | **0.615 (4)** |
+
+**Matriz de confusión de etapa2_nf_s43** (filas = real, columnas = predicho):
+
+| | gen | met | org | pap | pel | pla | sin | vid |
+|---|---|---|---|---|---|---|---|---|
+| generales | **19** | 0 | 0 | 2 | 0 | 2 | 0 | 0 |
+| metales | 2 | **13** | 0 | 0 | 8 | 1 | 0 | 0 |
+| organico | 0 | 0 | **0** | 0 | 0 | 6 | 0 | 0 |
+| papel_carton | 6 | 0 | 0 | **0** | 0 | 0 | 0 | 0 |
+| peligrosos | 1 | 0 | 0 | 0 | **3** | 0 | 0 | 0 |
+| plasticos | 2 | 0 | 0 | 0 | 0 | **17** | 0 | 2 |
+| sin_residuo | 0 | 0 | 0 | 0 | 0 | 1 | **6** | 0 |
+| vidrio | 0 | 1 | 0 | 0 | 0 | 2 | 0 | **4** |
+
+**Aciertos por objeto** (`reportes/juliaca_test_por_objeto_nf_s43.csv`). La columna j1028 se copió de
+`reportes/juliaca_test_por_objeto.csv`. Para nf se predijo foto a foto en la misma corrida, y el total por foto (62)
+coincide con el informe oficial:
+
+| clase | objeto | n | j1028_s43 | errores j1028_s43 | nf_s43 | errores nf_s43 |
+|---|---|---|---|---|---|---|
+| generales | obj007 pasta dental Oral-B | 4 | 1 | pla 1, pap 1, vid 1 | 2 | pla 2 |
+| generales | obj077 doypack mostaza B&D (PV) | 6 | 6 | – | 6 | – |
+| generales | obj081 bolsa Shin Ramyun (PV) | 7 | 6 | pap 1 | 5 | pap 2 |
+| generales | obj092 bolsa frutos secos Bell's (PV) | 6 | 6 | – | 6 | – |
+| metales | obj026 lata de atún | 16 | 9 | pel 4, pla 2, pap 1 | 8 | **pel 8** |
+| metales | obj074 lata de café Kirma (PV) | 8 | 5 | pla 2, gen 1 | 5 | gen 2, pla 1 |
+| organico | obj104 ajo (PV) | 6 | 1 | pla 3, vid 1, gen 1 | 0 | pla 6 |
+| papel_carton | obj059 caja de Zucaritas (PV) | 6 | 0 | gen 6 | 0 | gen 6 |
+| peligrosos | obj030 pila Toshiba | 4 | 2 | gen 2 | 3 | gen 1 |
+| plasticos | obj016 botella agua Cielo | 2 | 2 | – | 2 | – |
+| plasticos | obj018 botella alcohol en gel | 2 | 1 | pel 1 | 2 | – |
+| plasticos | obj068 pote aceitunas negras (PV) | 5 | 5 | – | 4 | vid 1 |
+| plasticos | obj085 pote orégano Bell's (PV) | 6 | 2 | pel 1, vid 1, met 1, gen 1 | 3 | gen 2, vid 1 |
+| plasticos | obj108 pote de gel Ego, negro (PV) | 6 | **0** | met 2, vid 2, gen 1, pel 1 | **6** | – |
+| sin_residuo | esc05 mesa oscura horizontal | 3 | 2 | pla 1 | 3 | – |
+| sin_residuo | esc07 manta negra | 4 | 2 | pap 2 | 3 | pla 1 |
+| vidrio | obj020 vaso rosado | 3 | 2 | pla 1 | 1 | pla 1, met 1 |
+| vidrio | obj065 frasco encurtido Selection (PV) | 4 | 1 | pla 3 | 3 | pla 1 |
+
+**Lectura:**
+- nf_s43 acierta 9 fotos más (62 frente a 53) y tiene mayor F1 macro (0.5025 frente a 0.4452). Casi toda la mejora
+  viene de plasticos (+7: el pote negro de gel Ego pasa de 0/6 a 6/6) y de sin_residuo, vidrio y peligrosos (+1 o
+  +2 cada una).
+- **No se arregla:** papel_carton sigue en 0/6 (la caja de Zucaritas se va entera a generales) y organico baja a 0/6
+  (el ajo se va entero a plasticos), a pesar de las 277 imágenes externas de organico (`fwd_` y `nx_`).
+- **Nuevo error:** la lata de atún se va a peligrosos en 8 de 16 fotos (j1028: 4). Puede tener que ver con las 65
+  imágenes de baterías de `nx_`, pero no se comprobó.
+- Igual que en la primera evaluación, es un set pequeño: un objeto mueve el F1 de su clase entre 0 y 1, y 2 de las 8
+  clases (organico, papel_carton) tienen un solo objeto.
+
+**juliaca/test no se vuelve a usar para elegir modelos, épocas ni hiperparámetros** (reglas 5 y 9).
+
+Informes: `reportes/etapa2_nf_s43_juliaca_test.json`, `reportes/juliaca_test_por_objeto_nf_s43.csv`,
+`reportes/registro_test.csv` (y `runs/evaluaciones/etapa2_nf_s43_juliaca_test/`, que no se sube).
 
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:

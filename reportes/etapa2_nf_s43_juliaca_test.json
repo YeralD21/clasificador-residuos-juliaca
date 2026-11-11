@@ -1,0 +1,158 @@
+{
+  "modelo": "modelos/etapa2_nf_s43.pt",
+  "datos": "juliaca/test",
+  "accuracy_top1": 0.6327,
+  "accuracy_top5": 0.9898,
+  "f1_macro": 0.5025,
+  "clases_con_datos": 8,
+  "por_clase": [
+    {
+      "clase": "generales",
+      "n": 23,
+      "precision": 0.6333,
+      "recall": 0.8261,
+      "f1": 0.717
+    },
+    {
+      "clase": "metales",
+      "n": 24,
+      "precision": 0.9286,
+      "recall": 0.5417,
+      "f1": 0.6842
+    },
+    {
+      "clase": "organico",
+      "n": 6,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "clase": "papel_carton",
+      "n": 6,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "clase": "peligrosos",
+      "n": 4,
+      "precision": 0.2727,
+      "recall": 0.75,
+      "f1": 0.4
+    },
+    {
+      "clase": "plasticos",
+      "n": 21,
+      "precision": 0.5862,
+      "recall": 0.8095,
+      "f1": 0.68
+    },
+    {
+      "clase": "sin_residuo",
+      "n": 7,
+      "precision": 1.0,
+      "recall": 0.8571,
+      "f1": 0.9231
+    },
+    {
+      "clase": "vidrio",
+      "n": 7,
+      "precision": 0.6667,
+      "recall": 0.5714,
+      "f1": 0.6154
+    }
+  ],
+  "matriz_real_x_predicho": [
+    [
+      19,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      2,
+      13,
+      0,
+      0,
+      8,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0
+    ],
+    [
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      0,
+      0,
+      0,
+      17,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      6,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      4
+    ]
+  ],
+  "clases": [
+    "generales",
+    "metales",
+    "organico",
+    "papel_carton",
+    "peligrosos",
+    "plasticos",
+    "sin_residuo",
+    "vidrio"
+  ]
+}

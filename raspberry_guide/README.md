@@ -5,6 +5,7 @@ entrenado en el proyecto *clasificador-residuos-juliaca*.
 
 | Dato del modelo | Valor |
 |---|---|
+| Archivo | `modelo/etapa2_nf_s43.pt` (modelo por defecto del proyecto desde el 2026-11-11; antes `etapa2_j1028_s43.pt`, que sigue en `modelos/` de la raíz y se usa con `bash INICIAR.sh --modelo ../modelos/etapa2_j1028_s43.pt`) |
 | Arquitectura | YOLO26s-cls (clasificación) |
 | Parámetros | 5.4 M |
 | Cómputo | 12.1 GFLOPs |
@@ -35,7 +36,7 @@ La carpeta debe quedar así:
 ```
 raspberry_guide/
 ├── modelo/
-│   └── etapa2_j1028_s43.pt
+│   └── etapa2_nf_s43.pt
 ├── LEEME_PRIMERO.txt
 ├── INICIAR.sh            ← todo en uno
 ├── clasificar_camara.py
