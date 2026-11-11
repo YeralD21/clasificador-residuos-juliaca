@@ -39,6 +39,10 @@ EXPERIMENTOS = {
         # deduplicados contra el test del benchmark), nunca trashnet_; RandomGrayscale 0.3 en train.
         "e1_rf":      ("igual a e1_ext + rfv4 (organico 500) + rfmed (peligrosos 500) + RandomGrayscale 0.3",
                        ["--externo", "--externo-fuentes", "taco", "rfv4", "rfmed", "--gris", "0.3"]),
+        # 2026-11-10: versión limpia sin rfv4/rfmed ni trashnet: + Food Waste (fwd, 192 organico) y NexTech14 (nx, 85
+        # organico + 65 pilas -> peligrosos), importar_candidatas.py, deduplicados contra benchmark y familia Smart medical.
+        "e1_nf":      ("igual a e1_ext + fwd + nx (organico 277, peligrosos 65) + RandomGrayscale 0.3",
+                       ["--externo", "--externo-fuentes", "taco", "fwd", "nx", "--gris", "0.3"]),
     },
     2: {
         "e2_base":     ("lr 1e-4, 6 capas congeladas, replay 1 (referencia)", []),
@@ -84,6 +88,12 @@ EXPERIMENTOS = {
                          ["--pesos", "@e1_rf", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--externo-replay", "rfv4=50", "rfmed=50", "--seed", "43"]),
         "e2_rfB_s44": ("variante A + replay de rfv4 y rfmed (50 por clase) en la etapa 2, semilla 44",
                          ["--pesos", "@e1_rf", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--externo-replay", "rfv4=50", "rfmed=50", "--seed", "44"]),
+        "e2_nf_s42": ("receta recomendada desde e1_nf (externo solo taco) + gris 0.3, semilla 42",
+                       ["--pesos", "@e1_nf", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "42"]),
+        "e2_nf_s43": ("receta recomendada desde e1_nf (externo solo taco) + gris 0.3, semilla 43",
+                       ["--pesos", "@e1_nf", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "43"]),
+        "e2_nf_s44": ("receta recomendada desde e1_nf (externo solo taco) + gris 0.3, semilla 44",
+                       ["--pesos", "@e1_nf", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "44"]),
         "e2_solo_jul": ("SIN etapa 1: desde ImageNet solo con fotos de Juliaca",
                         ["--pesos", "yolo26s-cls.pt", "--replay", "0", "--freeze", "0", "--lr", "1e-3"]),
     },

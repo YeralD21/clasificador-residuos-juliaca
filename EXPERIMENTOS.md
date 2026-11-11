@@ -847,6 +847,59 @@ bajan de 0.53 y 0.60 a 0.34 y 0.37). **val_camara baja y el benchmark sube: no s
 
 Modelos en `modelos/experimentos/` (no se suben). juliaca/test NO se usó.
 
+## Versión limpia sin fuentes del benchmark (`e1_nf` → `e2_nf_s{42,43,44}`, 2026-11-10)
+**Objetivo (usuario):** repetir la receta sin `rfv4_`, `rfmed_` ni `trashnet_` y sin nada derivado de los datasets
+del benchmark, con fuentes nuevas aprobadas una a una. Script `scripts/importar_candidatas.py`; registros viejos
+de `datos_externos.csv` intactos; `FUENTES_POR_DEFECTO` de `entrenar.py` sin cambios (las fuentes se pasan con
+`--externo-fuentes`).
+
+**Fuentes** (21 filas nuevas en `datos_externos.csv`, solo `externo/train`):
+
+| fuente (prefijo) | clase | importadas | nota |
+|---|---|---|---|
+| Roboflow food-waste kkh (`fwd_`) | organico | 192 | recortes de caja ≥ 64 px, solo grupos 1:1 (bandeja y NxN); cocina/still (estirados, no corregibles) y web descartados |
+| NexTech14, Mendeley (`nx_`) | organico | 85 | food, garden, other-organic; una imagen por original |
+| NexTech14 battery (`nx_`) | peligrosos | 65 | aprobada tras ver el mosaico; e-waste y recyclable descartados |
+| Pharmaceutical-Biomedical (pbw), Medical Waste ninja (mwn) | — | 0 | **descartadas**: familia de Smart medical (nombres iguales al test del benchmark) y etiquetas incorrectas |
+| mario78 biomedical (bmw) | — | 0 | **descartada entera**: hasta 72 % por clase coincidía con la familia Smart medical |
+| bio medical waste v3 | — | 0 | sin etiquetas |
+
+**Deduplicación:** nombre y dHash ≤ 4 (8 giros/espejos) contra las 1.455 del benchmark (+ 238 en gris), contra
+toda la familia Smart medical (zip completo, pbw, mwn, `rfmed_`) y contra publico, juliaca, val_camara y externo;
+ORB + RANSAC ≥ 25 contra el benchmark; duplicados internos. Informes:
+`reportes/externo_candidatas_{dedup,conteos}.csv` (y `_faseA`). `auditar.py`: 0 errores. El chequeo de fuga de
+`correr_todo.py` sigue en 345 coincidencias (las 342 nuevas no añaden ninguna).
+
+**Receta:** `e1_nf` = `e1_ext` con externo `taco fwd nx` + RandomGrayscale 0.3. `e2_nf_s*` = receta recomendada
+desde `e1_nf` con externo solo `taco` + gris 0.3. (Un primer intento de `e1_nf` se colgó por WinError 1455,
+archivo de paginación; se apartó a `runs/_apartados/` y se relanzó igual.)
+
+`e1_nf` en publico/val: F1 0.9052 (top-1 0.9046; 54 ép., mejor 39), frente a 0.9153 de `e1_ext`.
+
+**Validación** (`reportes/etapa2_e2_nf_s4*_20261110_*_{val_camara,juliaca_val,publico_val}.json`):
+
+| modelo | F1 val_camara (293) | aciertos | F1 juliaca/val | F1 publico/val |
+|---|---|---|---|---|
+| etapa2_j1028_s43 (actual) | 0.5610 | 166 | 0.6160 | 0.8739 |
+| media j1028 (3 semillas) | 0.5437 | — | 0.6802 | 0.8728 |
+| e2_nf_s42 | 0.5554 | 170 | 0.7897 | 0.8804 |
+| e2_nf_s43 | 0.5716 | 169 | 0.7587 | 0.8711 |
+| e2_nf_s44 | 0.5435 | 164 | 0.7801 | 0.8805 |
+| **media nf** | **0.5568** | 167.7 | 0.7762 | 0.8773 |
+
+F1 por clase en val_camara (j1028_s43 → nf s42–s44): metales 0.364 → 0.250–0.526, organico 0.800 → 0.625–0.710,
+peligrosos 0.480 → 0.640–0.692, vidrio 0.684 → 0.500–0.700 (plasticos → vidrio 6 → 7–11).
+
+**Resultado según la regla:** la media de nf (0.5568) supera la media de j1028 (0.5437) por +0.013. Candidato:
+mejor semilla en val_camara, `e2_nf_s43_20261110_2132`. **El modelo por defecto no cambia sin el OK del usuario.**
+
+**Benchmark del docente** (una sola corrida de `correr_todo.py`): nota **16.0** frente a 13.4 (2.º de 14, empatado
+con el 1.º). Rúbrica: exactitud 5.482, macro-F1 2.521, robustez 3.000 (caída en gris −0.84 pp), cobertura 3.000,
+seguridad 2.000. Marrón (Organik) 0.107 → 0.500; Rojo 0.034 → 0.096; Anorganik 0.532 → 0.516; Residu 0.600 →
+0.540. Sin el atajo gris de `e2_rfA`: Anorganik → Marrón 19/310 y Residu → Marrón 8/265 (155 y 82 con rfA).
+
+Modelos en `modelos/experimentos/` (no se suben). juliaca/test NO se usó.
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo

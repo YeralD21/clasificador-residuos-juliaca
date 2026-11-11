@@ -90,7 +90,15 @@ PREFIJO_FUENTE = {  # fuente -> prefijo del nombre de archivo en dataset/externo
     "trashnet": "trashnet_",
     "rfv4": "rfv4_",             # importar_roboflow.py: Garbage Classification v4, Organik (en gris)
     "rfmed": "rfmed_",           # importar_roboflow.py: Smart medical waste segregation v3, Infectious
+    "fwd": "fwd_",               # importar_candidatas.py: Food Waste Detection v1 (kkh), recortes -> organico
+    "nx": "nx_",                 # importar_candidatas.py: NexTech14 (organic; battery si se aprueba)
+    "bmw": "bmw_",               # importar_candidatas.py: Biomedical Waste Classification (mario78), Raw
+    "pbw": "pbw_",               # importar_candidatas.py: Pharmaceutical&Biomedical Waste v1, recortes
+    "mwn": "mwn_",               # importar_candidatas.py: Medical Waste v2 (ninja-9t5r9), recortes
 }
+# Sin --externo-fuentes se usan SOLO estas (las del 26-10, como e1_ext2). rfv4_ y rfmed_ (decisión del usuario,
+# 2026-11-10: fuera de la receta) y cualquier fuente posterior entran únicamente si se piden por nombre.
+FUENTES_POR_DEFECTO = ("taco", "taco_extra", "realwaste", "trashnet")
 
 
 def copiar_replay_externo(destino_train, pedidos, seed):
@@ -134,11 +142,12 @@ def activar_gris(p):
 
 def copiar_externo(destino_train, fuentes=None):
     """Copia dataset/externo/train/<clase> a <destino_train>/<clase>/externo. Devuelve n por clase.
-    fuentes: lista de claves de PREFIJO_FUENTE; None = todo. Filtra por prefijo, sin mover nada."""
-    prefijos = tuple(PREFIJO_FUENTE[f] for f in fuentes) if fuentes else None
+    fuentes: lista de claves de PREFIJO_FUENTE; None = FUENTES_POR_DEFECTO (nunca rfv4_/rfmed_ ni fuentes nuevas).
+    Filtra por prefijo, sin mover nada."""
+    prefijos = tuple(PREFIJO_FUENTE[f] for f in (fuentes or FUENTES_POR_DEFECTO))
     n = {}
     for c in CLASES:
-        fotos = [p for p in imagenes(EXTERNO / "train" / c) if prefijos is None or p.name.startswith(prefijos)]
+        fotos = [p for p in imagenes(EXTERNO / "train" / c) if p.name.startswith(prefijos)]
         dst = destino_train / c / "externo"
         dst.mkdir(parents=True, exist_ok=True)
         for p in fotos:
@@ -251,7 +260,8 @@ def main():
     ap.add_argument("--externo", action="store_true",
                     help="suma dataset/externo/train al train (etapa 1 y 2); nunca a val ni test")
     ap.add_argument("--externo-fuentes", nargs="+", choices=sorted(PREFIJO_FUENTE), default=None,
-                    help="con --externo: solo estas fuentes (por prefijo de archivo); por defecto todas")
+                    help="con --externo: solo estas fuentes (por prefijo de archivo); por defecto "
+                         + " ".join(FUENTES_POR_DEFECTO) + " (rfv4, rfmed y las nuevas solo por nombre)")
     ap.add_argument("--seleccion", default=None,
                     help="solo etapa 2: CSV de rutas curadas y aprobadas (seleccionar_curados.py --final) que se "
                          "suman al train; solo de publico/train o externo/train")

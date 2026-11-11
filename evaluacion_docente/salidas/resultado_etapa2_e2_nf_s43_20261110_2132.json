@@ -1,0 +1,638 @@
+{
+  "modelo": "etapa2_e2_nf_s43_20261110_2132",
+  "pesos": "D:\\Proyecto-Residuos-ML\\clasificador-residuos-juliaca\\modelos\\experimentos\\etapa2_e2_nf_s43_20261110_2132.pt",
+  "imgsz": 224,
+  "n_test_esperado": 1455,
+  "n_test_disponible": 1455,
+  "n_gris": 238,
+  "variantes": {
+    "estricta": {
+      "metricas": {
+        "bal_acc": 0.6852358182082899,
+        "acc_global": 0.5615120274914089,
+        "macroF1": 0.630282854246936,
+        "v1i": 0.8991596638655462,
+        "v4": 0.5177142857142857,
+        "organico": 0.5,
+        "rojo_rec": 0.09615384615384616,
+        "rojo_prec": 0.8333333333333334,
+        "rojo_f1": 0.1724137931034483,
+        "sin_det": 0.41237113402061853,
+        "gris_caida": -0.8403361344537785,
+        "n_colores": 7,
+        "grupos": {
+          "Azul (papel/cartón)": 0.9504950495049505,
+          "Amarillo (metal)": 0.9767441860465116,
+          "Blanco (plástico)": 0.8108108108108109,
+          "Gris (vidrio)": 0.8070175438596491,
+          "Marrón (Organik, grises)": 0.5,
+          "Inorg. reciclable (Anorganik)": 0.5161290322580645,
+          "Negro/Rojo (Residu)": 0.539622641509434,
+          "Rojo (biocontaminado)": 0.09615384615384616,
+          "No-Rojo (médico general)": 0.9701492537313433
+        },
+        "n_grupos": {
+          "Azul (papel/cartón)": 101,
+          "Amarillo (metal)": 43,
+          "Blanco (plástico)": 37,
+          "Gris (vidrio)": 57,
+          "Marrón (Organik, grises)": 300,
+          "Inorg. reciclable (Anorganik)": 310,
+          "Negro/Rojo (Residu)": 265,
+          "Rojo (biocontaminado)": 208,
+          "No-Rojo (médico general)": 134
+        }
+      },
+      "rubrica": {
+        "estado_grupos": {
+          "Azul (papel/cartón)": "completo",
+          "Amarillo (metal)": "completo",
+          "Blanco (plástico)": "completo",
+          "Gris (vidrio)": "completo",
+          "Marrón (Organik, grises)": "completo",
+          "Inorg. reciclable (Anorganik)": "completo",
+          "Negro/Rojo (Residu)": "completo",
+          "Rojo (biocontaminado)": "completo",
+          "No-Rojo (médico general)": "completo"
+        },
+        "n_grupos": {
+          "Azul (papel/cartón)": 101,
+          "Amarillo (metal)": 43,
+          "Blanco (plástico)": 37,
+          "Gris (vidrio)": 57,
+          "Marrón (Organik, grises)": 300,
+          "Inorg. reciclable (Anorganik)": 310,
+          "Negro/Rojo (Residu)": 265,
+          "Rojo (biocontaminado)": 208,
+          "No-Rojo (médico general)": 134
+        },
+        "criterios": {
+          "pts_bal": {
+            "estado": "completo",
+            "pts": 5.4818865456663195,
+            "en_juego": 0.0,
+            "nota": "9/9 grupos completos"
+          },
+          "pts_mf1": {
+            "estado": "completo",
+            "pts": 2.521131416987744,
+            "en_juego": 0.0
+          },
+          "pts_ntp": {
+            "estado": "completo",
+            "pts": 3,
+            "en_juego": 0.0
+          },
+          "pts_rob": {
+            "estado": "completo",
+            "en_juego": 0.0,
+            "pts": 3
+          },
+          "pts_seg": {
+            "estado": "completo",
+            "en_juego": 0.0,
+            "pts": 2
+          }
+        },
+        "completa": true,
+        "pts_asegurados": 16.003017962654063,
+        "pts_en_juego": 0.0,
+        "nota_20": 16.0
+      },
+      "rubrica_sin_topes": {
+        "estado_grupos": {
+          "Azul (papel/cartón)": "completo",
+          "Amarillo (metal)": "completo",
+          "Blanco (plástico)": "completo",
+          "Gris (vidrio)": "completo",
+          "Marrón (Organik, grises)": "completo",
+          "Inorg. reciclable (Anorganik)": "completo",
+          "Negro/Rojo (Residu)": "completo",
+          "Rojo (biocontaminado)": "completo",
+          "No-Rojo (médico general)": "completo"
+        },
+        "n_grupos": {
+          "Azul (papel/cartón)": 101,
+          "Amarillo (metal)": 43,
+          "Blanco (plástico)": 37,
+          "Gris (vidrio)": 57,
+          "Marrón (Organik, grises)": 300,
+          "Inorg. reciclable (Anorganik)": 310,
+          "Negro/Rojo (Residu)": 265,
+          "Rojo (biocontaminado)": 208,
+          "No-Rojo (médico general)": 134
+        },
+        "criterios": {
+          "pts_bal": {
+            "estado": "completo",
+            "pts": 5.4818865456663195,
+            "en_juego": 0.0,
+            "nota": "9/9 grupos completos"
+          },
+          "pts_mf1": {
+            "estado": "completo",
+            "pts": 2.521131416987744,
+            "en_juego": 0.0
+          },
+          "pts_ntp": {
+            "estado": "completo",
+            "pts": 3.0,
+            "en_juego": 0.0
+          },
+          "pts_rob": {
+            "estado": "completo",
+            "en_juego": 0.0,
+            "pts": 3.0358312397123797
+          },
+          "pts_seg": {
+            "estado": "completo",
+            "en_juego": 0.0,
+            "pts": 2.0363984674329503
+          }
+        },
+        "completa": true,
+        "pts_asegurados": 16.075247669799392,
+        "pts_en_juego": 0.0,
+        "nota_20": 16.1
+      },
+      "ablacion_gris": {
+        "acc_color": 0.8991596638655462,
+        "acc_gris": 0.907563025210084,
+        "caida_pp": -0.8403361344537785,
+        "acc_gris_por_grupo": {
+          "Azul (papel/cartón)": 0.9603960396039604,
+          "Amarillo (metal)": 0.9534883720930233,
+          "Blanco (plástico)": 0.8648648648648649,
+          "Gris (vidrio)": 0.8070175438596491
+        }
+      },
+      "matriz_confusion": {
+        "columnas": [
+          "Azul",
+          "Amarillo",
+          "Blanco",
+          "Gris",
+          "Marrón",
+          "Rojo",
+          "Negro",
+          "SIN_DETECCION"
+        ],
+        "filas": {
+          "Azul (papel/cartón)": {
+            "Azul": 96,
+            "Amarillo": 0,
+            "Blanco": 3,
+            "Gris": 1,
+            "Marrón": 0,
+            "Rojo": 0,
+            "Negro": 1,
+            "SIN_DETECCION": 0
+          },
+          "Amarillo (metal)": {
+            "Azul": 0,
+            "Amarillo": 42,
+            "Blanco": 0,
+            "Gris": 0,
+            "Marrón": 0,
+            "Rojo": 0,
+            "Negro": 1,
+            "SIN_DETECCION": 0
+          },
+          "Blanco (plástico)": {
+            "Azul": 2,
+            "Amarillo": 1,
+            "Blanco": 30,
+            "Gris": 3,
+            "Marrón": 0,
+            "Rojo": 1,
+            "Negro": 0,
+            "SIN_DETECCION": 0
+          },
+          "Gris (vidrio)": {
+            "Azul": 0,
+            "Amarillo": 4,
+            "Blanco": 7,
+            "Gris": 46,
+            "Marrón": 0,
+            "Rojo": 0,
+            "Negro": 0,
+            "SIN_DETECCION": 0
+          },
+          "Marrón (Organik, grises)": {
+            "Azul": 26,
+            "Amarillo": 5,
+            "Blanco": 10,
+            "Gris": 3,
+            "Marrón": 150,
+            "Rojo": 5,
+            "Negro": 100,
+            "SIN_DETECCION": 1
+          },
+          "Inorg. reciclable (Anorganik)": {
+            "Azul": 69,
+            "Amarillo": 28,
+            "Blanco": 32,
+            "Gris": 31,
+            "Marrón": 19,
+            "Rojo": 13,
+            "Negro": 118,
+            "SIN_DETECCION": 0
+          },
+          "Negro/Rojo (Residu)": {
+            "Azul": 45,
+            "Amarillo": 16,
+            "Blanco": 42,
+            "Gris": 6,
+            "Marrón": 8,
+            "Rojo": 66,
+            "Negro": 77,
+            "SIN_DETECCION": 5
+          },
+          "Rojo (biocontaminado)": {
+            "Azul": 58,
+            "Amarillo": 0,
+            "Blanco": 21,
+            "Gris": 1,
+            "Marrón": 2,
+            "Rojo": 20,
+            "Negro": 106,
+            "SIN_DETECCION": 0
+          },
+          "No-Rojo (médico general)": {
+            "Azul": 49,
+            "Amarillo": 4,
+            "Blanco": 49,
+            "Gris": 13,
+            "Marrón": 10,
+            "Rojo": 4,
+            "Negro": 5,
+            "SIN_DETECCION": 0
+          }
+        }
+      },
+      "grupos_sin_fuga": {
+        "Azul (papel/cartón)": {
+          "n": 101,
+          "acc": 0.9504950495049505
+        },
+        "Amarillo (metal)": {
+          "n": 43,
+          "acc": 0.9767441860465116
+        },
+        "Blanco (plástico)": {
+          "n": 37,
+          "acc": 0.8108108108108109
+        },
+        "Gris (vidrio)": {
+          "n": 57,
+          "acc": 0.8070175438596491
+        },
+        "Marrón (Organik, grises)": {
+          "n": 300,
+          "acc": 0.5
+        },
+        "Inorg. reciclable (Anorganik)": {
+          "n": 310,
+          "acc": 0.5161290322580645
+        },
+        "Negro/Rojo (Residu)": {
+          "n": 265,
+          "acc": 0.539622641509434
+        },
+        "Rojo (biocontaminado)": {
+          "n": 208,
+          "acc": 0.09615384615384616
+        },
+        "No-Rojo (médico general)": {
+          "n": 116,
+          "acc": 0.9655172413793104
+        }
+      },
+      "clase_pred_cuenta": {
+        "papel_carton": 345,
+        "metales": 100,
+        "plasticos": 194,
+        "vidrio": 104,
+        "organico": 189,
+        "peligrosos": 109,
+        "generales": 408,
+        "sin_residuo": 6
+      },
+      "n_top1_sin_residuo": 6
+    },
+    "top2": {
+      "metricas": {
+        "bal_acc": 0.6873322542669902,
+        "acc_global": 0.5649484536082474,
+        "macroF1": 0.630282854246936,
+        "v1i": 0.8991596638655462,
+        "v4": 0.5234285714285715,
+        "organico": 0.5,
+        "rojo_rec": 0.09615384615384616,
+        "rojo_prec": 0.8333333333333334,
+        "rojo_f1": 0.1724137931034483,
+        "sin_det": 0.0,
+        "gris_caida": -0.8403361344537785,
+        "n_colores": 7,
+        "grupos": {
+          "Azul (papel/cartón)": 0.9504950495049505,
+          "Amarillo (metal)": 0.9767441860465116,
+          "Blanco (plástico)": 0.8108108108108109,
+          "Gris (vidrio)": 0.8070175438596491,
+          "Marrón (Organik, grises)": 0.5,
+          "Inorg. reciclable (Anorganik)": 0.5161290322580645,
+          "Negro/Rojo (Residu)": 0.5584905660377358,
+          "Rojo (biocontaminado)": 0.09615384615384616,
+          "No-Rojo (médico general)": 0.9701492537313433
+        },
+        "n_grupos": {
+          "Azul (papel/cartón)": 101,
+          "Amarillo (metal)": 43,
+          "Blanco (plástico)": 37,
+          "Gris (vidrio)": 57,
+          "Marrón (Organik, grises)": 300,
+          "Inorg. reciclable (Anorganik)": 310,
+          "Negro/Rojo (Residu)": 265,
+          "Rojo (biocontaminado)": 208,
+          "No-Rojo (médico general)": 134
+        }
+      },
+      "rubrica": {
+        "estado_grupos": {
+          "Azul (papel/cartón)": "completo",
+          "Amarillo (metal)": "completo",
+          "Blanco (plástico)": "completo",
+          "Gris (vidrio)": "completo",
+          "Marrón (Organik, grises)": "completo",
+          "Inorg. reciclable (Anorganik)": "completo",
+          "Negro/Rojo (Residu)": "completo",
+          "Rojo (biocontaminado)": "completo",
+          "No-Rojo (médico general)": "completo"
+        },
+        "n_grupos": {
+          "Azul (papel/cartón)": 101,
+          "Amarillo (metal)": 43,
+          "Blanco (plástico)": 37,
+          "Gris (vidrio)": 57,
+          "Marrón (Organik, grises)": 300,
+          "Inorg. reciclable (Anorganik)": 310,
+          "Negro/Rojo (Residu)": 265,
+          "Rojo (biocontaminado)": 208,
+          "No-Rojo (médico general)": 134
+        },
+        "criterios": {
+          "pts_bal": {
+            "estado": "completo",
+            "pts": 5.4986580341359215,
+            "en_juego": 0.0,
+            "nota": "9/9 grupos completos"
+          },
+          "pts_mf1": {
+            "estado": "completo",
+            "pts": 2.521131416987744,
+            "en_juego": 0.0
+          },
+          "pts_ntp": {
+            "estado": "completo",
+            "pts": 3,
+            "en_juego": 0.0
+          },
+          "pts_rob": {
+            "estado": "completo",
+            "en_juego": 0.0,
+            "pts": 3
+          },
+          "pts_seg": {
+            "estado": "completo",
+            "en_juego": 0.0,
+            "pts": 2
+          }
+        },
+        "completa": true,
+        "pts_asegurados": 16.019789451123664,
+        "pts_en_juego": 0.0,
+        "nota_20": 16.0
+      },
+      "rubrica_sin_topes": {
+        "estado_grupos": {
+          "Azul (papel/cartón)": "completo",
+          "Amarillo (metal)": "completo",
+          "Blanco (plástico)": "completo",
+          "Gris (vidrio)": "completo",
+          "Marrón (Organik, grises)": "completo",
+          "Inorg. reciclable (Anorganik)": "completo",
+          "Negro/Rojo (Residu)": "completo",
+          "Rojo (biocontaminado)": "completo",
+          "No-Rojo (médico general)": "completo"
+        },
+        "n_grupos": {
+          "Azul (papel/cartón)": 101,
+          "Amarillo (metal)": 43,
+          "Blanco (plástico)": 37,
+          "Gris (vidrio)": 57,
+          "Marrón (Organik, grises)": 300,
+          "Inorg. reciclable (Anorganik)": 310,
+          "Negro/Rojo (Residu)": 265,
+          "Rojo (biocontaminado)": 208,
+          "No-Rojo (médico general)": 134
+        },
+        "criterios": {
+          "pts_bal": {
+            "estado": "completo",
+            "pts": 5.4986580341359215,
+            "en_juego": 0.0,
+            "nota": "9/9 grupos completos"
+          },
+          "pts_mf1": {
+            "estado": "completo",
+            "pts": 2.521131416987744,
+            "en_juego": 0.0
+          },
+          "pts_ntp": {
+            "estado": "completo",
+            "pts": 3.0,
+            "en_juego": 0.0
+          },
+          "pts_rob": {
+            "estado": "completo",
+            "en_juego": 0.0,
+            "pts": 3.042016806722689
+          },
+          "pts_seg": {
+            "estado": "completo",
+            "en_juego": 0.0,
+            "pts": 2.0363984674329503
+          }
+        },
+        "completa": true,
+        "pts_asegurados": 16.098204725279306,
+        "pts_en_juego": 0.0,
+        "nota_20": 16.1
+      },
+      "ablacion_gris": {
+        "acc_color": 0.8991596638655462,
+        "acc_gris": 0.907563025210084,
+        "caida_pp": -0.8403361344537785,
+        "acc_gris_por_grupo": {
+          "Azul (papel/cartón)": 0.9603960396039604,
+          "Amarillo (metal)": 0.9534883720930233,
+          "Blanco (plástico)": 0.8648648648648649,
+          "Gris (vidrio)": 0.8070175438596491
+        }
+      },
+      "matriz_confusion": {
+        "columnas": [
+          "Azul",
+          "Amarillo",
+          "Blanco",
+          "Gris",
+          "Marrón",
+          "Rojo",
+          "Negro",
+          "SIN_DETECCION"
+        ],
+        "filas": {
+          "Azul (papel/cartón)": {
+            "Azul": 96,
+            "Amarillo": 0,
+            "Blanco": 3,
+            "Gris": 1,
+            "Marrón": 0,
+            "Rojo": 0,
+            "Negro": 1,
+            "SIN_DETECCION": 0
+          },
+          "Amarillo (metal)": {
+            "Azul": 0,
+            "Amarillo": 42,
+            "Blanco": 0,
+            "Gris": 0,
+            "Marrón": 0,
+            "Rojo": 0,
+            "Negro": 1,
+            "SIN_DETECCION": 0
+          },
+          "Blanco (plástico)": {
+            "Azul": 2,
+            "Amarillo": 1,
+            "Blanco": 30,
+            "Gris": 3,
+            "Marrón": 0,
+            "Rojo": 1,
+            "Negro": 0,
+            "SIN_DETECCION": 0
+          },
+          "Gris (vidrio)": {
+            "Azul": 0,
+            "Amarillo": 4,
+            "Blanco": 7,
+            "Gris": 46,
+            "Marrón": 0,
+            "Rojo": 0,
+            "Negro": 0,
+            "SIN_DETECCION": 0
+          },
+          "Marrón (Organik, grises)": {
+            "Azul": 26,
+            "Amarillo": 5,
+            "Blanco": 10,
+            "Gris": 3,
+            "Marrón": 150,
+            "Rojo": 5,
+            "Negro": 101,
+            "SIN_DETECCION": 0
+          },
+          "Inorg. reciclable (Anorganik)": {
+            "Azul": 69,
+            "Amarillo": 28,
+            "Blanco": 32,
+            "Gris": 31,
+            "Marrón": 19,
+            "Rojo": 13,
+            "Negro": 118,
+            "SIN_DETECCION": 0
+          },
+          "Negro/Rojo (Residu)": {
+            "Azul": 45,
+            "Amarillo": 16,
+            "Blanco": 42,
+            "Gris": 6,
+            "Marrón": 8,
+            "Rojo": 67,
+            "Negro": 81,
+            "SIN_DETECCION": 0
+          },
+          "Rojo (biocontaminado)": {
+            "Azul": 58,
+            "Amarillo": 0,
+            "Blanco": 21,
+            "Gris": 1,
+            "Marrón": 2,
+            "Rojo": 20,
+            "Negro": 106,
+            "SIN_DETECCION": 0
+          },
+          "No-Rojo (médico general)": {
+            "Azul": 49,
+            "Amarillo": 4,
+            "Blanco": 49,
+            "Gris": 13,
+            "Marrón": 10,
+            "Rojo": 4,
+            "Negro": 5,
+            "SIN_DETECCION": 0
+          }
+        }
+      },
+      "grupos_sin_fuga": {
+        "Azul (papel/cartón)": {
+          "n": 101,
+          "acc": 0.9504950495049505
+        },
+        "Amarillo (metal)": {
+          "n": 43,
+          "acc": 0.9767441860465116
+        },
+        "Blanco (plástico)": {
+          "n": 37,
+          "acc": 0.8108108108108109
+        },
+        "Gris (vidrio)": {
+          "n": 57,
+          "acc": 0.8070175438596491
+        },
+        "Marrón (Organik, grises)": {
+          "n": 300,
+          "acc": 0.5
+        },
+        "Inorg. reciclable (Anorganik)": {
+          "n": 310,
+          "acc": 0.5161290322580645
+        },
+        "Negro/Rojo (Residu)": {
+          "n": 265,
+          "acc": 0.5584905660377358
+        },
+        "Rojo (biocontaminado)": {
+          "n": 208,
+          "acc": 0.09615384615384616
+        },
+        "No-Rojo (médico general)": {
+          "n": 116,
+          "acc": 0.9655172413793104
+        }
+      },
+      "clase_pred_cuenta": {
+        "papel_carton": 345,
+        "metales": 100,
+        "plasticos": 194,
+        "vidrio": 104,
+        "organico": 189,
+        "peligrosos": 110,
+        "generales": 413,
+        "sin_residuo": 0
+      },
+      "n_top1_sin_residuo": 6
+    }
+  }
+}

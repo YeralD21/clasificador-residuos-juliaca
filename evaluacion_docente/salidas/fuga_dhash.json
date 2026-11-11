@@ -3,7 +3,7 @@
   "n_train_por_fuente": {
     "zip": 0,
     "publico": 12220,
-    "externo": 6684,
+    "externo": 7026,
     "juliaca": 624
   },
   "n_test": 1693,
