@@ -1,0 +1,36 @@
+fuente,split,categoria,clase,estado,total,nombre_benchmark,dhash_benchmark,nombre_familia_smartmed,dhash_familia_smartmed,dhash_propios,orb_benchmark,orb_familia_smartmed,resolucion_baja,dup_interno,consecutiva,ok
+glv,train,Blue_glove,peligrosos,dudosa,92,0,0,0,0,0,0,0,17,0,73,2
+glv,valid,Blue_glove,peligrosos,dudosa,26,0,0,0,0,0,0,0,3,0,21,2
+mw4,dataset_A,gauze,peligrosos,propuesta,179,36,6,89,0,0,0,0,0,0,35,13
+mw4,dataset_A,glove_pair_latex,peligrosos,propuesta,143,33,18,59,0,0,0,0,0,3,22,8
+mw4,dataset_A,glove_pair_nitrile,peligrosos,propuesta,173,29,11,70,0,1,0,0,0,0,58,4
+mw4,dataset_A,glove_pair_surgery,peligrosos,propuesta,125,21,0,79,0,1,0,0,0,0,14,10
+mw4,dataset_A,glove_single_latex,peligrosos,propuesta,130,0,38,0,49,0,0,0,0,4,29,10
+mw4,dataset_A,glove_single_nitrile,peligrosos,propuesta,151,0,16,0,41,0,0,0,0,0,84,10
+mw4,dataset_A,glove_single_surgery,peligrosos,propuesta,123,0,0,0,20,0,0,0,0,9,51,43
+mw4,dataset_B,gauzes,peligrosos,propuesta,31,0,0,0,0,0,0,0,0,3,16,12
+mw4,dataset_B,glove_pair_latex,peligrosos,propuesta,14,0,0,0,0,0,0,0,0,1,8,5
+mw4,dataset_B,glove_pair_nitrile,peligrosos,propuesta,11,0,0,0,0,0,0,0,0,0,4,7
+mw4,dataset_B,glove_pair_surgery,peligrosos,propuesta,18,0,0,0,0,0,0,0,0,1,6,11
+mw4,dataset_B,glove_single_latex,peligrosos,propuesta,16,0,0,0,0,0,0,0,0,1,8,7
+mw4,dataset_B,glove_single_nitrile,peligrosos,propuesta,10,0,0,0,0,0,0,0,0,0,7,3
+mw4,dataset_B,glove_single_surgery,peligrosos,propuesta,15,0,0,0,0,0,0,0,0,0,3,12
+glv,-,Background (manos o fondo),descartada,-,35,,,,,,,,,,,
+glv,-,Bare_hand (manos o fondo),descartada,-,135,,,,,,,,,,,
+glv,-,split test (Background),descartada,-,4,,,,,,,,,,,
+glv,-,split test (Bare_hand),descartada,-,15,,,,,,,,,,,
+glv,-,split test (Blue_glove),descartada,-,13,,,,,,,,,,,
+mw4,-,A/medical_cap (ambigua o fuera de la lista),descartada,-,127,,,,,,,,,,,
+mw4,-,A/medical_glasses (ambigua o fuera de la lista),descartada,-,131,,,,,,,,,,,
+mw4,-,A/shoe_cover_pair (ambigua o fuera de la lista),descartada,-,144,,,,,,,,,,,
+mw4,-,A/shoe_cover_single (ambigua o fuera de la lista),descartada,-,135,,,,,,,,,,,
+mw4,-,A/test_tube (ambigua o fuera de la lista),descartada,-,143,,,,,,,,,,,
+mw4,-,A/urine_bag (ambigua o fuera de la lista),descartada,-,136,,,,,,,,,,,
+mw4,-,B/medical_cap (ambigua o fuera de la lista),descartada,-,19,,,,,,,,,,,
+mw4,-,B/medical_filter (ambigua o fuera de la lista),descartada,-,24,,,,,,,,,,,
+mw4,-,B/medical_glasses (ambigua o fuera de la lista),descartada,-,31,,,,,,,,,,,
+mw4,-,B/shoe_cover_pair (ambigua o fuera de la lista),descartada,-,15,,,,,,,,,,,
+mw4,-,B/shoe_cover_single (ambigua o fuera de la lista),descartada,-,30,,,,,,,,,,,
+mw4,-,B/test_tube (ambigua o fuera de la lista),descartada,-,18,,,,,,,,,,,
+mw4,-,B/urine_bag (ambigua o fuera de la lista),descartada,-,15,,,,,,,,,,,
+mw4,-,estereo_gris_png,descartada,-,4214,,,,,,,,,,,

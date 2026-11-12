@@ -992,6 +992,22 @@ coincide con el informe oficial:
 Informes: `reportes/etapa2_nf_s43_juliaca_test.json`, `reportes/juliaca_test_por_objeto_nf_s43.csv`,
 `reportes/registro_test.csv` (y `runs/evaluaciones/etapa2_nf_s43_juliaca_test/`, que no se sube).
 
+## Candidatas médicas: MARIDA, Medical-Waste-4.0, Gloves_cls (Fase A, 2026-11-11) — DESCARTADAS
+Solo informe (`scripts/candidatas_medicas.py`, no tiene modo de importar). **Decisión del usuario: las tres se
+descartan.** No se importó nada.
+
+| fuente | licencia | motivo del descarte |
+|---|---|---|
+| MARIDA | — | 4.143 parches `.tif` de Sentinel-2 (desechos marinos): imágenes satelitales, no fotos de objetos. No se procesó |
+| Medical-Waste-4.0, Dataset A | CC BY 4.0 (Zenodo 10.5281/zenodo.7643417) | **origen de la parte médica del benchmark**: sus timestamps están en el test del docente (131 imágenes, contando las versiones estéreo), en Smart medical (451), `mwn` (224) y `rfmed_` (347). De 1.024 candidatas (gasa y guantes), 208 coinciden con el benchmark (nombre o dHash) y 407 con la familia Smart medical. Las 98 restantes son de la misma cámara, el mismo fondo y las mismas sesiones |
+| Medical-Waste-4.0, Dataset B | no clara (solo en GitHub, sin archivo de licencia) | licencia; además es el mismo montaje (OAK-D, fondo gris) que el benchmark. Quedaban 57 limpias de 115 |
+| Gloves_cls v1 (Roboflow workshop-l16o9) | CC BY 4.0 | un solo video (`gloves_bench_1`); `Blue_glove` = guantes puestos en manos, `Bare_hand` = manos, `Background` = fondo; recortes de ~15–20 px estirados a 640×640. Quedaban 4 de 118 tras quitar las consecutivas (94) y las de baja resolución (20) |
+
+Mapeo que se evaluó: gasa y los 6 tipos de guante → peligrosos; gorro, lentes, cubrezapatos, tubo de ensayo, bolsa de
+orina y filtro → descartados por ambiguos. Informes: `reportes/externo_candidatas2_{dedup,conteos}.csv` y
+`reportes/mosaicos_candidatas2/`. Nota: el estimador de resolución efectiva del script no funciona con los recortes
+estirados de Roboflow (da 192 px en recortes que se ven de unos 15 px); ese descarte se decidió mirando los mosaicos.
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo
