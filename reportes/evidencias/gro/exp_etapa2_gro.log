@@ -1,0 +1,816 @@
+pesos etapa 1: modelos/experimentos/etapa1_e1_gro_20261111_2100.pt
+
+==========================================================================================
+[1/3] e2_gro_s42: receta recomendada desde e1_gro (externo solo taco) + gris 0.3, semilla 42
+  D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\scripts\entrenar.py --etapa 2 --equipo pc --experimento e2_gro_s42 --device 0 --pesos D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_gro_20261111_2100.pt --replay 2 --externo --externo-fuentes taco --gris 0.3 --seed 42
+==========================================================================================
+Entorno: {'python': '3.13.15', 'torch': '2.14.1+cu130', 'cuda_torch': '13.0', 'ultralytics': '8.4.184', 'gpu': 'NVIDIA GeForce RTX 3060'}
+
+Etapa 2 - train = juliaca + replay público + externo (taco):
+  generales      juliaca= 119  replay= 238  externo= 139
+  metales        juliaca=  72  replay= 144  externo=  40
+  organico       juliaca=   5  replay=  10  externo=   0
+  papel_carton   juliaca=  52  replay= 104  externo=   0
+  peligrosos     juliaca=  16  replay=  32  externo=   0
+  plasticos      juliaca= 102  replay= 204  externo=   0
+  sin_residuo    juliaca=  20  replay=   0  externo=   0
+  vidrio         juliaca=  57  replay= 114  externo=   0
+New https://pypi.org/project/ultralytics/8.4.211 available  Update with 'pip install -U ultralytics'
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+[34m[1mengine\trainer: [0magnostic_nms=False, amp=True, angle=1.0, augment=False, auto_augment=randaugment, batch=64, bgr=0.0, box=7.5, cache=False, cfg=None, channels_last=None, classes=None, close_mosaic=10, cls=0.5, cls_pw=0.0, cls_remap=True, compile=False, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=True, cutmix=0.0, data=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2, degrees=0.0, deterministic=True, device=0, dfl=1.5, dgrad=0.5, dis=6.0, distill_model=None, dlam=1.0, dlog=1.0, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=30, erasing=0.3, exist_ok=False, fliplr=0.5, flipud=0.2, format=torchscript, fraction=1.0, freeze=6, hsv_h=0.03, hsv_s=0.5, hsv_v=0.4, imgsz=224, iou=0.7, kobj=1.0, line_width=None, lr0=0.0001, lrf=0.1, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_gro_20261111_2100.pt, momentum=0.937, mosaic=1.0, multi_scale=0.0, name=etapa2_e2_gro_s42, nbs=64, nms=None, opset=None, optimize=False, optimizer=AdamW, overlap_mask=True, patience=10, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs, quantize=None, rect=False, resume=False, retina_masks=False, rle=1.0, save=True, save_conf=False, save_crop=False, save_dir=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s42, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=42, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=classify, time=None, tracker=tracktrack.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=1, warmup_momentum=0.8, weight_decay=0.0005, workers=6, workspace=None
+[34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... found 1468 images in 8 classes  
+[34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val... found 83 images in 8 classes  
+[34m[1mtest:[0m None...
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       928  ultralytics.nn.modules.conv.Conv             [3, 32, 3, 2]                 
+  1                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]                
+  2                  -1  1     26080  ultralytics.nn.modules.block.C3k2            [64, 128, 1, False, 0.25]     
+  3                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+  4                  -1  1    103360  ultralytics.nn.modules.block.C3k2            [128, 256, 1, False, 0.25]    
+  5                  -1  1    590336  ultralytics.nn.modules.conv.Conv             [256, 256, 3, 2]              
+  6                  -1  1    346112  ultralytics.nn.modules.block.C3k2            [256, 256, 1, True]           
+  7                  -1  1   1180672  ultralytics.nn.modules.conv.Conv             [256, 512, 3, 2]              
+  8                  -1  1   1380352  ultralytics.nn.modules.block.C3k2            [512, 512, 1, True]           
+  9                  -1  1    990976  ultralytics.nn.modules.block.C2PSA           [512, 512, 1]                 
+ 10                  -1  1    668168  ultralytics.nn.modules.head.Classify         [512, 8]                      
+YOLO26s-cls summary: 86 layers, 5,453,256 parameters, 5,453,256 gradients, 12.3 GFLOPs
+Transferred 236/236 items from pretrained weights
+Freezing layer 'model.0.conv.weight'
+Freezing layer 'model.0.bn.weight'
+Freezing layer 'model.0.bn.bias'
+Freezing layer 'model.1.conv.weight'
+Freezing layer 'model.1.bn.weight'
+Freezing layer 'model.1.bn.bias'
+Freezing layer 'model.2.cv1.conv.weight'
+Freezing layer 'model.2.cv1.bn.weight'
+Freezing layer 'model.2.cv1.bn.bias'
+Freezing layer 'model.2.cv2.conv.weight'
+Freezing layer 'model.2.cv2.bn.weight'
+Freezing layer 'model.2.cv2.bn.bias'
+Freezing layer 'model.2.m.0.cv1.conv.weight'
+Freezing layer 'model.2.m.0.cv1.bn.weight'
+Freezing layer 'model.2.m.0.cv1.bn.bias'
+Freezing layer 'model.2.m.0.cv2.conv.weight'
+Freezing layer 'model.2.m.0.cv2.bn.weight'
+Freezing layer 'model.2.m.0.cv2.bn.bias'
+Freezing layer 'model.3.conv.weight'
+Freezing layer 'model.3.bn.weight'
+Freezing layer 'model.3.bn.bias'
+Freezing layer 'model.4.cv1.conv.weight'
+Freezing layer 'model.4.cv1.bn.weight'
+Freezing layer 'model.4.cv1.bn.bias'
+Freezing layer 'model.4.cv2.conv.weight'
+Freezing layer 'model.4.cv2.bn.weight'
+Freezing layer 'model.4.cv2.bn.bias'
+Freezing layer 'model.4.m.0.cv1.conv.weight'
+Freezing layer 'model.4.m.0.cv1.bn.weight'
+Freezing layer 'model.4.m.0.cv1.bn.bias'
+Freezing layer 'model.4.m.0.cv2.conv.weight'
+Freezing layer 'model.4.m.0.cv2.bn.weight'
+Freezing layer 'model.4.m.0.cv2.bn.bias'
+Freezing layer 'model.5.conv.weight'
+Freezing layer 'model.5.bn.weight'
+Freezing layer 'model.5.bn.bias'
+[34m[1mAMP: [0mrunning Automatic Mixed Precision (AMP) checks...
+[34m[1mAMP: [0mchecks passed 
+[34m[1mtrain: [0mFast image access  (ping: 0.0±0.0 ms, read: 951.2±952.1 MB/s, size: 131.6 KB)
+[K[34m[1mtrain: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... 719 images, 0 corrupt: 48% ━━━━━╸────── 719/1468 2.2Kit/s 0.1s<0.3s[K[34m[1mtrain: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... 1437 images, 0 corrupt: 97% ━━━━━━━━━━━╸ 1437/1468 3.7Kit/s 0.2s<0.0s[K[34m[1mtrain: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... 1468 images, 0 corrupt: 100% ━━━━━━━━━━━━ 1468/1468 7.2Kit/s 0.2s
+[34m[1mtrain: [0mNew cache created: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train.cache
+[34m[1mval: [0mFast image access  (ping: 0.0±0.0 ms, read: 2011.2±700.4 MB/s, size: 206.4 KB)
+[K[34m[1mval: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val... 83 images, 0 corrupt: 100% ━━━━━━━━━━━━ 83/83 7.4Kit/s 0.0s
+[34m[1mval: [0mNew cache created: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val.cache
+[34m[1moptimizer:[0m AdamW(lr=0.0001, momentum=0.937) with parameter groups 39 weight(decay=0.0), 40 weight(decay=0.0005), 40 bias(decay=0.0)
+Using 1468 train, 83 val images for fraction=1.0 at imgsz=224
+Using 6 dataloader workers
+Logging results to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s42[0m
+Starting training for 30 epochs...
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       1/30     0.441G       1.69         64        224: 0% ──────────── 0/23  15.4s[K       1/30     0.557G        1.4         64        224: 4% ╸─────────── 1/23 1.5it/s 15.6s<14.7s[K       1/30     0.666G      1.069         64        224: 8% ━─────────── 2/23 2.7it/s 15.8s<7.7s[K       1/30     0.666G     0.8397         64        224: 17% ━━────────── 4/23 7.1it/s 15.9s<2.7s[K       1/30     0.666G     0.8015         64        224: 26% ━━━───────── 6/23 10.5it/s 16.1s<1.6s[K       1/30     0.666G     0.7636         64        224: 39% ━━━━╸─────── 9/23 15.4it/s 16.2s<0.9s[K       1/30     0.666G     0.6864         64        224: 56% ━━━━━━╸───── 13/23 19.2it/s 16.3s<0.5s[K       1/30     0.666G      0.658         64        224: 69% ━━━━━━━━──── 16/23 20.7it/s 16.4s<0.3s[K       1/30     0.666G     0.6348         64        224: 78% ━━━━━━━━━─── 18/23 16.1it/s 16.8s<0.3s[K       1/30     0.666G     0.6301         64        224: 82% ━━━━━━━━━╸── 19/23 12.2it/s 17.1s<0.3s[K       1/30     0.666G     0.6217         60        224: 95% ━━━━━━━━━━━─ 22/23 11.1it/s 17.5s<0.1s[K       1/30     0.666G     0.6217         60        224: 100% ━━━━━━━━━━━━ 23/23 1.3it/s 17.5s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.9s/it 2.9s
+                   all      0.651      0.964
+[EPOCA   1/30]   20.9s | loss_train=0.6217 loss_val=1.0444 | top1_val=0.6506 top5_val=0.9639 | lr=9.57e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       2/30     0.822G     0.5059         64        224: 0% ──────────── 0/23  0.1s[K       2/30     0.822G     0.4081         64        224: 8% ━─────────── 2/23 3.9it/s 0.3s<5.4s[K       2/30     0.822G     0.4147         64        224: 17% ━━────────── 4/23 7.4it/s 0.4s<2.6s[K       2/30     0.822G     0.4267         64        224: 30% ━━━╸──────── 7/23 12.3it/s 0.5s<1.3s[K       2/30     0.822G     0.4045         64        224: 43% ━━━━━─────── 10/23 17.3it/s 0.6s<0.8s[K       2/30     0.822G      0.404         64        224: 60% ━━━━━━━───── 14/23 21.9it/s 0.8s<0.4s[K       2/30     0.822G     0.3804         64        224: 73% ━━━━━━━━╸─── 17/23 22.0it/s 0.9s<0.3s[K       2/30     0.822G     0.3751         64        224: 86% ━━━━━━━━━━── 20/23 23.0it/s 1.0s<0.1s[K       2/30     0.822G     0.3699         60        224: 100% ━━━━━━━━━━━━ 23/23 21.3it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.711      0.988
+[EPOCA   2/30]    4.3s | loss_train=0.3699 loss_val=0.8585 | top1_val=0.7108 top5_val=0.9879 | lr=9.98e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       3/30     0.822G     0.2537         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<13.0s[K       3/30     0.822G     0.2911         64        224: 13% ━╸────────── 3/23 5.2it/s 0.3s<3.8s[K       3/30     0.822G     0.2926         64        224: 21% ━━╸───────── 5/23 7.4it/s 0.5s<2.4s[K       3/30     0.822G      0.305         64        224: 34% ━━━━──────── 8/23 12.8it/s 0.6s<1.2s[K       3/30     0.822G      0.303         64        224: 47% ━━━━━╸────── 11/23 15.3it/s 0.7s<0.8s[K       3/30     0.822G     0.3053         64        224: 60% ━━━━━━━───── 14/23 18.9it/s 0.9s<0.5s[K       3/30     0.822G     0.2889         64        224: 78% ━━━━━━━━━─── 18/23 21.9it/s 1.0s<0.2s[K       3/30     0.822G      0.297         64        224: 91% ━━━━━━━━━━╸─ 21/23 22.3it/s 1.1s<0.1s[K       3/30     0.822G     0.2991         60        224: 100% ━━━━━━━━━━━━ 23/23 19.8it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.747      0.976
+[EPOCA   3/30]    4.4s | loss_train=0.2991 loss_val=0.8261 | top1_val=0.7470 top5_val=0.9759 | lr=9.90e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       4/30     0.822G     0.1338         64        224: 0% ──────────── 0/23  0.1s[K       4/30     0.822G     0.2213         64        224: 4% ╸─────────── 1/23 2.6it/s 0.2s<8.4s[K       4/30     0.822G     0.2802         64        224: 17% ━━────────── 4/23 8.7it/s 0.4s<2.2s[K       4/30     0.822G     0.2874         64        224: 30% ━━━╸──────── 7/23 14.2it/s 0.5s<1.1s[K       4/30     0.822G     0.2783         64        224: 43% ━━━━━─────── 10/23 16.7it/s 0.6s<0.8s[K       4/30     0.822G     0.2602         64        224: 60% ━━━━━━━───── 14/23 21.1it/s 0.7s<0.4s[K       4/30     0.822G     0.2631         64        224: 69% ━━━━━━━━──── 16/23 20.7it/s 0.8s<0.3s[K       4/30     0.822G     0.2527         64        224: 82% ━━━━━━━━━╸── 19/23 22.4it/s 0.9s<0.2s[K       4/30     0.822G     0.2509         60        224: 95% ━━━━━━━━━━━─ 22/23 23.1it/s 1.1s<0.0s[K       4/30     0.822G     0.2509         60        224: 100% ━━━━━━━━━━━━ 23/23 21.5it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.783      0.988
+[EPOCA   4/30]    4.3s | loss_train=0.2509 loss_val=0.8247 | top1_val=0.7831 top5_val=0.9879 | lr=9.78e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       5/30     0.822G     0.2379         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<13.7s[K       5/30     0.822G     0.2303         64        224: 17% ━━────────── 4/23 8.0it/s 0.3s<2.4s[K       5/30     0.822G     0.2384         64        224: 34% ━━━━──────── 8/23 15.6it/s 0.4s<1.0s[K       5/30     0.822G     0.2361         64        224: 47% ━━━━━╸────── 11/23 17.1it/s 0.6s<0.7s[K       5/30     0.822G     0.2488         64        224: 56% ━━━━━━╸───── 13/23 17.6it/s 0.7s<0.6s[K       5/30     0.822G     0.2433         64        224: 73% ━━━━━━━━╸─── 17/23 21.7it/s 0.8s<0.3s[K       5/30     0.822G     0.2419         64        224: 86% ━━━━━━━━━━── 20/23 23.8it/s 0.9s<0.1s[K       5/30     0.822G     0.2386         60        224: 95% ━━━━━━━━━━━─ 22/23 21.8it/s 1.0s<0.0s[K       5/30     0.822G     0.2386         60        224: 100% ━━━━━━━━━━━━ 23/23 22.1it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.771      0.988
+[EPOCA   5/30]    4.2s | loss_train=0.2386 loss_val=0.8102 | top1_val=0.7711 top5_val=0.9879 | lr=9.61e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       6/30     0.822G     0.1999         64        224: 4% ╸─────────── 1/23 1.5it/s 0.2s<14.5s[K       6/30     0.822G     0.2416         64        224: 13% ━╸────────── 3/23 6.3it/s 0.3s<3.2s[K       6/30     0.822G     0.2312         64        224: 21% ━━╸───────── 5/23 8.7it/s 0.5s<2.1s[K       6/30     0.822G      0.217         64        224: 30% ━━━╸──────── 7/23 10.7it/s 0.6s<1.5s[K       6/30     0.822G     0.2145         64        224: 43% ━━━━━─────── 10/23 14.9it/s 0.7s<0.9s[K       6/30     0.822G      0.202         64        224: 56% ━━━━━━╸───── 13/23 18.9it/s 0.8s<0.5s[K       6/30     0.822G     0.2119         64        224: 69% ━━━━━━━━──── 16/23 21.5it/s 0.9s<0.3s[K       6/30     0.822G     0.2166         64        224: 86% ━━━━━━━━━━── 20/23 22.3it/s 1.1s<0.1s[K       6/30     0.822G     0.2123         60        224: 100% ━━━━━━━━━━━━ 23/23 19.6it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.783      0.988
+[EPOCA   6/30]    4.4s | loss_train=0.2123 loss_val=0.7694 | top1_val=0.7831 top5_val=0.9879 | lr=9.40e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       7/30     0.822G     0.1913         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<13.3s[K       7/30     0.822G     0.1899         64        224: 13% ━╸────────── 3/23 4.9it/s 0.3s<4.1s[K       7/30     0.822G     0.1857         64        224: 30% ━━━╸──────── 7/23 13.1it/s 0.5s<1.2s[K       7/30     0.822G     0.1844         64        224: 47% ━━━━━╸────── 11/23 18.4it/s 0.6s<0.7s[K       7/30     0.822G     0.1734         64        224: 60% ━━━━━━━───── 14/23 19.8it/s 0.7s<0.5s[K       7/30     0.822G     0.1798         64        224: 73% ━━━━━━━━╸─── 17/23 21.1it/s 0.9s<0.3s[K       7/30     0.822G     0.1751         64        224: 86% ━━━━━━━━━━── 20/23 21.9it/s 1.0s<0.1s[K       7/30     0.822G     0.1767         60        224: 100% ━━━━━━━━━━━━ 23/23 21.7it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.783      0.988
+[EPOCA   7/30]    4.3s | loss_train=0.1767 loss_val=0.7563 | top1_val=0.7831 top5_val=0.9879 | lr=9.14e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       8/30     0.822G     0.1938         64        224: 0% ──────────── 0/23  0.1s[K       8/30     0.822G      0.175         64        224: 13% ━╸────────── 3/23 8.4it/s 0.2s<2.4s[K       8/30     0.822G     0.1733         64        224: 30% ━━━╸──────── 7/23 16.4it/s 0.4s<1.0s[K       8/30     0.822G     0.1585         64        224: 47% ━━━━━╸────── 11/23 21.2it/s 0.5s<0.6s[K       8/30     0.822G     0.1608         64        224: 56% ━━━━━━╸───── 13/23 18.5it/s 0.6s<0.5s[K       8/30     0.822G     0.1597         64        224: 69% ━━━━━━━━──── 16/23 19.7it/s 0.8s<0.4s[K       8/30     0.822G     0.1573         64        224: 82% ━━━━━━━━━╸── 19/23 21.6it/s 0.9s<0.2s[K       8/30     0.822G     0.1636         60        224: 95% ━━━━━━━━━━━─ 22/23 23.2it/s 1.0s<0.0s[K       8/30     0.822G     0.1636         60        224: 100% ━━━━━━━━━━━━ 23/23 22.9it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.807      0.988
+[EPOCA   8/30]    4.2s | loss_train=0.1636 loss_val=0.7639 | top1_val=0.8072 top5_val=0.9879 | lr=8.84e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       9/30     0.822G     0.2731         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<12.7s[K       9/30     0.822G     0.2571         64        224: 13% ━╸────────── 3/23 5.4it/s 0.3s<3.7s[K       9/30     0.822G     0.2165         64        224: 21% ━━╸───────── 5/23 8.2it/s 0.5s<2.2s[K       9/30     0.822G     0.1997         64        224: 30% ━━━╸──────── 7/23 10.3it/s 0.6s<1.6s[K       9/30     0.822G     0.1854         64        224: 43% ━━━━━─────── 10/23 14.4it/s 0.7s<0.9s[K       9/30     0.822G     0.1619         64        224: 56% ━━━━━━╸───── 13/23 18.4it/s 0.8s<0.5s[K       9/30     0.822G     0.1517         64        224: 73% ━━━━━━━━╸─── 17/23 22.2it/s 0.9s<0.3s[K       9/30     0.822G     0.1542         64        224: 86% ━━━━━━━━━━── 20/23 23.2it/s 1.1s<0.1s[K       9/30     0.822G     0.1517         60        224: 95% ━━━━━━━━━━━─ 22/23 21.2it/s 1.2s<0.0s[K       9/30     0.822G     0.1517         60        224: 100% ━━━━━━━━━━━━ 23/23 19.4it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.795      0.988
+[EPOCA   9/30]    4.3s | loss_train=0.1517 loss_val=0.7348 | top1_val=0.7952 top5_val=0.9879 | lr=8.51e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      10/30     0.822G     0.1756         64        224: 0% ──────────── 0/23  0.1s[K      10/30     0.822G      0.155         64        224: 4% ╸─────────── 1/23 2.6it/s 0.2s<8.3s[K      10/30     0.822G     0.1313         64        224: 13% ━╸────────── 3/23 6.4it/s 0.4s<3.1s[K      10/30     0.822G     0.1188         64        224: 21% ━━╸───────── 5/23 8.6it/s 0.5s<2.1s[K      10/30     0.822G     0.1351         64        224: 30% ━━━╸──────── 7/23 11.1it/s 0.6s<1.4s[K      10/30     0.822G     0.1476         64        224: 43% ━━━━━─────── 10/23 14.7it/s 0.7s<0.9s[K      10/30     0.822G     0.1493         64        224: 56% ━━━━━━╸───── 13/23 19.1it/s 0.9s<0.5s[K      10/30     0.822G     0.1381         64        224: 73% ━━━━━━━━╸─── 17/23 23.0it/s 1.0s<0.3s[K      10/30     0.822G     0.1359         64        224: 86% ━━━━━━━━━━── 20/23 22.5it/s 1.1s<0.1s[K      10/30     0.822G     0.1353         60        224: 100% ━━━━━━━━━━━━ 23/23 19.4it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.795      0.988
+[EPOCA  10/30]    4.3s | loss_train=0.1353 loss_val=0.7297 | top1_val=0.7952 top5_val=0.9879 | lr=8.15e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      11/30     0.822G    0.06321         64        224: 4% ╸─────────── 1/23 1.8it/s 0.2s<12.4s[K      11/30     0.822G     0.1102         64        224: 13% ━╸────────── 3/23 5.4it/s 0.3s<3.7s[K      11/30     0.822G     0.1321         64        224: 21% ━━╸───────── 5/23 7.4it/s 0.5s<2.4s[K      11/30     0.822G     0.1289         64        224: 34% ━━━━──────── 8/23 14.0it/s 0.6s<1.1s[K      11/30     0.822G     0.1319         64        224: 43% ━━━━━─────── 10/23 15.1it/s 0.7s<0.9s[K      11/30     0.822G      0.141         64        224: 56% ━━━━━━╸───── 13/23 17.3it/s 0.8s<0.6s[K      11/30     0.822G     0.1396         64        224: 73% ━━━━━━━━╸─── 17/23 21.2it/s 1.0s<0.3s[K      11/30     0.822G     0.1404         64        224: 86% ━━━━━━━━━━── 20/23 23.2it/s 1.1s<0.1s[K      11/30     0.822G     0.1425         60        224: 100% ━━━━━━━━━━━━ 23/23 19.9it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.819      0.988
+[EPOCA  11/30]    4.3s | loss_train=0.1425 loss_val=0.7201 | top1_val=0.8193 top5_val=0.9879 | lr=7.75e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      12/30     0.822G     0.1091         64        224: 4% ╸─────────── 1/23 1.5it/s 0.2s<14.5s[K      12/30     0.822G      0.102         64        224: 21% ━━╸───────── 5/23 11.3it/s 0.3s<1.6s[K      12/30     0.822G     0.1127         64        224: 34% ━━━━──────── 8/23 14.9it/s 0.4s<1.0s[K      12/30     0.822G     0.1162         64        224: 47% ━━━━━╸────── 11/23 17.4it/s 0.6s<0.7s[K      12/30     0.822G     0.1172         64        224: 60% ━━━━━━━───── 14/23 19.3it/s 0.7s<0.5s[K      12/30     0.822G     0.1202         64        224: 73% ━━━━━━━━╸─── 17/23 20.4it/s 0.8s<0.3s[K      12/30     0.822G     0.1198         64        224: 91% ━━━━━━━━━━╸─ 21/23 22.0it/s 1.0s<0.1s[K      12/30     0.822G     0.1214         60        224: 100% ━━━━━━━━━━━━ 23/23 22.4it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.783      0.988
+[EPOCA  12/30]    4.3s | loss_train=0.1214 loss_val=0.7472 | top1_val=0.7831 top5_val=0.9879 | lr=7.33e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      13/30     0.822G     0.1264         64        224: 4% ╸─────────── 1/23 1.8it/s 0.2s<12.2s[K      13/30     0.822G     0.1345         64        224: 13% ━╸────────── 3/23 6.1it/s 0.3s<3.3s[K      13/30     0.822G     0.1445         64        224: 26% ━━━───────── 6/23 10.7it/s 0.4s<1.6s[K      13/30     0.822G     0.1362         64        224: 39% ━━━━╸─────── 9/23 13.8it/s 0.6s<1.0s[K      13/30     0.822G     0.1314         64        224: 47% ━━━━━╸────── 11/23 15.3it/s 0.7s<0.8s[K      13/30     0.822G     0.1386         64        224: 60% ━━━━━━━───── 14/23 17.7it/s 0.8s<0.5s[K      13/30     0.822G     0.1394         64        224: 69% ━━━━━━━━──── 16/23 17.6it/s 0.9s<0.4s[K      13/30     0.822G      0.144         64        224: 82% ━━━━━━━━━╸── 19/23 20.3it/s 1.0s<0.2s[K      13/30     0.822G     0.1485         60        224: 95% ━━━━━━━━━━━─ 22/23 23.2it/s 1.1s<0.0s[K      13/30     0.822G     0.1485         60        224: 100% ━━━━━━━━━━━━ 23/23 20.2it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.771      0.988
+[EPOCA  13/30]    4.3s | loss_train=0.1485 loss_val=0.7319 | top1_val=0.7711 top5_val=0.9879 | lr=6.89e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      14/30     0.822G     0.1246         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<13.2s[K      14/30     0.822G     0.1504         64        224: 21% ━━╸───────── 5/23 9.2it/s 0.3s<2.0s[K      14/30     0.822G     0.1328         64        224: 39% ━━━━╸─────── 9/23 16.7it/s 0.4s<0.8s[K      14/30     0.822G     0.1251         64        224: 47% ━━━━━╸────── 11/23 16.6it/s 0.6s<0.7s[K      14/30     0.822G     0.1294         64        224: 65% ━━━━━━━╸──── 15/23 21.4it/s 0.7s<0.4s[K      14/30     0.822G     0.1328         64        224: 78% ━━━━━━━━━─── 18/23 21.9it/s 0.8s<0.2s[K      14/30     0.822G     0.1321         64        224: 91% ━━━━━━━━━━╸─ 21/23 23.9it/s 0.9s<0.1s[K      14/30     0.822G     0.1289         60        224: 100% ━━━━━━━━━━━━ 23/23 24.0it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.783      0.988
+[EPOCA  14/30]    4.1s | loss_train=0.1289 loss_val=0.7038 | top1_val=0.7831 top5_val=0.9879 | lr=6.44e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      15/30     0.822G     0.1551         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<13.3s[K      15/30     0.822G      0.147         64        224: 13% ━╸────────── 3/23 4.9it/s 0.3s<4.1s[K      15/30     0.822G     0.1605         64        224: 21% ━━╸───────── 5/23 7.8it/s 0.5s<2.3s[K      15/30     0.822G     0.1522         64        224: 30% ━━━╸──────── 7/23 9.7it/s 0.6s<1.7s[K      15/30     0.822G     0.1438         64        224: 43% ━━━━━─────── 10/23 15.0it/s 0.7s<0.9s[K      15/30     0.822G     0.1329         64        224: 56% ━━━━━━╸───── 13/23 17.7it/s 0.9s<0.6s[K      15/30     0.822G     0.1318         64        224: 73% ━━━━━━━━╸─── 17/23 22.3it/s 1.0s<0.3s[K      15/30     0.822G     0.1302         64        224: 86% ━━━━━━━━━━── 20/23 22.7it/s 1.1s<0.1s[K      15/30     0.822G     0.1257         60        224: 100% ━━━━━━━━━━━━ 23/23 19.6it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771      0.988
+[EPOCA  15/30]    4.3s | loss_train=0.1257 loss_val=0.7471 | top1_val=0.7711 top5_val=0.9879 | lr=5.97e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      16/30     0.822G    0.06379         64        224: 4% ╸─────────── 1/23 2.0it/s 0.2s<11.1s[K      16/30     0.822G     0.0775         64        224: 13% ━╸────────── 3/23 5.2it/s 0.3s<3.8s[K      16/30     0.822G    0.09262         64        224: 21% ━━╸───────── 5/23 7.8it/s 0.5s<2.3s[K      16/30     0.822G     0.1146         64        224: 34% ━━━━──────── 8/23 13.5it/s 0.6s<1.1s[K      16/30     0.822G     0.1181         64        224: 52% ━━━━━━────── 12/23 19.8it/s 0.7s<0.6s[K      16/30     0.822G     0.1226         64        224: 65% ━━━━━━━╸──── 15/23 22.0it/s 0.8s<0.4s[K      16/30     0.822G     0.1235         64        224: 78% ━━━━━━━━━─── 18/23 23.3it/s 0.9s<0.2s[K      16/30     0.822G     0.1231         60        224: 95% ━━━━━━━━━━━─ 22/23 25.5it/s 1.0s<0.0s[K      16/30     0.822G     0.1231         60        224: 100% ━━━━━━━━━━━━ 23/23 22.2it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.9s/it 2.9s
+                   all      0.759      0.988
+[EPOCA  16/30]    4.2s | loss_train=0.1231 loss_val=0.7752 | top1_val=0.7590 top5_val=0.9879 | lr=5.50e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      17/30     0.822G     0.1815         64        224: 4% ╸─────────── 1/23 1.8it/s 0.2s<12.0s[K      17/30     0.822G     0.1662         64        224: 13% ━╸────────── 3/23 5.9it/s 0.3s<3.4s[K      17/30     0.822G     0.1349         64        224: 21% ━━╸───────── 5/23 8.4it/s 0.4s<2.1s[K      17/30     0.822G     0.1591         64        224: 30% ━━━╸──────── 7/23 9.8it/s 0.6s<1.6s[K      17/30     0.822G     0.1472         64        224: 39% ━━━━╸─────── 9/23 12.1it/s 0.7s<1.2s[K      17/30     0.822G     0.1431         64        224: 52% ━━━━━━────── 12/23 16.8it/s 0.8s<0.7s[K      17/30     0.822G     0.1366         64        224: 65% ━━━━━━━╸──── 15/23 20.5it/s 0.9s<0.4s[K      17/30     0.822G     0.1343         64        224: 78% ━━━━━━━━━─── 18/23 22.7it/s 1.0s<0.2s[K      17/30     0.822G     0.1271         64        224: 86% ━━━━━━━━━━── 20/23 21.7it/s 1.1s<0.1s[K      17/30     0.822G     0.1291         60        224: 95% ━━━━━━━━━━━─ 22/23 20.5it/s 1.2s<0.0s[K      17/30     0.822G     0.1291         60        224: 100% ━━━━━━━━━━━━ 23/23 18.6it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.747      0.988
+[EPOCA  17/30]    4.3s | loss_train=0.1291 loss_val=0.7923 | top1_val=0.7470 top5_val=0.9879 | lr=5.03e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      18/30     0.822G     0.0928         64        224: 0% ──────────── 0/23  0.1s[K      18/30     0.822G    0.07745         64        224: 8% ━─────────── 2/23 4.2it/s 0.3s<5.0s[K      18/30     0.822G    0.08401         64        224: 17% ━━────────── 4/23 7.2it/s 0.4s<2.6s[K      18/30     0.822G      0.104         64        224: 26% ━━━───────── 6/23 9.4it/s 0.5s<1.8s[K      18/30     0.822G    0.09733         64        224: 43% ━━━━━─────── 10/23 15.2it/s 0.7s<0.9s[K      18/30     0.822G    0.09017         64        224: 52% ━━━━━━────── 12/23 15.8it/s 0.8s<0.7s[K      18/30     0.822G    0.08989         64        224: 65% ━━━━━━━╸──── 15/23 18.6it/s 0.9s<0.4s[K      18/30     0.822G    0.09381         64        224: 82% ━━━━━━━━━╸── 19/23 22.3it/s 1.0s<0.2s[K      18/30     0.822G    0.09487         60        224: 95% ━━━━━━━━━━━─ 22/23 23.7it/s 1.1s<0.0s[K      18/30     0.822G    0.09487         60        224: 100% ━━━━━━━━━━━━ 23/23 20.1it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.759      0.988
+[EPOCA  18/30]    4.4s | loss_train=0.0949 loss_val=0.7863 | top1_val=0.7590 top5_val=0.9879 | lr=4.56e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      19/30     0.822G     0.0999         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<13.5s[K      19/30     0.822G    0.09884         64        224: 17% ━━────────── 4/23 9.4it/s 0.3s<2.0s[K      19/30     0.822G     0.0929         64        224: 34% ━━━━──────── 8/23 16.6it/s 0.4s<0.9s[K      19/30     0.822G    0.08872         64        224: 52% ━━━━━━────── 12/23 21.1it/s 0.5s<0.5s[K      19/30     0.822G    0.09861         64        224: 56% ━━━━━━╸───── 13/23 17.4it/s 0.7s<0.6s[K      19/30     0.822G    0.09101         64        224: 69% ━━━━━━━━──── 16/23 19.8it/s 0.8s<0.4s[K      19/30     0.822G     0.0939         64        224: 86% ━━━━━━━━━━── 20/23 23.7it/s 0.9s<0.1s[K      19/30     0.822G    0.09636         60        224: 100% ━━━━━━━━━━━━ 23/23 23.4it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.9s/it 2.9s
+                   all      0.747      0.988
+[EPOCA  19/30]    4.3s | loss_train=0.0964 loss_val=0.8245 | top1_val=0.7470 top5_val=0.9879 | lr=4.11e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      20/30     0.822G    0.05462         64        224: 4% ╸─────────── 1/23 1.8it/s 0.2s<12.3s[K      20/30     0.822G     0.0877         64        224: 13% ━╸────────── 3/23 5.4it/s 0.3s<3.7s[K      20/30     0.822G    0.09616         64        224: 26% ━━━───────── 6/23 10.8it/s 0.4s<1.6s[K      20/30     0.822G     0.1044         64        224: 39% ━━━━╸─────── 9/23 16.4it/s 0.5s<0.9s[K      20/30     0.822G     0.1025         64        224: 52% ━━━━━━────── 12/23 20.1it/s 0.6s<0.5s[K      20/30     0.822G     0.0959         64        224: 65% ━━━━━━━╸──── 15/23 22.2it/s 0.8s<0.4s[K      20/30     0.822G    0.09108         64        224: 78% ━━━━━━━━━─── 18/23 22.6it/s 0.9s<0.2s[K      20/30     0.822G    0.09161         64        224: 91% ━━━━━━━━━━╸─ 21/23 22.8it/s 1.0s<0.1s[K      20/30     0.822G    0.09453         60        224: 100% ━━━━━━━━━━━━ 23/23 21.7it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.9s/it 2.9s
+                   all      0.735      0.988
+[EPOCA  20/30]    4.3s | loss_train=0.0945 loss_val=0.8392 | top1_val=0.7349 top5_val=0.9879 | lr=3.67e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      21/30     0.822G    0.06345         64        224: 0% ──────────── 0/23  14.3s[K      21/30     0.822G    0.06458         64        224: 8% ━─────────── 2/23 4.9it/s 14.4s<4.3s[K      21/30     0.822G     0.1046         64        224: 21% ━━╸───────── 5/23 10.9it/s 14.5s<1.7s[K      21/30     0.822G    0.09803         64        224: 26% ━━━───────── 6/23 9.0it/s 14.7s<1.9s[K      21/30     0.822G    0.09137         64        224: 30% ━━━╸──────── 7/23 7.1it/s 15.1s<2.3s[K      21/30     0.822G    0.09558         64        224: 43% ━━━━━─────── 10/23 12.2it/s 15.2s<1.1s[K      21/30     0.822G     0.1007         64        224: 52% ━━━━━━────── 12/23 9.8it/s 15.7s<1.1s[K      21/30     0.822G    0.09949         64        224: 56% ━━━━━━╸───── 13/23 7.8it/s 16.0s<1.3s[K      21/30     0.822G    0.09647         64        224: 69% ━━━━━━━━──── 16/23 13.3it/s 16.1s<0.5s[K      21/30     0.822G     0.1006         64        224: 78% ━━━━━━━━━─── 18/23 10.9it/s 16.5s<0.5s[K      21/30     0.822G    0.09944         64        224: 82% ━━━━━━━━━╸── 19/23 9.3it/s 16.7s<0.4s[K      21/30     0.822G    0.09436         64        224: 91% ━━━━━━━━━━╸─ 21/23 8.4it/s 17.0s<0.2s[K      21/30     0.822G    0.09381         60        224: 100% ━━━━━━━━━━━━ 23/23 1.4it/s 17.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.747      0.988
+[34m[1mEarlyStopping: [0mTraining stopped early as no improvement observed in last 10 epochs. Best results observed at epoch 11, best model saved as best.pt.
+To update EarlyStopping(patience=10) pass a new patience value, i.e. `patience=300` or use `patience=0` to disable EarlyStopping.
+[EPOCA  21/30]   21.3s | loss_train=0.0938 loss_val=0.8113 | top1_val=0.7470 top5_val=0.9879 | lr=3.25e-05 | GPU_pico=0.48GB
+
+21 epochs completed in 0.034 hours.
+Optimizer stripped from D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s42\weights\last.pt, 11.0MB
+Optimizer stripped from D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s42\weights\best.pt, 11.0MB
+
+Validating D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s42\weights\best.pt...
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+YOLO26s-cls summary (fused): 47 layers, 5,444,376 parameters, 0 gradients, 12.1 GFLOPs
+[34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... found 1468 images in 8 classes  
+[34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val... found 83 images in 8 classes  
+[34m[1mtest:[0m None...
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 1.6s/it 1.6s
+                   all      0.819      0.988
+Speed: 0.3ms preprocess, 2.0ms inference, 0.0ms loss, 0.0ms postprocess per image
+Results saved to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s42[0m
+[EPOCA  22/30]   24.3s | loss_train=0.0938 loss_val=0.0000 | top1_val=0.8193 top5_val=0.9880 | lr=3.25e-05 | GPU_pico=0.48GB
+
+Modelo copiado a D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_gro_s42_20261111_2103.pt  (+ etapa2_e2_gro_s42_20261111_2103.json)
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+YOLO26s-cls summary (fused): 47 layers, 5,444,376 parameters, 0 gradients, 12.1 GFLOPs
+[34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\train... found 443 images in 8 classes  
+[34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\val... found 83 images in 8 classes  
+[34m[1mtest:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\test... found 98 images in 8 classes  
+[34m[1mval: [0mFast image access  (ping: 0.0±0.0 ms, read: 1521.1±402.6 MB/s, size: 206.4 KB)
+[K[34m[1mval: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\val... 83 images, 0 corrupt: 100% ━━━━━━━━━━━━ 83/83 34.8Mit/s 0.0s
+[K               classes   top1_acc   top5_acc: 50% ━━━━━━────── 1/2 13.9s/it 4.2s<13.9s[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 2/2 2.1s/it 4.2s
+                   all      0.819      0.988
+Speed: 0.3ms preprocess, 4.1ms inference, 0.0ms loss, 0.0ms postprocess per image
+Results saved to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\evaluaciones\etapa2_e2_gro_s42_20261111_2103_juliaca_val[0m
+
+===== ETAPA 2 (validación) en juliaca/val =====
+accuracy top1=0.8193  top5=0.9880  F1 macro=0.7261 (sobre 8 clases con fotos)
+
+clase              n  precision   recall     f1
+generales         16      0.700    0.875  0.778
+metales           13      0.786    0.846  0.815
+organico           1      0.000    0.000  0.000
+papel_carton      13      1.000    0.846  0.917
+peligrosos         2      1.000    1.000  1.000
+plasticos         27      0.800    0.889  0.842
+sin_residuo        4      1.000    0.750  0.857
+vidrio             7      1.000    0.429  0.600
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales         14      2      0      0      0      0      0      0
+metales            1     11      0      0      0      1      0      0
+organico           1      0      0      0      0      0      0      0
+papel_carton       2      0      0     11      0      0      0      0
+peligrosos         0      0      0      0      2      0      0      0
+plasticos          2      1      0      0      0     24      0      0
+sin_residuo        0      0      0      0      0      1      3      0
+vidrio             0      0      0      0      0      4      0      3
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2_gro_s42_20261111_2103_juliaca_val.json
+
+(No se evaluó en juliaca/test. Hazlo una sola vez con el modelo final: python scripts/evaluar.py --pesos modelos\experimentos\etapa2_e2_gro_s42_20261111_2103.pt --split test)
+
+==========================================================================================
+[2/3] e2_gro_s43: receta recomendada desde e1_gro (externo solo taco) + gris 0.3, semilla 43
+  D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\scripts\entrenar.py --etapa 2 --equipo pc --experimento e2_gro_s43 --device 0 --pesos D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_gro_20261111_2100.pt --replay 2 --externo --externo-fuentes taco --gris 0.3 --seed 43
+==========================================================================================
+Entorno: {'python': '3.13.15', 'torch': '2.14.1+cu130', 'cuda_torch': '13.0', 'ultralytics': '8.4.184', 'gpu': 'NVIDIA GeForce RTX 3060'}
+
+Etapa 2 - train = juliaca + replay público + externo (taco):
+  generales      juliaca= 119  replay= 238  externo= 139
+  metales        juliaca=  72  replay= 144  externo=  40
+  organico       juliaca=   5  replay=  10  externo=   0
+  papel_carton   juliaca=  52  replay= 104  externo=   0
+  peligrosos     juliaca=  16  replay=  32  externo=   0
+  plasticos      juliaca= 102  replay= 204  externo=   0
+  sin_residuo    juliaca=  20  replay=   0  externo=   0
+  vidrio         juliaca=  57  replay= 114  externo=   0
+New https://pypi.org/project/ultralytics/8.4.211 available  Update with 'pip install -U ultralytics'
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+[34m[1mengine\trainer: [0magnostic_nms=False, amp=True, angle=1.0, augment=False, auto_augment=randaugment, batch=64, bgr=0.0, box=7.5, cache=False, cfg=None, channels_last=None, classes=None, close_mosaic=10, cls=0.5, cls_pw=0.0, cls_remap=True, compile=False, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=True, cutmix=0.0, data=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2, degrees=0.0, deterministic=True, device=0, dfl=1.5, dgrad=0.5, dis=6.0, distill_model=None, dlam=1.0, dlog=1.0, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=30, erasing=0.3, exist_ok=False, fliplr=0.5, flipud=0.2, format=torchscript, fraction=1.0, freeze=6, hsv_h=0.03, hsv_s=0.5, hsv_v=0.4, imgsz=224, iou=0.7, kobj=1.0, line_width=None, lr0=0.0001, lrf=0.1, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_gro_20261111_2100.pt, momentum=0.937, mosaic=1.0, multi_scale=0.0, name=etapa2_e2_gro_s43, nbs=64, nms=None, opset=None, optimize=False, optimizer=AdamW, overlap_mask=True, patience=10, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs, quantize=None, rect=False, resume=False, retina_masks=False, rle=1.0, save=True, save_conf=False, save_crop=False, save_dir=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s43, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=43, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=classify, time=None, tracker=tracktrack.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=1, warmup_momentum=0.8, weight_decay=0.0005, workers=6, workspace=None
+[34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... found 1468 images in 8 classes  
+[34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val... found 83 images in 8 classes  
+[34m[1mtest:[0m None...
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       928  ultralytics.nn.modules.conv.Conv             [3, 32, 3, 2]                 
+  1                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]                
+  2                  -1  1     26080  ultralytics.nn.modules.block.C3k2            [64, 128, 1, False, 0.25]     
+  3                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+  4                  -1  1    103360  ultralytics.nn.modules.block.C3k2            [128, 256, 1, False, 0.25]    
+  5                  -1  1    590336  ultralytics.nn.modules.conv.Conv             [256, 256, 3, 2]              
+  6                  -1  1    346112  ultralytics.nn.modules.block.C3k2            [256, 256, 1, True]           
+  7                  -1  1   1180672  ultralytics.nn.modules.conv.Conv             [256, 512, 3, 2]              
+  8                  -1  1   1380352  ultralytics.nn.modules.block.C3k2            [512, 512, 1, True]           
+  9                  -1  1    990976  ultralytics.nn.modules.block.C2PSA           [512, 512, 1]                 
+ 10                  -1  1    668168  ultralytics.nn.modules.head.Classify         [512, 8]                      
+YOLO26s-cls summary: 86 layers, 5,453,256 parameters, 5,453,256 gradients, 12.3 GFLOPs
+Transferred 236/236 items from pretrained weights
+Freezing layer 'model.0.conv.weight'
+Freezing layer 'model.0.bn.weight'
+Freezing layer 'model.0.bn.bias'
+Freezing layer 'model.1.conv.weight'
+Freezing layer 'model.1.bn.weight'
+Freezing layer 'model.1.bn.bias'
+Freezing layer 'model.2.cv1.conv.weight'
+Freezing layer 'model.2.cv1.bn.weight'
+Freezing layer 'model.2.cv1.bn.bias'
+Freezing layer 'model.2.cv2.conv.weight'
+Freezing layer 'model.2.cv2.bn.weight'
+Freezing layer 'model.2.cv2.bn.bias'
+Freezing layer 'model.2.m.0.cv1.conv.weight'
+Freezing layer 'model.2.m.0.cv1.bn.weight'
+Freezing layer 'model.2.m.0.cv1.bn.bias'
+Freezing layer 'model.2.m.0.cv2.conv.weight'
+Freezing layer 'model.2.m.0.cv2.bn.weight'
+Freezing layer 'model.2.m.0.cv2.bn.bias'
+Freezing layer 'model.3.conv.weight'
+Freezing layer 'model.3.bn.weight'
+Freezing layer 'model.3.bn.bias'
+Freezing layer 'model.4.cv1.conv.weight'
+Freezing layer 'model.4.cv1.bn.weight'
+Freezing layer 'model.4.cv1.bn.bias'
+Freezing layer 'model.4.cv2.conv.weight'
+Freezing layer 'model.4.cv2.bn.weight'
+Freezing layer 'model.4.cv2.bn.bias'
+Freezing layer 'model.4.m.0.cv1.conv.weight'
+Freezing layer 'model.4.m.0.cv1.bn.weight'
+Freezing layer 'model.4.m.0.cv1.bn.bias'
+Freezing layer 'model.4.m.0.cv2.conv.weight'
+Freezing layer 'model.4.m.0.cv2.bn.weight'
+Freezing layer 'model.4.m.0.cv2.bn.bias'
+Freezing layer 'model.5.conv.weight'
+Freezing layer 'model.5.bn.weight'
+Freezing layer 'model.5.bn.bias'
+[34m[1mAMP: [0mrunning Automatic Mixed Precision (AMP) checks...
+[34m[1mAMP: [0mchecks passed 
+[34m[1mtrain: [0mFast image access  (ping: 0.0±0.0 ms, read: 1054.6±1119.0 MB/s, size: 131.6 KB)
+[K[34m[1mtrain: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... 719 images, 0 corrupt: 48% ━━━━━╸────── 719/1468 2.2Kit/s 0.1s<0.3s[K[34m[1mtrain: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... 1354 images, 0 corrupt: 92% ━━━━━━━━━━━─ 1354/1468 3.4Kit/s 0.2s<0.0s[K[34m[1mtrain: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... 1468 images, 0 corrupt: 100% ━━━━━━━━━━━━ 1468/1468 6.8Kit/s 0.2s
+[34m[1mtrain: [0mNew cache created: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train.cache
+[34m[1mval: [0mFast image access  (ping: 0.0±0.0 ms, read: 2034.5±770.0 MB/s, size: 206.4 KB)
+[K[34m[1mval: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val... 83 images, 0 corrupt: 100% ━━━━━━━━━━━━ 83/83 7.3Kit/s 0.0s
+[34m[1mval: [0mNew cache created: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val.cache
+[34m[1moptimizer:[0m AdamW(lr=0.0001, momentum=0.937) with parameter groups 39 weight(decay=0.0), 40 weight(decay=0.0005), 40 bias(decay=0.0)
+Using 1468 train, 83 val images for fraction=1.0 at imgsz=224
+Using 6 dataloader workers
+Logging results to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s43[0m
+Starting training for 30 epochs...
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       1/30     0.441G     0.7153         64        224: 0% ──────────── 0/23  15.3s[K       1/30     0.557G     0.8115         64        224: 4% ╸─────────── 1/23 2.0it/s 15.5s<11.2s[K       1/30     0.666G     0.9025         64        224: 8% ━─────────── 2/23 3.4it/s 15.6s<6.2s[K       1/30     0.666G     0.9574         64        224: 13% ━╸────────── 3/23 5.2it/s 15.7s<3.9s[K       1/30     0.666G     0.8603         64        224: 26% ━━━───────── 6/23 10.1it/s 15.9s<1.7s[K       1/30     0.666G     0.8386         64        224: 39% ━━━━╸─────── 9/23 15.2it/s 16.0s<0.9s[K       1/30     0.666G     0.7921         64        224: 52% ━━━━━━────── 12/23 17.9it/s 16.1s<0.6s[K       1/30     0.666G      0.734         64        224: 69% ━━━━━━━━──── 16/23 21.5it/s 16.2s<0.3s[K       1/30     0.666G     0.7283         64        224: 78% ━━━━━━━━━─── 18/23 16.8it/s 16.6s<0.3s[K       1/30     0.666G     0.7177         64        224: 82% ━━━━━━━━━╸── 19/23 13.2it/s 16.8s<0.3s[K       1/30     0.666G     0.7076         64        224: 86% ━━━━━━━━━━── 20/23 10.0it/s 17.2s<0.3s[K       1/30     0.666G     0.6842         60        224: 95% ━━━━━━━━━━━─ 22/23 8.5it/s 17.6s<0.1s[K       1/30     0.666G     0.6842         60        224: 100% ━━━━━━━━━━━━ 23/23 1.3it/s 17.6s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.627          1
+[EPOCA   1/30]   20.9s | loss_train=0.6842 loss_val=1.1706 | top1_val=0.6265 top5_val=1.0000 | lr=9.57e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       2/30     0.822G     0.3752         64        224: 4% ╸─────────── 1/23 2.1it/s 0.1s<10.6s[K       2/30     0.822G     0.4231         64        224: 13% ━╸────────── 3/23 6.4it/s 0.3s<3.1s[K       2/30     0.822G      0.443         64        224: 21% ━━╸───────── 5/23 9.7it/s 0.4s<1.9s[K       2/30     0.822G     0.3906         64        224: 34% ━━━━──────── 8/23 14.1it/s 0.5s<1.1s[K       2/30     0.822G     0.3807         64        224: 47% ━━━━━╸────── 11/23 18.7it/s 0.6s<0.6s[K       2/30     0.822G     0.3536         64        224: 65% ━━━━━━━╸──── 15/23 21.5it/s 0.7s<0.4s[K       2/30     0.822G     0.3593         64        224: 78% ━━━━━━━━━─── 18/23 21.8it/s 0.9s<0.2s[K       2/30     0.822G     0.3634         64        224: 91% ━━━━━━━━━━╸─ 21/23 22.9it/s 1.0s<0.1s[K       2/30     0.822G     0.3552         60        224: 100% ━━━━━━━━━━━━ 23/23 21.9it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.699          1
+[EPOCA   2/30]    4.3s | loss_train=0.3552 loss_val=0.8994 | top1_val=0.6988 top5_val=1.0000 | lr=9.98e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       3/30     0.822G     0.2862         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<13.9s[K       3/30     0.822G     0.2852         64        224: 21% ━━╸───────── 5/23 10.0it/s 0.3s<1.8s[K       3/30     0.822G     0.3007         64        224: 39% ━━━━╸─────── 9/23 17.6it/s 0.4s<0.8s[K       3/30     0.822G     0.3068         64        224: 52% ━━━━━━────── 12/23 20.5it/s 0.5s<0.5s[K       3/30     0.822G     0.2959         64        224: 65% ━━━━━━━╸──── 15/23 22.3it/s 0.7s<0.4s[K       3/30     0.822G     0.2995         64        224: 78% ━━━━━━━━━─── 18/23 24.4it/s 0.8s<0.2s[K       3/30     0.822G     0.2956         64        224: 91% ━━━━━━━━━━╸─ 21/23 24.7it/s 0.9s<0.1s[K       3/30     0.822G     0.3021         60        224: 100% ━━━━━━━━━━━━ 23/23 25.1it/s 0.9s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.735          1
+[EPOCA   3/30]    4.2s | loss_train=0.3021 loss_val=0.7813 | top1_val=0.7349 top5_val=1.0000 | lr=9.90e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       4/30     0.822G     0.3333         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<13.6s[K       4/30     0.822G     0.2968         64        224: 17% ━━────────── 4/23 9.1it/s 0.3s<2.1s[K       4/30     0.822G     0.2861         64        224: 30% ━━━╸──────── 7/23 13.2it/s 0.4s<1.2s[K       4/30     0.822G     0.3187         64        224: 43% ━━━━━─────── 10/23 16.3it/s 0.6s<0.8s[K       4/30     0.822G     0.3042         64        224: 56% ━━━━━━╸───── 13/23 18.7it/s 0.7s<0.5s[K       4/30     0.822G     0.2835         64        224: 69% ━━━━━━━━──── 16/23 20.1it/s 0.8s<0.3s[K       4/30     0.822G     0.2713         64        224: 78% ━━━━━━━━━─── 18/23 19.3it/s 0.9s<0.3s[K       4/30     0.822G     0.2659         64        224: 91% ━━━━━━━━━━╸─ 21/23 20.5it/s 1.1s<0.1s[K       4/30     0.822G     0.2822         60        224: 100% ━━━━━━━━━━━━ 23/23 21.3it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.747          1
+[EPOCA   4/30]    4.4s | loss_train=0.2822 loss_val=0.7284 | top1_val=0.7470 top5_val=1.0000 | lr=9.78e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       5/30     0.822G     0.1615         64        224: 0% ──────────── 0/23  0.1s[K       5/30     0.822G     0.1358         64        224: 4% ╸─────────── 1/23 2.6it/s 0.2s<8.5s[K       5/30     0.822G     0.2207         64        224: 21% ━━╸───────── 5/23 12.0it/s 0.3s<1.5s[K       5/30     0.822G     0.2392         64        224: 39% ━━━━╸─────── 9/23 17.9it/s 0.5s<0.8s[K       5/30     0.822G     0.2486         64        224: 52% ━━━━━━────── 12/23 20.8it/s 0.6s<0.5s[K       5/30     0.822G     0.2479         64        224: 60% ━━━━━━━───── 14/23 17.3it/s 0.8s<0.5s[K       5/30     0.822G     0.2497         64        224: 73% ━━━━━━━━╸─── 17/23 18.6it/s 0.9s<0.3s[K       5/30     0.822G     0.2422         64        224: 86% ━━━━━━━━━━── 20/23 20.0it/s 1.1s<0.1s[K       5/30     0.822G     0.2431         60        224: 95% ━━━━━━━━━━━─ 22/23 19.4it/s 1.2s<0.1s[K       5/30     0.822G     0.2431         60        224: 100% ━━━━━━━━━━━━ 23/23 19.5it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 3.0s/it 3.0s
+                   all      0.759          1
+[EPOCA   5/30]    4.5s | loss_train=0.2431 loss_val=0.7604 | top1_val=0.7590 top5_val=1.0000 | lr=9.61e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       6/30     0.822G     0.2018         64        224: 4% ╸─────────── 1/23 1.8it/s 0.2s<12.0s[K       6/30     0.822G      0.232         64        224: 13% ━╸────────── 3/23 5.5it/s 0.3s<3.7s[K       6/30     0.822G     0.2432         64        224: 21% ━━╸───────── 5/23 8.9it/s 0.4s<2.0s[K       6/30     0.822G     0.2225         64        224: 34% ━━━━──────── 8/23 14.1it/s 0.5s<1.1s[K       6/30     0.822G     0.2132         64        224: 52% ━━━━━━────── 12/23 19.3it/s 0.7s<0.6s[K       6/30     0.822G     0.2141         64        224: 65% ━━━━━━━╸──── 15/23 21.1it/s 0.8s<0.4s[K       6/30     0.822G     0.2138         64        224: 78% ━━━━━━━━━─── 18/23 21.3it/s 0.9s<0.2s[K       6/30     0.822G     0.2221         64        224: 91% ━━━━━━━━━━╸─ 21/23 21.8it/s 1.1s<0.1s[K       6/30     0.822G     0.2257         60        224: 100% ━━━━━━━━━━━━ 23/23 20.7it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.759          1
+[EPOCA   6/30]    4.3s | loss_train=0.2257 loss_val=0.7427 | top1_val=0.7590 top5_val=1.0000 | lr=9.40e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       7/30     0.822G     0.2149         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<13.4s[K       7/30     0.822G     0.1919         64        224: 13% ━╸────────── 3/23 5.7it/s 0.3s<3.5s[K       7/30     0.822G      0.186         64        224: 21% ━━╸───────── 5/23 8.2it/s 0.5s<2.2s[K       7/30     0.822G     0.2057         64        224: 30% ━━━╸──────── 7/23 11.1it/s 0.6s<1.4s[K       7/30     0.822G     0.2108         64        224: 43% ━━━━━─────── 10/23 15.8it/s 0.7s<0.8s[K       7/30     0.822G     0.2219         64        224: 56% ━━━━━━╸───── 13/23 19.1it/s 0.8s<0.5s[K       7/30     0.822G     0.2217         64        224: 65% ━━━━━━━╸──── 15/23 19.2it/s 0.9s<0.4s[K       7/30     0.822G     0.2153         64        224: 78% ━━━━━━━━━─── 18/23 21.0it/s 1.0s<0.2s[K       7/30     0.822G     0.2151         60        224: 95% ━━━━━━━━━━━─ 22/23 24.0it/s 1.1s<0.0s[K       7/30     0.822G     0.2151         60        224: 100% ━━━━━━━━━━━━ 23/23 20.1it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.759          1
+[EPOCA   7/30]    4.3s | loss_train=0.2151 loss_val=0.7145 | top1_val=0.7590 top5_val=1.0000 | lr=9.14e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       8/30     0.822G     0.2426         64        224: 4% ╸─────────── 1/23 1.9it/s 0.2s<11.7s[K       8/30     0.822G     0.1841         64        224: 13% ━╸────────── 3/23 5.4it/s 0.3s<3.7s[K       8/30     0.822G     0.1899         64        224: 26% ━━━───────── 6/23 12.0it/s 0.4s<1.4s[K       8/30     0.822G     0.2097         64        224: 34% ━━━━──────── 8/23 13.7it/s 0.5s<1.1s[K       8/30     0.822G     0.1975         64        224: 43% ━━━━━─────── 10/23 15.4it/s 0.6s<0.8s[K       8/30     0.822G     0.2008         64        224: 60% ━━━━━━━───── 14/23 20.2it/s 0.8s<0.4s[K       8/30     0.822G     0.1964         64        224: 78% ━━━━━━━━━─── 18/23 24.2it/s 0.9s<0.2s[K       8/30     0.822G       0.19         64        224: 86% ━━━━━━━━━━── 20/23 22.9it/s 1.0s<0.1s[K       8/30     0.822G     0.1938         60        224: 100% ━━━━━━━━━━━━ 23/23 21.8it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.747          1
+[EPOCA   8/30]    4.3s | loss_train=0.1938 loss_val=0.7599 | top1_val=0.7470 top5_val=1.0000 | lr=8.84e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       9/30     0.822G     0.2054         64        224: 0% ──────────── 0/23  0.1s[K       9/30     0.822G     0.1531         64        224: 4% ╸─────────── 1/23 2.9it/s 0.2s<7.5s[K       9/30     0.822G     0.1695         64        224: 13% ━╸────────── 3/23 7.2it/s 0.3s<2.8s[K       9/30     0.822G     0.1773         64        224: 21% ━━╸───────── 5/23 8.9it/s 0.5s<2.0s[K       9/30     0.822G     0.1826         64        224: 30% ━━━╸──────── 7/23 11.2it/s 0.6s<1.4s[K       9/30     0.822G     0.1877         64        224: 43% ━━━━━─────── 10/23 15.6it/s 0.7s<0.8s[K       9/30     0.822G     0.1911         64        224: 60% ━━━━━━━───── 14/23 20.3it/s 0.8s<0.4s[K       9/30     0.822G      0.198         64        224: 78% ━━━━━━━━━─── 18/23 22.2it/s 1.0s<0.2s[K       9/30     0.822G     0.1878         60        224: 95% ━━━━━━━━━━━─ 22/23 25.0it/s 1.1s<0.0s[K       9/30     0.822G     0.1878         60        224: 100% ━━━━━━━━━━━━ 23/23 20.5it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.783          1
+[EPOCA   9/30]    4.3s | loss_train=0.1878 loss_val=0.7778 | top1_val=0.7831 top5_val=1.0000 | lr=8.51e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      10/30     0.822G     0.2076         64        224: 4% ╸─────────── 1/23 1.9it/s 0.2s<11.3s[K      10/30     0.822G     0.2022         64        224: 13% ━╸────────── 3/23 6.3it/s 0.3s<3.2s[K      10/30     0.822G     0.1716         64        224: 21% ━━╸───────── 5/23 9.2it/s 0.4s<1.9s[K      10/30     0.822G     0.1822         64        224: 30% ━━━╸──────── 7/23 11.3it/s 0.5s<1.4s[K      10/30     0.822G      0.181         64        224: 43% ━━━━━─────── 10/23 15.5it/s 0.6s<0.8s[K      10/30     0.822G     0.1653         64        224: 56% ━━━━━━╸───── 13/23 18.9it/s 0.8s<0.5s[K      10/30     0.822G     0.1825         64        224: 69% ━━━━━━━━──── 16/23 22.0it/s 0.9s<0.3s[K      10/30     0.822G     0.1799         64        224: 82% ━━━━━━━━━╸── 19/23 23.3it/s 1.0s<0.2s[K      10/30     0.822G     0.1798         64        224: 91% ━━━━━━━━━━╸─ 21/23 21.7it/s 1.1s<0.1s[K      10/30     0.822G     0.1822         60        224: 100% ━━━━━━━━━━━━ 23/23 20.2it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.759          1
+[EPOCA  10/30]    4.3s | loss_train=0.1822 loss_val=0.7676 | top1_val=0.7590 top5_val=1.0000 | lr=8.15e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      11/30     0.822G     0.1627         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<14.1s[K      11/30     0.822G     0.1805         64        224: 13% ━╸────────── 3/23 4.9it/s 0.4s<4.1s[K      11/30     0.822G     0.1591         64        224: 21% ━━╸───────── 5/23 7.4it/s 0.5s<2.4s[K      11/30     0.822G     0.1514         64        224: 34% ━━━━──────── 8/23 14.1it/s 0.6s<1.1s[K      11/30     0.822G     0.1502         64        224: 47% ━━━━━╸────── 11/23 16.9it/s 0.7s<0.7s[K      11/30     0.822G     0.1462         64        224: 60% ━━━━━━━───── 14/23 19.6it/s 0.8s<0.5s[K      11/30     0.822G     0.1411         64        224: 73% ━━━━━━━━╸─── 17/23 21.1it/s 1.0s<0.3s[K      11/30     0.822G     0.1346         64        224: 86% ━━━━━━━━━━── 20/23 22.8it/s 1.1s<0.1s[K      11/30     0.822G     0.1307         60        224: 95% ━━━━━━━━━━━─ 22/23 21.7it/s 1.2s<0.0s[K      11/30     0.822G     0.1307         60        224: 100% ━━━━━━━━━━━━ 23/23 19.5it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771          1
+[EPOCA  11/30]    4.3s | loss_train=0.1307 loss_val=0.7367 | top1_val=0.7711 top5_val=1.0000 | lr=7.75e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      12/30     0.822G      0.175         64        224: 4% ╸─────────── 1/23 1.8it/s 0.2s<12.1s[K      12/30     0.822G     0.1648         64        224: 17% ━━────────── 4/23 7.8it/s 0.3s<2.4s[K      12/30     0.822G     0.1686         64        224: 26% ━━━───────── 6/23 10.2it/s 0.4s<1.7s[K      12/30     0.822G     0.1672         64        224: 34% ━━━━──────── 8/23 11.5it/s 0.6s<1.3s[K      12/30     0.822G     0.1664         64        224: 43% ━━━━━─────── 10/23 13.7it/s 0.7s<1.0s[K      12/30     0.822G     0.1599         64        224: 56% ━━━━━━╸───── 13/23 17.3it/s 0.8s<0.6s[K      12/30     0.822G     0.1645         64        224: 73% ━━━━━━━━╸─── 17/23 20.0it/s 0.9s<0.3s[K      12/30     0.822G     0.1576         64        224: 86% ━━━━━━━━━━── 20/23 21.2it/s 1.1s<0.1s[K      12/30     0.822G     0.1527         60        224: 100% ━━━━━━━━━━━━ 23/23 19.9it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.759          1
+[EPOCA  12/30]    4.3s | loss_train=0.1527 loss_val=0.7750 | top1_val=0.7590 top5_val=1.0000 | lr=7.33e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      13/30     0.822G     0.1654         64        224: 4% ╸─────────── 1/23 1.8it/s 0.2s<12.2s[K      13/30     0.822G     0.1967         64        224: 13% ━╸────────── 3/23 5.9it/s 0.3s<3.4s[K      13/30     0.822G     0.1518         64        224: 30% ━━━╸──────── 7/23 13.3it/s 0.4s<1.2s[K      13/30     0.822G     0.1554         64        224: 47% ━━━━━╸────── 11/23 18.5it/s 0.6s<0.6s[K      13/30     0.822G     0.1493         64        224: 56% ━━━━━━╸───── 13/23 17.2it/s 0.7s<0.6s[K      13/30     0.822G     0.1428         64        224: 69% ━━━━━━━━──── 16/23 19.7it/s 0.8s<0.4s[K      13/30     0.822G      0.137         64        224: 86% ━━━━━━━━━━── 20/23 22.8it/s 0.9s<0.1s[K      13/30     0.822G     0.1376         60        224: 95% ━━━━━━━━━━━─ 22/23 20.6it/s 1.1s<0.0s[K      13/30     0.822G     0.1376         60        224: 100% ━━━━━━━━━━━━ 23/23 21.3it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.759          1
+[EPOCA  13/30]    4.2s | loss_train=0.1376 loss_val=0.7722 | top1_val=0.7590 top5_val=1.0000 | lr=6.89e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      14/30     0.822G     0.1788         64        224: 0% ──────────── 0/23  0.1s[K      14/30     0.822G      0.207         64        224: 4% ╸─────────── 1/23 2.9it/s 0.2s<7.6s[K      14/30     0.822G      0.167         64        224: 13% ━╸────────── 3/23 7.6it/s 0.3s<2.6s[K      14/30     0.822G     0.1482         64        224: 21% ━━╸───────── 5/23 9.8it/s 0.4s<1.8s[K      14/30     0.822G     0.1306         64        224: 34% ━━━━──────── 8/23 12.4it/s 0.6s<1.2s[K      14/30     0.822G     0.1341         64        224: 47% ━━━━━╸────── 11/23 17.0it/s 0.7s<0.7s[K      14/30     0.822G     0.1247         64        224: 60% ━━━━━━━───── 14/23 18.4it/s 0.9s<0.5s[K      14/30     0.822G     0.1253         64        224: 73% ━━━━━━━━╸─── 17/23 20.3it/s 1.0s<0.3s[K      14/30     0.822G     0.1308         64        224: 86% ━━━━━━━━━━── 20/23 22.6it/s 1.1s<0.1s[K      14/30     0.822G     0.1315         60        224: 100% ━━━━━━━━━━━━ 23/23 19.6it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.759          1
+[EPOCA  14/30]    4.3s | loss_train=0.1315 loss_val=0.7531 | top1_val=0.7590 top5_val=1.0000 | lr=6.44e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      15/30     0.822G    0.09346         64        224: 0% ──────────── 0/23  0.1s[K      15/30     0.822G     0.1418         64        224: 8% ━─────────── 2/23 3.6it/s 0.3s<5.9s[K      15/30     0.822G     0.1549         64        224: 21% ━━╸───────── 5/23 10.7it/s 0.4s<1.7s[K      15/30     0.822G     0.1288         64        224: 39% ━━━━╸─────── 9/23 17.5it/s 0.5s<0.8s[K      15/30     0.822G     0.1295         64        224: 56% ━━━━━━╸───── 13/23 22.0it/s 0.6s<0.5s[K      15/30     0.822G     0.1215         64        224: 69% ━━━━━━━━──── 16/23 23.3it/s 0.7s<0.3s[K      15/30     0.822G     0.1337         64        224: 82% ━━━━━━━━━╸── 19/23 25.0it/s 0.8s<0.2s[K      15/30     0.822G     0.1382         60        224: 95% ━━━━━━━━━━━─ 22/23 25.9it/s 0.9s<0.0s[K      15/30     0.822G     0.1382         60        224: 100% ━━━━━━━━━━━━ 23/23 24.3it/s 0.9s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.9s/it 2.9s
+                   all      0.783          1
+[EPOCA  15/30]    4.3s | loss_train=0.1382 loss_val=0.7596 | top1_val=0.7831 top5_val=1.0000 | lr=5.97e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      16/30     0.822G     0.1523         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<12.7s[K      16/30     0.822G     0.1154         64        224: 13% ━╸────────── 3/23 7.0it/s 0.3s<2.8s[K      16/30     0.822G      0.112         64        224: 26% ━━━───────── 6/23 12.4it/s 0.4s<1.4s[K      16/30     0.822G     0.1226         64        224: 39% ━━━━╸─────── 9/23 17.2it/s 0.5s<0.8s[K      16/30     0.822G     0.1165         64        224: 56% ━━━━━━╸───── 13/23 20.3it/s 0.6s<0.5s[K      16/30     0.822G     0.1139         64        224: 69% ━━━━━━━━──── 16/23 23.0it/s 0.7s<0.3s[K      16/30     0.822G     0.1144         64        224: 82% ━━━━━━━━━╸── 19/23 22.9it/s 0.9s<0.2s[K      16/30     0.822G     0.1191         60        224: 100% ━━━━━━━━━━━━ 23/23 23.6it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771          1
+[EPOCA  16/30]    4.1s | loss_train=0.1191 loss_val=0.7908 | top1_val=0.7711 top5_val=1.0000 | lr=5.50e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      17/30     0.822G     0.1208         64        224: 4% ╸─────────── 1/23 1.9it/s 0.2s<11.8s[K      17/30     0.822G     0.1035         64        224: 13% ━╸────────── 3/23 5.5it/s 0.3s<3.7s[K      17/30     0.822G      0.115         64        224: 21% ━━╸───────── 5/23 8.0it/s 0.4s<2.2s[K      17/30     0.822G     0.1143         64        224: 30% ━━━╸──────── 7/23 10.0it/s 0.6s<1.6s[K      17/30     0.822G     0.1107         64        224: 39% ━━━━╸─────── 9/23 12.7it/s 0.7s<1.1s[K      17/30     0.822G     0.1096         64        224: 52% ━━━━━━────── 12/23 16.4it/s 0.8s<0.7s[K      17/30     0.822G     0.1115         64        224: 69% ━━━━━━━━──── 16/23 22.3it/s 0.9s<0.3s[K      17/30     0.822G     0.1177         64        224: 82% ━━━━━━━━━╸── 19/23 24.4it/s 1.0s<0.2s[K      17/30     0.822G     0.1158         60        224: 95% ━━━━━━━━━━━─ 22/23 26.1it/s 1.1s<0.0s[K      17/30     0.822G     0.1158         60        224: 100% ━━━━━━━━━━━━ 23/23 20.5it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.783          1
+[EPOCA  17/30]    4.4s | loss_train=0.1158 loss_val=0.8207 | top1_val=0.7831 top5_val=1.0000 | lr=5.03e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      18/30     0.822G     0.1251         64        224: 0% ──────────── 0/23  0.1s[K      18/30     0.822G     0.1556         64        224: 4% ╸─────────── 1/23 2.9it/s 0.2s<7.5s[K      18/30     0.822G     0.1612         64        224: 13% ━╸────────── 3/23 7.7it/s 0.3s<2.6s[K      18/30     0.822G     0.1304         64        224: 26% ━━━───────── 6/23 14.4it/s 0.4s<1.2s[K      18/30     0.822G     0.1408         64        224: 43% ━━━━━─────── 10/23 20.8it/s 0.5s<0.6s[K      18/30     0.822G     0.1413         64        224: 56% ━━━━━━╸───── 13/23 22.5it/s 0.6s<0.4s[K      18/30     0.822G     0.1389         64        224: 73% ━━━━━━━━╸─── 17/23 24.1it/s 0.8s<0.2s[K      18/30     0.822G     0.1327         64        224: 86% ━━━━━━━━━━── 20/23 23.5it/s 0.9s<0.1s[K      18/30     0.822G     0.1331         60        224: 100% ━━━━━━━━━━━━ 23/23 23.1it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771          1
+[EPOCA  18/30]    4.2s | loss_train=0.1331 loss_val=0.7862 | top1_val=0.7711 top5_val=1.0000 | lr=4.56e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      19/30     0.822G      0.116         64        224: 4% ╸─────────── 1/23 2.0it/s 0.1s<10.8s[K      19/30     0.822G     0.1085         64        224: 13% ━╸────────── 3/23 6.1it/s 0.3s<3.3s[K      19/30     0.822G    0.09507         64        224: 21% ━━╸───────── 5/23 9.1it/s 0.4s<2.0s[K      19/30     0.822G     0.1061         64        224: 30% ━━━╸──────── 7/23 11.5it/s 0.5s<1.4s[K      19/30     0.822G     0.1088         64        224: 39% ━━━━╸─────── 9/23 12.1it/s 0.7s<1.2s[K      19/30     0.822G     0.1073         64        224: 47% ━━━━━╸────── 11/23 14.3it/s 0.8s<0.8s[K      19/30     0.822G     0.1092         64        224: 60% ━━━━━━━───── 14/23 17.5it/s 0.9s<0.5s[K      19/30     0.822G     0.1118         64        224: 73% ━━━━━━━━╸─── 17/23 19.7it/s 1.0s<0.3s[K      19/30     0.822G     0.1077         64        224: 86% ━━━━━━━━━━── 20/23 21.6it/s 1.1s<0.1s[K      19/30     0.822G     0.1075         60        224: 100% ━━━━━━━━━━━━ 23/23 19.3it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771          1
+[34m[1mEarlyStopping: [0mTraining stopped early as no improvement observed in last 10 epochs. Best results observed at epoch 9, best model saved as best.pt.
+To update EarlyStopping(patience=10) pass a new patience value, i.e. `patience=300` or use `patience=0` to disable EarlyStopping.
+[EPOCA  19/30]    4.3s | loss_train=0.1075 loss_val=0.7663 | top1_val=0.7711 top5_val=1.0000 | lr=4.11e-05 | GPU_pico=0.48GB
+
+19 epochs completed in 0.027 hours.
+Optimizer stripped from D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s43\weights\last.pt, 11.0MB
+Optimizer stripped from D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s43\weights\best.pt, 11.0MB
+
+Validating D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s43\weights\best.pt...
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+YOLO26s-cls summary (fused): 47 layers, 5,444,376 parameters, 0 gradients, 12.1 GFLOPs
+[34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... found 1468 images in 8 classes  
+[34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val... found 83 images in 8 classes  
+[34m[1mtest:[0m None...
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 1.6s/it 1.6s
+                   all      0.783          1
+Speed: 0.1ms preprocess, 2.1ms inference, 0.0ms loss, 0.0ms postprocess per image
+Results saved to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s43[0m
+[EPOCA  20/30]    7.1s | loss_train=0.1075 loss_val=0.0000 | top1_val=0.7831 top5_val=1.0000 | lr=4.11e-05 | GPU_pico=0.48GB
+
+Modelo copiado a D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_gro_s43_20261111_2105.pt  (+ etapa2_e2_gro_s43_20261111_2105.json)
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+YOLO26s-cls summary (fused): 47 layers, 5,444,376 parameters, 0 gradients, 12.1 GFLOPs
+[34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\train... found 443 images in 8 classes  
+[34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\val... found 83 images in 8 classes  
+[34m[1mtest:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\test... found 98 images in 8 classes  
+[34m[1mval: [0mFast image access  (ping: 0.0±0.0 ms, read: 1306.2±317.6 MB/s, size: 206.4 KB)
+[K[34m[1mval: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\val... 83 images, 0 corrupt: 100% ━━━━━━━━━━━━ 83/83 26.8Mit/s 0.0s
+[K               classes   top1_acc   top5_acc: 50% ━━━━━━────── 1/2 13.6s/it 4.1s<13.6s[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 2/2 2.1s/it 4.1s
+                   all      0.783          1
+Speed: 0.2ms preprocess, 3.3ms inference, 0.0ms loss, 0.0ms postprocess per image
+Results saved to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\evaluaciones\etapa2_e2_gro_s43_20261111_2105_juliaca_val[0m
+
+===== ETAPA 2 (validación) en juliaca/val =====
+accuracy top1=0.7831  top5=1.0000  F1 macro=0.6961 (sobre 8 clases con fotos)
+
+clase              n  precision   recall     f1
+generales         16      0.625    0.938  0.750
+metales           13      0.800    0.615  0.696
+organico           1      0.000    0.000  0.000
+papel_carton      13      1.000    0.692  0.818
+peligrosos         2      1.000    1.000  1.000
+plasticos         27      0.781    0.926  0.848
+sin_residuo        4      1.000    0.750  0.857
+vidrio             7      1.000    0.429  0.600
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales         15      1      0      0      0      0      0      0
+metales            3      8      0      0      0      2      0      0
+organico           1      0      0      0      0      0      0      0
+papel_carton       4      0      0      9      0      0      0      0
+peligrosos         0      0      0      0      2      0      0      0
+plasticos          1      1      0      0      0     25      0      0
+sin_residuo        0      0      0      0      0      1      3      0
+vidrio             0      0      0      0      0      4      0      3
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2_gro_s43_20261111_2105_juliaca_val.json
+
+(No se evaluó en juliaca/test. Hazlo una sola vez con el modelo final: python scripts/evaluar.py --pesos modelos\experimentos\etapa2_e2_gro_s43_20261111_2105.pt --split test)
+
+==========================================================================================
+[3/3] e2_gro_s44: receta recomendada desde e1_gro (externo solo taco) + gris 0.3, semilla 44
+  D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\scripts\entrenar.py --etapa 2 --equipo pc --experimento e2_gro_s44 --device 0 --pesos D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_gro_20261111_2100.pt --replay 2 --externo --externo-fuentes taco --gris 0.3 --seed 44
+==========================================================================================
+Entorno: {'python': '3.13.15', 'torch': '2.14.1+cu130', 'cuda_torch': '13.0', 'ultralytics': '8.4.184', 'gpu': 'NVIDIA GeForce RTX 3060'}
+
+Etapa 2 - train = juliaca + replay público + externo (taco):
+  generales      juliaca= 119  replay= 238  externo= 139
+  metales        juliaca=  72  replay= 144  externo=  40
+  organico       juliaca=   5  replay=  10  externo=   0
+  papel_carton   juliaca=  52  replay= 104  externo=   0
+  peligrosos     juliaca=  16  replay=  32  externo=   0
+  plasticos      juliaca= 102  replay= 204  externo=   0
+  sin_residuo    juliaca=  20  replay=   0  externo=   0
+  vidrio         juliaca=  57  replay= 114  externo=   0
+New https://pypi.org/project/ultralytics/8.4.211 available  Update with 'pip install -U ultralytics'
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+[34m[1mengine\trainer: [0magnostic_nms=False, amp=True, angle=1.0, augment=False, auto_augment=randaugment, batch=64, bgr=0.0, box=7.5, cache=False, cfg=None, channels_last=None, classes=None, close_mosaic=10, cls=0.5, cls_pw=0.0, cls_remap=True, compile=False, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=True, cutmix=0.0, data=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2, degrees=0.0, deterministic=True, device=0, dfl=1.5, dgrad=0.5, dis=6.0, distill_model=None, dlam=1.0, dlog=1.0, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=30, erasing=0.3, exist_ok=False, fliplr=0.5, flipud=0.2, format=torchscript, fraction=1.0, freeze=6, hsv_h=0.03, hsv_s=0.5, hsv_v=0.4, imgsz=224, iou=0.7, kobj=1.0, line_width=None, lr0=0.0001, lrf=0.1, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa1_e1_gro_20261111_2100.pt, momentum=0.937, mosaic=1.0, multi_scale=0.0, name=etapa2_e2_gro_s44, nbs=64, nms=None, opset=None, optimize=False, optimizer=AdamW, overlap_mask=True, patience=10, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs, quantize=None, rect=False, resume=False, retina_masks=False, rle=1.0, save=True, save_conf=False, save_crop=False, save_dir=D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s44, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=44, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=classify, time=None, tracker=tracktrack.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=1, warmup_momentum=0.8, weight_decay=0.0005, workers=6, workspace=None
+[34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... found 1468 images in 8 classes  
+[34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val... found 83 images in 8 classes  
+[34m[1mtest:[0m None...
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       928  ultralytics.nn.modules.conv.Conv             [3, 32, 3, 2]                 
+  1                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]                
+  2                  -1  1     26080  ultralytics.nn.modules.block.C3k2            [64, 128, 1, False, 0.25]     
+  3                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+  4                  -1  1    103360  ultralytics.nn.modules.block.C3k2            [128, 256, 1, False, 0.25]    
+  5                  -1  1    590336  ultralytics.nn.modules.conv.Conv             [256, 256, 3, 2]              
+  6                  -1  1    346112  ultralytics.nn.modules.block.C3k2            [256, 256, 1, True]           
+  7                  -1  1   1180672  ultralytics.nn.modules.conv.Conv             [256, 512, 3, 2]              
+  8                  -1  1   1380352  ultralytics.nn.modules.block.C3k2            [512, 512, 1, True]           
+  9                  -1  1    990976  ultralytics.nn.modules.block.C2PSA           [512, 512, 1]                 
+ 10                  -1  1    668168  ultralytics.nn.modules.head.Classify         [512, 8]                      
+YOLO26s-cls summary: 86 layers, 5,453,256 parameters, 5,453,256 gradients, 12.3 GFLOPs
+Transferred 236/236 items from pretrained weights
+Freezing layer 'model.0.conv.weight'
+Freezing layer 'model.0.bn.weight'
+Freezing layer 'model.0.bn.bias'
+Freezing layer 'model.1.conv.weight'
+Freezing layer 'model.1.bn.weight'
+Freezing layer 'model.1.bn.bias'
+Freezing layer 'model.2.cv1.conv.weight'
+Freezing layer 'model.2.cv1.bn.weight'
+Freezing layer 'model.2.cv1.bn.bias'
+Freezing layer 'model.2.cv2.conv.weight'
+Freezing layer 'model.2.cv2.bn.weight'
+Freezing layer 'model.2.cv2.bn.bias'
+Freezing layer 'model.2.m.0.cv1.conv.weight'
+Freezing layer 'model.2.m.0.cv1.bn.weight'
+Freezing layer 'model.2.m.0.cv1.bn.bias'
+Freezing layer 'model.2.m.0.cv2.conv.weight'
+Freezing layer 'model.2.m.0.cv2.bn.weight'
+Freezing layer 'model.2.m.0.cv2.bn.bias'
+Freezing layer 'model.3.conv.weight'
+Freezing layer 'model.3.bn.weight'
+Freezing layer 'model.3.bn.bias'
+Freezing layer 'model.4.cv1.conv.weight'
+Freezing layer 'model.4.cv1.bn.weight'
+Freezing layer 'model.4.cv1.bn.bias'
+Freezing layer 'model.4.cv2.conv.weight'
+Freezing layer 'model.4.cv2.bn.weight'
+Freezing layer 'model.4.cv2.bn.bias'
+Freezing layer 'model.4.m.0.cv1.conv.weight'
+Freezing layer 'model.4.m.0.cv1.bn.weight'
+Freezing layer 'model.4.m.0.cv1.bn.bias'
+Freezing layer 'model.4.m.0.cv2.conv.weight'
+Freezing layer 'model.4.m.0.cv2.bn.weight'
+Freezing layer 'model.4.m.0.cv2.bn.bias'
+Freezing layer 'model.5.conv.weight'
+Freezing layer 'model.5.bn.weight'
+Freezing layer 'model.5.bn.bias'
+[34m[1mAMP: [0mrunning Automatic Mixed Precision (AMP) checks...
+[34m[1mAMP: [0mchecks passed 
+[34m[1mtrain: [0mFast image access  (ping: 0.0±0.0 ms, read: 989.0±1015.4 MB/s, size: 131.6 KB)
+[K[34m[1mtrain: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... 648 images, 0 corrupt: 44% ━━━━━─────── 648/1468 1.9Kit/s 0.1s<0.4s[K[34m[1mtrain: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... 1346 images, 0 corrupt: 91% ━━━━━━━━━━━─ 1346/1468 3.4Kit/s 0.2s<0.0s[K[34m[1mtrain: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... 1468 images, 0 corrupt: 100% ━━━━━━━━━━━━ 1468/1468 6.8Kit/s 0.2s
+[34m[1mtrain: [0mNew cache created: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train.cache
+[34m[1mval: [0mFast image access  (ping: 0.0±0.0 ms, read: 2029.4±766.8 MB/s, size: 206.4 KB)
+[K[34m[1mval: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val... 83 images, 0 corrupt: 100% ━━━━━━━━━━━━ 83/83 7.4Kit/s 0.0s
+[34m[1mval: [0mNew cache created: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val.cache
+[34m[1moptimizer:[0m AdamW(lr=0.0001, momentum=0.937) with parameter groups 39 weight(decay=0.0), 40 weight(decay=0.0005), 40 bias(decay=0.0)
+Using 1468 train, 83 val images for fraction=1.0 at imgsz=224
+Using 6 dataloader workers
+Logging results to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s44[0m
+Starting training for 30 epochs...
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       1/30     0.441G      1.253         64        224: 0% ──────────── 0/23  15.1s[K       1/30     0.557G      1.189         64        224: 4% ╸─────────── 1/23 1.4it/s 15.3s<15.8s[K       1/30     0.557G      1.238         64        224: 8% ━─────────── 2/23 3.3it/s 15.5s<6.4s[K       1/30     0.557G     0.9088         64        224: 17% ━━────────── 4/23 7.1it/s 15.6s<2.7s[K       1/30     0.557G     0.8037         64        224: 30% ━━━╸──────── 7/23 13.5it/s 15.7s<1.2s[K       1/30     0.557G     0.7351         64        224: 43% ━━━━━─────── 10/23 16.5it/s 15.8s<0.8s[K       1/30     0.557G     0.6836         64        224: 56% ━━━━━━╸───── 13/23 19.0it/s 15.9s<0.5s[K       1/30     0.557G     0.6739         64        224: 60% ━━━━━━━───── 14/23 16.2it/s 16.0s<0.6s[K       1/30     0.557G     0.6354         64        224: 73% ━━━━━━━━╸─── 17/23 19.3it/s 16.2s<0.3s[K       1/30     0.557G     0.6226         64        224: 78% ━━━━━━━━━─── 18/23 14.6it/s 16.4s<0.3s[K       1/30     0.557G     0.6327         64        224: 82% ━━━━━━━━━╸── 19/23 12.5it/s 16.6s<0.3s[K       1/30     0.557G     0.6527         64        224: 86% ━━━━━━━━━━── 20/23 9.3it/s 17.1s<0.3s[K       1/30     0.557G     0.6474         60        224: 95% ━━━━━━━━━━━─ 22/23 8.2it/s 17.5s<0.1s[K       1/30     0.557G     0.6474         60        224: 100% ━━━━━━━━━━━━ 23/23 1.3it/s 17.5s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.602      0.964
+[EPOCA   1/30]   20.8s | loss_train=0.6474 loss_val=1.2328 | top1_val=0.6024 top5_val=0.9639 | lr=9.57e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       2/30     0.713G     0.3143         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<12.9s[K       2/30     0.713G     0.4194         64        224: 13% ━╸────────── 3/23 5.9it/s 0.3s<3.4s[K       2/30     0.713G     0.4412         64        224: 26% ━━━───────── 6/23 12.5it/s 0.4s<1.4s[K       2/30     0.713G     0.4482         64        224: 39% ━━━━╸─────── 9/23 15.8it/s 0.5s<0.9s[K       2/30     0.713G      0.435         64        224: 52% ━━━━━━────── 12/23 19.7it/s 0.6s<0.6s[K       2/30     0.713G      0.408         64        224: 65% ━━━━━━━╸──── 15/23 21.1it/s 0.8s<0.4s[K       2/30     0.713G     0.4097         64        224: 78% ━━━━━━━━━─── 18/23 22.0it/s 0.9s<0.2s[K       2/30     0.713G     0.4009         64        224: 91% ━━━━━━━━━━╸─ 21/23 22.4it/s 1.0s<0.1s[K       2/30     0.713G     0.3941         60        224: 100% ━━━━━━━━━━━━ 23/23 21.5it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.735      0.988
+[EPOCA   2/30]    4.3s | loss_train=0.3941 loss_val=0.8331 | top1_val=0.7349 top5_val=0.9879 | lr=9.98e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       3/30     0.713G     0.3953         64        224: 0% ──────────── 0/23  0.1s[K       3/30     0.713G     0.3902         64        224: 8% ━─────────── 2/23 3.5it/s 0.3s<6.0s[K       3/30     0.713G     0.3585         64        224: 21% ━━╸───────── 5/23 10.2it/s 0.4s<1.8s[K       3/30     0.713G     0.3259         64        224: 34% ━━━━──────── 8/23 15.3it/s 0.5s<1.0s[K       3/30     0.713G     0.3042         64        224: 47% ━━━━━╸────── 11/23 18.0it/s 0.7s<0.7s[K       3/30     0.713G     0.3279         64        224: 60% ━━━━━━━───── 14/23 19.1it/s 0.8s<0.5s[K       3/30     0.713G     0.3108         64        224: 73% ━━━━━━━━╸─── 17/23 20.6it/s 0.9s<0.3s[K       3/30     0.713G     0.3051         64        224: 86% ━━━━━━━━━━── 20/23 22.6it/s 1.0s<0.1s[K       3/30     0.713G     0.2919         60        224: 100% ━━━━━━━━━━━━ 23/23 20.8it/s 1.1s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.735      0.988
+[EPOCA   3/30]    4.3s | loss_train=0.2919 loss_val=0.7629 | top1_val=0.7349 top5_val=0.9879 | lr=9.90e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       4/30     0.713G     0.2526         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<13.9s[K       4/30     0.713G     0.2328         64        224: 13% ━╸────────── 3/23 4.8it/s 0.4s<4.1s[K       4/30     0.713G     0.2758         64        224: 21% ━━╸───────── 5/23 7.2it/s 0.5s<2.5s[K       4/30     0.713G     0.2852         64        224: 34% ━━━━──────── 8/23 12.4it/s 0.6s<1.2s[K       4/30     0.713G     0.2749         64        224: 47% ━━━━━╸────── 11/23 16.0it/s 0.8s<0.7s[K       4/30     0.713G     0.2541         64        224: 60% ━━━━━━━───── 14/23 19.2it/s 0.9s<0.5s[K       4/30     0.713G     0.2534         64        224: 69% ━━━━━━━━──── 16/23 18.8it/s 1.0s<0.4s[K       4/30     0.713G      0.249         64        224: 82% ━━━━━━━━━╸── 19/23 20.2it/s 1.1s<0.2s[K       4/30     0.713G     0.2399         64        224: 91% ━━━━━━━━━━╸─ 21/23 20.0it/s 1.2s<0.1s[K       4/30     0.713G     0.2417         60        224: 100% ━━━━━━━━━━━━ 23/23 18.6it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771      0.988
+[EPOCA   4/30]    4.4s | loss_train=0.2417 loss_val=0.7381 | top1_val=0.7711 top5_val=0.9879 | lr=9.78e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       5/30     0.713G     0.2346         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<13.6s[K       5/30     0.713G     0.2802         64        224: 13% ━╸────────── 3/23 5.6it/s 0.3s<3.6s[K       5/30     0.713G     0.2391         64        224: 30% ━━━╸──────── 7/23 13.5it/s 0.4s<1.2s[K       5/30     0.713G     0.2265         64        224: 43% ━━━━━─────── 10/23 16.4it/s 0.6s<0.8s[K       5/30     0.713G     0.2185         64        224: 60% ━━━━━━━───── 14/23 20.6it/s 0.7s<0.4s[K       5/30     0.713G     0.2092         64        224: 73% ━━━━━━━━╸─── 17/23 21.6it/s 0.8s<0.3s[K       5/30     0.713G      0.212         64        224: 91% ━━━━━━━━━━╸─ 21/23 24.1it/s 1.0s<0.1s[K       5/30     0.713G     0.2164         60        224: 100% ━━━━━━━━━━━━ 23/23 22.8it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.747          1
+[EPOCA   5/30]    4.2s | loss_train=0.2164 loss_val=0.7236 | top1_val=0.7470 top5_val=1.0000 | lr=9.61e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       6/30     0.713G     0.1478         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<13.3s[K       6/30     0.713G     0.2395         64        224: 13% ━╸────────── 3/23 4.9it/s 0.3s<4.1s[K       6/30     0.713G       0.22         64        224: 21% ━━╸───────── 5/23 8.6it/s 0.5s<2.1s[K       6/30     0.713G     0.2046         64        224: 26% ━━━───────── 6/23 8.6it/s 0.6s<2.0s[K       6/30     0.713G     0.2149         64        224: 39% ━━━━╸─────── 9/23 13.2it/s 0.7s<1.1s[K       6/30     0.713G     0.2075         64        224: 52% ━━━━━━────── 12/23 17.5it/s 0.8s<0.6s[K       6/30     0.713G     0.2078         64        224: 65% ━━━━━━━╸──── 15/23 19.3it/s 0.9s<0.4s[K       6/30     0.713G      0.203         64        224: 78% ━━━━━━━━━─── 18/23 19.6it/s 1.1s<0.3s[K       6/30     0.713G     0.2014         64        224: 91% ━━━━━━━━━━╸─ 21/23 20.2it/s 1.2s<0.1s[K       6/30     0.713G     0.2036         60        224: 100% ━━━━━━━━━━━━ 23/23 18.3it/s 1.3s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771          1
+[EPOCA   6/30]    4.4s | loss_train=0.2036 loss_val=0.6963 | top1_val=0.7711 top5_val=1.0000 | lr=9.40e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       7/30     0.713G     0.1296         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<12.9s[K       7/30     0.713G     0.1332         64        224: 13% ━╸────────── 3/23 5.0it/s 0.3s<4.0s[K       7/30     0.713G     0.1517         64        224: 26% ━━━───────── 6/23 11.5it/s 0.4s<1.5s[K       7/30     0.713G     0.1653         64        224: 39% ━━━━╸─────── 9/23 16.7it/s 0.5s<0.8s[K       7/30     0.713G     0.1728         64        224: 52% ━━━━━━────── 12/23 19.2it/s 0.7s<0.6s[K       7/30     0.713G     0.1729         64        224: 65% ━━━━━━━╸──── 15/23 22.3it/s 0.8s<0.4s[K       7/30     0.713G     0.1773         64        224: 78% ━━━━━━━━━─── 18/23 23.0it/s 0.9s<0.2s[K       7/30     0.713G     0.1823         64        224: 91% ━━━━━━━━━━╸─ 21/23 24.4it/s 1.0s<0.1s[K       7/30     0.713G     0.1841         60        224: 100% ━━━━━━━━━━━━ 23/23 21.9it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.747          1
+[EPOCA   7/30]    4.2s | loss_train=0.1841 loss_val=0.7827 | top1_val=0.7470 top5_val=1.0000 | lr=9.14e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       8/30     0.713G     0.2153         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<13.6s[K       8/30     0.713G     0.1775         64        224: 13% ━╸────────── 3/23 6.8it/s 0.3s<3.0s[K       8/30     0.713G     0.1861         64        224: 26% ━━━───────── 6/23 12.7it/s 0.4s<1.3s[K       8/30     0.713G     0.1988         64        224: 43% ━━━━━─────── 10/23 17.5it/s 0.5s<0.7s[K       8/30     0.713G     0.1863         64        224: 56% ━━━━━━╸───── 13/23 19.7it/s 0.7s<0.5s[K       8/30     0.713G     0.1917         64        224: 73% ━━━━━━━━╸─── 17/23 23.5it/s 0.8s<0.3s[K       8/30     0.713G      0.197         64        224: 86% ━━━━━━━━━━── 20/23 24.2it/s 0.9s<0.1s[K       8/30     0.713G     0.1912         60        224: 95% ━━━━━━━━━━━─ 22/23 22.0it/s 1.0s<0.0s[K       8/30     0.713G     0.1912         60        224: 100% ━━━━━━━━━━━━ 23/23 22.5it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.759          1
+[EPOCA   8/30]    4.2s | loss_train=0.1912 loss_val=0.7740 | top1_val=0.7590 top5_val=1.0000 | lr=8.84e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K       9/30     0.713G     0.2016         64        224: 4% ╸─────────── 1/23 1.5it/s 0.2s<14.3s[K       9/30     0.713G     0.1835         64        224: 13% ━╸────────── 3/23 5.3it/s 0.3s<3.8s[K       9/30     0.713G     0.1722         64        224: 21% ━━╸───────── 5/23 7.8it/s 0.5s<2.3s[K       9/30     0.713G     0.1705         64        224: 30% ━━━╸──────── 7/23 10.6it/s 0.6s<1.5s[K       9/30     0.713G     0.1653         64        224: 43% ━━━━━─────── 10/23 16.1it/s 0.7s<0.8s[K       9/30     0.713G     0.1698         64        224: 56% ━━━━━━╸───── 13/23 18.8it/s 0.8s<0.5s[K       9/30     0.713G     0.1626         64        224: 69% ━━━━━━━━──── 16/23 21.5it/s 0.9s<0.3s[K       9/30     0.713G      0.159         64        224: 82% ━━━━━━━━━╸── 19/23 21.9it/s 1.1s<0.2s[K       9/30     0.713G     0.1562         60        224: 95% ━━━━━━━━━━━─ 22/23 23.2it/s 1.2s<0.0s[K       9/30     0.713G     0.1562         60        224: 100% ━━━━━━━━━━━━ 23/23 19.5it/s 1.2s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.7s/it 2.7s
+                   all      0.771          1
+[EPOCA   9/30]    4.3s | loss_train=0.1562 loss_val=0.7260 | top1_val=0.7711 top5_val=1.0000 | lr=8.51e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      10/30     0.713G     0.1422         64        224: 4% ╸─────────── 1/23 1.8it/s 0.2s<12.3s[K      10/30     0.713G     0.1721         64        224: 17% ━━────────── 4/23 9.2it/s 0.3s<2.1s[K      10/30     0.713G     0.1603         64        224: 34% ━━━━──────── 8/23 16.6it/s 0.4s<0.9s[K      10/30     0.713G     0.1575         64        224: 52% ━━━━━━────── 12/23 21.4it/s 0.5s<0.5s[K      10/30     0.713G     0.1651         64        224: 69% ━━━━━━━━──── 16/23 24.4it/s 0.6s<0.3s[K      10/30     0.713G     0.1559         64        224: 82% ━━━━━━━━━╸── 19/23 23.7it/s 0.8s<0.2s[K      10/30     0.713G     0.1515         60        224: 100% ━━━━━━━━━━━━ 23/23 26.4it/s 0.9s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.9s/it 2.9s
+                   all      0.747          1
+[EPOCA  10/30]    4.2s | loss_train=0.1515 loss_val=0.7106 | top1_val=0.7470 top5_val=1.0000 | lr=8.15e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      11/30     0.713G     0.1086         64        224: 0% ──────────── 0/23  0.1s[K      11/30     0.713G     0.0948         64        224: 8% ━─────────── 2/23 5.4it/s 0.2s<3.9s[K      11/30     0.713G     0.1295         64        224: 21% ━━╸───────── 5/23 11.3it/s 0.3s<1.6s[K      11/30     0.713G     0.1373         64        224: 34% ━━━━──────── 8/23 16.1it/s 0.4s<0.9s[K      11/30     0.713G     0.1399         64        224: 47% ━━━━━╸────── 11/23 17.7it/s 0.6s<0.7s[K      11/30     0.713G      0.144         64        224: 60% ━━━━━━━───── 14/23 19.1it/s 0.7s<0.5s[K      11/30     0.713G     0.1539         64        224: 73% ━━━━━━━━╸─── 17/23 20.6it/s 0.8s<0.3s[K      11/30     0.713G     0.1528         64        224: 91% ━━━━━━━━━━╸─ 21/23 24.2it/s 1.0s<0.1s[K      11/30     0.713G     0.1491         60        224: 100% ━━━━━━━━━━━━ 23/23 23.0it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.759          1
+[EPOCA  11/30]    4.3s | loss_train=0.1491 loss_val=0.7471 | top1_val=0.7590 top5_val=1.0000 | lr=7.75e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      12/30     0.713G     0.1945         64        224: 0% ──────────── 0/23  0.1s[K      12/30     0.713G     0.1381         64        224: 8% ━─────────── 2/23 3.7it/s 0.3s<5.7s[K      12/30     0.713G     0.1396         64        224: 17% ━━────────── 4/23 7.1it/s 0.4s<2.7s[K      12/30     0.713G     0.1527         64        224: 30% ━━━╸──────── 7/23 13.0it/s 0.5s<1.2s[K      12/30     0.713G      0.156         64        224: 47% ━━━━━╸────── 11/23 18.8it/s 0.6s<0.6s[K      12/30     0.713G     0.1568         64        224: 60% ━━━━━━━───── 14/23 20.3it/s 0.8s<0.4s[K      12/30     0.713G     0.1487         64        224: 78% ━━━━━━━━━─── 18/23 23.7it/s 0.9s<0.2s[K      12/30     0.713G     0.1447         64        224: 91% ━━━━━━━━━━╸─ 21/23 23.8it/s 1.0s<0.1s[K      12/30     0.713G     0.1476         60        224: 100% ━━━━━━━━━━━━ 23/23 22.1it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.759          1
+[EPOCA  12/30]    4.3s | loss_train=0.1476 loss_val=0.7770 | top1_val=0.7590 top5_val=1.0000 | lr=7.33e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      13/30     0.713G     0.1719         64        224: 4% ╸─────────── 1/23 1.7it/s 0.2s<12.9s[K      13/30     0.713G     0.1348         64        224: 21% ━━╸───────── 5/23 10.5it/s 0.3s<1.7s[K      13/30     0.713G     0.1354         64        224: 30% ━━━╸──────── 7/23 12.5it/s 0.4s<1.3s[K      13/30     0.713G     0.1535         64        224: 43% ━━━━━─────── 10/23 16.5it/s 0.5s<0.8s[K      13/30     0.713G     0.1561         64        224: 56% ━━━━━━╸───── 13/23 19.4it/s 0.7s<0.5s[K      13/30     0.713G     0.1478         64        224: 69% ━━━━━━━━──── 16/23 20.7it/s 0.8s<0.3s[K      13/30     0.713G     0.1464         64        224: 82% ━━━━━━━━━╸── 19/23 21.7it/s 0.9s<0.2s[K      13/30     0.713G     0.1447         64        224: 91% ━━━━━━━━━━╸─ 21/23 21.2it/s 1.0s<0.1s[K      13/30     0.713G     0.1428         60        224: 100% ━━━━━━━━━━━━ 23/23 22.4it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771          1
+[EPOCA  13/30]    4.2s | loss_train=0.1428 loss_val=0.8155 | top1_val=0.7711 top5_val=1.0000 | lr=6.89e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      14/30     0.713G      0.106         64        224: 0% ──────────── 0/23  0.1s[K      14/30     0.713G    0.08845         64        224: 4% ╸─────────── 1/23 3.0it/s 0.2s<7.4s[K      14/30     0.713G     0.1174         64        224: 21% ━━╸───────── 5/23 11.9it/s 0.3s<1.5s[K      14/30     0.713G     0.1135         64        224: 34% ━━━━──────── 8/23 15.9it/s 0.5s<0.9s[K      14/30     0.713G      0.112         64        224: 47% ━━━━━╸────── 11/23 19.4it/s 0.6s<0.6s[K      14/30     0.713G     0.1117         64        224: 60% ━━━━━━━───── 14/23 21.8it/s 0.7s<0.4s[K      14/30     0.713G     0.1135         64        224: 73% ━━━━━━━━╸─── 17/23 23.7it/s 0.8s<0.3s[K      14/30     0.713G     0.1133         64        224: 91% ━━━━━━━━━━╸─ 21/23 26.3it/s 0.9s<0.1s[K      14/30     0.713G     0.1173         60        224: 100% ━━━━━━━━━━━━ 23/23 23.9it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771          1
+[EPOCA  14/30]    4.2s | loss_train=0.1173 loss_val=0.7603 | top1_val=0.7711 top5_val=1.0000 | lr=6.44e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      15/30     0.713G     0.1154         64        224: 4% ╸─────────── 1/23 1.6it/s 0.2s<13.6s[K      15/30     0.713G     0.1178         64        224: 21% ━━╸───────── 5/23 10.8it/s 0.3s<1.7s[K      15/30     0.713G      0.134         64        224: 39% ━━━━╸─────── 9/23 17.8it/s 0.4s<0.8s[K      15/30     0.713G     0.1264         64        224: 56% ━━━━━━╸───── 13/23 22.5it/s 0.5s<0.4s[K      15/30     0.713G     0.1249         64        224: 69% ━━━━━━━━──── 16/23 21.2it/s 0.7s<0.3s[K      15/30     0.713G     0.1287         64        224: 78% ━━━━━━━━━─── 18/23 19.9it/s 0.8s<0.3s[K      15/30     0.713G     0.1216         64        224: 86% ━━━━━━━━━━── 20/23 19.7it/s 0.9s<0.2s[K      15/30     0.713G     0.1213         60        224: 100% ━━━━━━━━━━━━ 23/23 22.3it/s 1.0s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.759          1
+[EPOCA  15/30]    4.4s | loss_train=0.1213 loss_val=0.7975 | top1_val=0.7590 top5_val=1.0000 | lr=5.97e-05 | GPU_pico=0.48GB
+
+      Epoch    GPU_mem       loss  Instances       Size
+[K      16/30     0.713G     0.2107         64        224: 4% ╸─────────── 1/23 2.0it/s 0.2s<11.1s[K      16/30     0.713G      0.156         64        224: 17% ━━────────── 4/23 9.2it/s 0.3s<2.1s[K      16/30     0.713G     0.1376         64        224: 34% ━━━━──────── 8/23 15.7it/s 0.4s<1.0s[K      16/30     0.713G      0.134         64        224: 47% ━━━━━╸────── 11/23 19.6it/s 0.5s<0.6s[K      16/30     0.713G       0.14         64        224: 60% ━━━━━━━───── 14/23 21.8it/s 0.6s<0.4s[K      16/30     0.713G     0.1309         64        224: 73% ━━━━━━━━╸─── 17/23 23.6it/s 0.7s<0.3s[K      16/30     0.713G     0.1315         64        224: 91% ━━━━━━━━━━╸─ 21/23 24.6it/s 0.9s<0.1s[K      16/30     0.713G     0.1314         60        224: 100% ━━━━━━━━━━━━ 23/23 25.5it/s 0.9s
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 2.8s/it 2.8s
+                   all      0.771          1
+[34m[1mEarlyStopping: [0mTraining stopped early as no improvement observed in last 10 epochs. Best results observed at epoch 6, best model saved as best.pt.
+To update EarlyStopping(patience=10) pass a new patience value, i.e. `patience=300` or use `patience=0` to disable EarlyStopping.
+[EPOCA  16/30]    4.2s | loss_train=0.1314 loss_val=0.7442 | top1_val=0.7711 top5_val=1.0000 | lr=5.50e-05 | GPU_pico=0.48GB
+
+16 epochs completed in 0.024 hours.
+Optimizer stripped from D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s44\weights\last.pt, 11.0MB
+Optimizer stripped from D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s44\weights\best.pt, 11.0MB
+
+Validating D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s44\weights\best.pt...
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+YOLO26s-cls summary (fused): 47 layers, 5,444,376 parameters, 0 gradients, 12.1 GFLOPs
+[34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\train... found 1468 images in 8 classes  
+[34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\_etapa2\val... found 83 images in 8 classes  
+[34m[1mtest:[0m None...
+[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 1/1 1.8s/it 1.8s
+                   all      0.783          1
+Speed: 0.1ms preprocess, 2.0ms inference, 0.0ms loss, 0.0ms postprocess per image
+Results saved to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\etapa2_e2_gro_s44[0m
+[EPOCA  17/30]    7.2s | loss_train=0.1314 loss_val=0.0000 | top1_val=0.7831 top5_val=1.0000 | lr=5.50e-05 | GPU_pico=0.48GB
+
+Modelo copiado a D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_gro_s44_20261111_2107.pt  (+ etapa2_e2_gro_s44_20261111_2107.json)
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+YOLO26s-cls summary (fused): 47 layers, 5,444,376 parameters, 0 gradients, 12.1 GFLOPs
+[34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\train... found 443 images in 8 classes  
+[34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\val... found 83 images in 8 classes  
+[34m[1mtest:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\test... found 98 images in 8 classes  
+[34m[1mval: [0mFast image access  (ping: 0.0±0.0 ms, read: 1538.9±512.7 MB/s, size: 206.4 KB)
+[K[34m[1mval: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\juliaca\val... 83 images, 0 corrupt: 100% ━━━━━━━━━━━━ 83/83 43.5Mit/s 0.0s
+[K               classes   top1_acc   top5_acc: 50% ━━━━━━────── 1/2 14.0s/it 4.2s<14.0s[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 2/2 2.1s/it 4.2s
+                   all      0.771          1
+Speed: 0.2ms preprocess, 4.7ms inference, 0.0ms loss, 0.0ms postprocess per image
+Results saved to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\evaluaciones\etapa2_e2_gro_s44_20261111_2107_juliaca_val[0m
+
+===== ETAPA 2 (validación) en juliaca/val =====
+accuracy top1=0.7711  top5=1.0000  F1 macro=0.6973 (sobre 8 clases con fotos)
+
+clase              n  precision   recall     f1
+generales         16      0.600    0.938  0.732
+metales           13      0.750    0.692  0.720
+organico           1      0.000    0.000  0.000
+papel_carton      13      1.000    0.769  0.870
+peligrosos         2      1.000    1.000  1.000
+plasticos         27      0.786    0.815  0.800
+sin_residuo        4      1.000    0.750  0.857
+vidrio             7      1.000    0.429  0.600
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales         15      1      0      0      0      0      0      0
+metales            3      9      0      0      0      1      0      0
+organico           1      0      0      0      0      0      0      0
+papel_carton       3      0      0     10      0      0      0      0
+peligrosos         0      0      0      0      2      0      0      0
+plasticos          3      2      0      0      0     22      0      0
+sin_residuo        0      0      0      0      0      1      3      0
+vidrio             0      0      0      0      0      4      0      3
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2_gro_s44_20261111_2107_juliaca_val.json
+
+(No se evaluó en juliaca/test. Hazlo una sola vez con el modelo final: python scripts/evaluar.py --pesos modelos\experimentos\etapa2_e2_gro_s44_20261111_2107.pt --split test)
+
+experimento    etapa  F1_val  top1_val  �pocas  mejor    min  val en
+e2_replay2_v2      2  0.8516    0.8214      16      6    0.9  juliaca/val
+e2_ext_full_j1027     2  0.8421    0.8333      21     11    1.5  juliaca/val
+e2_rfB_s44         2  0.8190    0.7831      30     25    5.9  juliaca/val
+e2_ext_full        2  0.8186    0.7500      17      7    1.0  juliaca/val
+e2_replay2         2  0.8139    0.7500      17      7    0.9  juliaca/val
+e2_ext2_full       2  0.8057    0.7500      11      5    2.3  juliaca/val
+e2_tienda_s42      2  0.8051    0.8072      18      8    1.8  juliaca/val
+e2_ext2_sinext     2  0.8037    0.7500      26     16    1.5  juliaca/val
+e2_ext2_taco       2  0.8037    0.7500      18      8    1.1  juliaca/val
+e2_nf_s42          2  0.7897    0.7590      20     10    1.9  juliaca/val
+e2_tienda_s43      2  0.7895    0.7711      23     13    7.1  juliaca/val
+e2_solo_jul        2  0.7827    0.8929      15      5    0.8  juliaca/val
+e2_nf_s44          2  0.7801    0.7711      19      9    1.9  juliaca/val
+e2_rfA_s43         2  0.7675    0.7108      13      3    1.8  juliaca/val
+e2_ext_full_j1028_s44     2  0.7626    0.7590      22     12    2.5  juliaca/val
+e2_nf_s43          2  0.7587    0.7470      25     15    2.6  juliaca/val
+e2_lr3e-4          2  0.7479    0.7143      15      5    0.8  juliaca/val
+e2_gro_s42         2  0.7261    0.8193      21     11    2.3  juliaca/val
+e2_freeze9         2  0.7228    0.6786      20     10    0.8  juliaca/val
+e2_ext             2  0.7074    0.7857      26     14    1.7  juliaca/val
+e2_base            2  0.6982    0.6429      20      7    0.8  juliaca/val
+e2_gro_s44         2  0.6973    0.7711      16      4    1.6  juliaca/val
+e2_gro_s43         2  0.6961    0.7831      19      9    1.9  juliaca/val
+e2_freeze0         2  0.6846    0.6429      22     11    1.2  juliaca/val
+e2_rfA_s42         2  0.6843    0.7711      21     11    2.9  juliaca/val
+e2_rfB_s43         2  0.6722    0.7470      17      7    2.1  juliaca/val
+e2_rfB_s42         2  0.6720    0.7470      24     14    3.1  juliaca/val
+e2_tienda_s44      2  0.6709    0.7831      19      9    1.9  juliaca/val
+e2_ext_full_j1028     2  0.6619    0.7470      17      7    1.8  juliaca/val
+e2_ext_full_sel100     2  0.6597    0.7500      21     11    1.6  juliaca/val
+e2_replay0         2  0.6262    0.6071      12      2    0.7  juliaca/val
+e2_rfA_s44         2  0.6255    0.7349      25     15    3.2  juliaca/val
+e2_ext_full_j1028_s43     2  0.6160    0.7349      19      9    1.9  juliaca/val
+e2_lr3e-5          2  0.6016    0.5714      21      2    1.1  juliaca/val
+
+Tabla completa: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\experimentos.csv
+
+Mejor en validaci�n (F1 macro): e2_replay2_v2 -> D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_replay2_v2_20261025_1848.pt
+Decide T� el ganador (puedes preferir uno casi igual de bueno pero m�s simple o r�pido).
+Evaluaci�n final, UNA sola vez:
+  python scripts/evaluar.py --pesos D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\modelos\experimentos\etapa2_e2_replay2_v2_20261025_1848.pt --split test
+exit 0

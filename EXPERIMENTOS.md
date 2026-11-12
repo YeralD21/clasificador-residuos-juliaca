@@ -1077,6 +1077,43 @@ F1 por clase en val_camara, de nf s42–s44 a tienda s42–s44:
 Los datos `frg_`/`gro_` quedan en externo/train, pero solo entran si se piden por nombre en `--externo-fuentes`.
 Modelos en `modelos/experimentos/` (no se suben).
 
+### Variante solo Grocery Store (`e1_gro` → `e2_gro_s{42,43,44}`, 2026-11-11)
+**Objetivo (usuario):** separar el efecto de `gro` (organico y papel_carton), porque con `tienda` organico mejoró pero
+metales empeoró. Fue la última variante de la ronda.
+
+**Receta:** `e1_gro` = `e1_nf` + `gro`, sin `frg` (`--externo-fuentes taco fwd nx gro --gris 0.3`). `e2_gro_s*` =
+receta recomendada (`--replay 2 --externo --externo-fuentes taco --gris 0.3`). Memoria virtual libre al lanzar:
+18.7 GB; sin errores. Logs en `reportes/evidencias/gro/`.
+
+`e1_gro` en publico/val: F1 0.9096 (top-1 0.9084; 60 ép., mejor 59), frente a 0.9052 de `e1_nf` y 0.9089 de
+`e1_tienda`.
+
+| modelo | F1 val_camara (293) | aciertos | F1 juliaca/val | F1 publico/val |
+|---|---|---|---|---|
+| e2_gro_s42 | 0.5357 | 158 | 0.7261 | 0.8802 |
+| e2_gro_s43 | 0.5090 | 161 | 0.6961 | 0.8840 |
+| e2_gro_s44 | 0.4995 | 154 | 0.6973 | 0.8741 |
+| **media gro** | **0.5147** | 157.7 | 0.7065 | 0.8794 |
+| media tienda | 0.5394 | 163.3 | 0.7552 | 0.8704 |
+| media nf (referencia) | 0.5568 | 167.7 | 0.7762 | 0.8773 |
+
+F1 por clase en val_camara (gro s42–s44):
+- organico: 0.865–0.889, igual que con tienda y muy por encima de nf (0.625–0.710);
+- papel_carton: 0.303–0.389, peor que nf (0.400–0.479) y que tienda;
+- metales: 0.233–0.318, como tienda;
+- peligrosos: 0.400–0.500;
+- vidrio: 0.531–0.558.
+
+**Resultado según la regla:** la media de gro (0.5147) **no supera** la de nf (0.5568): −0.042. Es incluso más baja
+que la de tienda. **No gana:** no se corrió `correr_todo.py` ni juliaca/test, y el modelo por defecto sigue siendo
+`etapa2_nf_s43`.
+
+**Lectura:** los productos de tienda de `gro` explican la mejora en organico (las frutas y verduras de Grocery). Pero
+sus cartones, todos fotografiados en la mano y dentro de la tienda, no ayudan a papel_carton en val_camara: sin las
+cajas de Freiburg esa clase baja más. La caída de metales y peligrosos aparece también sin `frg`, así que no se debe
+solo a las latas de Freiburg. Puede venir del cambio general de la etapa 1, y con 3 semillas no se puede separar del
+ruido. Modelos en `modelos/experimentos/` (no se suben).
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo

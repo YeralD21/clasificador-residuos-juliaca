@@ -47,6 +47,9 @@ EXPERIMENTOS = {
         "e1_tienda":  ("igual a e1_nf + frg (metales 132, generales 150, papel_carton 150, vidrio 105, plasticos 150) "
                        "+ gro (organico 150, papel_carton 150)",
                        ["--externo", "--externo-fuentes", "taco", "fwd", "nx", "frg", "gro", "--gris", "0.3"]),
+        # 2026-11-11: variante solo Grocery Store (sin Freiburg), para separar el efecto de gro (organico/papel_carton).
+        "e1_gro":     ("igual a e1_nf + gro (organico 150, papel_carton 150), sin frg",
+                       ["--externo", "--externo-fuentes", "taco", "fwd", "nx", "gro", "--gris", "0.3"]),
     },
     2: {
         "e2_base":     ("lr 1e-4, 6 capas congeladas, replay 1 (referencia)", []),
@@ -104,6 +107,12 @@ EXPERIMENTOS = {
                          ["--pesos", "@e1_tienda", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "43"]),
         "e2_tienda_s44": ("receta recomendada desde e1_tienda (externo solo taco) + gris 0.3, semilla 44",
                          ["--pesos", "@e1_tienda", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "44"]),
+        "e2_gro_s42":   ("receta recomendada desde e1_gro (externo solo taco) + gris 0.3, semilla 42",
+                         ["--pesos", "@e1_gro", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "42"]),
+        "e2_gro_s43":   ("receta recomendada desde e1_gro (externo solo taco) + gris 0.3, semilla 43",
+                         ["--pesos", "@e1_gro", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "43"]),
+        "e2_gro_s44":   ("receta recomendada desde e1_gro (externo solo taco) + gris 0.3, semilla 44",
+                         ["--pesos", "@e1_gro", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "44"]),
         "e2_solo_jul": ("SIN etapa 1: desde ImageNet solo con fotos de Juliaca",
                         ["--pesos", "yolo26s-cls.pt", "--replay", "0", "--freeze", "0", "--lr", "1e-3"]),
     },
