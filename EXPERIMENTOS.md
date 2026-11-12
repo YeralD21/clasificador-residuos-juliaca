@@ -1008,6 +1008,75 @@ orina y filtro → descartados por ambiguos. Informes: `reportes/externo_candida
 `reportes/mosaicos_candidatas2/`. Nota: el estimador de resolución efectiva del script no funciona con los recortes
 estirados de Roboflow (da 192 px en recortes que se ven de unos 15 px); ese descarte se decidió mirando los mosaicos.
 
+## Productos de tienda: Freiburg Groceries y Grocery Store (`e1_tienda` → `e2_tienda_s{42,43,44}`, 2026-11-11)
+**Objetivo (usuario):** atacar los casos que fallan en test (cajas impresas, latas, papa/ajo/cebolla) con fotos de
+productos nuevos. Como no son residuos, se limitan a 150 por fuente y clase.
+
+**Fase A** (`scripts/candidatas_tiendas.py`, solo informe):
+- **Licencias** (`reportes/externo_candidatas3_licencias.csv`):
+  - Freiburg (Jund et al., 2016): **sin licencia formal**. El usuario lo aprobó por la condición de uso que publican
+    los autores ("...for training, testing, and bootstrapping their approaches").
+  - Grocery Store (Klasson et al., WACV 2019): MIT.
+- **Freiburg:** las clases mezclan envases, así que el envase se decidió **por foto** con CLIP ViT-B/32 zero-shot y se
+  revisó en los mosaicos.
+  - CHOCOLATE, COFFEE, PASTA, FLOUR y JUICE → papel_carton se descartaron enteras: CLIP mezclaba envolturas, frascos,
+    bolsas plásticas y botellas, y cerca de la mitad estaba mal.
+  - Por lo mismo se descartaron COFFEE → metales (frascos de vidrio) y NUTS → metales (un tarro plástico).
+  - Se recortan las bandas grises de relleno (128,128,128).
+- **Grocery:** solo imágenes naturales. Fruit y Vegetables → organico; Packages (todos cartones) → papel_carton.
+- **Deduplicación:**
+  - contra el benchmark: 4 por dHash en Freiburg y 52 por ORB en Grocery (probables falsos positivos con pilas de
+    fruta; igual se quitaron);
+  - contra los datos propios: 5;
+  - casi duplicados internos (dHash ≤ 4 o embedding coseno ≥ 0.95): 2.130 en Grocery y 55 en Freiburg.
+- **Tope:** 150 por fuente y clase, repartido por categoría. En gro/organico se reservaron unas 22 para cada una de
+  Potato, Onion y Garlic.
+- **CEREAL** (decisión del usuario: sin bolsas de muesli): segunda pasada de CLIP (caja contra bolsa, p(bolsa) < 0.2)
+  y revisión a mano; se quitaron 2 bolsas que se habían colado. Lista final de 50 cajas en
+  `reportes/externo_candidatas3_cereal_cajas.txt`.
+
+**Importado** (`scripts/importar_tiendas.py`, 987 imágenes, 59 filas en `datos_externos.csv`, solo en externo/train):
+
+| fuente | metales | generales | papel_carton | plasticos | vidrio | organico |
+|---|---|---|---|---|---|---|
+| `frg_` (687) | 132 (latas: BEANS, CORN, FISH, TOMATO_SAUCE, SODA) | 150 (bolsas: CHIPS, CANDY, NUTS) | 150 (TEA 50, MILK 50, CEREAL 50) | 150 (PET: WATER, SODA) | 105 (frascos: JAM, HONEY) | — |
+| `gro_` (300) | — | — | 150 (cartones de leche, jugo y yogur) | — | — | 150 |
+
+`auditar.py`: 0 errores.
+
+**Receta:** `e1_tienda` = `e1_nf` + `frg gro` (`--externo-fuentes taco fwd nx frg gro --gris 0.3`).
+`e2_tienda_s*` = receta recomendada desde `e1_tienda` (`--replay 2 --externo --externo-fuentes taco --gris 0.3`).
+- Antes de lanzar, el usuario cerró apps pesadas. Memoria virtual libre: 13.7 → 19.2 GB; el archivo de paginación es
+  de solo 2 GB. No hubo WinError 1455.
+- El primer intento de la etapa 2 no entrenó nada: `experimentar.py` exige `--pesos` en etapa 2. Se relanzó con
+  `--pesos <e1_tienda>`, lo que da el mismo comando, porque `@e1_tienda` tiene prioridad.
+- Logs en `reportes/evidencias/tienda/`.
+
+`e1_tienda` en publico/val: F1 0.9089 (top-1 0.9078; 60 ép., mejor 48), frente a 0.9052 de `e1_nf`.
+
+**Validación** (`reportes/etapa2_e2_tienda_s4*_20261111_*_{val_camara,juliaca_val,publico_val}.json`):
+
+| modelo | F1 val_camara (293) | aciertos | F1 juliaca/val | F1 publico/val |
+|---|---|---|---|---|
+| e2_tienda_s42 | 0.5133 | 155 | 0.8051 | 0.8686 |
+| e2_tienda_s43 | 0.5886 | 176 | 0.7895 | 0.8773 |
+| e2_tienda_s44 | 0.5163 | 159 | 0.6709 | 0.8654 |
+| **media tienda** | **0.5394** | 163.3 | 0.7552 | 0.8704 |
+| media nf (referencia) | 0.5568 | 167.7 | 0.7762 | 0.8773 |
+
+F1 por clase en val_camara, de nf s42–s44 a tienda s42–s44:
+- organico: 0.625–0.710 → 0.857–0.889 (sube en las 3 semillas);
+- papel_carton: 0.400–0.479 → 0.429–0.493;
+- metales: 0.250–0.526 → 0.233–0.311;
+- vidrio: 0.500–0.700 → 0.500–0.546;
+- peligrosos: 0.640–0.692 → 0.421–0.667.
+
+**Resultado según la regla:** la media de tienda (0.5394) **no supera** la de nf (0.5568): −0.017. La mejor semilla
+(s43, 0.5886) supera a nf_s43 (0.5716), pero la regla es la media y la variación entre semillas es grande (0.513–0.589).
+**No gana:** no se corrió `correr_todo.py` ni juliaca/test, y el modelo por defecto sigue siendo `etapa2_nf_s43`.
+Los datos `frg_`/`gro_` quedan en externo/train, pero solo entran si se piden por nombre en `--externo-fuentes`.
+Modelos en `modelos/experimentos/` (no se suben).
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo

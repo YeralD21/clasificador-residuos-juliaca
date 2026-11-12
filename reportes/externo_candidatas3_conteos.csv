@@ -1,0 +1,86 @@
+fuente,categoria,clase,total,envase_no_coincide,nombre_benchmark,dhash_benchmark,dhash_propios,orb_benchmark,recorte_chico,dup_interno,consecutiva,fuera_del_tope,ok
+frg,BEANS,-,86,86,0,0,0,0,0,0,0,0,0
+frg,BEANS,metales,50,0,0,0,0,0,0,0,6,0,44
+frg,CANDY,-,119,119,0,0,0,0,0,0,0,0,0
+frg,CANDY,generales,253,0,0,0,0,0,0,0,2,188,63
+frg,CEREAL,-,100,100,0,0,0,0,0,0,0,0,0
+frg,CEREAL,papel_carton,178,0,0,1,0,0,0,0,2,125,50
+frg,CHIPS,-,133,133,0,0,0,0,0,0,0,0,0
+frg,CHIPS,generales,48,0,0,0,0,0,0,0,0,0,48
+frg,CORN,-,58,58,0,0,0,0,0,0,0,0,0
+frg,CORN,metales,39,0,0,0,0,0,0,0,6,0,33
+frg,FISH,-,92,92,0,0,0,0,0,0,0,0,0
+frg,FISH,metales,18,0,0,0,0,0,0,0,2,0,16
+frg,HONEY,-,151,151,0,0,0,0,0,0,0,0,0
+frg,HONEY,vidrio,34,0,0,0,0,0,0,0,3,0,31
+frg,JAM,-,158,158,0,0,0,0,0,0,0,0,0
+frg,JAM,vidrio,83,0,0,0,0,0,0,0,9,0,74
+frg,MILK,-,8,8,0,0,0,0,0,0,0,0,0
+frg,MILK,papel_carton,154,0,0,0,1,0,0,0,6,97,50
+frg,NUTS,-,129,129,0,0,0,0,0,0,0,0,0
+frg,NUTS,generales,39,0,0,0,0,0,0,0,0,0,39
+frg,SODA,-,144,144,0,0,0,0,0,0,0,0,0
+frg,SODA,metales,3,0,0,0,0,0,0,0,0,0,3
+frg,SODA,plasticos,30,0,0,0,2,0,0,0,0,0,28
+frg,TEA,-,19,19,0,0,0,0,0,0,0,0,0
+frg,TEA,papel_carton,264,0,0,1,1,0,0,0,7,205,50
+frg,TOMATO_SAUCE,-,129,129,0,0,0,0,0,0,0,0,0
+frg,TOMATO_SAUCE,metales,42,0,0,0,1,0,0,0,5,0,36
+frg,WATER,-,119,119,0,0,0,0,0,0,0,0,0
+frg,WATER,plasticos,143,0,0,2,0,0,0,0,7,12,122
+gsd,Apple,organico,576,0,0,0,0,11,0,0,329,233,3
+gsd,Asparagus,organico,35,0,0,0,0,0,0,0,4,28,3
+gsd,Aubergine,organico,48,0,0,0,0,0,0,0,7,38,3
+gsd,Avocado,organico,86,0,0,0,0,0,0,0,26,57,3
+gsd,Banana,organico,95,0,0,0,0,0,0,0,29,63,3
+gsd,Brown-Cap-Mushroom,organico,44,0,0,0,0,0,0,0,18,23,3
+gsd,Cabbage,organico,43,0,0,0,0,0,0,0,18,22,3
+gsd,Carrots,organico,90,0,0,0,0,0,0,0,32,55,3
+gsd,Cucumber,organico,60,0,0,0,0,0,0,1,17,39,3
+gsd,Garlic,organico,50,0,0,0,0,0,0,0,15,12,23
+gsd,Ginger,organico,38,0,0,0,0,0,0,0,6,29,3
+gsd,Juice,papel_carton,495,0,0,0,0,1,0,0,160,317,17
+gsd,Kiwi,organico,96,0,0,0,0,0,0,0,34,59,3
+gsd,Leek,organico,48,0,0,0,0,0,0,0,11,34,3
+gsd,Lemon,organico,88,0,0,0,0,1,0,0,33,51,3
+gsd,Lime,organico,66,0,0,0,0,4,0,0,31,28,3
+gsd,Mango,organico,66,0,0,0,0,2,0,0,26,35,3
+gsd,Melon,organico,327,0,0,0,0,3,0,1,122,198,3
+gsd,Milk,papel_carton,372,0,0,0,0,0,0,2,105,248,17
+gsd,Mushroom,organico,39,0,0,0,0,0,0,0,22,14,3
+gsd,Nectarine,organico,71,0,0,0,0,0,0,0,41,27,3
+gsd,Oat-Milk,papel_carton,68,0,0,0,0,0,0,0,24,27,17
+gsd,Oatghurt,papel_carton,68,0,0,0,0,0,0,0,22,29,17
+gsd,Onion,organico,80,0,0,0,0,0,0,0,42,15,23
+gsd,Orange,organico,118,0,0,0,0,7,0,0,43,66,2
+gsd,Papaya,organico,42,0,0,0,0,0,0,0,14,26,2
+gsd,Passion-Fruit,organico,60,0,0,0,0,0,0,0,23,35,2
+gsd,Peach,organico,78,0,0,0,0,0,0,0,40,36,2
+gsd,Pear,organico,229,0,0,0,0,2,0,1,107,117,2
+gsd,Pepper,organico,237,0,0,0,0,4,0,0,106,125,2
+gsd,Pineapple,organico,56,0,0,0,0,0,0,0,8,46,2
+gsd,Plum,organico,44,0,0,0,0,0,0,0,23,19,2
+gsd,Pomegranate,organico,56,0,0,0,0,1,0,0,22,31,2
+gsd,Potato,organico,155,0,0,0,0,0,0,1,52,80,22
+gsd,Red-Beet,organico,40,0,0,0,0,0,0,0,12,26,2
+gsd,Red-Grapefruit,organico,73,0,0,0,0,2,0,0,33,36,2
+gsd,Satsumas,organico,143,0,0,0,0,6,0,0,82,53,2
+gsd,Sour-Cream,papel_carton,94,0,0,0,0,0,0,1,31,45,17
+gsd,Sour-Milk,papel_carton,49,0,0,0,0,0,0,0,20,12,17
+gsd,Soy-Milk,papel_carton,118,0,0,0,0,0,0,0,38,64,16
+gsd,Soyghurt,papel_carton,108,0,0,0,0,0,0,2,52,38,16
+gsd,Tomato,organico,235,0,0,0,0,6,0,0,145,82,2
+gsd,Yoghurt,papel_carton,373,0,0,0,0,0,0,1,88,268,16
+gsd,Zucchini,organico,64,0,0,0,0,2,0,0,17,43,2
+frg,CAKE (no pedida),descartada,161,,,,,,,,,,
+frg,CHOCOLATE (no pedida),descartada,307,,,,,,,,,,
+frg,COFFEE (no pedida),descartada,298,,,,,,,,,,
+frg,FLOUR (no pedida),descartada,109,,,,,,,,,,
+frg,JUICE (no pedida),descartada,302,,,,,,,,,,
+frg,OIL (no pedida),descartada,143,,,,,,,,,,
+frg,PASTA (no pedida),descartada,172,,,,,,,,,,
+frg,RICE (no pedida),descartada,150,,,,,,,,,,
+frg,SPICES (no pedida),descartada,207,,,,,,,,,,
+frg,SUGAR (no pedida),descartada,118,,,,,,,,,,
+frg,VINEGAR (no pedida),descartada,157,,,,,,,,,,
+gsd,iconicas (excluidas),descartada,81,,,,,,,,,,

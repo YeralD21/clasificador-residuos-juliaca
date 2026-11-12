@@ -1,0 +1,117 @@
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+YOLO26s-cls summary (fused): 47 layers, 5,444,376 parameters, 0 gradients, 12.1 GFLOPs
+ERROR [34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\train... found 8341 images in 7 classes (requires 8 classes, not 7)
+ERROR [34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\val... found 1866 images in 7 classes (requires 8 classes, not 7)
+ERROR [34m[1mtest:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\test... found 2013 images in 7 classes (requires 8 classes, not 7)
+[34m[1mval: [0mFast image access  (ping: 0.0±0.0 ms, read: 324.8±283.2 MB/s, size: 32.7 KB)
+[K[34m[1mval: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\val... 1866 images, 0 corrupt: 100% ━━━━━━━━━━━━ 1866/1866 521.8Mit/s 0.0s
+[K               classes   top1_acc   top5_acc: 1% ──────────── 1/59 58.4s/it 17.5s<56:26[K               classes   top1_acc   top5_acc: 5% ╸─────────── 3/59 3.7it/s 17.7s<15.1s[K               classes   top1_acc   top5_acc: 13% ━╸────────── 8/59 16.3it/s 17.8s<3.1s[K               classes   top1_acc   top5_acc: 25% ━━━───────── 15/59 31.2it/s 17.9s<1.4s[K               classes   top1_acc   top5_acc: 37% ━━━━──────── 22/59 39.5it/s 18.0s<0.9s[K               classes   top1_acc   top5_acc: 47% ━━━━━╸────── 28/59 45.4it/s 18.1s<0.7s[K               classes   top1_acc   top5_acc: 59% ━━━━━━━───── 35/59 50.8it/s 18.2s<0.5s[K               classes   top1_acc   top5_acc: 69% ━━━━━━━━──── 41/59 52.9it/s 18.3s<0.3s[K               classes   top1_acc   top5_acc: 79% ━━━━━━━━━╸── 47/59 54.2it/s 18.4s<0.2s[K               classes   top1_acc   top5_acc: 89% ━━━━━━━━━━╸─ 53/59 55.0it/s 18.5s<0.1s[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 59/59 3.2it/s 18.7s
+                   all      0.868      0.993
+Speed: 0.1ms preprocess, 0.6ms inference, 0.0ms loss, 0.0ms postprocess per image
+Results saved to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\evaluaciones\etapa2_e2_tienda_s42_20261111_2011_publico_val[0m
+
+===== etapa2_e2_tienda_s42_20261111_2011.pt en publico/val =====
+accuracy top1=0.8676  top5=0.9930  F1 macro=0.8686 (sobre 7 clases con fotos)
+
+clase              n  precision   recall     f1
+generales        208      0.819    0.957  0.882
+metales          289      0.860    0.910  0.884
+organico         254      0.980    0.941  0.960
+papel_carton     286      0.891    0.913  0.902
+peligrosos       288      0.945    0.719  0.817
+plasticos        275      0.757    0.804  0.779
+sin_residuo        0      0.000    0.000  0.000
+vidrio           266      0.851    0.861  0.856
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales        199      2      1      1      1      3      0      1
+metales            2    263      0      3      4     11      0      6
+organico           2      3    239      2      1      5      0      2
+papel_carton       7      7      0    261      0     11      0      0
+peligrosos        16     18      2     11    207     25      0      9
+plasticos         14      4      0     13      1    221      0     22
+sin_residuo        0      0      0      0      0      0      0      0
+vidrio             3      9      2      2      5     16      0    229
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2_tienda_s42_20261111_2011_publico_val.json
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+YOLO26s-cls summary (fused): 47 layers, 5,444,376 parameters, 0 gradients, 12.1 GFLOPs
+ERROR [34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\train... found 8341 images in 7 classes (requires 8 classes, not 7)
+ERROR [34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\val... found 1866 images in 7 classes (requires 8 classes, not 7)
+ERROR [34m[1mtest:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\test... found 2013 images in 7 classes (requires 8 classes, not 7)
+[34m[1mval: [0mFast image access  (ping: 0.0±0.0 ms, read: 349.7±373.2 MB/s, size: 32.7 KB)
+[K[34m[1mval: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\val... 1866 images, 0 corrupt: 100% ━━━━━━━━━━━━ 1866/1866 869.6Mit/s 0.0s
+[K               classes   top1_acc   top5_acc: 1% ──────────── 1/59 58.7s/it 17.6s<56:46[K               classes   top1_acc   top5_acc: 5% ╸─────────── 3/59 5.3it/s 17.7s<10.5s[K               classes   top1_acc   top5_acc: 15% ━╸────────── 9/59 20.0it/s 17.8s<2.5s[K               classes   top1_acc   top5_acc: 27% ━━━───────── 16/59 33.5it/s 17.9s<1.3s[K               classes   top1_acc   top5_acc: 38% ━━━━╸─────── 23/59 41.7it/s 18.1s<0.9s[K               classes   top1_acc   top5_acc: 50% ━━━━━━────── 30/59 48.2it/s 18.2s<0.6s[K               classes   top1_acc   top5_acc: 62% ━━━━━━━╸──── 37/59 52.2it/s 18.3s<0.4s[K               classes   top1_acc   top5_acc: 72% ━━━━━━━━╸─── 43/59 54.1it/s 18.4s<0.3s[K               classes   top1_acc   top5_acc: 83% ━━━━━━━━━╸── 49/59 55.7it/s 18.5s<0.2s[K               classes   top1_acc   top5_acc: 93% ━━━━━━━━━━━─ 55/59 56.1it/s 18.6s<0.1s[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 59/59 3.2it/s 18.7s
+                   all      0.877      0.996
+Speed: 0.1ms preprocess, 0.6ms inference, 0.0ms loss, 0.0ms postprocess per image
+Results saved to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\evaluaciones\etapa2_e2_tienda_s43_20261111_2019_publico_val[0m
+
+===== etapa2_e2_tienda_s43_20261111_2019.pt en publico/val =====
+accuracy top1=0.8767  top5=0.9957  F1 macro=0.8773 (sobre 7 clases con fotos)
+
+clase              n  precision   recall     f1
+generales        208      0.821    0.947  0.879
+metales          289      0.890    0.893  0.891
+organico         254      0.961    0.957  0.959
+papel_carton     286      0.907    0.923  0.915
+peligrosos       288      0.935    0.753  0.835
+plasticos        275      0.773    0.818  0.795
+sin_residuo        0      0.000    0.000  0.000
+vidrio           266      0.863    0.872  0.867
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales        197      1      2      2      2      2      0      2
+metales            6    258      0      2      5     13      0      5
+organico           4      1    243      1      0      4      0      1
+papel_carton       5      6      2    264      1      8      0      0
+peligrosos        13     12      4     10    217     24      0      8
+plasticos         12      4      0     10      3    225      0     21
+sin_residuo        0      0      0      0      0      0      0      0
+vidrio             3      8      2      2      4     15      0    232
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2_tienda_s43_20261111_2019_publico_val.json
+Ultralytics 8.4.184  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3060, 12287MiB)
+YOLO26s-cls summary (fused): 47 layers, 5,444,376 parameters, 0 gradients, 12.1 GFLOPs
+ERROR [34m[1mtrain:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\train... found 8341 images in 7 classes (requires 8 classes, not 7)
+ERROR [34m[1mval:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\val... found 1866 images in 7 classes (requires 8 classes, not 7)
+ERROR [34m[1mtest:[0m D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\test... found 2013 images in 7 classes (requires 8 classes, not 7)
+[34m[1mval: [0mFast image access  (ping: 0.0±0.0 ms, read: 352.0±221.8 MB/s, size: 32.7 KB)
+[K[34m[1mval: [0mScanning D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\dataset\publico\val... 1866 images, 0 corrupt: 100% ━━━━━━━━━━━━ 1866/1866 782.7Mit/s 0.0s
+[K               classes   top1_acc   top5_acc: 1% ──────────── 1/59 58.6s/it 17.6s<56:37[K               classes   top1_acc   top5_acc: 6% ╸─────────── 4/59 6.5it/s 17.7s<8.4s[K               classes   top1_acc   top5_acc: 18% ━━────────── 11/59 24.6it/s 17.8s<2.0s[K               classes   top1_acc   top5_acc: 28% ━━━───────── 17/59 34.6it/s 17.9s<1.2s[K               classes   top1_acc   top5_acc: 40% ━━━━╸─────── 24/59 43.7it/s 18.0s<0.8s[K               classes   top1_acc   top5_acc: 50% ━━━━━━────── 30/59 48.4it/s 18.1s<0.6s[K               classes   top1_acc   top5_acc: 62% ━━━━━━━╸──── 37/59 53.1it/s 18.2s<0.4s[K               classes   top1_acc   top5_acc: 74% ━━━━━━━━╸─── 44/59 55.4it/s 18.3s<0.3s[K               classes   top1_acc   top5_acc: 84% ━━━━━━━━━━── 50/59 56.0it/s 18.5s<0.2s[K               classes   top1_acc   top5_acc: 94% ━━━━━━━━━━━─ 56/59 56.7it/s 18.6s<0.1s[K               classes   top1_acc   top5_acc: 100% ━━━━━━━━━━━━ 59/59 3.2it/s 18.6s
+                   all      0.865      0.994
+Speed: 0.1ms preprocess, 0.6ms inference, 0.0ms loss, 0.0ms postprocess per image
+Results saved to [1mD:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\runs\evaluaciones\etapa2_e2_tienda_s44_20261111_2021_publico_val[0m
+
+===== etapa2_e2_tienda_s44_20261111_2021.pt en publico/val =====
+accuracy top1=0.8650  top5=0.9941  F1 macro=0.8654 (sobre 7 clases con fotos)
+
+clase              n  precision   recall     f1
+generales        208      0.789    0.918  0.849
+metales          289      0.868    0.910  0.888
+organico         254      0.975    0.933  0.954
+papel_carton     286      0.860    0.920  0.888
+peligrosos       288      0.926    0.736  0.820
+plasticos        275      0.784    0.807  0.796
+sin_residuo        0      0.000    0.000  0.000
+vidrio           266      0.876    0.850  0.863
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales        191      2      2      6      3      2      0      2
+metales            3    263      0      5      7      7      0      4
+organico          10      1    237      1      1      3      0      1
+papel_carton       6      9      0    263      0      6      2      0
+peligrosos        17     13      2     15    212     23      0      6
+plasticos         12      6      0     15      1    222      0     19
+sin_residuo        0      0      0      0      0      0      0      0
+vidrio             3      9      2      1      5     20      0    226
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2_tienda_s44_20261111_2021_publico_val.json
+
+===== COMPARACIÓN en publico/val =====
+modelo                                           top1  F1 macro
+etapa2_e2_tienda_s42_20261111_2011.pt          0.8676    0.8686
+etapa2_e2_tienda_s43_20261111_2019.pt          0.8767    0.8773
+etapa2_e2_tienda_s44_20261111_2021.pt          0.8650    0.8654
