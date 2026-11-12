@@ -1,0 +1,28 @@
+{
+  "fecha": "2026-11-11T21:52",
+  "n_imagenes": 100,
+  "imgsz": 224,
+  "gpu": "NVIDIA GeForce RTX 3060",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "hilos_cpu": 8,
+  "resultados": [
+    {
+      "modelo": "etapa2_nf_s43.pt",
+      "mb": 11.0,
+      "params_M": 5.45,
+      "gpu_ms_mediana": 22.458349998487392,
+      "gpu_ms_p90": 28.762009999627487,
+      "cpu_ms_mediana": 28.941349999513477,
+      "cpu_ms_p90": 34.16034999900148
+    },
+    {
+      "modelo": "etapa2_e2_nf_m_s44_20261111_2149.pt",
+      "mb": 20.9,
+      "params_M": 10.36,
+      "gpu_ms_mediana": 25.74849999655271,
+      "gpu_ms_p90": 30.917730004148332,
+      "cpu_ms_mediana": 40.82494999966002,
+      "cpu_ms_p90": 46.09815999720013
+    }
+  ]
+}

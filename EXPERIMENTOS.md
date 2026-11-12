@@ -1114,6 +1114,55 @@ cajas de Freiburg esa clase baja más. La caída de metales y peligrosos aparece
 solo a las latas de Freiburg. Puede venir del cambio general de la etapa 1, y con 3 semillas no se puede separar del
 ruido. Modelos en `modelos/experimentos/` (no se suben).
 
+## Modelo base más grande: yolo26m-cls con la receta nf (`e1_nf_m` → `e2_nf_m_s{42,43,44}`, 2026-11-11)
+**Objetivo (usuario):** probar el siguiente tamaño con exactamente los datos y la receta de nf. El modelo actual es
+**yolo26s-cls**: 6.72 M parámetros preentrenado y 5.45 M con la cabeza de 8 clases. El siguiente es
+**yolo26m-cls**: 11.63 M preentrenado y 10.4 M con 8 clases.
+
+**Receta:**
+- `e1_nf_m`: `--pesos yolo26m-cls.pt --externo --externo-fuentes taco fwd nx --gris 0.3`.
+- `e2_nf_m_s*`: receta recomendada (`--replay 2 --externo --externo-fuentes taco --gris 0.3`).
+- **Batch 64** (perfil pc, sin cambios): el pico de memoria de GPU fue de 2.48 GB de 12 GB.
+
+Memoria virtual libre al lanzar: 19.5 GB; sin errores. Tiempos: etapa 1, 17.5 min (e1_nf: 9.1); etapa 2, 2.7–3.1 min
+por semilla. Logs en `reportes/evidencias/nf_m/`.
+
+`e1_nf_m` en publico/val: F1 0.9074 (top-1 0.9068; 60 ép., mejor 44), frente a 0.9052 de `e1_nf`.
+
+| modelo | F1 val_camara (293) | aciertos | F1 juliaca/val | F1 publico/val |
+|---|---|---|---|---|
+| e2_nf_m_s42 | 0.5416 | 169 | 0.6780 | 0.8780 |
+| e2_nf_m_s43 | 0.5268 | 161 | 0.6949 | 0.8769 |
+| e2_nf_m_s44 | 0.5600 | 171 | 0.6859 | 0.8811 |
+| **media m** | **0.5428** | 167.0 | 0.6863 | 0.8787 |
+| media nf (s, referencia) | 0.5568 | 167.7 | 0.7762 | 0.8773 |
+
+F1 por clase en val_camara, de nf s42–s44 a m s42–s44:
+- **suben:** generales 0.632–0.647 → 0.649–0.700; organico 0.625–0.710 → 0.800–0.824; vidrio 0.500–0.700 →
+  0.600–0.622;
+- **similar:** papel_carton 0.400–0.479 → 0.432–0.481;
+- **bajan:** metales 0.250–0.526 → 0.233–0.350; peligrosos 0.640–0.692 → 0.419–0.522; plasticos 0.500–0.589 →
+  0.444–0.491.
+
+**Tamaño e inferencia** (`scripts/medir_inferencia.py`, `reportes/inferencia_20261111_2152.json`):
+- Condiciones: batch 1, imgsz 224, 100 fotos de val_camara (1200×1600 y 1296×972), 10 de calentamiento, PC con RTX
+  3060 y CPU AMD de 16 hilos.
+- El tiempo incluye leer la foto y redimensionarla, igual que `model.predict` sobre la ruta. Por eso en GPU domina la
+  lectura, y la diferencia entre modelos se ve mejor en CPU.
+
+| modelo | .pt | parámetros | GPU mediana (p90) | CPU mediana (p90) |
+|---|---|---|---|---|
+| etapa2_nf_s43 (s, actual) | 11.0 MB | 5.5 M | 22.5 ms (28.8) | 28.9 ms (34.2) |
+| e2_nf_m_s44 (m, mejor semilla) | 20.9 MB | 10.4 M | 25.7 ms (30.9) | 40.8 ms (46.1) |
+
+m pesa 1.9 veces más y en CPU tarda unas 1.4 veces más en este PC (+12 ms). En la laptop y en la Raspberry hay que
+medirlo allí, porque la CPU de la Raspberry es mucho más lenta.
+
+**Resultado según la regla:** la media de m (0.5428) **no supera** la de nf (0.5568): −0.014. **No gana:** no se
+corrió `correr_todo.py` ni juliaca/test, y el modelo por defecto sigue siendo `etapa2_nf_s43`. Con los datos actuales,
+el modelo más grande no mejora val_camara: cambia qué clases acierta, pero no el total (167.0 frente a 167.7 aciertos
+de media). Además duplica el tamaño y es más lento en CPU. Modelos en `modelos/experimentos/` (no se suben).
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo

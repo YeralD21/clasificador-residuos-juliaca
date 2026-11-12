@@ -50,6 +50,9 @@ EXPERIMENTOS = {
         # 2026-11-11: variante solo Grocery Store (sin Freiburg), para separar el efecto de gro (organico/papel_carton).
         "e1_gro":     ("igual a e1_nf + gro (organico 150, papel_carton 150), sin frg",
                        ["--externo", "--externo-fuentes", "taco", "fwd", "nx", "gro", "--gris", "0.3"]),
+        # 2026-11-11: misma receta que e1_nf con el modelo base mediano (yolo26m-cls) en vez de yolo26s-cls.
+        "e1_nf_m":    ("igual a e1_nf con yolo26m-cls (base más grande)",
+                       ["--pesos", "yolo26m-cls.pt", "--externo", "--externo-fuentes", "taco", "fwd", "nx", "--gris", "0.3"]),
     },
     2: {
         "e2_base":     ("lr 1e-4, 6 capas congeladas, replay 1 (referencia)", []),
@@ -113,6 +116,12 @@ EXPERIMENTOS = {
                          ["--pesos", "@e1_gro", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "43"]),
         "e2_gro_s44":   ("receta recomendada desde e1_gro (externo solo taco) + gris 0.3, semilla 44",
                          ["--pesos", "@e1_gro", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "44"]),
+        "e2_nf_m_s42":  ("receta recomendada desde e1_nf_m (yolo26m-cls; externo solo taco) + gris 0.3, semilla 42",
+                         ["--pesos", "@e1_nf_m", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "42"]),
+        "e2_nf_m_s43":  ("receta recomendada desde e1_nf_m (yolo26m-cls; externo solo taco) + gris 0.3, semilla 43",
+                         ["--pesos", "@e1_nf_m", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "43"]),
+        "e2_nf_m_s44":  ("receta recomendada desde e1_nf_m (yolo26m-cls; externo solo taco) + gris 0.3, semilla 44",
+                         ["--pesos", "@e1_nf_m", "--replay", "2", "--externo", "--externo-fuentes", "taco", "--gris", "0.3", "--seed", "44"]),
         "e2_solo_jul": ("SIN etapa 1: desde ImageNet solo con fotos de Juliaca",
                         ["--pesos", "yolo26s-cls.pt", "--replay", "0", "--freeze", "0", "--lr", "1e-3"]),
     },
