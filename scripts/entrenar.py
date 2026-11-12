@@ -97,6 +97,10 @@ PREFIJO_FUENTE = {  # fuente -> prefijo del nombre de archivo en dataset/externo
     "mwn": "mwn_",               # importar_candidatas.py: Medical Waste v2 (ninja-9t5r9), recortes
     "frg": "frg_",               # importar_tiendas.py: Freiburg Groceries (latas, cajas, bolsas, PET, frascos)
     "gro": "gro_",               # importar_tiendas.py: Grocery Store Dataset (frutas/verduras, cartones)
+    "bdw": "bdw_",               # importar_peligrosos.py: BDWaste (guantes, mascarillas, blísteres; orgánicos)
+    "msk": "msk_",               # importar_peligrosos.py: MaskNet, recortes de mascarillas desechadas
+    "ewa": "ewa_",               # importar_peligrosos.py: E-Waste v9 (student-esos5), recortes Battery y Cable
+    "rcb": "rcb_",               # importar_peligrosos.py: RecyBat24 v1, recortes de baterías pouch y cilíndricas
 }
 # Sin --externo-fuentes se usan SOLO estas (las del 26-10, como e1_ext2). rfv4_ y rfmed_ (decisión del usuario,
 # 2026-11-10: fuera de la receta) y cualquier fuente posterior entran únicamente si se piden por nombre.

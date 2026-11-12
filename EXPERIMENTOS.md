@@ -1163,6 +1163,83 @@ corrió `correr_todo.py` ni juliaca/test, y el modelo por defecto sigue siendo `
 el modelo más grande no mejora val_camara: cambia qué clases acierta, pero no el total (167.0 frente a 167.7 aciertos
 de media). Además duplica el tamaño y es más lento en CPU. Modelos en `modelos/experimentos/` (no se suben).
 
+## Fuentes para peligrosos: BDWaste, MaskNet, E-Waste, RecyBat24 (`e1_pel`/`e2_pel_s*` y `e2c_pel_s*`, 2026-11-12)
+**Fase A** (`scripts/candidatas_peligrosos.py`, solo informe; `reportes/externo_candidatas4_{dedup,conteos}.csv`,
+`reportes/mosaicos_candidatas4/`). Licencias verificadas el 2026-11-11:
+- **bdw** BDWaste (Mendeley 96g5pgfnfw v1, CC BY 4.0): Glaves, Mask, Empty_medicine_packet → peligrosos; 9 tipos de
+  cáscaras y restos → organico (Fish_ash = escamas de pescado). Paper, Coffee_cup, Cane, Wire y demás → descartadas.
+- **msk** MaskNet (= "archive (3)"; GitHub Tenebris97/MaskNet, MIT; Kaggle ODbL): 1.058 fotos de mascarillas tiradas
+  en la calle, recortes de cajas → peligrosos.
+- **ewa** E-Waste Classifications v9 (Roboflow student-esos5, CC BY 4.0): Battery y Cable → peligrosos (no hay clase
+  de cargadores); Bulb y PCB descartadas; solo train y valid. Imágenes estiradas a 640×640 (recortes deformados).
+- **rcb** RecyBat24: el archivo descargado es la **versión 1** (Zenodo 13126689, CC BY 4.0) y **todas** sus 36.660
+  imágenes son variantes aumentadas (`rotated_<ang>_bright_<b>`) de 2.835 originales. La versión sin aumentar solo está
+  en versiones posteriores (15490523), con **CC BY-NC-ND 4.0**. Decisión del usuario: usar de la v1 solo
+  `rotated_90_bright_1.0` (giro exacto de 90°, sin esquinas negras, brillo original), pouch y cylindric (prismatic no
+  tiene esa variante), tope 100.
+- **Surgical Waste Dataset** (Mendeley rnhz3fvbj2): **descartada entera** (decisión del usuario). Gran parte son fotos
+  de internet con marca de agua de stock (POND5, alamy, dreamstime, The Guardian) y secuencias de cuadros de video; el
+  CC BY del dataset no puede licenciar esas fotos. Las sintéticas se identificaron a ojo (mismo fondo con la mascarilla
+  pegada en otra posición: series 632–665 y 715–721; mascarillas pegadas sobre un mapa o skyline: 576, 773, 947,
+  1064), pero no se pueden separar de forma fiable (Roboflow las dejó en 416×416 sin EXIF). Hojas de contacto en
+  `reportes/mosaicos_candidatas4/surgical_covid_trash_pag*.jpg`.
+
+Filtros: benchmark (nombre, dHash 8 giros, ORB), familia Smart medical/pbw/mwn/rfmed_ **+ Medical-Waste-4.0 A y B**
+(nombre, dHash, ORB para peligrosos), datos propios y `_fuentes`, recorte < 64 px, dup interno (dHash) y consecutivas
+(embedding ≥ 0.95), tope 150 por fuente y clase (rcb 100). Cruces con el benchmark: 54 imágenes completas (bdw 48), y
+varios son falsos positivos de dHash sobre fondos lisos (solo quitan de más).
+
+**Importación** (`scripts/importar_peligrosos.py`, aprobada por el usuario el 2026-11-12). Excluidas a mano 18 fotos de
+bdw Mask sobre tela roja (mascarillas nuevas en paquete sellado o recién sacadas): quedan 22 desechadas.
+
+| fuente | clase | n | detalle |
+|---|---|---|---|
+| bdw | peligrosos | 143 | blísteres 76, guantes 45, mascarillas 22 |
+| bdw | organico | 150 | banana 28, papa 28, limón 28, arroz 28, huevo 16, mango 7, caña 7, escamas 6, malta 2 |
+| msk | peligrosos | 150 | mascarillas (recortes) |
+| ewa | peligrosos | 150 | Battery 75, Cable 75 (recortes) |
+| rcb | peligrosos | 100 | pouch 50, cylindric 50 (recortes) |
+
+Total 693 en `dataset/externo/train` (17 filas en `datos_externos.csv`). Prefijos `bdw_ msk_ ewa_ rcb_` en
+`PREFIJO_FUENTE`. `auditar.py`: 0 errores.
+
+**Variantes** (memoria virtual libre al lanzar: 18.8 GB; sin WinError 1455 ni errores; logs en
+`reportes/evidencias/pel/`):
+- **A, completa:** `e1_pel` = `--externo --externo-fuentes taco fwd nx bdw msk ewa rcb --gris 0.3` (12.8 min; publico/val
+  F1 0.9059, 60 ép., mejor 48, frente a 0.9052 de `e1_nf`) → `e2_pel_s{42,43,44}` con la receta recomendada
+  (`--replay 2 --externo --externo-fuentes taco --gris 0.3`), 1.7–2.5 min por semilla.
+- **B, continuar:** `e2c_pel_s{42,43,44}` parte de `modelos/etapa2_nf_s43.pt` con `--epochs 8 --lr 2e-5 --freeze 6
+  --replay 2 --externo-replay bdw=100 msk=100 ewa=100 rcb=100 --gris 0.3`, 1.2 min por semilla (juliaca/train + replay
+  de publico + hasta 100 por fuente y clase de las nuevas; bdw aporta también organico).
+
+| modelo | F1 val_camara (293) | top-1 val_camara | F1 peligrosos val_camara | F1 juliaca/val (mejor época) |
+|---|---|---|---|---|
+| e2_pel_s42 | 0.4762 | 0.5051 | 0.400 | 0.8416 |
+| e2_pel_s43 | 0.5152 | 0.5392 | 0.478 | 0.8527 |
+| e2_pel_s44 | 0.5496 | 0.5870 | 0.533 | 0.8091 |
+| **media A** | **0.5137** | 0.5438 | 0.470 | 0.8345 |
+| e2c_pel_s42 | 0.5454 | 0.5290 | 0.425 | 0.7275 |
+| e2c_pel_s43 | 0.4859 | 0.4778 | 0.400 | 0.7111 |
+| e2c_pel_s44 | 0.5052 | 0.5017 | 0.458 | 0.7302 |
+| **media B** | **0.5122** | 0.5028 | 0.428 | 0.7229 |
+| media nf (referencia) | 0.5568 | — | 0.640–0.692 (rango) | — |
+
+Fuente de los números: `reportes/etapa2_e2*_pel_*_val_camara.json` (`evaluar.py --datos val_camara`) y
+`reportes/experimentos.csv` (F1 juliaca/val de la mejor época, como lo registra `experimentar.py`).
+
+**Lectura:**
+- **A** no mejora peligrosos en val_camara (F1 0.400–0.533, por debajo del rango de nf). Las confusiones principales
+  siguen en plasticos → vidrio y generales → papel_carton.
+- **B** sube mucho el recall de peligrosos (19–20 de 22), pero a costa de la precisión (0.26–0.31): pasa a llamar
+  peligrosos a 26–32 generales y 12–15 plasticos de val_camara. Las fuentes nuevas de peligrosos en el replay (400
+  imágenes, 100 por fuente, contra 17 fotos de juliaca/train en esa clase) desplazan la frontera hacia esa clase. Además, el F1 en juliaca/val baja
+  de forma clara.
+
+**Resultado según la regla:** media A 0.5137 y media B 0.5122; ninguna supera a nf (0.5568): −0.043 y −0.045. **No
+gana ninguna:** no se corrió `correr_todo.py` ni juliaca/test, y el modelo por defecto sigue siendo `etapa2_nf_s43`.
+Las 693 imágenes quedan en `dataset/externo/train` (prefijos `bdw_ msk_ ewa_ rcb_`), fuera de la receta por defecto
+(`FUENTES_POR_DEFECTO` no cambia). Modelos en `modelos/experimentos/` (no se suben).
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo

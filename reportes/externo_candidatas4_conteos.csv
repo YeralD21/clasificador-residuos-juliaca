@@ -1,0 +1,27 @@
+fuente,categoria,clase,estado,total,nombre_benchmark,dhash_benchmark,nombre_familia,dhash_familia,dhash_propios,orb_benchmark,orb_familia,recorte_chico,dhash_propios_recorte,dup_interno,consecutiva,fuera_del_tope,ok
+bdw,Banana_peel,organico,propuesta,123,0,6,0,3,1,0,0,0,0,9,58,18,28
+bdw,Egg_shell,organico,propuesta,131,0,0,0,0,0,0,0,0,0,26,89,0,16
+bdw,Empty_medicine_packet,peligrosos,propuesta,131,0,4,0,4,2,0,0,0,0,0,45,11,65
+bdw,Fish_ash,organico,dudosa,125,0,0,0,3,1,0,0,0,0,84,31,0,6
+bdw,Glaves,peligrosos,propuesta,125,0,0,0,0,0,0,0,0,0,13,67,0,45
+bdw,Lemon_Peel,organico,propuesta,125,0,32,0,26,8,0,0,0,0,0,17,14,28
+bdw,Mango_Peel,organico,propuesta,121,0,0,0,0,2,0,0,0,0,24,88,0,7
+bdw,Mask,peligrosos,propuesta,129,0,1,0,3,1,0,0,0,0,10,74,0,40
+bdw,Potato_Peel,organico,propuesta,130,0,2,0,1,0,0,0,0,0,3,52,44,28
+bdw,Rice,organico,propuesta,127,0,3,0,5,1,0,0,0,0,1,85,4,28
+bdw,Shell_of_Malta,organico,propuesta,126,0,0,0,0,0,0,0,0,0,114,10,0,2
+bdw,Sugarcane_husk,organico,propuesta,125,0,0,0,0,0,0,0,0,0,18,100,0,7
+ewa,Battery,peligrosos,propuesta,292,0,0,2,5,1,0,0,71,6,3,16,113,75
+ewa,Cable,peligrosos,propuesta,250,0,2,0,5,8,0,1,3,2,2,26,126,75
+msk,Mask,peligrosos,propuesta,1058,0,3,0,7,1,0,1,41,0,2,145,708,150
+rcb,cylindric,peligrosos,propuesta,477,0,0,0,3,72,0,0,86,2,21,112,131,50
+rcb,pouch,peligrosos,propuesta,1739,0,0,0,0,0,19,0,0,88,71,1028,483,50
+bdw,Cane (no pedida o ambigua),descartada,-,120,,,,,,,,,,,,,
+bdw,Coffee_cup (no pedida o ambigua),descartada,-,126,,,,,,,,,,,,,
+bdw,Paper (no pedida o ambigua),descartada,-,124,,,,,,,,,,,,,
+bdw,Wire (no pedida o ambigua),descartada,-,120,,,,,,,,,,,,,
+ewa,caja Bulb (ambigua),descartada,-,371,,,,,,,,,,,,,
+ewa,caja PCB (ambigua),descartada,-,212,,,,,,,,,,,,,
+ewa,imagen sin cajas Battery/Cable,descartada,-,254,,,,,,,,,,,,,
+ewa,split test,descartada,-,51,,,,,,,,,,,,,
+rcb,sin archivo o sin caja,descartada,-,1,,,,,,,,,,,,,

@@ -1,0 +1,462 @@
+
+===== etapa2_e2_pel_s42_20261112_0651.pt en val_camara =====
+accuracy top1=0.5051  top5=0.9863  F1 macro=0.4762 (sobre 7 clases con fotos)
+
+clase              n  precision   recall     f1
+generales        122      0.673    0.590  0.629
+metales           13      0.088    0.231  0.128
+organico          20      1.000    0.650  0.788
+papel_carton      26      0.388    0.731  0.507
+peligrosos        22      0.444    0.364  0.400
+plasticos         73      0.525    0.288  0.372
+sin_residuo        0      0.000    0.000  0.000
+vidrio            17      0.400    0.706  0.511
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales         72     11      0     22      6      8      1      2
+metales            8      3      0      0      1      1      0      0
+organico           2      2     13      1      0      2      0      0
+papel_carton       6      0      0     19      1      0      0      0
+peligrosos         0      7      0      3      8      3      0      1
+plasticos         19     11      0      4      2     21      1     15
+sin_residuo        0      0      0      0      0      0      0      0
+vidrio             0      0      0      0      0      5      0     12
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2_pel_s42_20261112_0651_val_camara.json
+
+===== etapa2_e2_pel_s43_20261112_0653.pt en val_camara =====
+accuracy top1=0.5392  top5=0.9829  F1 macro=0.5152 (sobre 7 clases con fotos)
+
+clase              n  precision   recall     f1
+generales        122      0.676    0.615  0.644
+metales           13      0.304    0.538  0.389
+organico          20      0.933    0.700  0.800
+papel_carton      26      0.327    0.692  0.444
+peligrosos        22      0.458    0.500  0.478
+plasticos         73      0.632    0.329  0.432
+sin_residuo        0      0.000    0.000  0.000
+vidrio            17      0.346    0.529  0.419
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales         75      7      0     30      5      4      0      1
+metales            4      7      0      0      1      1      0      0
+organico           3      1     14      1      0      0      0      1
+papel_carton       8      0      0     18      0      0      0      0
+peligrosos         1      3      0      3     11      2      0      2
+plasticos         20      5      1      3      6     24      1     13
+sin_residuo        0      0      0      0      0      0      0      0
+vidrio             0      0      0      0      1      7      0      9
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2_pel_s43_20261112_0653_val_camara.json
+
+===== etapa2_e2_pel_s44_20261112_0656.pt en val_camara =====
+accuracy top1=0.5870  top5=0.9966  F1 macro=0.5496 (sobre 7 clases con fotos)
+
+clase              n  precision   recall     f1
+generales        122      0.762    0.656  0.705
+metales           13      0.261    0.462  0.333
+organico          20      0.875    0.700  0.778
+papel_carton      26      0.365    0.731  0.487
+peligrosos        22      0.522    0.545  0.533
+plasticos         73      0.674    0.397  0.500
+sin_residuo        0      0.000    0.000  0.000
+vidrio            17      0.400    0.706  0.511
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales         80      7      0     22      7      5      0      1
+metales            5      6      0      1      1      0      0      0
+organico           3      1     14      0      0      2      0      0
+papel_carton       7      0      0     19      0      0      0      0
+peligrosos         0      3      0      3     12      2      0      2
+plasticos         10      6      2      7      3     29      1     15
+sin_residuo        0      0      0      0      0      0      0      0
+vidrio             0      0      0      0      0      5      0     12
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2_pel_s44_20261112_0656_val_camara.json
+
+===== etapa2_e2c_pel_s42_20261112_0657.pt en val_camara =====
+accuracy top1=0.5290  top5=0.9795  F1 macro=0.5454 (sobre 7 clases con fotos)
+
+clase              n  precision   recall     f1
+generales        122      0.732    0.426  0.539
+metales           13      0.545    0.462  0.500
+organico          20      0.667    0.900  0.766
+papel_carton      26      0.380    0.731  0.500
+peligrosos        22      0.278    0.909  0.425
+plasticos         73      0.707    0.397  0.509
+sin_residuo        0      0.000    0.000  0.000
+vidrio            17      0.524    0.647  0.579
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales         52      2      1     30     30      6      0      1
+metales            7      6      0      0      0      0      0      0
+organico           0      0     18      0      2      0      0      0
+papel_carton       2      0      0     19      5      0      0      0
+peligrosos         0      0      0      0     20      0      0      2
+plasticos         10      3      8      1     15     29      0      7
+sin_residuo        0      0      0      0      0      0      0      0
+vidrio             0      0      0      0      0      6      0     11
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2c_pel_s42_20261112_0657_val_camara.json
+
+===== etapa2_e2c_pel_s43_20261112_0658.pt en val_camara =====
+accuracy top1=0.4778  top5=0.9727  F1 macro=0.4859 (sobre 7 clases con fotos)
+
+clase              n  precision   recall     f1
+generales        122      0.702    0.385  0.497
+metales           13      0.417    0.385  0.400
+organico          20      0.586    0.850  0.694
+papel_carton      26      0.340    0.615  0.438
+peligrosos        22      0.260    0.864  0.400
+plasticos         73      0.676    0.315  0.430
+sin_residuo        0      0.000    0.000  0.000
+vidrio            17      0.419    0.765  0.542
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales         47      4      1     28     32      7      0      3
+metales            7      5      0      1      0      0      0      0
+organico           0      0     17      0      3      0      0      0
+papel_carton       6      0      0     16      4      0      0      0
+peligrosos         0      0      0      0     19      0      0      3
+plasticos          7      3     11      2     15     23      0     12
+sin_residuo        0      0      0      0      0      0      0      0
+vidrio             0      0      0      0      0      4      0     13
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2c_pel_s43_20261112_0658_val_camara.json
+
+===== etapa2_e2c_pel_s44_20261112_0659.pt en val_camara =====
+accuracy top1=0.5017  top5=0.9761  F1 macro=0.5052 (sobre 7 clases con fotos)
+
+clase              n  precision   recall     f1
+generales        122      0.705    0.451  0.550
+metales           13      0.444    0.615  0.516
+organico          20      0.640    0.800  0.711
+papel_carton      26      0.302    0.500  0.377
+peligrosos        22      0.311    0.864  0.458
+plasticos         73      0.605    0.356  0.448
+sin_residuo        0      0.000    0.000  0.000
+vidrio            17      0.400    0.588  0.476
+
+Matriz de confusión (filas = REAL, columnas = PREDICHO):
+              genera metale organi papel_ peligr plasti sin_re vidrio
+generales         55      4      1     25     26      9      0      2
+metales            5      8      0      0      0      0      0      0
+organico           1      0     16      0      2      1      0      0
+papel_carton      10      1      0     13      2      0      0      0
+peligrosos         0      0      0      0     19      0      0      3
+plasticos          7      5      8      5     12     26      0     10
+sin_residuo        0      0      0      0      0      0      0      0
+vidrio             0      0      0      0      0      7      0     10
+
+Reporte guardado: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\etapa2_e2c_pel_s44_20261112_0659_val_camara.json
+
+===== COMPARACIÓN en val_camara =====
+modelo                                           top1  F1 macro
+etapa2_e2_pel_s42_20261112_0651.pt             0.5051    0.4762
+etapa2_e2_pel_s43_20261112_0653.pt             0.5392    0.5152
+etapa2_e2_pel_s44_20261112_0656.pt             0.5870    0.5496
+etapa2_e2c_pel_s42_20261112_0657.pt            0.5290    0.5454
+etapa2_e2c_pel_s43_20261112_0658.pt            0.4778    0.4859
+etapa2_e2c_pel_s44_20261112_0659.pt            0.5017    0.5052
+
+===== POR FOTO en val_camara (✓ = acierto) =====
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28 (1).jpeg ✗ plasticos    0.33  ✓ generales    0.59  ✓ generales    0.50  ✗ peligrosos   0.57  ✗ peligrosos   0.75  ✗ plasticos    0.57
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28 (2).jpeg ✗ papel_carton 0.55  ✓ generales    0.72  ✓ generales    0.53  ✓ generales    0.46  ✗ papel_carton 0.99  ✗ papel_carton 0.83
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.28.jpeg ✓ generales    0.91  ✓ generales    0.98  ✓ generales    0.99  ✓ generales    0.80  ✓ generales    0.54  ✓ generales    0.76
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.29.jpeg ✗ papel_carton 0.88  ✗ papel_carton 0.53  ✗ papel_carton 0.90  ✗ papel_carton 0.61  ✗ papel_carton 0.98  ✗ papel_carton 0.91
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.30 (1).jpeg ✗ metales      0.25  ✗ peligrosos   0.58  ✗ peligrosos   0.39  ✗ peligrosos   0.99  ✗ peligrosos   0.93  ✗ peligrosos   0.98
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.30.jpeg ✗ plasticos    0.30  ✓ generales    0.41  ✗ peligrosos   0.39  ✗ peligrosos   0.98  ✗ peligrosos   0.52  ✗ peligrosos   0.78
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.31 (1).jpeg ✓ generales    0.51  ✗ papel_carton 0.67  ✗ papel_carton 0.59  ✗ papel_carton 0.96  ✗ papel_carton 0.89  ✗ papel_carton 0.94
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.31.jpeg ✓ generales    0.96  ✓ generales    0.98  ✓ generales    1.00  ✗ peligrosos   0.46  ✗ peligrosos   0.67  ✗ peligrosos   0.82
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.54 (1).jpeg ✓ generales    0.94  ✓ generales    0.99  ✓ generales    0.99  ✗ peligrosos   0.51  ✗ peligrosos   0.72  ✗ peligrosos   0.94
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.55.jpeg ✓ generales    0.70  ✓ generales    0.71  ✓ generales    0.65  ✗ papel_carton 0.44  ✓ generales    0.68  ✓ generales    0.57
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.56 (1).jpeg ✓ generales    0.91  ✓ generales    0.96  ✓ generales    1.00  ✓ generales    0.89  ✗ metales      0.40  ✓ generales    0.54
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.56 (2).jpeg ✓ generales    0.86  ✓ generales    0.94  ✓ generales    0.99  ✓ generales    0.83  ✗ peligrosos   0.78  ✓ generales    0.77
+generales/obj101_envoltorio_chocman/WhatsApp Image 2026-10-26 at 13.52.56.jpeg ✓ generales    0.74  ✓ generales    0.93  ✓ generales    0.74  ✓ generales    0.38  ✓ generales    0.85  ✓ generales    0.64
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.31 (2).jpeg ✗ papel_carton 0.85  ✗ papel_carton 0.96  ✗ papel_carton 0.94  ✗ papel_carton 0.74  ✗ papel_carton 0.86  ✗ papel_carton 0.65
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.33 (1).jpeg ✗ papel_carton 0.61  ✗ papel_carton 0.86  ✗ papel_carton 0.83  ✗ papel_carton 0.92  ✗ papel_carton 0.77  ✗ papel_carton 0.79
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.33.jpeg ✗ peligrosos   0.59  ✗ papel_carton 0.77  ✗ papel_carton 0.72  ✗ peligrosos   0.47  ✓ generales    0.56  ✓ generales    0.70
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34 (1).jpeg ✓ generales    0.27  ✗ papel_carton 0.40  ✓ generales    0.56  ✗ peligrosos   0.66  ✗ peligrosos   0.58  ✗ peligrosos   0.83
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34 (2).jpeg ✗ sin_residuo  0.33  ✗ papel_carton 0.26  ✓ generales    0.29  ✗ peligrosos   0.36  ✗ peligrosos   0.55  ✗ plasticos    0.28
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.34.jpeg ✗ papel_carton 0.44  ✗ papel_carton 0.41  ✗ papel_carton 0.50  ✗ papel_carton 0.44  ✗ papel_carton 0.39  ✗ papel_carton 0.48
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.35 (1).jpeg ✓ generales    0.99  ✓ generales    0.99  ✓ generales    1.00  ✗ peligrosos   0.64  ✗ peligrosos   0.68  ✓ generales    0.78
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.35.jpeg ✗ papel_carton 0.53  ✗ papel_carton 0.52  ✗ papel_carton 0.73  ✗ papel_carton 0.65  ✗ papel_carton 0.66  ✗ papel_carton 0.49
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.36.jpeg ✗ papel_carton 1.00  ✗ papel_carton 0.95  ✗ papel_carton 0.99  ✗ papel_carton 0.55  ✗ papel_carton 0.50  ✗ papel_carton 0.60
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37 (1).jpeg ✓ generales    0.44  ✗ papel_carton 0.49  ✗ papel_carton 0.76  ✗ peligrosos   0.56  ✗ peligrosos   0.58  ✗ peligrosos   0.68
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37 (2).jpeg ✓ generales    0.56  ✓ generales    0.67  ✓ generales    0.83  ✗ peligrosos   0.83  ✗ peligrosos   0.61  ✗ papel_carton 0.52
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37 (3).jpeg ✓ generales    0.61  ✓ generales    0.79  ✓ generales    0.79  ✗ metales      0.36  ✗ metales      0.38  ✗ metales      0.53
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.37.jpeg ✗ papel_carton 0.65  ✓ generales    0.58  ✓ generales    0.55  ✗ peligrosos   0.43  ✗ peligrosos   0.76  ✓ generales    0.38
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.38.jpeg ✓ generales    0.63  ✓ generales    0.90  ✓ generales    0.66  ✓ generales    0.36  ✗ peligrosos   0.54  ✗ plasticos    0.43
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.39 (1).jpeg ✓ generales    0.60  ✓ generales    0.48  ✓ generales    0.73  ✓ generales    0.64  ✓ generales    0.60  ✓ generales    0.41
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.39.jpeg ✓ generales    0.93  ✓ generales    0.95  ✓ generales    0.94  ✓ generales    0.81  ✓ generales    0.94  ✓ generales    0.84
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.52.40.jpeg ✓ generales    0.76  ✓ generales    0.68  ✓ generales    0.81  ✓ generales    0.31  ✓ generales    0.52  ✓ generales    0.62
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.37 (3).jpeg ✗ plasticos    0.48  ✓ generales    0.81  ✓ generales    0.89  ✓ generales    0.70  ✓ generales    0.97  ✓ generales    0.65
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.37 (4).jpeg ✓ generales    0.96  ✓ generales    0.96  ✓ generales    1.00  ✗ papel_carton 0.43  ✓ generales    0.55  ✗ metales      0.44
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (1).jpeg ✓ generales    0.89  ✓ generales    0.79  ✓ generales    0.77  ✓ generales    0.91  ✓ generales    0.97  ✓ generales    0.82
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (2).jpeg ✓ generales    0.42  ✓ generales    0.55  ✓ generales    0.69  ✓ generales    0.44  ✗ vidrio       0.31  ✗ papel_carton 0.35
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38 (3).jpeg ✓ generales    1.00  ✓ generales    1.00  ✓ generales    0.99  ✗ peligrosos   0.33  ✓ generales    0.41  ✓ generales    0.60
+generales/obj102_envoltorio_casino/WhatsApp Image 2026-10-26 at 13.54.38.jpeg ✓ generales    0.96  ✓ generales    1.00  ✓ generales    0.99  ✓ generales    0.89  ✓ generales    0.86  ✓ generales    0.97
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.40 (1).jpeg ✗ papel_carton 0.94  ✗ papel_carton 1.00  ✗ papel_carton 1.00  ✗ papel_carton 0.86  ✗ papel_carton 0.83  ✓ generales    0.80
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.41 (1).jpeg ✗ metales      0.70  ✗ papel_carton 0.52  ✗ peligrosos   0.54  ✓ generales    0.48  ✗ peligrosos   0.59  ✓ generales    0.64
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.41.jpeg ✗ papel_carton 0.66  ✗ papel_carton 0.70  ✗ papel_carton 0.49  ✗ papel_carton 0.25  ✓ generales    0.50  ✓ generales    0.62
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.44 (1).jpeg ✓ generales    0.91  ✓ generales    0.95  ✓ generales    0.95  ✗ peligrosos   0.90  ✗ peligrosos   0.91  ✗ peligrosos   0.59
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.44 (2).jpeg ✗ metales      0.38  ✓ generales    0.33  ✓ generales    0.54  ✗ metales      0.35  ✗ peligrosos   0.63  ✗ peligrosos   0.33
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.44.jpeg ✓ generales    0.89  ✓ generales    0.79  ✓ generales    0.75  ✗ peligrosos   0.47  ✗ peligrosos   0.48  ✗ peligrosos   0.82
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45 (1).jpeg ✗ papel_carton 0.83  ✗ papel_carton 0.80  ✗ papel_carton 0.95  ✗ papel_carton 0.78  ✗ papel_carton 0.79  ✓ generales    0.75
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45 (2).jpeg ✗ papel_carton 0.56  ✗ papel_carton 0.78  ✗ papel_carton 0.71  ✗ papel_carton 0.83  ✗ papel_carton 0.64  ✗ papel_carton 0.93
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.45.jpeg ✗ papel_carton 0.91  ✗ papel_carton 0.82  ✗ papel_carton 0.95  ✗ papel_carton 0.90  ✗ papel_carton 0.99  ✗ papel_carton 0.75
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46 (1).jpeg ✓ generales    0.51  ✓ generales    0.72  ✓ generales    0.80  ✗ peligrosos   0.84  ✗ peligrosos   0.46  ✗ papel_carton 0.50
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46 (2).jpeg ✓ generales    0.60  ✓ generales    0.61  ✓ generales    0.48  ✓ generales    0.48  ✓ generales    0.89  ✗ papel_carton 0.46
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46 (3).jpeg ✓ generales    0.89  ✓ generales    0.79  ✓ generales    0.90  ✓ generales    0.84  ✓ generales    0.82  ✓ generales    0.94
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.46.jpeg ✓ generales    0.55  ✗ papel_carton 0.73  ✗ papel_carton 0.89  ✗ papel_carton 0.97  ✗ papel_carton 0.81  ✗ papel_carton 0.91
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.47 (1).jpeg ✓ generales    0.94  ✓ generales    0.97  ✓ generales    0.99  ✓ generales    0.64  ✗ peligrosos   0.83  ✗ peligrosos   0.48
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.47 (2).jpeg ✗ vidrio       0.42  ✗ plasticos    0.75  ✓ generales    0.74  ✓ generales    0.87  ✓ generales    0.72  ✓ generales    0.67
+generales/obj103_envoltorio_tentacion/WhatsApp Image 2026-10-26 at 13.52.47.jpeg ✓ generales    0.78  ✗ papel_carton 0.67  ✗ papel_carton 0.79  ✓ generales    0.53  ✗ papel_carton 0.68  ✓ generales    0.73
+generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.57 (1).jpeg ✓ generales    0.44  ✓ generales    0.90  ✓ generales    0.47  ✓ generales    0.72  ✓ generales    0.97  ✓ generales    0.54
+generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.57.jpeg ✗ papel_carton 0.68  ✗ papel_carton 0.81  ✗ papel_carton 0.86  ✓ generales    0.50  ✓ generales    0.95  ✓ generales    0.68
+generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.58 (1).jpeg ✗ papel_carton 0.61  ✓ generales    0.78  ✗ papel_carton 0.75  ✓ generales    0.97  ✓ generales    0.95  ✓ generales    0.99
+generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.58.jpeg ✓ generales    0.95  ✓ generales    0.99  ✓ generales    0.98  ✓ generales    0.99  ✓ generales    1.00  ✓ generales    1.00
+generales/obj105_servilleta_usada/WhatsApp Image 2026-10-26 at 13.52.59.jpeg ✓ generales    0.55  ✗ papel_carton 0.83  ✗ papel_carton 0.89  ✗ organico     0.70  ✗ organico     0.80  ✗ organico     0.72
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.04 (1).jpeg ✓ generales    0.78  ✗ papel_carton 0.74  ✓ generales    0.87  ✗ papel_carton 0.92  ✗ papel_carton 0.97  ✗ papel_carton 0.72
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.04.jpeg ✗ papel_carton 0.80  ✗ papel_carton 0.88  ✗ papel_carton 0.84  ✗ papel_carton 0.96  ✗ papel_carton 0.94  ✗ papel_carton 0.85
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.05 (1).jpeg ✗ papel_carton 0.84  ✗ papel_carton 0.89  ✗ papel_carton 0.76  ✗ papel_carton 0.79  ✗ papel_carton 0.73  ✗ papel_carton 0.81
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.05.jpeg ✓ generales    0.70  ✓ generales    0.71  ✓ generales    0.95  ✗ papel_carton 0.58  ✗ papel_carton 0.70  ✓ generales    0.50
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.06 (1).jpeg ✓ generales    0.97  ✓ generales    1.00  ✓ generales    0.99  ✓ generales    0.81  ✓ generales    0.97  ✓ generales    0.97
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.06.jpeg ✓ generales    0.99  ✓ generales    1.00  ✓ generales    0.96  ✗ papel_carton 0.73  ✗ papel_carton 0.64  ✓ generales    0.65
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.07 (1).jpeg ✓ generales    0.98  ✓ generales    0.99  ✓ generales    1.00  ✓ generales    0.97  ✓ generales    0.99  ✓ generales    1.00
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.07 (2).jpeg ✓ generales    0.96  ✓ generales    0.93  ✓ generales    1.00  ✓ generales    0.98  ✓ generales    0.98  ✓ generales    0.95
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.07.jpeg ✓ generales    1.00  ✓ generales    1.00  ✓ generales    1.00  ✓ generales    0.58  ✓ generales    0.71  ✓ generales    0.79
+generales/obj107_sachet_aji_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.08.jpeg ✓ generales    0.98  ✓ generales    0.93  ✓ generales    0.98  ✓ generales    0.99  ✓ generales    0.99  ✓ generales    0.99
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.09 (1).jpeg ✓ generales    0.80  ✗ papel_carton 0.54  ✓ generales    0.74  ✗ papel_carton 0.94  ✗ papel_carton 0.87  ✓ generales    0.48
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.09 (2).jpeg ✓ generales    0.93  ✓ generales    0.92  ✓ generales    1.00  ✓ generales    0.80  ✓ generales    0.65  ✓ generales    0.84
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.09.jpeg ✗ papel_carton 0.76  ✗ papel_carton 0.92  ✓ generales    0.54  ✗ papel_carton 0.61  ✗ papel_carton 0.49  ✓ generales    0.57
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.10.jpeg ✓ generales    0.70  ✓ generales    0.76  ✓ generales    0.92  ✗ plasticos    0.95  ✗ plasticos    0.90  ✗ plasticos    0.86
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11 (1).jpeg ✗ papel_carton 0.54  ✓ generales    0.65  ✓ generales    0.65  ✗ papel_carton 0.99  ✗ papel_carton 0.94  ✗ papel_carton 0.47
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11 (2).jpeg ✓ generales    0.93  ✓ generales    0.99  ✓ generales    0.99  ✓ generales    0.60  ✓ generales    0.79  ✓ generales    0.95
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.11.jpeg ✗ papel_carton 0.64  ✗ papel_carton 0.87  ✓ generales    0.91  ✗ papel_carton 0.86  ✗ papel_carton 0.93  ✗ peligrosos   0.41
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.12 (1).jpeg ✗ papel_carton 0.61  ✗ papel_carton 0.81  ✓ generales    0.85  ✗ papel_carton 0.59  ✗ papel_carton 0.81  ✓ generales    0.95
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.12.jpeg ✓ generales    0.99  ✓ generales    0.92  ✓ generales    0.99  ✓ generales    0.99  ✓ generales    1.00  ✓ generales    1.00
+generales/obj108_sachet_oregano_pizza_hut/WhatsApp Image 2026-10-26 at 13.53.13.jpeg ✗ plasticos    0.67  ✓ generales    0.47  ✗ plasticos    0.66  ✓ generales    0.63  ✓ generales    0.85  ✓ generales    0.60
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48 (1).jpeg ✓ generales    1.00  ✓ generales    1.00  ✓ generales    1.00  ✓ generales    1.00  ✓ generales    0.98  ✓ generales    0.99
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.48.jpeg ✓ generales    0.57  ✓ generales    0.95  ✓ generales    0.58  ✓ generales    0.72  ✗ metales      0.50  ✓ generales    0.40
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.50 (1).jpeg ✓ generales    1.00  ✓ generales    0.94  ✓ generales    0.77  ✓ generales    0.89  ✓ generales    0.70  ✗ papel_carton 0.66
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.50.jpeg ✗ plasticos    0.83  ✗ plasticos    0.99  ✗ plasticos    0.95  ✗ plasticos    0.91  ✗ plasticos    0.83  ✗ plasticos    0.62
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.51 (1).jpeg ✓ generales    1.00  ✓ generales    1.00  ✓ generales    1.00  ✓ generales    1.00  ✓ generales    0.98  ✓ generales    0.94
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.51.jpeg ✓ generales    1.00  ✓ generales    1.00  ✓ generales    1.00  ✓ generales    0.93  ✓ generales    0.95  ✓ generales    0.77
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.52 (1).jpeg ✓ generales    0.99  ✓ generales    0.98  ✓ generales    0.99  ✓ generales    0.86  ✓ generales    0.76  ✓ generales    0.84
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.52.jpeg ✗ papel_carton 0.63  ✓ generales    0.66  ✗ papel_carton 0.76  ✓ generales    0.64  ✓ generales    0.64  ✓ generales    0.59
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.53 (1).jpeg ✗ metales      0.66  ✓ generales    0.73  ✗ metales      0.86  ✓ generales    0.58  ✗ metales      0.47  ✗ metales      0.75
+generales/obj116_envoltorio_morochas/WhatsApp Image 2026-10-26 at 13.53.53.jpeg ✗ plasticos    0.48  ✓ generales    0.62  ✗ plasticos    0.73  ✗ plasticos    0.58  ✗ plasticos    0.76  ✗ plasticos    0.66
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.17.jpeg ✗ vidrio       1.00  ✗ vidrio       1.00  ✗ vidrio       1.00  ✗ peligrosos   0.51  ✗ vidrio       0.50  ✗ vidrio       0.75
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.18 (1).jpeg ✗ metales      0.35  ✗ metales      0.39  ✗ metales      0.69  ✗ papel_carton 0.29  ✓ generales    0.39  ✗ metales      0.30
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.18.jpeg ✓ generales    0.81  ✓ generales    0.94  ✓ generales    0.94  ✓ generales    0.76  ✓ generales    0.87  ✓ generales    0.96
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.19 (1).jpeg ✓ generales    0.57  ✓ generales    0.85  ✓ generales    0.73  ✗ peligrosos   0.51  ✗ peligrosos   0.81  ✗ peligrosos   0.60
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.19.jpeg ✓ generales    0.52  ✓ generales    0.51  ✗ metales      0.39  ✗ peligrosos   0.75  ✗ peligrosos   0.96  ✗ peligrosos   0.62
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20 (1).jpeg ✓ generales    1.00  ✓ generales    1.00  ✓ generales    1.00  ✗ vidrio       0.54  ✗ vidrio       1.00  ✗ vidrio       0.61
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20 (2).jpeg ✓ generales    1.00  ✓ generales    1.00  ✓ generales    1.00  ✓ generales    0.62  ✓ generales    0.50  ✗ papel_carton 0.37
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.20.jpeg ✓ generales    0.90  ✓ generales    0.97  ✓ generales    0.92  ✓ generales    0.67  ✓ generales    0.64  ✓ generales    0.74
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.21 (1).jpeg ✓ generales    0.99  ✓ generales    1.00  ✓ generales    1.00  ✓ generales    0.98  ✓ generales    0.97  ✓ generales    0.99
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.21.jpeg ✓ generales    0.96  ✓ generales    0.88  ✓ generales    0.97  ✓ generales    0.93  ✓ generales    0.60  ✓ generales    0.95
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.22.jpeg ✓ generales    0.82  ✓ generales    0.92  ✓ generales    0.77  ✓ generales    0.67  ✓ generales    0.89  ✓ generales    0.95
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.23 (1).jpeg ✗ peligrosos   0.46  ✗ peligrosos   0.45  ✓ generales    0.68  ✗ peligrosos   0.84  ✗ peligrosos   0.87  ✗ peligrosos   0.73
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.23.jpeg ✓ generales    0.97  ✓ generales    0.99  ✓ generales    1.00  ✓ generales    0.93  ✓ generales    0.96  ✓ generales    0.92
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.24 (1).jpeg ✓ generales    0.74  ✓ generales    0.88  ✓ generales    0.98  ✓ generales    0.72  ✓ generales    0.43  ✗ peligrosos   0.42
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.24.jpeg ✗ peligrosos   0.85  ✓ generales    0.72  ✓ generales    0.92  ✗ plasticos    0.84  ✗ plasticos    0.48  ✗ peligrosos   0.57
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.25 (1).jpeg ✗ metales      0.31  ✗ papel_carton 0.68  ✗ peligrosos   0.54  ✗ peligrosos   0.92  ✗ peligrosos   0.98  ✗ peligrosos   0.94
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.25.jpeg ✓ generales    0.55  ✗ papel_carton 0.58  ✓ generales    0.81  ✗ peligrosos   0.97  ✗ peligrosos   1.00  ✗ peligrosos   1.00
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.26 (1).jpeg ✓ generales    1.00  ✓ generales    1.00  ✓ generales    1.00  ✓ generales    0.72  ✓ generales    0.94  ✓ generales    0.88
+generales/obj120_envoltorio_triangulo/WhatsApp Image 2026-10-26 at 13.54.26.jpeg ✓ generales    0.39  ✓ generales    0.39  ✓ generales    0.49  ✗ peligrosos   0.47  ✗ peligrosos   0.56  ✗ peligrosos   0.45
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.28 (1).jpeg ✗ metales      0.99  ✗ metales      0.99  ✗ metales      1.00  ✗ papel_carton 0.54  ✗ papel_carton 0.32  ✗ papel_carton 0.53
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.28.jpeg ✗ metales      0.85  ✗ metales      0.65  ✗ metales      0.73  ✗ papel_carton 0.92  ✗ papel_carton 0.89  ✗ papel_carton 0.95
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.29 (1).jpeg ✗ metales      0.90  ✗ metales      0.88  ✗ metales      0.72  ✗ peligrosos   0.71  ✗ peligrosos   0.88  ✗ peligrosos   0.76
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.29.jpeg ✗ peligrosos   0.52  ✗ peligrosos   0.57  ✗ peligrosos   0.55  ✗ papel_carton 0.96  ✗ papel_carton 0.78  ✗ papel_carton 0.96
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.30.jpeg ✗ metales      0.90  ✗ metales      0.90  ✗ metales      0.49  ✗ peligrosos   0.66  ✗ peligrosos   0.86  ✗ peligrosos   0.75
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.31 (1).jpeg ✗ peligrosos   0.47  ✗ peligrosos   0.79  ✗ peligrosos   0.74  ✗ peligrosos   0.93  ✗ peligrosos   0.94  ✗ peligrosos   0.91
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.31.jpeg ✗ peligrosos   0.95  ✗ peligrosos   0.93  ✗ peligrosos   0.59  ✗ peligrosos   0.98  ✗ peligrosos   1.00  ✗ peligrosos   1.00
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32 (1).jpeg ✗ plasticos    0.76  ✗ plasticos    0.72  ✗ plasticos    0.90  ✓ generales    0.49  ✗ plasticos    0.41  ✗ plasticos    0.65
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32 (2).jpeg ✓ generales    0.54  ✓ generales    0.93  ✓ generales    0.90  ✗ plasticos    0.56  ✗ plasticos    0.67  ✗ plasticos    0.83
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.32.jpeg ✗ plasticos    0.65  ✗ plasticos    0.63  ✗ plasticos    0.77  ✗ plasticos    0.66  ✗ plasticos    0.78  ✗ plasticos    0.89
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.33 (1).jpeg ✓ generales    0.47  ✓ generales    0.72  ✓ generales    0.94  ✓ generales    0.56  ✓ generales    0.76  ✓ generales    0.72
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.33 (2).jpeg ✓ generales    0.94  ✓ generales    0.99  ✓ generales    0.99  ✓ generales    0.85  ✓ generales    0.78  ✓ generales    0.87
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.33.jpeg ✗ metales      0.49  ✗ metales      0.63  ✓ generales    0.94  ✗ peligrosos   0.46  ✗ peligrosos   0.53  ✗ peligrosos   0.78
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37 (1).jpeg ✓ generales    0.82  ✓ generales    0.93  ✓ generales    1.00  ✗ papel_carton 0.91  ✗ papel_carton 0.84  ✗ papel_carton 0.81
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37 (2).jpeg ✓ generales    0.45  ✓ generales    0.49  ✓ generales    0.83  ✗ peligrosos   0.77  ✗ peligrosos   0.77  ✗ peligrosos   0.93
+generales/obj121_envoltorio_sublime/WhatsApp Image 2026-10-26 at 13.54.37.jpeg ✓ generales    0.44  ✗ metales      0.56  ✓ generales    0.82  ✗ peligrosos   0.61  ✗ peligrosos   0.50  ✗ peligrosos   0.53
+metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.39 (1).jpeg ✗ generales    0.55  ✓ metales      0.92  ✓ metales      0.62  ✓ metales      0.98  ✓ metales      0.99  ✓ metales      0.99
+metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40 (1).jpeg ✓ metales      0.50  ✓ metales      0.85  ✓ metales      0.72  ✗ generales    0.93  ✗ generales    0.84  ✓ metales      0.71
+metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40 (2).jpeg ✗ generales    0.79  ✓ metales      0.54  ✓ metales      0.63  ✓ metales      0.55  ✗ generales    0.60  ✓ metales      0.50
+metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.40.jpeg ✓ metales      0.95  ✓ metales      0.98  ✓ metales      0.99  ✓ metales      0.83  ✓ metales      0.90  ✓ metales      0.97
+metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.41 (1).jpeg ✗ generales    0.55  ✗ generales    0.71  ✗ generales    0.81  ✗ generales    0.88  ✗ generales    0.88  ✓ metales      0.67
+metales/obj114_lata_hey_fit_summer/WhatsApp Image 2026-10-26 at 13.53.41.jpeg ✗ generales    0.98  ✗ generales    0.99  ✗ generales    1.00  ✗ generales    0.72  ✗ generales    0.41  ✗ generales    0.40
+metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.41 (2).jpeg ✗ generales    0.66  ✗ generales    0.92  ✗ papel_carton 0.66  ✗ generales    0.73  ✗ papel_carton 0.82  ✗ generales    0.63
+metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.42.jpeg ✗ plasticos    0.48  ✗ plasticos    0.56  ✗ generales    0.72  ✗ generales    0.71  ✗ generales    0.71  ✗ generales    0.62
+metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.43 (1).jpeg ✗ generales    0.68  ✓ metales      0.91  ✓ metales      0.54  ✓ metales      0.84  ✓ metales      0.95  ✓ metales      0.95
+metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.43 (2).jpeg ✓ metales      1.00  ✓ metales      1.00  ✓ metales      1.00  ✓ metales      1.00  ✓ metales      1.00  ✓ metales      1.00
+metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.43.jpeg ✗ peligrosos   0.80  ✗ peligrosos   0.84  ✗ peligrosos   0.66  ✓ metales      0.38  ✓ metales      0.43  ✓ metales      0.83
+metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.45 (1).jpeg ✗ generales    0.50  ✓ metales      0.43  ✗ generales    0.58  ✗ generales    0.98  ✗ generales    0.99  ✗ generales    0.87
+metales/obj115_lata_hey_fit_golden/WhatsApp Image 2026-10-26 at 13.53.45.jpeg ✗ generales    0.86  ✗ generales    0.90  ✗ generales    0.79  ✗ generales    0.91  ✗ generales    0.95  ✗ generales    0.73
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.48.jpeg ✓ organico     1.00  ✓ organico     1.00  ✓ organico     1.00  ✓ organico     1.00  ✓ organico     1.00  ✓ organico     1.00
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.49 (1).jpeg ✓ organico     0.60  ✓ organico     0.58  ✓ organico     0.96  ✓ organico     1.00  ✓ organico     1.00  ✓ organico     1.00
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.49 (2).jpeg ✓ organico     1.00  ✓ organico     1.00  ✓ organico     0.99  ✓ organico     1.00  ✓ organico     1.00  ✓ organico     1.00
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.49.jpeg ✓ organico     0.85  ✓ organico     0.86  ✓ organico     0.91  ✓ organico     1.00  ✓ organico     1.00  ✓ organico     1.00
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.50.jpeg ✓ organico     0.65  ✓ organico     0.99  ✓ organico     0.83  ✓ organico     1.00  ✓ organico     1.00  ✓ organico     0.98
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.51 (1).jpeg ✗ plasticos    0.42  ✓ organico     0.52  ✗ generales    0.46  ✓ organico     0.87  ✓ organico     0.89  ✓ organico     0.80
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.51 (2).jpeg ✓ organico     0.92  ✓ organico     1.00  ✓ organico     0.97  ✓ organico     0.98  ✓ organico     0.96  ✓ organico     0.96
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.51.jpeg ✓ organico     0.97  ✓ organico     0.99  ✓ organico     1.00  ✓ organico     1.00  ✓ organico     1.00  ✓ organico     1.00
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.52 (1).jpeg ✓ organico     0.76  ✓ organico     0.94  ✓ organico     0.63  ✓ organico     0.77  ✓ organico     0.95  ✓ organico     0.77
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.52 (2).jpeg ✓ organico     0.68  ✓ organico     0.96  ✓ organico     0.72  ✓ organico     0.99  ✓ organico     0.98  ✓ organico     0.96
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.52.jpeg ✓ organico     0.79  ✓ organico     0.99  ✓ organico     0.96  ✓ organico     0.77  ✓ organico     0.76  ✓ organico     0.80
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.53.jpeg ✓ organico     0.81  ✓ organico     0.99  ✓ organico     0.90  ✓ organico     0.96  ✓ organico     0.94  ✓ organico     0.96
+organico/obj104_manzana_verde/WhatsApp Image 2026-10-26 at 13.52.54.jpeg ✓ organico     0.75  ✓ organico     0.73  ✓ organico     0.94  ✓ organico     0.99  ✓ organico     0.99  ✓ organico     0.99
+organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.54 (1).jpeg ✗ generales    0.90  ✗ generales    0.92  ✗ generales    0.88  ✗ peligrosos   0.80  ✗ peligrosos   0.91  ✗ peligrosos   0.81
+organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.54 (2).jpeg ✗ plasticos    0.39  ✗ vidrio       0.50  ✗ metales      0.29  ✗ peligrosos   0.52  ✗ peligrosos   0.77  ✗ peligrosos   0.46
+organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.55 (1).jpeg ✗ papel_carton 0.56  ✗ papel_carton 0.53  ✗ plasticos    0.51  ✓ organico     0.60  ✓ organico     0.66  ✓ organico     0.51
+organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.55.jpeg ✗ metales      0.31  ✗ metales      0.60  ✗ plasticos    0.86  ✓ organico     0.47  ✗ peligrosos   0.29  ✗ plasticos    0.31
+organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.56 (1).jpeg ✗ generales    0.52  ✗ generales    0.69  ✗ generales    0.35  ✓ organico     0.67  ✓ organico     0.54  ✗ generales    0.45
+organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.56.jpeg ✓ organico     0.70  ✗ generales    0.68  ✓ organico     0.99  ✓ organico     0.97  ✓ organico     0.87  ✓ organico     0.99
+organico/obj126_cascara_platano_negra/WhatsApp Image 2026-10-26 at 13.54.57.jpeg ✗ metales      0.37  ✓ organico     0.34  ✓ organico     0.85  ✓ organico     0.92  ✓ organico     0.93  ✓ organico     0.92
+papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.35 (2).jpeg ✓ papel_carton 0.94  ✓ papel_carton 0.94  ✓ papel_carton 0.91  ✓ papel_carton 0.98  ✓ papel_carton 0.98  ✓ papel_carton 0.96
+papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.36.jpeg ✓ papel_carton 0.95  ✓ papel_carton 0.99  ✓ papel_carton 1.00  ✓ papel_carton 0.99  ✓ papel_carton 0.98  ✓ papel_carton 0.79
+papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.37.jpeg ✓ papel_carton 0.62  ✗ generales    0.85  ✓ papel_carton 0.82  ✓ papel_carton 0.80  ✗ generales    0.76  ✗ generales    0.52
+papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.38 (1).jpeg ✓ papel_carton 0.85  ✓ papel_carton 0.99  ✓ papel_carton 0.79  ✓ papel_carton 0.99  ✓ papel_carton 0.98  ✓ papel_carton 0.88
+papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.38.jpeg ✓ papel_carton 0.99  ✓ papel_carton 0.99  ✓ papel_carton 0.98  ✓ papel_carton 0.93  ✓ papel_carton 0.90  ✓ papel_carton 0.89
+papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.39.jpeg ✓ papel_carton 1.00  ✓ papel_carton 1.00  ✓ papel_carton 0.99  ✓ papel_carton 0.72  ✓ papel_carton 0.96  ✓ papel_carton 0.91
+papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.45 (2).jpeg ✓ papel_carton 0.77  ✓ papel_carton 0.87  ✗ generales    0.55  ✓ papel_carton 0.86  ✓ papel_carton 0.88  ✓ papel_carton 0.84
+papel_carton/obj113_caja_cereal_union/WhatsApp Image 2026-10-26 at 13.53.46.jpeg ✓ papel_carton 0.79  ✗ generales    0.67  ✓ papel_carton 0.73  ✓ papel_carton 0.96  ✓ papel_carton 0.91  ✓ papel_carton 0.73
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.54.58.jpeg ✓ papel_carton 0.99  ✓ papel_carton 0.98  ✓ papel_carton 0.99  ✓ papel_carton 0.53  ✓ papel_carton 0.50  ✗ generales    0.94
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.54.59.jpeg ✓ papel_carton 0.90  ✓ papel_carton 0.93  ✓ papel_carton 0.97  ✓ papel_carton 0.83  ✓ papel_carton 0.89  ✗ generales    0.49
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.00 (1).jpeg ✓ papel_carton 0.89  ✓ papel_carton 0.87  ✓ papel_carton 0.98  ✓ papel_carton 0.97  ✓ papel_carton 0.95  ✓ papel_carton 0.85
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.00.jpeg ✓ papel_carton 0.99  ✓ papel_carton 0.99  ✓ papel_carton 0.96  ✓ papel_carton 0.92  ✓ papel_carton 0.90  ✓ papel_carton 0.63
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02 (1).jpeg ✓ papel_carton 0.89  ✓ papel_carton 0.99  ✓ papel_carton 1.00  ✓ papel_carton 0.82  ✓ papel_carton 1.00  ✓ papel_carton 1.00
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02 (2).jpeg ✓ papel_carton 0.99  ✓ papel_carton 0.97  ✓ papel_carton 0.99  ✓ papel_carton 1.00  ✓ papel_carton 1.00  ✓ papel_carton 0.98
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.02.jpeg ✗ generales    0.76  ✓ papel_carton 0.84  ✓ papel_carton 0.90  ✓ papel_carton 0.73  ✗ generales    0.56  ✗ generales    0.70
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03 (1).jpeg ✗ generales    0.77  ✗ generales    0.73  ✗ generales    0.99  ✗ generales    0.72  ✗ generales    0.65  ✗ generales    0.91
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03 (2).jpeg ✓ papel_carton 0.93  ✓ papel_carton 0.97  ✓ papel_carton 0.96  ✓ papel_carton 0.98  ✓ papel_carton 1.00  ✓ papel_carton 0.97
+papel_carton/obj127_caja_bon_o_bon/WhatsApp Image 2026-10-26 at 13.55.03.jpeg ✓ papel_carton 0.66  ✓ papel_carton 0.76  ✓ papel_carton 0.79  ✓ papel_carton 0.52  ✗ generales    0.73  ✗ generales    0.60
+papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (1).jpeg ✓ papel_carton 0.86  ✓ papel_carton 0.84  ✓ papel_carton 0.71  ✓ papel_carton 0.89  ✓ papel_carton 0.81  ✓ papel_carton 0.94
+papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (2).jpeg ✗ generales    0.98  ✗ generales    1.00  ✗ generales    1.00  ✗ peligrosos   0.54  ✗ generales    0.68  ✗ generales    0.84
+papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39 (3).jpeg ✗ generales    0.46  ✗ generales    0.66  ✗ generales    0.49  ✗ peligrosos   0.45  ✗ peligrosos   0.54  ✗ generales    0.45
+papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.39.jpeg ✓ papel_carton 0.86  ✓ papel_carton 0.92  ✓ papel_carton 0.95  ✗ peligrosos   0.88  ✗ peligrosos   0.48  ✗ metales      0.59
+papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40 (1).jpeg ✗ peligrosos   0.36  ✗ generales    0.44  ✗ generales    0.83  ✗ peligrosos   0.87  ✗ peligrosos   0.67  ✗ peligrosos   0.73
+papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40 (2).jpeg ✗ generales    0.97  ✗ generales    1.00  ✗ generales    0.99  ✓ papel_carton 0.59  ✓ papel_carton 0.49  ✗ generales    0.92
+papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40 (3).jpeg ✗ generales    0.94  ✗ generales    0.89  ✗ generales    0.58  ✗ generales    0.87  ✗ generales    0.87  ✗ generales    0.74
+papel_carton/obj128_caja_tetra_bonle/WhatsApp Image 2026-10-26 at 13.54.40.jpeg ✓ papel_carton 0.56  ✓ papel_carton 0.38  ✓ papel_carton 0.61  ✗ peligrosos   0.51  ✗ peligrosos   0.69  ✗ peligrosos   0.52
+peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.52.59 (1).jpeg ✗ metales      0.38  ✓ peligrosos   0.96  ✓ peligrosos   0.95  ✓ peligrosos   0.99  ✓ peligrosos   0.81  ✓ peligrosos   0.97
+peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.00 (1).jpeg ✗ plasticos    0.32  ✗ generales    0.52  ✗ plasticos    0.31  ✓ peligrosos   0.97  ✓ peligrosos   0.77  ✓ peligrosos   0.71
+peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.00.jpeg ✗ plasticos    0.33  ✗ vidrio       0.50  ✓ peligrosos   0.44  ✓ peligrosos   0.56  ✗ vidrio       0.41  ✗ vidrio       0.37
+peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.01.jpeg ✓ peligrosos   0.37  ✓ peligrosos   0.70  ✗ vidrio       0.65  ✓ peligrosos   0.89  ✓ peligrosos   0.84  ✓ peligrosos   0.76
+peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02 (1).jpeg ✗ vidrio       0.93  ✗ vidrio       0.89  ✗ vidrio       0.94  ✗ vidrio       0.91  ✗ vidrio       0.69  ✗ vidrio       0.62
+peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02 (2).jpeg ✗ metales      0.83  ✗ metales      0.71  ✗ metales      0.73  ✗ vidrio       0.60  ✗ vidrio       0.84  ✗ vidrio       0.65
+peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.02.jpeg ✗ metales      0.55  ✓ peligrosos   0.79  ✓ peligrosos   0.55  ✓ peligrosos   0.98  ✓ peligrosos   0.92  ✓ peligrosos   0.95
+peligrosos/obj106_estuche_audifonos/WhatsApp Image 2026-10-26 at 13.53.03.jpeg ✗ metales      0.87  ✗ plasticos    0.80  ✗ plasticos    0.64  ✓ peligrosos   0.59  ✓ peligrosos   0.86  ✓ peligrosos   0.62
+peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.14 (1).jpeg ✗ metales      0.90  ✗ metales      0.82  ✗ metales      0.81  ✓ peligrosos   1.00  ✓ peligrosos   0.99  ✓ peligrosos   0.99
+peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.14.jpeg ✗ plasticos    0.62  ✓ peligrosos   0.47  ✓ peligrosos   0.66  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00
+peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.15 (1).jpeg ✗ papel_carton 0.32  ✗ papel_carton 0.81  ✗ papel_carton 0.45  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00
+peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.15.jpeg ✗ metales      0.76  ✗ metales      0.65  ✗ metales      0.46  ✓ peligrosos   0.97  ✓ peligrosos   0.99  ✓ peligrosos   0.98
+peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.16 (1).jpeg ✓ peligrosos   0.57  ✓ peligrosos   0.94  ✓ peligrosos   0.96  ✓ peligrosos   0.72  ✓ peligrosos   0.99  ✓ peligrosos   0.97
+peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.16.jpeg ✓ peligrosos   0.87  ✓ peligrosos   0.51  ✓ peligrosos   0.83  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00
+peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.17 (1).jpeg ✗ papel_carton 0.79  ✗ papel_carton 0.89  ✗ papel_carton 0.86  ✓ peligrosos   0.99  ✓ peligrosos   0.99  ✓ peligrosos   0.96
+peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.17.jpeg ✗ metales      0.82  ✓ peligrosos   0.87  ✓ peligrosos   0.85  ✓ peligrosos   0.81  ✓ peligrosos   0.99  ✓ peligrosos   0.81
+peligrosos/obj109_mouse_blanco/WhatsApp Image 2026-10-26 at 13.53.23.jpeg ✗ papel_carton 0.81  ✗ papel_carton 0.96  ✗ papel_carton 0.92  ✓ peligrosos   0.95  ✓ peligrosos   1.00  ✓ peligrosos   0.92
+peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.46 (2).jpeg ✓ peligrosos   1.00  ✓ peligrosos   0.99  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00
+peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47 (1).jpeg ✓ peligrosos   0.62  ✗ plasticos    0.35  ✓ peligrosos   0.50  ✓ peligrosos   0.85  ✓ peligrosos   0.99  ✓ peligrosos   0.78
+peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47 (2).jpeg ✓ peligrosos   0.99  ✓ peligrosos   0.98  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00
+peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.47.jpeg ✓ peligrosos   0.99  ✓ peligrosos   0.99  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   0.99  ✓ peligrosos   0.99
+peligrosos/obj124_cable/WhatsApp Image 2026-10-26 at 13.54.48.jpeg ✓ peligrosos   0.99  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00  ✓ peligrosos   1.00
+plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.25.jpeg ✗ vidrio       0.68  ✗ vidrio       0.89  ✗ vidrio       0.72  ✗ peligrosos   0.42  ✗ vidrio       0.52  ✗ metales      0.48
+plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26 (1).jpeg ✗ metales      0.90  ✓ plasticos    0.69  ✗ metales      0.48  ✗ vidrio       0.50  ✗ vidrio       0.77  ✗ vidrio       0.80
+plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26 (2).jpeg ✗ metales      0.91  ✗ vidrio       0.73  ✗ vidrio       0.70  ✗ peligrosos   0.53  ✗ peligrosos   0.46  ✗ organico     0.28
+plasticos/obj110_vaso_descartable/WhatsApp Image 2026-10-26 at 13.53.26.jpeg ✓ plasticos    1.00  ✓ plasticos    0.95  ✓ plasticos    0.99  ✗ vidrio       0.50  ✗ vidrio       0.52  ✓ plasticos    0.86
+plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.27.jpeg ✓ plasticos    0.80  ✓ plasticos    0.43  ✗ papel_carton 0.63  ✗ papel_carton 0.50  ✗ papel_carton 0.50  ✗ papel_carton 0.74
+plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28 (1).jpeg ✗ papel_carton 0.94  ✗ peligrosos   0.57  ✗ papel_carton 0.77  ✗ peligrosos   0.88  ✗ peligrosos   0.76  ✗ papel_carton 0.61
+plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28 (2).jpeg ✗ metales      0.58  ✗ peligrosos   0.87  ✗ peligrosos   0.94  ✗ metales      0.56  ✗ organico     0.56  ✗ organico     0.66
+plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.28.jpeg ✗ papel_carton 0.61  ✗ papel_carton 0.61  ✗ papel_carton 0.73  ✗ peligrosos   0.60  ✗ peligrosos   0.51  ✗ papel_carton 0.45
+plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.30 (1).jpeg ✗ generales    0.27  ✗ generales    0.49  ✗ generales    0.33  ✗ peligrosos   0.29  ✗ peligrosos   0.40  ✗ organico     0.47
+plasticos/obj111_cuchara_descartable_1/WhatsApp Image 2026-10-26 at 13.53.30.jpeg ✗ vidrio       0.83  ✗ vidrio       0.97  ✗ vidrio       0.95  ✗ organico     0.43  ✗ vidrio       0.60  ✗ vidrio       0.66
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.55.jpeg ✗ vidrio       0.81  ✗ vidrio       0.69  ✗ vidrio       0.73  ✗ vidrio       0.47  ✗ peligrosos   0.59  ✗ peligrosos   0.84
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (1).jpeg ✗ generales    0.55  ✗ vidrio       0.67  ✗ vidrio       0.80  ✓ plasticos    0.42  ✗ vidrio       0.54  ✗ vidrio       0.53
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (2).jpeg ✓ plasticos    0.59  ✓ plasticos    0.88  ✓ plasticos    0.48  ✓ plasticos    0.67  ✓ plasticos    0.92  ✓ plasticos    0.91
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56 (3).jpeg ✓ plasticos    0.71  ✓ plasticos    0.72  ✓ plasticos    0.94  ✓ plasticos    0.91  ✓ plasticos    0.91  ✓ plasticos    0.95
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.56.jpeg ✗ vidrio       0.59  ✗ vidrio       0.71  ✗ vidrio       0.69  ✗ vidrio       0.62  ✗ vidrio       0.59  ✗ vidrio       0.48
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57 (1).jpeg ✓ plasticos    0.38  ✗ peligrosos   0.67  ✓ plasticos    0.44  ✗ peligrosos   0.93  ✗ peligrosos   0.85  ✗ peligrosos   0.96
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57 (2).jpeg ✗ generales    0.51  ✗ generales    0.54  ✗ generales    0.53  ✓ plasticos    0.60  ✗ peligrosos   0.45  ✓ plasticos    0.80
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.57.jpeg ✗ vidrio       0.34  ✗ peligrosos   0.73  ✗ vidrio       0.37  ✗ peligrosos   0.61  ✗ organico     0.59  ✗ peligrosos   0.97
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.58 (1).jpeg ✓ plasticos    0.61  ✗ vidrio       0.85  ✗ vidrio       0.76  ✗ vidrio       0.90  ✗ vidrio       0.98  ✗ vidrio       0.80
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.58.jpeg ✓ plasticos    0.33  ✗ papel_carton 0.60  ✗ papel_carton 0.43  ✓ plasticos    0.49  ✗ vidrio       0.28  ✓ plasticos    0.47
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59 (1).jpeg ✗ generales    0.37  ✗ generales    0.48  ✗ vidrio       0.39  ✗ generales    0.43  ✗ generales    0.85  ✗ generales    0.55
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59 (2).jpeg ✗ vidrio       0.76  ✗ vidrio       0.92  ✗ vidrio       0.66  ✗ peligrosos   0.50  ✗ peligrosos   0.45  ✗ peligrosos   0.57
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.53.59.jpeg ✗ metales      0.93  ✗ generales    0.51  ✗ generales    0.47  ✓ plasticos    0.69  ✗ generales    0.62  ✓ plasticos    0.51
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.00 (1).jpeg ✓ plasticos    0.93  ✓ plasticos    0.95  ✓ plasticos    0.99  ✓ plasticos    0.65  ✗ peligrosos   0.37  ✗ generales    0.39
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.00.jpeg ✗ generales    0.46  ✓ plasticos    0.52  ✓ plasticos    0.85  ✓ plasticos    0.41  ✗ generales    0.60  ✓ plasticos    0.45
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.01 (1).jpeg ✗ vidrio       0.45  ✓ plasticos    0.41  ✓ plasticos    0.72  ✓ plasticos    0.99  ✓ plasticos    0.99  ✓ plasticos    1.00
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.01.jpeg ✗ generales    0.60  ✗ generales    0.61  ✗ generales    0.50  ✓ plasticos    0.88  ✗ generales    0.96  ✓ plasticos    0.46
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.02 (1).jpeg ✓ plasticos    0.95  ✓ plasticos    0.92  ✓ plasticos    0.84  ✗ organico     0.56  ✗ peligrosos   0.40  ✗ peligrosos   0.57
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.02.jpeg ✓ plasticos    0.85  ✓ plasticos    0.92  ✓ plasticos    0.85  ✗ peligrosos   0.47  ✗ organico     0.55  ✗ peligrosos   0.69
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.03 (1).jpeg ✗ generales    0.97  ✗ generales    0.97  ✗ generales    0.94  ✗ generales    0.51  ✗ generales    0.37  ✗ generales    0.61
+plasticos/obj117_bolsa_chicha/WhatsApp Image 2026-10-26 at 13.54.03.jpeg ✗ generales    0.80  ✗ generales    0.74  ✓ plasticos    0.61  ✓ plasticos    0.76  ✓ plasticos    0.51  ✓ plasticos    0.61
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.03 (2).jpeg ✗ generales    0.79  ✗ generales    0.84  ✗ generales    0.92  ✗ peligrosos   0.73  ✓ plasticos    0.50  ✗ peligrosos   0.87
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.04 (1).jpeg ✗ vidrio       0.85  ✓ plasticos    0.34  ✗ vidrio       0.76  ✓ plasticos    0.87  ✓ plasticos    0.76  ✓ plasticos    0.86
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.04.jpeg ✓ plasticos    0.64  ✓ plasticos    0.51  ✓ plasticos    0.45  ✓ plasticos    0.69  ✓ plasticos    0.59  ✗ peligrosos   0.46
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.05.jpeg ✗ generales    0.73  ✗ generales    0.70  ✗ generales    0.86  ✗ generales    0.81  ✗ generales    0.76  ✗ generales    0.77
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06 (1).jpeg ✗ generales    0.31  ✗ generales    0.60  ✗ papel_carton 0.58  ✗ peligrosos   0.45  ✗ peligrosos   0.60  ✗ peligrosos   0.43
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06 (2).jpeg ✗ generales    0.85  ✗ generales    0.93  ✗ generales    0.78  ✗ generales    0.83  ✗ generales    0.84  ✗ generales    0.76
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.06.jpeg ✗ vidrio       0.87  ✗ vidrio       0.83  ✗ vidrio       0.94  ✗ organico     0.52  ✗ organico     0.54  ✗ organico     0.50
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07 (1).jpeg ✗ vidrio       0.70  ✓ plasticos    0.76  ✓ plasticos    0.65  ✗ vidrio       0.71  ✗ vidrio       0.96  ✗ vidrio       0.85
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07 (2).jpeg ✗ generales    0.35  ✗ generales    0.28  ✗ vidrio       0.49  ✗ generales    0.57  ✗ vidrio       0.42  ✗ vidrio       0.50
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07 (3).jpeg ✗ vidrio       0.68  ✓ plasticos    0.89  ✓ plasticos    0.80  ✓ plasticos    0.99  ✓ plasticos    0.93  ✓ plasticos    0.94
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.07.jpeg ✗ generales    0.28  ✗ generales    0.45  ✓ plasticos    0.37  ✓ plasticos    0.53  ✓ plasticos    0.43  ✓ plasticos    0.74
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.08.jpeg ✗ vidrio       0.49  ✗ vidrio       0.78  ✓ plasticos    0.44  ✓ plasticos    0.81  ✓ plasticos    0.71  ✓ plasticos    0.78
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (1).jpeg ✗ generales    0.79  ✗ generales    0.63  ✗ generales    0.50  ✗ organico     0.71  ✗ organico     0.91  ✗ organico     0.85
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (2).jpeg ✗ generales    0.96  ✗ generales    0.98  ✗ generales    0.88  ✗ generales    0.56  ✗ organico     0.52  ✗ generales    0.77
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09 (3).jpeg ✓ plasticos    0.39  ✓ plasticos    0.54  ✓ plasticos    0.90  ✓ plasticos    0.81  ✓ plasticos    0.64  ✓ plasticos    0.70
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.09.jpeg ✗ generales    0.62  ✗ generales    0.50  ✓ plasticos    0.78  ✗ generales    0.71  ✗ organico     0.90  ✗ generales    0.97
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.10.jpeg ✓ plasticos    0.40  ✓ plasticos    0.93  ✓ plasticos    0.75  ✓ plasticos    0.80  ✓ plasticos    0.86  ✓ plasticos    0.77
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.11 (1).jpeg ✓ plasticos    0.82  ✓ plasticos    0.89  ✓ plasticos    0.96  ✗ organico     0.89  ✗ organico     0.74  ✗ organico     0.71
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.11.jpeg ✓ plasticos    0.67  ✓ plasticos    0.59  ✗ organico     0.85  ✗ organico     0.78  ✗ organico     0.88  ✗ peligrosos   0.93
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12 (1).jpeg ✗ generales    0.27  ✓ plasticos    0.29  ✓ plasticos    0.55  ✗ organico     0.45  ✗ organico     0.43  ✗ organico     0.38
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12 (2).jpeg ✗ metales      0.46  ✗ generales    0.48  ✓ plasticos    0.45  ✓ plasticos    0.73  ✓ plasticos    0.64  ✓ plasticos    0.80
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12 (3).jpeg ✗ vidrio       0.54  ✗ organico     0.40  ✗ organico     0.68  ✓ plasticos    0.78  ✓ plasticos    0.65  ✓ plasticos    0.79
+plasticos/obj118_bolsa_refresco_naranja/WhatsApp Image 2026-10-26 at 13.54.12.jpeg ✗ metales      0.29  ✗ vidrio       0.37  ✓ plasticos    0.58  ✓ plasticos    0.76  ✓ plasticos    0.60  ✓ plasticos    0.87
+plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.14 (1).jpeg ✗ peligrosos   0.97  ✗ peligrosos   0.66  ✗ peligrosos   0.97  ✗ peligrosos   0.86  ✗ peligrosos   0.94  ✗ peligrosos   0.89
+plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.14 (2).jpeg ✗ papel_carton 0.78  ✗ generales    0.42  ✗ papel_carton 0.81  ✗ generales    0.36  ✗ papel_carton 0.72  ✗ papel_carton 0.87
+plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.14.jpeg ✗ peligrosos   0.64  ✗ peligrosos   0.45  ✗ peligrosos   0.55  ✗ peligrosos   0.92  ✗ peligrosos   0.85  ✓ plasticos    0.54
+plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.15.jpeg ✗ generales    0.52  ✗ papel_carton 0.45  ✗ papel_carton 0.47  ✗ generales    0.66  ✗ organico     0.39  ✗ papel_carton 0.33
+plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.16 (1).jpeg ✗ vidrio       0.64  ✗ vidrio       0.85  ✗ vidrio       0.95  ✗ vidrio       0.79  ✗ vidrio       0.96  ✗ vidrio       0.97
+plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.16 (2).jpeg ✗ sin_residuo  0.28  ✗ sin_residuo  0.38  ✗ sin_residuo  0.59  ✗ peligrosos   0.45  ✗ peligrosos   0.74  ✗ peligrosos   0.52
+plasticos/obj119_cuchara_descartable_2/WhatsApp Image 2026-10-26 at 13.54.16.jpeg ✗ vidrio       0.92  ✗ vidrio       0.93  ✗ vidrio       0.77  ✗ organico     0.85  ✗ vidrio       0.60  ✗ organico     0.72
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.49.jpeg ✓ plasticos    0.99  ✓ plasticos    0.89  ✓ plasticos    0.98  ✓ plasticos    0.69  ✓ plasticos    0.94  ✓ plasticos    0.92
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50 (1).jpeg ✓ plasticos    0.98  ✓ plasticos    0.91  ✓ plasticos    0.74  ✓ plasticos    1.00  ✓ plasticos    0.96  ✓ plasticos    1.00
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50 (2).jpeg ✓ plasticos    0.98  ✓ plasticos    1.00  ✓ plasticos    0.99  ✓ plasticos    0.99  ✓ plasticos    0.99  ✓ plasticos    0.99
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.50.jpeg ✗ metales      0.76  ✗ metales      0.98  ✗ metales      0.99  ✗ metales      0.86  ✗ metales      0.81  ✗ metales      0.78
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.51.jpeg ✓ plasticos    0.44  ✗ generales    0.47  ✓ plasticos    0.56  ✓ plasticos    0.42  ✓ plasticos    0.49  ✗ vidrio       0.52
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.52.jpeg ✓ plasticos    0.96  ✓ plasticos    0.92  ✓ plasticos    1.00  ✓ plasticos    1.00  ✓ plasticos    1.00  ✓ plasticos    0.99
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53 (1).jpeg ✗ metales      0.56  ✗ metales      0.88  ✗ metales      0.84  ✓ plasticos    0.89  ✓ plasticos    0.52  ✓ plasticos    0.51
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53 (2).jpeg ✗ metales      0.64  ✗ metales      0.90  ✗ metales      0.39  ✓ plasticos    0.56  ✓ plasticos    0.61  ✗ vidrio       0.67
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.53.jpeg ✗ metales      0.54  ✗ metales      0.68  ✓ plasticos    1.00  ✓ plasticos    0.91  ✓ plasticos    0.69  ✓ plasticos    0.75
+plasticos/obj125_taper_comida/WhatsApp Image 2026-10-26 at 13.54.54.jpeg ✓ plasticos    0.99  ✓ plasticos    0.96  ✓ plasticos    0.98  ✗ metales      0.92  ✗ metales      0.92  ✗ metales      0.72
+plasticos/obj129_cinta_peligro_obras/WhatsApp Image 2026-10-26 at 13.53.47 (1).jpeg ✗ papel_carton 0.50  ✗ metales      0.48  ✗ metales      0.65  ✗ peligrosos   0.42  ✗ metales      0.66  ✗ metales      0.57
+plasticos/obj129_cinta_peligro_obras/WhatsApp Image 2026-10-26 at 13.53.47.jpeg ✗ metales      0.58  ✗ generales    0.44  ✗ metales      0.32  ✗ generales    0.47  ✗ peligrosos   0.32  ✗ metales      0.28
+vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33 (1).jpeg ✗ plasticos    0.70  ✗ plasticos    0.99  ✗ plasticos    0.98  ✓ vidrio       0.79  ✓ vidrio       0.70  ✗ plasticos    0.77
+vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33 (2).jpeg ✗ plasticos    0.86  ✗ plasticos    0.99  ✗ plasticos    0.99  ✗ plasticos    0.70  ✗ plasticos    0.94  ✗ plasticos    0.98
+vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.33.jpeg ✗ plasticos    0.85  ✗ plasticos    0.80  ✗ plasticos    0.89  ✓ vidrio       0.73  ✓ vidrio       0.95  ✓ vidrio       0.45
+vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.34.jpeg ✗ plasticos    0.91  ✗ plasticos    0.95  ✗ plasticos    0.93  ✗ plasticos    0.94  ✗ plasticos    0.97  ✗ plasticos    0.99
+vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.35 (1).jpeg ✓ vidrio       0.92  ✓ vidrio       0.98  ✓ vidrio       0.78  ✓ vidrio       0.75  ✓ vidrio       0.97  ✓ vidrio       0.86
+vidrio/obj112_frasco_almendra_union/WhatsApp Image 2026-10-26 at 13.53.35.jpeg ✓ vidrio       0.92  ✗ plasticos    0.67  ✓ vidrio       0.55  ✓ vidrio       0.87  ✓ vidrio       0.99  ✓ vidrio       0.88
+vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.41.jpeg ✓ vidrio       0.98  ✓ vidrio       0.80  ✓ vidrio       1.00  ✓ vidrio       0.66  ✓ vidrio       0.83  ✓ vidrio       0.91
+vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.42 (1).jpeg ✓ vidrio       0.83  ✗ peligrosos   0.54  ✓ vidrio       0.95  ✗ plasticos    0.66  ✗ plasticos    0.70  ✗ plasticos    0.74
+vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.42.jpeg ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00
+vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.43 (1).jpeg ✓ vidrio       0.79  ✗ plasticos    0.76  ✓ vidrio       0.49  ✗ plasticos    0.98  ✗ plasticos    0.75  ✗ plasticos    1.00
+vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.43.jpeg ✓ vidrio       0.99  ✓ vidrio       0.58  ✓ vidrio       0.79  ✓ vidrio       0.66  ✓ vidrio       0.85  ✗ plasticos    0.94
+vidrio/obj122_botella_bacardi/WhatsApp Image 2026-10-26 at 13.54.44.jpeg ✗ plasticos    0.73  ✗ plasticos    0.78  ✗ plasticos    0.90  ✗ plasticos    0.66  ✓ vidrio       0.58  ✗ plasticos    0.69
+vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.44 (1).jpeg ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00
+vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.45 (1).jpeg ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✗ plasticos    0.52  ✓ vidrio       0.71  ✓ vidrio       0.89
+vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.45.jpeg ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00
+vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.46 (1).jpeg ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00
+vidrio/obj123_jarra_vidrio/WhatsApp Image 2026-10-26 at 13.54.46.jpeg ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       1.00  ✓ vidrio       0.96  ✓ vidrio       0.96  ✓ vidrio       0.84
+Columnas: etapa2_e2_pel_s42_20261112_0651, etapa2_e2_pel_s43_20261112_0653, etapa2_e2_pel_s44_20261112_0656, etapa2_e2c_pel_s42_20261112_0657, etapa2_e2c_pel_s43_20261112_0658, etapa2_e2c_pel_s44_20261112_0659
+Tabla por foto guardada: D:\Proyecto-Residuos-ML\clasificador-residuos-juliaca\reportes\val_camara_por_foto.csv
