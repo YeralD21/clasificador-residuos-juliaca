@@ -5,6 +5,55 @@ Clasificación de un residuo por imagen en el tacho que le corresponde según el
 - **Entrenamiento:** PC con RTX 3060 12 GB
 - **Uso en vivo:** laptop con RTX 3050 4 GB + webcam Logitech MX Brio
 
+## Modelo para evaluar
+
+**Archivo: [`modelos/etapa2_nf_s43.pt`](modelos/etapa2_nf_s43.pt)**
+- **Modelo:** YOLO26s-cls (Ultralytics 8.4.184, PyTorch), clasificación de imagen, un residuo por imagen.
+- **Entrada:** `imgsz 224`.
+- **Archivo:** 11,0 MB; SHA-1 `0fe1ff9468055b2292ded03b707c895be8c5c17e`.
+
+Clases, en el orden exacto de los índices del modelo (`model.names`), con su color de tacho según la NTP 900.058:2019:
+
+| índice | clase | tacho |
+|---|---|---|
+| 0 | `generales` | Negro |
+| 1 | `metales` | Amarillo |
+| 2 | `organico` | Marrón |
+| 3 | `papel_carton` | Azul |
+| 4 | `peligrosos` | Rojo |
+| 5 | `plasticos` | Blanco |
+| 6 | `sin_residuo` | — (significa "no hay residuo": fondo vacío o solo la mano) |
+| 7 | `vidrio` | Gris |
+
+El modelo predice el **material**; el color es el tacho al que va ese material.
+
+```python
+from ultralytics import YOLO
+r = YOLO("modelos/etapa2_nf_s43.pt").predict("foto.jpg", imgsz=224, verbose=False)[0]
+print(r.names[r.probs.top1], float(r.probs.top1conf))   # p. ej.: papel_carton 0.906
+```
+
+**Resultados** (detalle en la sección 6 y en `EXPERIMENTOS.md`):
+- F1 macro en `dataset/val_camara`: 0.5716, el set con el que se eligió el modelo.
+- Benchmark NTP 900.058 del docente: 16.0/20.
+- `dataset/juliaca/test`, una sola evaluación: F1 macro 0.5025, top-1 0.6327.
+
+**Los demás `.pt` de `modelos/` NO son el modelo a evaluar.** Se dejan como alternativas o como historial del proyecto:
+
+| archivo | estado | qué es |
+|---|---|---|
+| `etapa2_nf_s43.pt` | **modelo a evaluar** (por defecto desde el 2026-11-11) | receta nf, semilla 43 |
+| `etapa2_j1028_s43.pt` | alternativa (modelo por defecto del 2026-10-28 al 2026-11-10) | receta `ext_full` + juliaca del 28-10, semilla 43 |
+| `etapa2_ext_full.pt` | alternativa (modelo por defecto del 2026-10-26 al 2026-10-28) | etapa 2 con datos externos TACO |
+| `etapa2_ext.pt` | histórico (2026-10-25) | variante de `etapa2_ext_full` |
+| `etapa2_v2.pt` | histórico (2026-10-25) | control sin datos externos |
+| `etapa2_avance.pt` | histórico (2026-10-24) | primera etapa 2 provisional (`e2_replay2`) |
+| `etapa1_ganador.pt` | histórico, etapa 1 | solo datos públicos, sin fotos de Juliaca; base de las primeras etapas 2 |
+| `etapa1_20261024_1434.pt` | histórico, etapa 1 | primer entrenamiento de etapa 1 |
+
+Los modelos de `modelos/experimentos/` no se suben a git. `raspberry_guide/modelo/etapa2_nf_s43.pt` es una copia
+idéntica (mismo SHA-1) del modelo a evaluar.
+
 ## Uso rápido
 
 Lanzadores en la raíz del repo. Se abren con **doble clic**, o escribiendo su nombre en la terminal desde la raíz (`demo` en cmd, `.\demo` en PowerShell). Funcionan desde cualquier carpeta (hacen `cd` al repo con `%~dp0`) y activan `.venv` solos; si `.venv` no existe, lo dicen (créalo como en la sección 4).
