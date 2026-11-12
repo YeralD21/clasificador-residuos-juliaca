@@ -1240,6 +1240,31 @@ gana ninguna:** no se corrió `correr_todo.py` ni juliaca/test, y el modelo por 
 Las 693 imágenes quedan en `dataset/externo/train` (prefijos `bdw_ msk_ ewa_ rcb_`), fuera de la receta por defecto
 (`FUENTES_POR_DEFECTO` no cambia). Modelos en `modelos/experimentos/` (no se suben).
 
+## Model soup de las 3 semillas de nf (`etapa2_nf_soup`, 2026-11-12)
+**Qué es:** promedio uniforme de los pesos de `etapa2_e2_nf_s42_20261110_2130`, `_s43_20261110_2132` y
+`_s44_20261110_2134` (las tres parten de `e1_nf`), sin datos nuevos ni entrenamiento (`scripts/model_soup.py`). Se
+promedian en float32 todos los tensores de punto flotante, incluidas las estadísticas de BatchNorm. Salida:
+`modelos/experimentos/etapa2_nf_soup.pt` (11.1 MB, SHA-1 `2eb17bfc71618f621e442f35b00b64af97ca56cf`; no se sube).
+Carga con `YOLO(...)` y predice como un .pt normal, con las mismas 8 clases en el mismo orden que `etapa2_nf_s43`.
+
+**Validación** (`evaluar.py`; `reportes/etapa2_nf_soup_{val_camara,juliaca_val,publico_val}.json`, logs en
+`reportes/evidencias/soup/`):
+
+| modelo | F1 val_camara (293) | aciertos | F1 juliaca/val | F1 publico/val |
+|---|---|---|---|---|
+| **etapa2_nf_soup** | **0.5454** | 164 | 0.7612 | 0.8826 |
+| e2_nf_s43 (modelo por defecto) | 0.5716 | 169 | 0.7587 | 0.8711 |
+| media nf (3 semillas) | 0.5568 | 167.7 | 0.7762 | 0.8773 |
+
+F1 por clase de la soup en val_camara: generales 0.637, metales 0.324, organico 0.667, papel_carton 0.429,
+**peligrosos 0.652**, plasticos 0.504, vidrio 0.605. Peligrosos queda dentro del rango de nf (0.640–0.692), pero
+organico (recall 10/20) y metales bajan. La confusión generales → papel_carton sigue alta (31).
+
+**Resultado según la regla:** la soup (0.5454) **no supera** a la media de nf (0.5568; −0.011) **ni** a nf_s43
+(0.5716; −0.026). En publico/val sube un poco (0.8826, la mejor de las cuatro) y en juliaca/val queda entre las
+semillas, pero eso no cuenta para la regla. **No gana:** no se corrió `correr_todo.py` ni juliaca/test, y el modelo
+por defecto sigue siendo `etapa2_nf_s43`.
+
 ## Pendientes
 - **Siguiente paso: fotos propias de juliaca** (`capturar` → `etiquetar` → `importar`). Prioridad:
   0. **sachets, envolturas impresas, cajas impresas y Tetra Pak**, para separar lo impreso multicapa (generales) de lo
