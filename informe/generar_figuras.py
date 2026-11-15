@@ -85,9 +85,16 @@ class Privacidad:
             for r in csv.DictReader(open(self.cache_f, encoding="utf-8")):
                 self.cache[r["clave"]] = r
         self.det = None
-        # YuNet (opencv_zoo, face_detection_yunet_2023mar.onnx); en OpenCV 5 ya no existe CascadeClassifier
-        self.yunet = cv2.FaceDetectorYN.create(str(RAIZ / "modelos/detectores/face_detection_yunet_2023mar.onnx"),
-                                               "", (320, 320), 0.5, 0.3, 5000)
+        self._yunet = None
+
+    @property
+    def yunet(self):
+        # YuNet (opencv_zoo, face_detection_yunet_2023mar.onnx); en OpenCV 5 ya no existe CascadeClassifier.
+        # Se carga al primer uso, como YOLOE: --solo-app no lo necesita.
+        if self._yunet is None:
+            self._yunet = cv2.FaceDetectorYN.create(
+                str(RAIZ / "modelos/detectores/face_detection_yunet_2023mar.onnx"), "", (320, 320), 0.5, 0.3, 5000)
+        return self._yunet
 
     def _detector(self):
         if self.det is None:
@@ -817,11 +824,52 @@ def main():
     barras_f1("fig_f1_por_clase.png")
     curvas("fig_curvas.png")
     meta["recetas"] = comparacion_recetas("fig_recetas.png")
+    if all((APP_CAPTURAS / a).exists() for a, _ in APP_PESTANAS):
+        print("[7] app TachoYaa")
+        meta["app"] = figura_app()
     priv = list(PRIV.cache.values())
     meta["privacidad"] = {"revisadas": len(priv), "con_rostro_o_persona": sum(str(r["n_rostros"]) != "0" or str(r["n_persona"]) != "0" for r in priv)}
     json.dump(meta, open(DAT / "figuras_meta.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
     print("listo:", meta["privacidad"])
 
 
+APP_CAPTURAS = RAIZ.parent / "entregables" / "capturas"
+APP_PESTANAS = [("1_escanear.png", "Escanear"), ("2_historial.png", "Historial"),
+                ("3_guia_ntp.png", "Guía NTP"), ("4_acerca_de.png", "Acerca de")]
+# Barra de estado del emulador que se quita en la figura (1_escanear.png ya viene recortada del celular).
+APP_RECORTE_ARRIBA = {"2_historial.png": 120, "3_guia_ntp.png": 120, "4_acerca_de.png": 120}
+
+
+def figura_app(salida="fig_app_pestanas.png", alto=900, sep=28, pie=56):
+    """Las 4 pestañas de la app TachoYaa lado a lado (capturas de ../entregables/capturas/).
+
+    Solo lee esas capturas (revisadas a mano: sin rostros ni el cuarto del autor) y escribe la figura.
+    """
+    ims = []
+    for archivo, _ in APP_PESTANAS:
+        im = Image.open(APP_CAPTURAS / archivo).convert("RGB")
+        im = im.crop((0, APP_RECORTE_ARRIBA.get(archivo, 0), im.width, im.height))
+        ims.append(im.resize((round(im.width * alto / im.height), alto), Image.LANCZOS))
+    ancho = sum(im.width for im in ims) + sep * (len(ims) + 1)
+    lienzo = Image.new("RGB", (ancho, alto + 2 * sep + pie), FONDO)
+    dib = ImageDraw.Draw(lienzo)
+    x = sep
+    for im, (_, nombre) in zip(ims, APP_PESTANAS):
+        lienzo.paste(im, (x, sep))
+        dib.rectangle([x - 1, sep - 1, x + im.width, sep + alto], outline=(200, 200, 198), width=2)
+        f = font(30, bold=True)
+        w = dib.textlength(nombre, font=f)
+        dib.text((x + (im.width - w) / 2, sep + alto + 14), nombre, fill=TINTA, font=f)
+        x += im.width + sep
+    lienzo.save(OUT / salida)
+    print("figura:", OUT / salida, lienzo.size)
+    return {"capturas": [a for a, _ in APP_PESTANAS], "tamano": lienzo.size}
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+
+    if "--solo-app" in sys.argv:  # solo la figura de la app (no rehace las demás)
+        figura_app()
+    else:
+        main()

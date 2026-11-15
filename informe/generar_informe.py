@@ -4,6 +4,8 @@ Requiere python-docx (no está en requirements-lock.txt; se usa un entorno apart
     py -3.13 -m venv <env> && <env>\\Scripts\\pip install python-docx pywin32
     <env>\\Scripts\\python.exe informe\\generar_informe.py            # .docx
     <env>\\Scripts\\python.exe informe\\generar_informe.py --pdf      # además actualiza índices y exporta PDF con Word
+    <env>\\Scripts\\python.exe informe\\generar_informe.py --insertar-despliegue --pdf
+        # solo agrega la sección 5.4 al .docx existente (si no está informe/datos/figuras_meta.json)
 
 Antes: .venv\\Scripts\\python.exe informe\\generar_figuras.py (figuras e informe/datos/figuras_meta.json).
 Todas las métricas se copian de reportes/*.json, reportes/*.csv y EXPERIMENTOS.md (regla 6).
@@ -26,7 +28,8 @@ from docx.shared import Cm, Pt, RGBColor
 RAIZ = Path(__file__).resolve().parents[1]
 INF = RAIZ / "informe"
 FIG = INF / "figuras"
-META = json.load(open(INF / "datos" / "figuras_meta.json", encoding="utf-8"))
+_META = INF / "datos" / "figuras_meta.json"  # lo escribe generar_figuras.py (no está en git); solo lo usa cap6
+META = json.load(open(_META, encoding="utf-8")) if _META.exists() else None
 REP = RAIZ / "reportes"
 SALIDA = INF / "INFORME_FINAL.docx"
 
@@ -93,7 +96,11 @@ def no_partir(fila):
 
 # ------------------------------------------------------------------ documento
 class Informe:
-    def __init__(self):
+    def __init__(self, base=None):
+        if base is not None:  # documento ya armado (estilos y márgenes ya puestos): solo se le agrega contenido
+            self.d = Document(str(base))
+            self.ancho = Cm(16)
+            return
         self.d = Document()
         self._estilos()
         s = self.d.sections[0]
@@ -535,6 +542,49 @@ def cap5(I: Informe):
     I.p("Medido con `scripts/medir_inferencia.py` (batch 1, 224 px, 100 fotos de val_camara, incluye leer y "
         "redimensionar la foto): **22.5 ms** de mediana en GPU (RTX 3060) y **28.9 ms** en CPU (AMD de 16 hilos). "
         "En la demo con detector YOLOE-26s + clasificador, la PC da unos 30 FPS con un objeto.")
+    despliegue(I)
+
+
+def despliegue(I: Informe):
+    """5.4: la app TachoYaa. Números de app_residuos/herramientas/reportes/ y de los archivos entregados."""
+    I.h("5.4 Despliegue del modelo en web o móvil", 2)
+    I.p("El modelo final se llevó a una app propia, **TachoYaa** (Flutter, repositorio hermano `app_residuos`), que "
+        "clasifica sin internet, en el dispositivo, el residuo que está dentro de un recuadro guía y muestra el tacho "
+        "de la NTP 900.058. `etapa2_nf_s43.pt` se exportó a TensorFlow Lite (float32, entrada 224 × 224, 21.8 MB) "
+        "con Ultralytics 8.4.184, y la app reproduce en Dart el preprocesado de Ultralytics (Resize con el "
+        "bilineal de Pillow, CenterCrop, /255) bit a bit. Se aplican las mismas reglas que en la demo: la clase "
+        "más probable, \"NO SEGURO\" con confianza menor que 0.6 y \"Acerca un residuo\" con sin_residuo.")
+    I.tabla(["Comprobación (10 fotos de fotos_laptop)", "TFLite (Python)", "DLL de Windows"],
+            [["Misma clase que el .pt", "10 / 10", "10 / 10"],
+             ["Diferencia máxima de probabilidad", "1.49e-06", "1.01e-06"],
+             ["Tensor de la app vs. tensor de Ultralytics", "0.0", "0.0"]],
+            "El .tflite de la app frente a etapa2_nf_s43.pt (app_residuos/herramientas/reportes/"
+            "comparacion_tflite.json y comparacion_tflite_dll_windows.json).", anchos=[7.5, 4.0, 4.0])
+    I.tabla(["Entregable", "Tamaño", "Plataforma", "Notas"],
+            [["TachoYaa-v1.0.apk", "55.5 MB", "Android 5.0 o superior",
+              "Solo pide la cámara (más almacenamiento en Android 10 o anterior, para guardar en la galería). "
+              "Firmado con clave de desarrollo: se instala permitiendo orígenes desconocidos."],
+             ["TachoYaa-Setup-v1.0.exe", "29.6 MB", "Windows 10/11 de 64 bits, con webcam",
+              "Instalador por usuario (Inno Setup), sin administrador. Incluye TensorFlow Lite 2.19 compilado "
+              "desde el código oficial y el runtime de Visual C++. Sin firma: SmartScreen pide \"Más información\" "
+              "→ \"Ejecutar de todos modos\"."]],
+            "Archivos entregados de la app.", anchos=[4.2, 1.8, 3.5, 6.0])
+    I.p("La interfaz tiene cuatro pestañas con navegación inferior, tema claro u oscuro y los colores de los "
+        "tachos de la norma: **Escanear** (cámara con el recuadro, que toma el color del tacho; una tarjeta con el "
+        "tacho, el residuo, una barra de confianza con la marca del umbral y un consejo corto; botones para guardar "
+        "la foto y para clasificar una foto de la galería), **Historial** (las clasificaciones guardadas en el "
+        "dispositivo, con miniatura, y un gráfico de cuántas fueron a cada tacho), **Guía NTP** (qué va y qué no va "
+        "en cada tacho y los casos dudosos de la sección 1.2) y **Acerca de** (el modelo, sus resultados de esta "
+        "sección y sus limitaciones).")
+    I.figura("fig_app_pestanas.png", "Las cuatro pestañas de TachoYaa en Android. Escanear: captura del autor en "
+             "su celular (modo oscuro), clasificando desde Galería la foto de una botella PET: TACHO BLANCO, 100 %. "
+             "Historial, Guía NTP y Acerca de: emulador (Pixel 7, Android 16, modo claro).", 16.0)
+    I.p("Pruebas: el instalador de Windows se instaló, abrió la webcam, clasificó (31-36 ms por fotograma en la "
+        "CPU de la PC, mostrado por la propia app) y se desinstaló sin dejar archivos. El APK se probó en el "
+        "emulador de Android 16: pide solo el permiso de cámara, clasifica, guarda la foto en la galería y clasifica "
+        "fotos elegidas con el selector del sistema. En el celular del autor la app clasificó la foto de la botella "
+        "de la figura en 69 ms (valor mostrado por la propia app; una sola medición, no un benchmark). En el "
+        "emulador tarda unos 2.4 s porque emula la CPU.")
 
 
 def cap6(I: Informe):
@@ -771,7 +821,30 @@ def exportar_pdf(docx: Path):
         word.Quit()
 
 
+def insertar_despliegue(docx: Path):
+    """Agrega la sección 5.4 a un INFORME_FINAL.docx ya generado, justo antes de "6. Imágenes de evidencia",
+    sin rehacer el resto (sirve cuando no está informe/datos/figuras_meta.json para regenerar todo)."""
+    I = Informe(base=docx)
+    if any(p.text.startswith("5.4 ") for p in I.d.paragraphs):
+        raise SystemExit("El documento ya tiene una sección 5.4")
+    ancla = next(p for p in I.d.paragraphs if p.style.name == "Heading 1" and p.text.startswith("6. "))
+    cuerpo = I.d.element.body
+    n = len(cuerpo)  # el último hijo es sectPr; add_paragraph/add_table insertan antes de él
+    despliegue(I)
+    for el in list(cuerpo)[n - 1:-1]:
+        ancla._p.addprevious(el)
+    I.d.save(docx)
+    print("5.4 insertada en", docx)
+
+
 def main():
+    if "--insertar-despliegue" in sys.argv:
+        insertar_despliegue(SALIDA)
+        if "--pdf" in sys.argv:
+            exportar_pdf(SALIDA)
+        return
+    if META is None:
+        raise SystemExit(f"Falta {_META}: corre antes informe/generar_figuras.py")
     I = Informe()
     portada(I)
     indices(I)
